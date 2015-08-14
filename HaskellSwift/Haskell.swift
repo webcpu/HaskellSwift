@@ -56,6 +56,25 @@ public func tail<T>(xs: [T])->[T] {
     return list
 }
 
+public func last<T>(xs: [T]) ->T {
+    assert(xs.isEmpty != true, "Empty List")
+    return xs[xs.count - 1]
+}
+
+public func xinit<T>(xs: [T])->[T] {
+    var list = [T]()
+    assert(xs.count > 0, "Empty List")
+    if xs.count == 1 {
+        return list
+    }
+    
+    for i in 0..<(xs.count - 1) {
+        list.append(xs[i])
+    }
+    
+    return list
+}
+
 public func take<T>(len: Int, _ xs: [T]) -> [T] {
     assert(len >= 0 && len <= xs.count, "illeagal length")
     var list = [T]()
@@ -68,4 +87,12 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
     }
     
     return list
+}
+
+public func length<T>(xs: [T]) -> Int {
+    return xs.count
+}
+
+public func length(xs: String) -> Int {
+    return xs.characters.count
 }

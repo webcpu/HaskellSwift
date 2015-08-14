@@ -73,7 +73,30 @@ class HaskellSwiftSpec: QuickSpec {
                 let expectedFiles = Array(files[1..<(files.count)])
                 expect(tail(files)).to(equal(expectedFiles))
             }
+        }
+       
+        describe("last") {
+            it("Int Array") {
+                expect(last([1])).to(equal(1))
+                expect(last([1,2,3])).to(equal(3))
+            }
             
+            it("String Array") {
+                expect(last(["World"])).to(equal("World"))
+                expect(last(files)).to(equal(files[files.count - 1]))
+            }
+        }
+        
+        describe("xinit") {
+            it("Int Array") {
+                expect(xinit([1])).to(equal([Int]()))
+                expect(xinit([1,2])).to(equal([1]))
+            }
+            
+            it("String Array") {
+                expect(xinit(["World"])).to(equal([String]()))
+                expect(xinit(files)).to(equal(Array(files[0..<(files.count - 1)])))
+            }
         }
         
         describe("take") {
@@ -88,6 +111,22 @@ class HaskellSwiftSpec: QuickSpec {
                 expect(take(0, files)).to(equal([String]()))
                 expect(take(0, [String]())).to(equal([String]()))
                 expect(take(1, files)).to(equal([files[0]]))
+            }
+        }
+        
+        describe("length") {
+            it("Int Array") {
+                expect(length([1])).to(equal(1))
+                expect(length([1,2])).to(equal(2))
+            }
+            
+            it("String Array") {
+                expect(length(["World"])).to(equal(1))
+                expect(length(files)).to(equal(files.count))
+            }
+           
+            it("String") {
+                expect(length("World")).to(equal(5))
             }
         }
     }
