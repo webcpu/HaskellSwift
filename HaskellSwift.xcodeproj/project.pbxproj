@@ -14,8 +14,6 @@
 		ECF75E991B7E1B420047B0F7 /* HaskellSwiftSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* HaskellSwiftSpec.swift */; };
 		ECF75EA41B7E1B420047B0F7 /* HaskellSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EA31B7E1B420047B0F7 /* HaskellSwiftUITests.swift */; };
 		ECF75EB21B7E1B6E0047B0F7 /* Haskell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EB11B7E1B6E0047B0F7 /* Haskell.swift */; };
-		ECF75EB91B7E1DA60047B0F7 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB61B7E1DA60047B0F7 /* XCGLogger.framework */; };
-		ECF75EBD1B7E1DD20047B0F7 /* XCGLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB61B7E1DA60047B0F7 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF75EBF1B7E1E810047B0F7 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF75EC01B7E1E810047B0F7 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF75EC11B7E1EA00047B0F7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; };
@@ -46,7 +44,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				ECF75EBD1B7E1DD20047B0F7 /* XCGLogger.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +76,6 @@
 		ECF75EB11B7E1B6E0047B0F7 /* Haskell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haskell.swift; sourceTree = "<group>"; };
 		ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		ECF75EB51B7E1DA60047B0F7 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
-		ECF75EB61B7E1DA60047B0F7 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XCGLogger.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF75EB91B7E1DA60047B0F7 /* XCGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +162,6 @@
 			children = (
 				ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */,
 				ECF75EB51B7E1DA60047B0F7 /* Quick.framework */,
-				ECF75EB61B7E1DA60047B0F7 /* XCGLogger.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";

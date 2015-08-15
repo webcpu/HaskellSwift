@@ -26,9 +26,33 @@ class HaskellSwiftSpec: QuickSpec {
             
             it("Int Array") {
                 let countLength     = { (x: String) in x.characters.count }
-                let countLenghs     = { xs in map(countLength, xs) }
-                let lengths         = countLenghs(files)
+                let countLengths     = { xs in map(countLength, xs) }
+                let lengths         = countLengths(files)
                 expect(lengths).to(equal(files.map({ (x: String) in x.characters.count })))
+            }
+            
+            it("String - String") {
+                let toUppercase     = { (x: Character) in  String(x).capitalizedString.characters.first! }
+                let toUppercases    = { xs in map(toUppercase, xs) }
+                let uppercaseString = toUppercases("haskell")
+                expect(uppercaseString).to(equal("HASKELL"))
+            }
+            
+            it("String - UInt32 Array") {
+                let toUppercase     = { (x: Character) -> UInt32 in
+                    let scalars = String(x).capitalizedString.unicodeScalars
+                    return scalars[scalars.startIndex].value
+                }
+                let toUppercases    = { (xs : String) -> [UInt32] in map(toUppercase, xs) }
+                let uppercaseString = toUppercases("haskell")
+                expect(uppercaseString).to(equal([72,65,83,75,69,76,76]))
+            }
+            
+            it("String - Bool Array") {
+                let isUppercase = { (x: Character) -> Bool in return ("A"..."Z").contains(x) }
+                let checkUppercases = { (xs: String) -> [Bool] in map(isUppercase, xs) }
+                let uppercases = checkUppercases("Haskell")
+                expect(uppercases).to(equal([true, false, false, false, false, false, false]))
             }
         }
         
@@ -39,6 +63,20 @@ class HaskellSwiftSpec: QuickSpec {
                 let result          = sum([1,2,3,4])
                 expect(result).to(equal(10))
             }
+            
+            it("String Array") {
+                let add             = { (initial: String, x: String) -> String in initial + x }
+                let concat          = { xs in reduce(add, "", xs) }
+                let result          = concat(["Hello", "World", "!"])
+                expect(result).to(equal("HelloWorld!"))
+            }
+            
+            it("Character Array") {
+                let add             = { (initial: String, x: String) -> String in initial + x }
+                let concat          = { xs in reduce(add, "", xs) }
+                let result          = concat(["C", "a", "t", "!"] )
+                expect(result).to(equal("Cat!"))
+            }
         }
         
         describe("filter") {
@@ -47,6 +85,13 @@ class HaskellSwiftSpec: QuickSpec {
                 let swiftFilter     = { xs in filter(isSwift, xs) }
                 let swiftFiles      = swiftFilter(files)
                 expect(swiftFiles).to(equal(["Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]))
+            }
+            
+            it("String") {
+                let isA             = { (x : Character) in x == "a" }
+                let isAFilter       = { (xs : String) in filter(isA, xs) }
+                let result          = isAFilter("ABCDa")
+                expect(result).to(equal("a"))
             }
         }
         
@@ -57,8 +102,10 @@ class HaskellSwiftSpec: QuickSpec {
             }
             
             it("String Array") {
-                expect(head(["World"])).to(equal("World"))
-                expect(head(files)).to(equal("README.md"))
+                let result0 = head(["World"])
+                expect(result0).to(equal("World"))
+                let result1 = head(files)
+                expect(result1).to(equal("README.md"))
             }
         }
         
@@ -77,12 +124,15 @@ class HaskellSwiftSpec: QuickSpec {
        
         describe("last") {
             it("Int Array") {
-                expect(last([1])).to(equal(1))
-                expect(last([1,2,3])).to(equal(3))
+                let result0 = last([1])
+                expect(result0).to(equal(1))
+                let result1 = last([1,2,3])
+                expect(result1).to(equal(3))
             }
             
             it("String Array") {
-                expect(last(["World"])).to(equal("World"))
+                let result0 = last(["World"])
+                expect(result0).to(equal("World"))
                 expect(last(files)).to(equal(files[files.count - 1]))
             }
         }
@@ -127,6 +177,25 @@ class HaskellSwiftSpec: QuickSpec {
            
             it("String") {
                 expect(length("World")).to(equal(5))
+                expect(length("")).to(equal(0))
+            }
+        }
+        
+        describe("null") {
+            it("Int Array") {
+                expect(null([1])).to(beFalse())
+                expect(null([Int]())).to(beTrue())
+            }
+            
+            it("String Array") {
+                expect(null(["World"])).to(beFalse())
+                expect(null([String]())).to(beTrue())
+                expect(null(files)).to(beFalse())
+            }
+            
+            it("String") {
+                expect(null("World")).to(beFalse())
+                expect(null("")).to(beTrue())
             }
         }
     }

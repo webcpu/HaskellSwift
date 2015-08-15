@@ -8,6 +8,26 @@
 
 import Foundation
 
+public func map(transform: Character->Character, _ xs: String) -> String {
+    var results = String()
+    for i in 0..<xs.characters.count {
+        let c = xs[advance(xs.startIndex, i)]
+        results.append(transform(c))
+    }
+    
+    return results
+}
+
+public func map<U>(transform: Character-> U, _ xs: String) -> [U] {
+    var results = [U]()
+    for i in 0..<xs.characters.count {
+        let c = xs[advance(xs.startIndex, i)]
+        results.append(transform(c))
+    }
+    
+    return results
+}
+
 public func map<T, U>(transform: T->U, _ xs: [T]) -> [U] {
     var results = [U]()
     for x in xs {
@@ -28,6 +48,16 @@ public func filter<U>(check: U -> Bool, _ xs: [U]) -> [U] {
     return results
 }
 
+public func filter(check: Character -> Bool, _ xs: String) -> String {
+    var results = String()
+    for x in xs.characters {
+        if check(x) {
+            results.append(x)
+        }
+    }
+    
+    return results
+}
 public func reduce<S, T> (combine: (T, S)->T, _ initial: T, _ xs: [S]) -> T {
     var result = initial
     for x in xs {
@@ -76,7 +106,7 @@ public func xinit<T>(xs: [T])->[T] {
 }
 
 public func take<T>(len: Int, _ xs: [T]) -> [T] {
-    assert(len >= 0 && len <= xs.count, "illeagal length")
+    assert(len >= 0 && len <= xs.count, "Illeagal Length")
     var list = [T]()
     if len == 0 {
         return list
@@ -95,4 +125,12 @@ public func length<T>(xs: [T]) -> Int {
 
 public func length(xs: String) -> Int {
     return xs.characters.count
+}
+
+public func null<T>(xs: [T]) -> Bool {
+    return xs.isEmpty
+}
+
+public func null(xs: String) -> Bool {
+    return xs.characters.count == 0
 }
