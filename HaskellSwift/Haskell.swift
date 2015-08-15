@@ -58,6 +58,7 @@ public func filter(check: Character -> Bool, _ xs: String) -> String {
     
     return results
 }
+
 public func reduce<S, T> (combine: (T, S)->T, _ initial: T, _ xs: [S]) -> T {
     var result = initial
     for x in xs {
@@ -70,6 +71,12 @@ public func reduce<S, T> (combine: (T, S)->T, _ initial: T, _ xs: [S]) -> T {
 public func head<T>(xs: [T]) ->T {
     assert(xs.isEmpty != true, "Empty List")
     return xs[0]
+}
+
+public func head(xs: String) -> Character {
+    assert(xs.isEmpty != true, "Empty List")
+    let c =  xs[advance(xs.startIndex, 0)]
+    return c
 }
 
 public func tail<T>(xs: [T])->[T] {
@@ -86,9 +93,30 @@ public func tail<T>(xs: [T])->[T] {
     return list
 }
 
+public func tail(xs: String)->String {
+    var list = String()
+    assert(xs.characters.count > 0, "Empty List")
+    if xs.characters.count == 1 {
+        return list
+    }
+    
+    for i in 1..<(xs.characters.count) {
+        let c = xs[advance(xs.startIndex, i)]
+        list.append(c)
+    }
+    
+    return list
+}
+
 public func last<T>(xs: [T]) ->T {
     assert(xs.isEmpty != true, "Empty List")
     return xs[xs.count - 1]
+}
+
+public func last(xs: String) -> Character {
+    assert(xs.isEmpty != true, "Empty List")
+    let c =  xs[advance(xs.endIndex, -1)]
+    return c
 }
 
 public func xinit<T>(xs: [T])->[T] {
@@ -105,6 +133,21 @@ public func xinit<T>(xs: [T])->[T] {
     return list
 }
 
+public func xinit(xs: String)->String {
+    var list = String()
+    assert(xs.characters.count > 0, "Empty List")
+    if xs.characters.count == 1 {
+        return list
+    }
+    
+    for i in 0..<(xs.characters.count - 1) {
+        let c = xs[advance(xs.startIndex, i)]
+        list.append(c)
+    }
+    
+    return list
+}
+
 public func take<T>(len: Int, _ xs: [T]) -> [T] {
     assert(len >= 0 && len <= xs.count, "Illeagal Length")
     var list = [T]()
@@ -114,6 +157,21 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
     
     for i in 0..<len {
         list.append(xs[i])
+    }
+    
+    return list
+}
+
+public func take(len: Int, _ xs: String)->String {
+    var list = String()
+    assert(xs.characters.count > 0, "Empty List")
+    if xs.characters.count == 1 {
+        return list
+    }
+    let minLen = len <= xs.characters.count ? len : xs.characters.count
+    for i in 0..<(minLen) {
+        let c = xs[advance(xs.startIndex, i)]
+        list.append(c)
     }
     
     return list

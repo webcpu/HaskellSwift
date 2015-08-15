@@ -107,6 +107,12 @@ class HaskellSwiftSpec: QuickSpec {
                 let result1 = head(files)
                 expect(result1).to(equal("README.md"))
             }
+            
+            it("String") {
+                let result = head("World")
+                expect(result).to(equal("W"))
+                expect(head("W")).to(equal("W"))
+            }
         }
         
         describe("tail") {
@@ -119,6 +125,12 @@ class HaskellSwiftSpec: QuickSpec {
                 expect(tail(["World"])).to(equal([String]()))
                 let expectedFiles = Array(files[1..<(files.count)])
                 expect(tail(files)).to(equal(expectedFiles))
+            }
+            
+            it("String") {
+                let result = tail("World")
+                expect(result).to(equal("orld"))
+                expect(tail("W")).to(equal(""))
             }
         }
        
@@ -135,6 +147,12 @@ class HaskellSwiftSpec: QuickSpec {
                 expect(result0).to(equal("World"))
                 expect(last(files)).to(equal(files[files.count - 1]))
             }
+            
+            it("String") {
+                let result = last("World")
+                expect(result).to(equal("d"))
+                expect(last("W")).to(equal("W"))
+            }
         }
         
         describe("xinit") {
@@ -146,6 +164,11 @@ class HaskellSwiftSpec: QuickSpec {
             it("String Array") {
                 expect(xinit(["World"])).to(equal([String]()))
                 expect(xinit(files)).to(equal(Array(files[0..<(files.count - 1)])))
+            }
+            
+            it("String") {
+                expect(xinit("1")).to(equal(String()))
+                expect(xinit("WHO")).to(equal("WH"))
             }
         }
         
@@ -161,6 +184,13 @@ class HaskellSwiftSpec: QuickSpec {
                 expect(take(0, files)).to(equal([String]()))
                 expect(take(0, [String]())).to(equal([String]()))
                 expect(take(1, files)).to(equal([files[0]]))
+            }
+            
+            it("String") {
+                expect(take(0, files)).to(equal([String]()))
+                expect(take(0, [String]())).to(equal([String]()))
+                expect(take(1, "World")).to(equal("W"))
+                expect(take(3, "World")).to(equal("Wor"))
             }
         }
         
