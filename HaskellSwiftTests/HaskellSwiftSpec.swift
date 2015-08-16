@@ -178,19 +178,48 @@ class HaskellSwiftSpec: QuickSpec {
                 expect(take(0, ints)).to(equal([Int]()))
                 expect(take(0, [Int]())).to(equal([Int]()))
                 expect(take(1, ints)).to(equal([1]))
+                expect(take(5, ints)).to(equal(ints))
             }
             
             it("String Array") {
                 expect(take(0, files)).to(equal([String]()))
                 expect(take(0, [String]())).to(equal([String]()))
                 expect(take(1, files)).to(equal([files[0]]))
+                expect(take(10, files)).to(equal(files))
             }
             
             it("String") {
+                let str = "World"
                 expect(take(0, files)).to(equal([String]()))
                 expect(take(0, [String]())).to(equal([String]()))
-                expect(take(1, "World")).to(equal("W"))
-                expect(take(3, "World")).to(equal("Wor"))
+                expect(take(1, str)).to(equal("W"))
+                expect(take(3, str)).to(equal("Wor"))
+                expect(take(10, str)).to(equal(str))
+            }
+        }
+        
+        describe("drop") {
+            it("Int Array") {
+                let ints = [1, 2, 3]
+                expect(drop(0, ints)).to(equal(ints))
+                expect(drop(0, [Int]())).to(equal([Int]()))
+                expect(drop(1, ints)).to(equal([2, 3]))
+                expect(drop(10, ints)).to(equal([Int]()))
+            }
+            
+            it("String Array") {
+                expect(drop(0, files)).to(equal(files))
+                expect(drop(0, [String]())).to(equal([String]()))
+                let expectedResult = Array(files[1..<(files.count)])
+                expect(drop(1, files)).to(equal(expectedResult))
+                expect(drop(files.count + 1, files)).to(equal([String]()))
+            }
+            
+            it("String") {
+                expect(drop(0, "Hello World")).to(equal("Hello World"))
+                expect(drop(0, [String]())).to(equal([String]()))
+                expect(drop(1, "World")).to(equal("orld"))
+                expect(drop(10, "World")).to(equal(""))
             }
         }
         
@@ -228,5 +257,24 @@ class HaskellSwiftSpec: QuickSpec {
                 expect(null("")).to(beTrue())
             }
         }
+        
+        describe("reverse") {
+            it("Int Array") {
+                expect(reverse([3])).to(equal([3]))
+                expect(reverse([1,2])).to(equal([2,1]))
+            }
+            
+            it("String Array") {
+                let reversedFiles = ["HaskellSwift.swift","HaskellTests.swift","Haskell.swift","README.md"]
+                expect(reverse(["Hello"])).to(equal(["Hello"]))
+                expect(reverse(files)).to(equal(reversedFiles))
+            }
+            
+            it("String") {
+                expect(reverse("World")).to(equal("dlroW"))
+                expect(reverse("")).to(equal(""))
+            }
+        }
+        
     }
 }

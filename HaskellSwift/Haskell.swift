@@ -149,10 +149,14 @@ public func xinit(xs: String)->String {
 }
 
 public func take<T>(len: Int, _ xs: [T]) -> [T] {
-    assert(len >= 0 && len <= xs.count, "Illeagal Length")
+    assert(len >= 0 , "Illeagal Length")
     var list = [T]()
     if len == 0 {
         return list
+    }
+    
+    if len >= xs.count {
+        return xs
     }
     
     for i in 0..<len {
@@ -164,12 +168,53 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
 
 public func take(len: Int, _ xs: String)->String {
     var list = String()
-    assert(xs.characters.count > 0, "Empty List")
-    if xs.characters.count == 1 {
+    assert(len >= 0, "Illeagal Length")
+    if len == 0 {
         return list
     }
-    let minLen = len <= xs.characters.count ? len : xs.characters.count
-    for i in 0..<(minLen) {
+    
+    if len >= xs.characters.count {
+        return xs
+    }
+    
+    for i in 0..<len {
+        let c = xs[advance(xs.startIndex, i)]
+        list.append(c)
+    }
+    
+    return list
+}
+
+public func drop<T>(len: Int, _ xs: [T]) -> [T] {
+    assert(len >= 0, "Illeagal Length")
+    var list = [T]()
+    if len == 0 {
+        return xs
+    }
+    
+    if len >= xs.count {
+        return list
+    }
+    
+    for i in len..<xs.count {
+        list.append(xs[i])
+    }
+    
+    return list
+}
+
+public func drop(len: Int, _ xs: String)->String {
+    var list = String()
+    assert(xs.characters.count >= 0, "Empty List")
+    if len == 0 {
+        return xs
+    }
+    
+    if len >= xs.characters.count {
+        return list
+    }
+    
+    for i in len..<(xs.characters.count) {
         let c = xs[advance(xs.startIndex, i)]
         list.append(c)
     }
@@ -192,3 +237,12 @@ public func null<T>(xs: [T]) -> Bool {
 public func null(xs: String) -> Bool {
     return xs.characters.count == 0
 }
+
+public func reverse<T>(xs: [T]) -> [T] {
+    return [T](xs.reverse())
+}
+
+public func reverse(xs: String) -> String {
+    return String(xs.characters.reverse())
+}
+
