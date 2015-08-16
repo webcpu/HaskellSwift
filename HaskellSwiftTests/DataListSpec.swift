@@ -10,10 +10,25 @@ import Quick
 import Nimble
 @testable import HaskellSwift
 
-class HaskellSwiftSpec: QuickSpec {
+class DataListSpec: QuickSpec {
     override func spec() {
         let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
        
+        describe("•") {
+            it("Int Array") {
+                let fs              = head  • reverse  • reverse
+                let result          = fs("ABC")
+                expect(result).to(equal("A"))
+            }
+            
+            it("String") {
+                let process : [String]->String = last • xinit • reverse
+                let words           = ["Very", "Good", "Person"]
+                let result          = process(words)
+                expect(result).to(equal("Good"))
+            }
+        }
+        
         describe("++") {
             it("Int Array") {
                 let list1           = [1, 2, 3]
