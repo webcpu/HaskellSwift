@@ -8,6 +8,15 @@
 
 import Foundation
 
+infix operator ++ {}
+func ++<A>(left: [A], right: [A]) -> [A] {
+    return left + right
+}
+
+func ++(left: String, right: String) -> String {
+    return left + right
+}
+
 public func map(transform: Character->Character, _ xs: String) -> String {
     var results = String()
     for i in 0..<xs.characters.count {
@@ -62,6 +71,15 @@ public func filter(check: Character -> Bool, _ xs: String) -> String {
 public func reduce<S, T> (combine: (T, S)->T, _ initial: T, _ xs: [S]) -> T {
     var result = initial
     for x in xs {
+        result = combine(result, x)
+    }
+    
+    return result
+}
+
+public func reduce(combine: (String, Character)->String, _ initial: String, _ xs: String) -> String {
+    var result = initial
+    for x in xs.characters {
         result = combine(result, x)
     }
     
@@ -205,7 +223,7 @@ public func drop<T>(len: Int, _ xs: [T]) -> [T] {
 
 public func drop(len: Int, _ xs: String)->String {
     var list = String()
-    assert(xs.characters.count >= 0, "Empty List")
+    assert(len >= 0, "Illeagal Length")
     if len == 0 {
         return xs
     }
@@ -246,3 +264,28 @@ public func reverse(xs: String) -> String {
     return String(xs.characters.reverse())
 }
 
+public func foldl<A,B>(process: (A, B)->A, _ initialValue: A, _ xs: [B]) -> A {
+    return reduce(process, initialValue, xs)
+}
+
+public func foldl(process: (String, Character)->String, _ initialValue: String, _ xs: String) -> String {
+    return reduce(process, initialValue, xs)
+}
+
+public func foldr<A,B>(process: (A, B)->B, _ initialValue: B, _ xs: [A]) -> B {
+    var result = initialValue
+    for x in xs.reverse() {
+        result = process(x, result)
+    }
+    
+    return result
+}
+
+public func foldr(process: (Character, String)->String, _ initialValue: String, _ xs: String) -> String {
+    var result = initialValue
+    for x in xs.characters.reverse() {
+        result = process(x, result)
+    }
+    
+    return result
+}

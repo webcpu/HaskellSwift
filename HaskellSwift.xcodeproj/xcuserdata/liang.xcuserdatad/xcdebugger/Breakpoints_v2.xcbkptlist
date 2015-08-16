@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HaskellSwiftTests/HaskellSwiftSpec.swift"
-            timestampString = "461273216.604664"
+            timestampString = "461444786.891801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "spec()"
             landmarkType = "5">
             <Locations>
@@ -58,13 +58,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HaskellSwiftTests/HaskellSwiftSpec.swift"
-            timestampString = "461274762.915486"
+            timestampString = "461444786.891801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "spec()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HaskellSwiftTests/HaskellSwiftSpec.swift"
+            timestampString = "461444786.891801"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
+            landmarkName = "spec()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HaskellSwiftTests.HaskellSwiftSpec.(spec (HaskellSwiftTests.HaskellSwiftSpec) -&gt; () -&gt; ()).(closure #14).(closure #2)"
+                  moduleName = "HaskellSwiftTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liang/Projects/HaskellSwift/HaskellSwiftTests/HaskellSwiftSpec.swift"
+                  timestampString = "461438332.884287"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "320"
+                  endingLineNumber = "320"
+                  offsetFromSymbolStart = "597">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HaskellSwiftTests.HaskellSwiftSpec.(spec (HaskellSwiftTests.HaskellSwiftSpec) -&gt; () -&gt; ()).(closure #14).(closure #2).(implicit closure #1)"
+                  moduleName = "HaskellSwiftTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liang/Projects/HaskellSwift/HaskellSwiftTests/HaskellSwiftSpec.swift"
+                  timestampString = "461438332.884699"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "320"
+                  endingLineNumber = "320"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

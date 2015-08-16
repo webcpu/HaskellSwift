@@ -13,6 +13,29 @@ import Nimble
 class HaskellSwiftSpec: QuickSpec {
     override func spec() {
         let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
+       
+        describe("++") {
+            it("Int Array") {
+                let list1           = [1, 2, 3]
+                let list2           = [4, 5, 6]
+                let result          = list1 ++ list2
+                expect(result).to(equal([1, 2, 3, 4, 5, 6]))
+            }
+            
+            it("String Array") {
+                let list1           = ["Hello"]
+                let list2           = ["world", "Haskell!"]
+                let result          = list1 ++ list2
+                expect(result).to(equal(["Hello", "world", "Haskell!"]))
+            }
+            
+            it("String") {
+                let list1           = "Hello"
+                let list2           = "world"
+                let result          = list1 ++ list2
+                expect(result).to(equal("Helloworld"))
+            }
+        }
         
         describe("map") {
             it("String Array") {
@@ -64,17 +87,23 @@ class HaskellSwiftSpec: QuickSpec {
                 expect(result).to(equal(10))
             }
             
-            it("String Array") {
+            it("String Array 1") {
                 let add             = { (initial: String, x: String) -> String in initial + x }
                 let concat          = { xs in reduce(add, "", xs) }
                 let result          = concat(["Hello", "World", "!"])
                 expect(result).to(equal("HelloWorld!"))
             }
             
-            it("Character Array") {
+            it("String Array 2") {
                 let add             = { (initial: String, x: String) -> String in initial + x }
                 let concat          = { xs in reduce(add, "", xs) }
                 let result          = concat(["C", "a", "t", "!"] )
+                expect(result).to(equal("Cat!"))
+            }
+            
+            it("String") {
+                let add             = { (initial: String, x: Character) -> String in initial + String(x) }
+                let result          = reduce(add, "", ["C", "a", "t", "!"])
                 expect(result).to(equal("Cat!"))
             }
         }
@@ -275,6 +304,51 @@ class HaskellSwiftSpec: QuickSpec {
                 expect(reverse("")).to(equal(""))
             }
         }
+        
+        describe("foldl") {
+            it("Int Array") {
+                let add     = { (x: Int,y: Int) in x+y }
+                expect(foldl(add, 0, [1, 2, 3])).to(equal(6))
+                
+                let product = {(x: Int, y: Int) in x*y}
+                expect(foldl(product, 1, [1,2,3,4,5])).to(equal(120))
+            }
+            
+            it("String Array") {
+                let letters : [String] = ["W", "o", "r", "l", "d"]
+                let add = { (x: String, y: String) in x + y }
+                let result = foldl(add, "", letters)
+                expect(result).to(equal("World"))
+            }
+            
+            it("String") {
+                let insert = { (x: String, y: Character) in String(y) + x }
+                expect(foldl(insert, "", "World")).to(equal("dlroW"))
+            }
+        }
+        
+        describe("foldr") {
+            it("Int Array") {
+                let add     = { (a: Int,b: Int) in a+b }
+                expect(foldr(add, 0, [1, 2, 3])).to(equal(6))
+                
+                let multiply = {(a: Int, b: Int) in a*b}
+                expect(foldr(multiply, 1, [1,2,3,4,5])).to(equal(120))
+            }
+            
+            it("String Array") {
+                let letters : [String] = ["W", "o", "r", "l", "d"]
+                let add = { (a: String, b: String) in b + a }
+                let result = foldr(add, "", letters)
+                expect(result).to(equal("dlroW"))
+            }
+            
+            it("String") {
+                let insert = { (a: Character, b: String) in String(a) + b }
+                expect(foldr(insert, "", "World")).to(equal("World"))
+            }
+        }
+
         
     }
 }
