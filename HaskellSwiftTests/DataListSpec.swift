@@ -15,17 +15,23 @@ class DataListSpec: QuickSpec {
         let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
        
         describe("•") {
-            it("Int Array") {
-                let fs              = head  • reverse  • reverse
-                let result          = fs("ABC")
-                expect(result).to(equal("A"))
+            it ("Int Array") {
+                let process : [Int] -> Int = last • reverse
+                let ints            = [1,2,3,4,5]
+                expect(process(ints)).to(equal(1))
             }
             
-            it("String") {
+            it("String Array") {
                 let process : [String]->String = last • xinit • reverse
                 let words           = ["Very", "Good", "Person"]
                 let result          = process(words)
                 expect(result).to(equal("Good"))
+            }
+            
+            it("String") {
+                let fs              = head  • reverse  • reverse
+                let result          = fs("ABC")
+                expect(result).to(equal("A"))
             }
         }
         
@@ -49,6 +55,118 @@ class DataListSpec: QuickSpec {
                 let list2           = "world"
                 let result          = list1 ++ list2
                 expect(result).to(equal("Helloworld"))
+            }
+        }
+        
+        describe("head") {
+            it("Int Array") {
+                expect(head([1])).to(equal(1))
+                expect(head([1,2,3])).to(equal(1))
+            }
+            
+            it("String Array") {
+                let result0 = head(["World"])
+                expect(result0).to(equal("World"))
+                let result1 = head(files)
+                expect(result1).to(equal("README.md"))
+            }
+            
+            it("String") {
+                let result = head("World")
+                expect(result).to(equal("W"))
+                expect(head("W")).to(equal("W"))
+            }
+        }
+       
+        describe("last") {
+            it("Int Array") {
+                let result0 = last([1])
+                expect(result0).to(equal(1))
+                let result1 = last([1,2,3])
+                expect(result1).to(equal(3))
+            }
+            
+            it("String Array") {
+                let result0 = last(["World"])
+                expect(result0).to(equal("World"))
+                expect(last(files)).to(equal(files[files.count - 1]))
+            }
+            
+            it("String") {
+                let result = last("World")
+                expect(result).to(equal("d"))
+                expect(last("W")).to(equal("W"))
+            }
+        }
+        
+        describe("tail") {
+            it("Int Array") {
+                expect(tail([1])).to(equal([Int]()))
+                expect(tail([1,2,3])).to(equal([2,3]))
+            }
+            
+            it("String Array") {
+                expect(tail(["World"])).to(equal([String]()))
+                let expectedFiles = Array(files[1..<(files.count)])
+                expect(tail(files)).to(equal(expectedFiles))
+            }
+            
+            it("String") {
+                let result = tail("World")
+                expect(result).to(equal("orld"))
+                expect(tail("W")).to(equal(""))
+            }
+        }
+       
+        describe("xinit") {
+            it("Int Array") {
+                expect(xinit([1])).to(equal([Int]()))
+                expect(xinit([1,2])).to(equal([1]))
+            }
+            
+            it("String Array") {
+                expect(xinit(["World"])).to(equal([String]()))
+                expect(xinit(files)).to(equal(Array(files[0..<(files.count - 1)])))
+            }
+            
+            it("String") {
+                expect(xinit("1")).to(equal(String()))
+                expect(xinit("WHO")).to(equal("WH"))
+            }
+        }
+        
+        describe("null") {
+            it("Int Array") {
+                expect(null([1])).to(beFalse())
+                expect(null([Int]())).to(beTrue())
+            }
+            
+            it("String Array") {
+                expect(null(["World"])).to(beFalse())
+                expect(null([String]())).to(beTrue())
+                expect(null(files)).to(beFalse())
+            }
+            
+            it("String") {
+                expect(null("World")).to(beFalse())
+                expect(null("")).to(beTrue())
+            }
+        }
+        
+        describe("length") {
+            it("Int Array") {
+                expect(length([1])).to(equal(1))
+                expect(length([1,2])).to(equal(2))
+            }
+            
+            it("String Array") {
+                expect(length(["World"])).to(equal(1))
+                expect(length(files)).to(equal(files.count))
+            }
+            
+            it("String") {
+                expect(length("World")).to(equal(5))
+                expect(length("")).to(equal(0))
             }
         }
         
@@ -94,125 +212,152 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("reverse") {
+            it("Int Array") {
+                expect(reverse([3])).to(equal([3]))
+                expect(reverse([1,2])).to(equal([2,1]))
+            }
+            
+            it("String Array") {
+                let reversedFiles = ["HaskellSwift.swift","HaskellTests.swift","Haskell.swift","README.md"]
+                expect(reverse(["Hello"])).to(equal(["Hello"]))
+                expect(reverse(files)).to(equal(reversedFiles))
+            }
+            
+            it("String") {
+                expect(reverse("World")).to(equal("dlroW"))
+                expect(reverse("")).to(equal(""))
+            }
+        }
+       
+        describe("foldl") {
+            it("Int Array") {
+                let adds     = { (x: Int,y: Int) in x+y }
+                expect(foldl(adds, 0, [1, 2, 3])).to(equal(6))
+                
+                let product = {(x: Int, y: Int) in x*y}
+                expect(foldl(product, 1, [1,2,3,4,5])).to(equal(120))
+            }
+            
+            it("String Array") {
+                let letters : [String] = ["W", "o", "r", "l", "d"]
+                let adds = { (x: String, y: String) in x + y }
+                let result = foldl(adds, "", letters)
+                expect(result).to(equal("World"))
+            }
+            
+            it("String") {
+                let insert = { (x: String, y: Character) in String(y) + x }
+                expect(foldl(insert, "", "World")).to(equal("dlroW"))
+            }
+        }
+        
+        describe("foldr") {
+            it("Int Array") {
+                let adds     = { (a: Int,b: Int) in a+b }
+                expect(foldr(adds, 0, [1, 2, 3])).to(equal(6))
+                
+                let multiply = {(a: Int, b: Int) in a*b}
+                expect(foldr(multiply, 1, [1,2,3,4,5])).to(equal(120))
+            }
+            
+            it("String Array") {
+                let letters : [String] = ["W", "o", "r", "l", "d"]
+                let adds = { (a: String, b: String) in b + a }
+                let result = foldr(adds, "", letters)
+                expect(result).to(equal("dlroW"))
+            }
+            
+            it("String") {
+                let insert = { (a: Character, b: String) in String(a) + b }
+                expect(foldr(insert, "", "World")).to(equal("World"))
+            }
+        }
+        
         describe("reduce") {
             it("Int Array") {
-                let add             = { (initial: Int, x: Int) -> Int in initial + x }
-                let sum             = { xs in reduce(add, 0, xs) }
+                let adds             = { (initial: Int, x: Int) -> Int in initial + x }
+                let sum             = { xs in reduce(adds, 0, xs) }
                 let result          = sum([1,2,3,4])
                 expect(result).to(equal(10))
             }
             
             it("String Array 1") {
-                let add             = { (initial: String, x: String) -> String in initial + x }
-                let concat          = { xs in reduce(add, "", xs) }
+                let adds             = { (initial: String, x: String) -> String in initial + x }
+                let concat          = { xs in reduce(adds, "", xs) }
                 let result          = concat(["Hello", "World", "!"])
                 expect(result).to(equal("HelloWorld!"))
             }
             
             it("String Array 2") {
-                let add             = { (initial: String, x: String) -> String in initial + x }
-                let concat          = { xs in reduce(add, "", xs) }
+                let adds             = { (initial: String, x: String) -> String in initial + x }
+                let concat          = { xs in reduce(adds, "", xs) }
                 let result          = concat(["C", "a", "t", "!"] )
                 expect(result).to(equal("Cat!"))
             }
             
             it("String") {
-                let add             = { (initial: String, x: Character) -> String in initial + String(x) }
-                let result          = reduce(add, "", ["C", "a", "t", "!"])
+                let adds             = { (initial: String, x: Character) -> String in initial + String(x) }
+                let result          = reduce(adds, "", ["C", "a", "t", "!"])
                 expect(result).to(equal("Cat!"))
             }
         }
         
-        describe("filter") {
-            it("String Array") {
-                let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
-                let swiftFilter     = { xs in filter(isSwift, xs) }
-                let swiftFiles      = swiftFilter(files)
-                expect(swiftFiles).to(equal(["Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]))
+        describe("concat") {
+            it("Int Arrays Array") {
+                var ints = [[1, 2, 3], [4, 5, 6]]
+                expect(concat(ints)).to(equal([1, 2, 3, 4, 5, 6]))
+                ints = [[Int]]()
+                expect(concat(ints)).to(equal([[Int]]()))
             }
             
-            it("String") {
-                let isA             = { (x : Character) in x == "a" }
-                let isAFilter       = { (xs : String) in filter(isA, xs) }
-                let result          = isAFilter("ABCDa")
-                expect(result).to(equal("a"))
+            it("String Arrays Array") {
+                let strings = [["a", "b", "c"], ["d", "e", "f"]]
+                expect(concat(strings)).to(equal(["a", "b", "c", "d", "e", "f"]))
+            }
+            
+            it("String Arrays") {
+                let strings = ["Hello", "World"]
+                expect(concat(strings)).to(equal("HelloWorld"))
+                let emptyString = [String]()
+                expect(concat(emptyString)).to(equal(String()))
             }
         }
         
-        describe("head") {
-            it("Int Array") {
-                expect(head([1])).to(equal(1))
-                expect(head([1,2,3])).to(equal(1))
+        describe("concatMap") {
+            it("Int Arrays Array") {
+                let ints = [1, 2]
+                expect(concatMap({x in [x, x*x]}, ints)).to(equal([1, 1, 2, 4]))
             }
             
-            it("String Array") {
-                let result0 = head(["World"])
-                expect(result0).to(equal("World"))
-                let result1 = head(files)
-                expect(result1).to(equal("README.md"))
+            it("String Arrays Array") {
+                let strings = ["a", "b"]
+                expect(concatMap( {x in [x + "0", x + "1", x + "2"]}, strings)).to(equal(["a0", "a1", "a2", "b0", "b1", "b2"]))
             }
             
-            it("String") {
-                let result = head("World")
-                expect(result).to(equal("W"))
-                expect(head("W")).to(equal("W"))
+            it("String Arrays") {
+                let strings = ["Hello", "World"]
+                expect(concat(strings)).to(equal("HelloWorld"))
+                let emptyString = [String]()
+                expect(concat(emptyString)).to(equal(String()))
             }
         }
         
-        describe("tail") {
-            it("Int Array") {
-                expect(tail([1])).to(equal([Int]()))
-                expect(tail([1,2,3])).to(equal([2,3]))
-            }
-            
-            it("String Array") {
-                expect(tail(["World"])).to(equal([String]()))
-                let expectedFiles = Array(files[1..<(files.count)])
-                expect(tail(files)).to(equal(expectedFiles))
-            }
-            
-            it("String") {
-                let result = tail("World")
-                expect(result).to(equal("orld"))
-                expect(tail("W")).to(equal(""))
+        describe("and") {
+            it("Bool Array") {
+                expect(and([false, false])).to(beFalse())
+                expect(and([true, false])).to(beFalse())
+                expect(and([true, true])).to(beTrue())
+                expect(and([false, true])).to(beFalse())
             }
         }
        
-        describe("last") {
-            it("Int Array") {
-                let result0 = last([1])
-                expect(result0).to(equal(1))
-                let result1 = last([1,2,3])
-                expect(result1).to(equal(3))
-            }
-            
-            it("String Array") {
-                let result0 = last(["World"])
-                expect(result0).to(equal("World"))
-                expect(last(files)).to(equal(files[files.count - 1]))
-            }
-            
-            it("String") {
-                let result = last("World")
-                expect(result).to(equal("d"))
-                expect(last("W")).to(equal("W"))
-            }
-        }
-        
-        describe("xinit") {
-            it("Int Array") {
-                expect(xinit([1])).to(equal([Int]()))
-                expect(xinit([1,2])).to(equal([1]))
-            }
-            
-            it("String Array") {
-                expect(xinit(["World"])).to(equal([String]()))
-                expect(xinit(files)).to(equal(Array(files[0..<(files.count - 1)])))
-            }
-            
-            it("String") {
-                expect(xinit("1")).to(equal(String()))
-                expect(xinit("WHO")).to(equal("WH"))
+        describe("or") {
+            it("Bool Array") {
+                expect(or([true,true])).to(beTrue())
+                expect(or([false,true])).to(beTrue())
+                expect(or([false,false])).to(beFalse())
+                expect(or([true, false])).to(beTrue())
             }
         }
         
@@ -267,103 +412,20 @@ class DataListSpec: QuickSpec {
             }
         }
         
-        describe("length") {
-            it("Int Array") {
-                expect(length([1])).to(equal(1))
-                expect(length([1,2])).to(equal(2))
-            }
-            
+        describe("filter") {
             it("String Array") {
-                expect(length(["World"])).to(equal(1))
-                expect(length(files)).to(equal(files.count))
-            }
-           
-            it("String") {
-                expect(length("World")).to(equal(5))
-                expect(length("")).to(equal(0))
-            }
-        }
-        
-        describe("null") {
-            it("Int Array") {
-                expect(null([1])).to(beFalse())
-                expect(null([Int]())).to(beTrue())
-            }
-            
-            it("String Array") {
-                expect(null(["World"])).to(beFalse())
-                expect(null([String]())).to(beTrue())
-                expect(null(files)).to(beFalse())
+                let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
+                let swiftFilter     = { xs in filter(isSwift, xs) }
+                let swiftFiles      = swiftFilter(files)
+                expect(swiftFiles).to(equal(["Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]))
             }
             
             it("String") {
-                expect(null("World")).to(beFalse())
-                expect(null("")).to(beTrue())
+                let isA             = { (x : Character) in x == "a" }
+                let isAFilter       = { (xs : String) in filter(isA, xs) }
+                let result          = isAFilter("ABCDa")
+                expect(result).to(equal("a"))
             }
         }
-        
-        describe("reverse") {
-            it("Int Array") {
-                expect(reverse([3])).to(equal([3]))
-                expect(reverse([1,2])).to(equal([2,1]))
-            }
-            
-            it("String Array") {
-                let reversedFiles = ["HaskellSwift.swift","HaskellTests.swift","Haskell.swift","README.md"]
-                expect(reverse(["Hello"])).to(equal(["Hello"]))
-                expect(reverse(files)).to(equal(reversedFiles))
-            }
-            
-            it("String") {
-                expect(reverse("World")).to(equal("dlroW"))
-                expect(reverse("")).to(equal(""))
-            }
-        }
-        
-        describe("foldl") {
-            it("Int Array") {
-                let add     = { (x: Int,y: Int) in x+y }
-                expect(foldl(add, 0, [1, 2, 3])).to(equal(6))
-                
-                let product = {(x: Int, y: Int) in x*y}
-                expect(foldl(product, 1, [1,2,3,4,5])).to(equal(120))
-            }
-            
-            it("String Array") {
-                let letters : [String] = ["W", "o", "r", "l", "d"]
-                let add = { (x: String, y: String) in x + y }
-                let result = foldl(add, "", letters)
-                expect(result).to(equal("World"))
-            }
-            
-            it("String") {
-                let insert = { (x: String, y: Character) in String(y) + x }
-                expect(foldl(insert, "", "World")).to(equal("dlroW"))
-            }
-        }
-        
-        describe("foldr") {
-            it("Int Array") {
-                let add     = { (a: Int,b: Int) in a+b }
-                expect(foldr(add, 0, [1, 2, 3])).to(equal(6))
-                
-                let multiply = {(a: Int, b: Int) in a*b}
-                expect(foldr(multiply, 1, [1,2,3,4,5])).to(equal(120))
-            }
-            
-            it("String Array") {
-                let letters : [String] = ["W", "o", "r", "l", "d"]
-                let add = { (a: String, b: String) in b + a }
-                let result = foldr(add, "", letters)
-                expect(result).to(equal("dlroW"))
-            }
-            
-            it("String") {
-                let insert = { (a: Character, b: String) in String(a) + b }
-                expect(foldr(insert, "", "World")).to(equal("World"))
-            }
-        }
-
-        
     }
 }

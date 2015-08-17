@@ -13,10 +13,6 @@ func •<A,B,C>(f2: B->C, f1: A->B) -> (A->C) {
     return { (x: A) in f2(f1(x)) }
 }
 
-//func •<A,B,C>(f2: [B]->[C], f1: [A]->[B]) -> ([A]->[C]) {
-//    return { (x: [A]) in f2(f1(x)) }
-//}
-
 //MARK: - Basic functions
 //MARK: (++) :: [a] -> [a] -> [a]
 infix operator ++ {}
@@ -241,6 +237,64 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
     return list
 }
 
+//MARK: - Special folds
+//MARK: concat :: Foldable t => t [a] -> [a]
+public func concat<A> (xss: [[A]]) -> [A] {
+   // assert(xs.count >= 0 , "Illeagal Length")
+    var xs = [A]()
+   
+    let process = { (a : [A], b: [A]) in a + b }
+    xs          = foldl(process, xs, xss)
+    
+    return xs
+}
+
+public func concat (xss: [String]) -> String {
+    var xs = String()
+    
+    let process = { (a : String, b: String) in a + b }
+    xs          = foldl(process, xs, xss)
+    
+    return xs
+}
+
+//MARK: concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
+public func concatMap<A, B> (process: A->[B], _ xs: [A]) -> [B] {
+    // assert(xs.count >= 0 , "Illeagal Length")
+    
+    var xss          = [[B]]()
+    for x in xs {
+        xss.append(process(x))
+    }
+    
+    let results      = concat(xss)
+    
+    return results
+}
+
+//MARK: and :: Foldable t => t Bool -> Bool
+public func and(xs: [Bool]) -> Bool {
+    for x in xs {
+        if x == false {
+            return false
+        }
+    }
+    return true
+}
+
+//MARK: or :: Foldable t => t Bool -> Bool
+public func or(xs: [Bool]) -> Bool {
+    for x in xs {
+        if x {
+            return true
+        }
+    }
+    return false
+}
+
+//MARK:
+
+//MARK: take :: Int -> [a] -> [a]
 public func take(len: Int, _ xs: String)->String {
     var list = String()
     assert(len >= 0, "Illeagal Length")
