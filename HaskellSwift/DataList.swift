@@ -460,7 +460,30 @@ public func product(xs: [UInt8])-> UInt8 {
 }
 
 //MARK: maximum :: forall a. (Foldable t, Ord a) => t a -> a
+public func maximum<T: Comparable>(xs: [T])-> T {
+    assert(xs.count > 0, "Empty List")
+    var m = xs[0]
+    
+    for x in xs {
+        if x > m {
+            m = x
+        }
+    }
+    return m
+}
+
 //MARK: minimum :: forall a. (Foldable t, Ord a) => t a -> a
+public func minimum<T: Comparable>(xs: [T])-> T {
+    assert(xs.count > 0, "Empty List")
+    var m = xs[0]
+    
+    for x in xs {
+        if x < m {
+            m = x
+        }
+    }
+    return m
+}
 
 //MARK: - Sublists
 //MARK: Extracting sublists

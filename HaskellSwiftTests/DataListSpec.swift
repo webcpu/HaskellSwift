@@ -589,6 +589,166 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("maximum") {
+            it("CGFloat Array") {
+                let list : [CGFloat] = [1.0, 2.0, 3.0]
+                let result           = maximum(list)
+                expect(result).to(beCloseTo(3.0))
+            }
+            
+            it("Double Array") {
+                let list : [Double] = [1.1, 2.2, 3.3]
+                let result          = maximum(list)
+                expect(result).to(beCloseTo(3.3))
+            }
+            
+            it("Float Array") {
+                let list : [Float]  = [1.1, 2.2, 3.3]
+                let result          = maximum(list)
+                expect(result).to(beCloseTo(3.3))
+            }
+            
+            it("Int Array") {
+                let list : [Int]    = [1, 2, 3]
+                let result          = maximum(list)
+                expect(result).to(equal(3))
+            }
+            
+            it("Int16 Array") {
+                let list : [Int16]    = [1, 2, 3]
+                let result          = maximum(list)
+                expect(result).to(equal(3))
+            }
+            
+            it("Int32 Array") {
+                let list : [Int32]    = [1, 2, 3]
+                let result          = maximum(list)
+                expect(result).to(equal(3))
+            }
+            
+            it("Int64 Array") {
+                let list : [Int64]    = [1, 2, 3]
+                let result          = maximum(list)
+                expect(result).to(equal(3))
+            }
+            
+            it("Int8 Array") {
+                let list : [Int8]    = [1, 2, 3]
+                let result          = maximum(list)
+                expect(result).to(equal(3))
+            }
+            
+            it("UInt Array") {
+                let list : [UInt]    = [1, 2, 3]
+                let result          = maximum(list)
+                expect(result).to(equal(3))
+            }
+            
+            it("UInt16 Array") {
+                let list : [UInt16]    = [1, 2, 3]
+                let result          = maximum(list)
+                expect(result).to(equal(3))
+            }
+            
+            it("UInt32 Array") {
+                let list : [UInt32]    = [1, 2, 3]
+                let result          = maximum(list)
+                expect(result).to(equal(3))
+            }
+            
+            it("UInt64 Array") {
+                let list : [UInt64]    = [1, 2, 3]
+                let result          = maximum(list)
+                expect(result).to(equal(3))
+            }
+            
+            it("UInt8 Array") {
+                let list : [UInt8]    = [1, 2, 3]
+                let result          = maximum(list)
+                expect(result).to(equal(3))
+            }
+        }
+       
+        describe("minimum") {
+            it("CGFloat Array") {
+                let list : [CGFloat] = [4.4, 2.2, 3.3]
+                let result           = minimum(list)
+                expect(result).to(beCloseTo(2.2))
+            }
+            
+            it("Double Array") {
+                let list : [Double] = [4.4, 2.2, 3.3]
+                let result          = minimum(list)
+                expect(result).to(beCloseTo(2.2))
+            }
+            
+            it("Float Array") {
+                let list : [Float]  = [4.4, 2.2, 3.3]
+                let result          = minimum(list)
+                expect(result).to(beCloseTo(2.2))
+            }
+            
+            it("Int Array") {
+                let list : [Int]    = [5, 2, 3]
+                let result          = minimum(list)
+                expect(result).to(equal(2))
+            }
+            
+            it("Int16 Array") {
+                let list : [Int16]    = [5, 2, 3]
+                let result          = minimum(list)
+                expect(result).to(equal(2))
+            }
+            
+            it("Int32 Array") {
+                let list : [Int32]    = [5, 2, 3]
+                let result          = minimum(list)
+                expect(result).to(equal(2))
+            }
+            
+            it("Int64 Array") {
+                let list : [Int64]    = [5, 2, 3]
+                let result          = minimum(list)
+                expect(result).to(equal(2))
+            }
+            
+            it("Int8 Array") {
+                let list : [Int8]    = [5, 2, 3]
+                let result          = minimum(list)
+                expect(result).to(equal(2))
+            }
+            
+            it("UInt Array") {
+                let list : [UInt]    = [5, 2, 3]
+                let result          = minimum(list)
+                expect(result).to(equal(2))
+            }
+            
+            it("UInt16 Array") {
+                let list : [UInt16]    = [5, 2, 3]
+                let result          = minimum(list)
+                expect(result).to(equal(2))
+            }
+            
+            it("UInt32 Array") {
+                let list : [UInt32]    = [5, 2, 3]
+                let result          = minimum(list)
+                expect(result).to(equal(2))
+            }
+            
+            it("UInt64 Array") {
+                let list : [UInt64]    = [5, 2, 3]
+                let result          = minimum(list)
+                expect(result).to(equal(2))
+            }
+            
+            it("UInt8 Array") {
+                let list : [UInt8]    = [5, 2, 3]
+                let result          = minimum(list)
+                expect(result).to(equal(2))
+            }
+        }
+        
         describe("take") {
             it("Int Array") {
                 let ints = [1, 2, 3]
