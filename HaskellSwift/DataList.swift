@@ -387,24 +387,24 @@ public func sum(xs: [UInt8])-> UInt8 {
     return reduce(+, 0, xs)
 }
 
-public protocol Addable {
+public protocol Arithmetic {
     func +(lhs: Self, rhs: Self) -> Self
     func *(lhs: Self, rhs: Self) -> Self
 }
 
-extension CGFloat: Addable {}
-extension Double: Addable {}
-extension Float: Addable {}
-extension Int: Addable {}
-extension Int16: Addable {}
-extension Int32: Addable {}
-extension Int64: Addable {}
-extension Int8: Addable {}
-extension UInt: Addable {}
-extension UInt16: Addable {}
-extension UInt32: Addable {}
-extension UInt64: Addable {}
-extension UInt8: Addable {}
+extension CGFloat: Arithmetic {}
+extension Double: Arithmetic {}
+extension Float: Arithmetic {}
+extension Int: Arithmetic {}
+extension Int16: Arithmetic {}
+extension Int32: Arithmetic {}
+extension Int64: Arithmetic {}
+extension Int8: Arithmetic {}
+extension UInt: Arithmetic {}
+extension UInt16: Arithmetic {}
+extension UInt32: Arithmetic {}
+extension UInt64: Arithmetic {}
+extension UInt8: Arithmetic {}
 
 //MARK: product :: (Foldable t, Num a) => t a -> a
 public func product(xs: [CGFloat])-> CGFloat {
