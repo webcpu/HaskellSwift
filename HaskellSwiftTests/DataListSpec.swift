@@ -277,8 +277,7 @@ class DataListSpec: QuickSpec {
         describe("reduce") {
             it("Int Array") {
                 let adds             = { (initial: Int, x: Int) -> Int in initial + x }
-                let sum             = { xs in reduce(adds, 0, xs) }
-                let result          = sum([1,2,3,4])
+                let result          = reduce(adds, 0, [1,2,3,4])
                 expect(result).to(equal(10))
             }
             
@@ -358,6 +357,235 @@ class DataListSpec: QuickSpec {
                 expect(or([false,true])).to(beTrue())
                 expect(or([false,false])).to(beFalse())
                 expect(or([true, false])).to(beTrue())
+            }
+        }
+        
+        describe("any") {
+            it("Int Array") {
+                let ints = [1,3,7]
+                expect(any({ x in x < 10}, ints)).to(beTrue())
+                expect(any({ x in x > 10}, ints)).to(beFalse())
+            }
+            
+            it("String Array") {
+                let words = ["Hello", "World"]
+                expect(any({ x in head(x) == "H"}, words)).to(beTrue())
+                expect(any({ x in last(x) == "t"}, words)).to(beFalse())
+            }
+            
+            it("String") {
+                let word = "Hello"
+                expect(any({ x in x == "H"}, word)).to(beTrue())
+                expect(any({ x in x == "t"}, word)).to(beFalse())
+            }
+        }
+        
+        describe("all") {
+            it("Int Array") {
+                let ints = [1,3,7]
+                expect(all({ x in x < 10}, ints)).to(beTrue())
+                expect(all({ x in x > 10}, ints)).to(beFalse())
+                expect(all({ x in x > 10}, [Int]())).to(beTrue())
+            }
+            
+            it("String Array") {
+                let words = ["Hello", "World"]
+                expect(all({ x in head(x) < "z"}, words)).to(beTrue())
+                expect(all({ x in last(x) < "a"}, words)).to(beFalse())
+                expect(all({ x in last(x) < "a"}, [String]())).to(beTrue())
+            }
+            
+            it("String") {
+                let word = "Hello"
+                expect(all({ x in x < "z"}, word)).to(beTrue())
+                expect(all({ x in x == "t"}, word)).to(beFalse())
+                expect(all({ x in x == "t"}, "")).to(beTrue())
+            }
+        }
+        
+        describe("sum") {
+            it("CGFloat Array") {
+                let list : [CGFloat] = [1.0, 2.0, 3.0]
+                let result = sum(list)
+                expect(result).to(beCloseTo(6.0))
+                expect(sum([CGFloat]())).to(equal(0.0))
+            }
+            
+            it("Double Array") {
+                let list : [Double] = [1.1, 2.2, 3.3]
+                let result          = sum(list)
+                expect(result).to(beCloseTo(6.6))
+                expect(sum([Double]())).to(equal(0.0))
+            }
+            
+            it("Float Array") {
+                let list : [Float]  = [1.1, 2.2, 3.3]
+                let result          = sum(list)
+                expect(result).to(beCloseTo(Float(6.6)))
+                expect(sum([Float]())).to(equal(0.0))
+            }
+            
+            it("Int Array") {
+                let list : [Int]    = [1, 2, 3]
+                let result          = sum(list)
+                expect(result).to(equal(Int(6)))
+                expect(sum([Int]())).to(equal(0))
+            }
+            
+            it("Int16 Array") {
+                let list : [Int16]  = [1, 2, 3]
+                let result          = sum(list)
+                expect(result).to(equal(Int16(6)))
+                expect(sum([Int16]())).to(equal(0))
+            }
+            
+            it("Int32 Array") {
+                let list : [Int32]  = [1, 2, 3]
+                let result          = sum(list)
+                expect(result).to(equal(Int32(6)))
+                expect(sum([Int32]())).to(equal(0))
+            }
+            
+            it("Int64 Array") {
+                let list : [Int64]  = [1, 2, 3]
+                let result          = sum(list)
+                expect(result).to(equal(Int64(6)))
+                expect(sum([Int64]())).to(equal(0))
+            }
+            
+            it("Int8 Array") {
+                let list : [Int8]   = [1, 2, 3]
+                let result          = sum(list)
+                expect(result).to(equal(Int8(6)))
+                expect(sum([Int8]())).to(equal(0))
+            }
+            
+            it("UInt Array") {
+                let list : [UInt]   = [1, 2, 3]
+                let result          = sum(list)
+                expect(result).to(equal(UInt(6)))
+                expect(sum([UInt]())).to(equal(0))
+            }
+            
+            it("UInt16 Array") {
+                let list : [UInt16] = [1, 2, 3]
+                let result          = sum(list)
+                expect(result).to(equal(UInt16(6)))
+                expect(sum([UInt16]())).to(equal(0))
+            }
+            
+            it("UInt32 Array") {
+                let list : [UInt32] = [1, 2, 3]
+                let result          = sum(list)
+                expect(result).to(equal(UInt32(6)))
+                expect(sum([UInt32]())).to(equal(0))
+            }
+            
+            it("UInt64 Array") {
+                let list : [UInt64] = [1, 2, 3]
+                let result          = sum(list)
+                expect(result).to(equal(UInt64(6)))
+                expect(sum([UInt64]())).to(equal(0))
+            }
+            
+            it("UInt8 Array") {
+                let list : [UInt8]  = [1, 2, 3]
+                let result          = sum(list)
+                expect(result).to(equal(UInt8(6)))
+                expect(sum([UInt8]())).to(equal(0))
+            }
+        }
+        
+        describe("product") {
+            it("CGFloat Array") {
+                let list : [CGFloat] = [1.0, 2.0, 3.0]
+                let result = product(list)
+                expect(result).to(beCloseTo(6.0))
+                expect(product([CGFloat]())).to(equal(1.0))
+            }
+            
+            it("Double Array") {
+                let list : [Double] = [1.1, 2.2, 3.3]
+                let result          = product(list)
+                expect(result).to(beCloseTo(7.986000000000001))
+                expect(product([Double]())).to(equal(1.0))
+            }
+            
+            it("Float Array") {
+                let list : [Float]  = [1.1, 2.2, 3.3]
+                let result          = product(list)
+                expect(result).to(beCloseTo(Float(7.986000000000001)))
+                expect(product([Float]())).to(equal(1.0))
+            }
+            
+            it("Int Array") {
+                let list : [Int]    = [1, 2, 3, 4]
+                let result          = product(list)
+                expect(result).to(equal(Int(24)))
+                expect(product([Int]())).to(equal(1))
+            }
+            
+            it("Int16 Array") {
+                let list : [Int16]  = [1, 2, 3, 4]
+                let result          = product(list)
+                expect(result).to(equal(Int16(24)))
+                expect(product([Int16]())).to(equal(1))
+            }
+            
+            it("Int32 Array") {
+                let list : [Int32]  = [1, 2, 3, 4]
+                let result          = product(list)
+                expect(result).to(equal(Int32(24)))
+                expect(product([Int32]())).to(equal(1))
+            }
+            
+            it("Int64 Array") {
+                let list : [Int64]  = [1, 2, 3, 4]
+                let result          = product(list)
+                expect(result).to(equal(Int64(24)))
+                expect(product([Int64]())).to(equal(1))
+            }
+            
+            it("Int8 Array") {
+                let list : [Int8]   = [1, 2, 3, 4]
+                let result          = product(list)
+                expect(result).to(equal(Int8(24)))
+                expect(product([Int8]())).to(equal(1))
+            }
+            
+            it("UInt Array") {
+                let list : [UInt]   = [1, 2, 3, 4]
+                let result          = product(list)
+                expect(result).to(equal(UInt(24)))
+                expect(product([UInt]())).to(equal(1))
+            }
+            
+            it("UInt16 Array") {
+                let list : [UInt16] = [1, 2, 3, 4]
+                let result          = product(list)
+                expect(result).to(equal(UInt16(24)))
+                expect(product([UInt16]())).to(equal(1))
+            }
+            
+            it("UInt32 Array") {
+                let list : [UInt32] = [1, 2, 3, 4]
+                let result          = product(list)
+                expect(result).to(equal(UInt32(24)))
+                expect(product([UInt32]())).to(equal(1))
+            }
+            
+            it("UInt64 Array") {
+                let list : [UInt64] = [1, 2, 3, 4]
+                let result          = product(list)
+                expect(result).to(equal(UInt64(24)))
+                expect(product([UInt64]())).to(equal(1))
+            }
+            
+            it("UInt8 Array") {
+                let list : [UInt8]  = [1, 2, 3, 4]
+                let result          = product(list)
+                expect(result).to(equal(UInt8(24)))
+                expect(product([UInt8]())).to(equal(1))
             }
         }
         

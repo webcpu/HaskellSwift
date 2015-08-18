@@ -220,7 +220,7 @@ public func foldr(process: (Character, String)->String, _ initialValue: String, 
 //MARK: Extracting sublists
 //MARK: take :: Int -> [a] -> [a]
 public func take<T>(len: Int, _ xs: [T]) -> [T] {
-    assert(len >= 0 , "Illeagal Length")
+    assert(len >= 0 , "Illegal Length")
     var list = [T]()
     if len == 0 {
         return list
@@ -240,7 +240,7 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
 //MARK: - Special folds
 //MARK: concat :: Foldable t => t [a] -> [a]
 public func concat<A> (xss: [[A]]) -> [A] {
-   // assert(xs.count >= 0 , "Illeagal Length")
+   // assert(xs.count >= 0 , "Illegal Length")
     var xs = [A]()
    
     let process = { (a : [A], b: [A]) in a + b }
@@ -260,7 +260,7 @@ public func concat (xss: [String]) -> String {
 
 //MARK: concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
 public func concatMap<A, B> (process: A->[B], _ xs: [A]) -> [B] {
-    // assert(xs.count >= 0 , "Illeagal Length")
+    // assert(xs.count >= 0 , "Illegal Length")
     
     var xss          = [[B]]()
     for x in xs {
@@ -292,12 +292,182 @@ public func or(xs: [Bool]) -> Bool {
     return false
 }
 
-//MARK:
+//MARK: any :: Foldable t => (a -> Bool) -> t a -> Bool
+public func any<A>(process: A->Bool, _ xs: [A]) -> Bool {
+    for x in xs {
+        let isMatched = process(x)
+        if isMatched {
+            return true
+        }
+    }
+    return false
+}
 
+public func any(process: Character->Bool, _ xs: String) -> Bool {
+    for x in xs.characters {
+        let isMatched = process(x)
+        if isMatched {
+            return true
+        }
+    }
+    return false
+}
+
+//MARK: all :: Foldable t => (a -> Bool) -> t a -> Bool
+public func all<A>(process: A->Bool, _ xs: [A]) -> Bool {
+    for x in xs {
+        let isMatched = process(x)
+        if !isMatched {
+            return false
+        }
+    }
+    return true
+}
+
+public func all(process: Character->Bool, _ xs: String) -> Bool {
+    for x in xs.characters {
+        let isMatched = process(x)
+        if !isMatched {
+            return false
+        }
+    }
+    return true
+}
+
+//MARK: sum :: (Foldable t, Num a) => t a -> a
+public func sum(xs: [CGFloat])-> CGFloat {
+     return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Double])-> Double {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Float])-> Float {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Int])-> Int {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Int16])-> Int16 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Int32])-> Int32 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Int64])-> Int64 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Int8])-> Int8 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [UInt])-> UInt {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [UInt16])-> UInt16 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [UInt32])-> UInt32 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [UInt64])-> UInt64 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [UInt8])-> UInt8 {
+    return reduce(+, 0, xs)
+}
+
+public protocol Addable {
+    func +(lhs: Self, rhs: Self) -> Self
+    func *(lhs: Self, rhs: Self) -> Self
+}
+
+extension CGFloat: Addable {}
+extension Double: Addable {}
+extension Float: Addable {}
+extension Int: Addable {}
+extension Int16: Addable {}
+extension Int32: Addable {}
+extension Int64: Addable {}
+extension Int8: Addable {}
+extension UInt: Addable {}
+extension UInt16: Addable {}
+extension UInt32: Addable {}
+extension UInt64: Addable {}
+extension UInt8: Addable {}
+
+//MARK: product :: (Foldable t, Num a) => t a -> a
+public func product(xs: [CGFloat])-> CGFloat {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Double])-> Double {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Float])-> Float {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Int])-> Int {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Int16])-> Int16 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Int32])-> Int32 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Int64])-> Int64 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Int8])-> Int8 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [UInt])-> UInt {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [UInt16])-> UInt16 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [UInt32])-> UInt32 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [UInt64])-> UInt64 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [UInt8])-> UInt8 {
+    return reduce(*, 1, xs)
+}
+
+//MARK: maximum :: forall a. (Foldable t, Ord a) => t a -> a
+//MARK: minimum :: forall a. (Foldable t, Ord a) => t a -> a
+
+//MARK: - Sublists
+//MARK: Extracting sublists
 //MARK: take :: Int -> [a] -> [a]
 public func take(len: Int, _ xs: String)->String {
     var list = String()
-    assert(len >= 0, "Illeagal Length")
+    assert(len >= 0, "Illegal Length")
     if len == 0 {
         return list
     }
@@ -316,7 +486,7 @@ public func take(len: Int, _ xs: String)->String {
 
 //MARK: drop :: Int -> [a] -> [a]
 public func drop<T>(len: Int, _ xs: [T]) -> [T] {
-    assert(len >= 0, "Illeagal Length")
+    assert(len >= 0, "Illegal Length")
     var list = [T]()
     if len == 0 {
         return xs
@@ -335,7 +505,7 @@ public func drop<T>(len: Int, _ xs: [T]) -> [T] {
 
 public func drop(len: Int, _ xs: String)->String {
     var list = String()
-    assert(len >= 0, "Illeagal Length")
+    assert(len >= 0, "Illegal Length")
     if len == 0 {
         return xs
     }
