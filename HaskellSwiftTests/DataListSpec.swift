@@ -800,6 +800,69 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("splitAt") {
+            it("Int Array") {
+                let ints = [1, 2, 3]
+                let (list1, list2) = splitAt(2, ints)
+                expect(list1).to(equal([1, 2]))
+                expect(list2).to(equal([3]))
+            }
+            
+            it("String Array") {
+                let list = ["Is", "it", "OK"]
+                let (list1, list2) = splitAt(2, list)
+                expect(list1).to(equal(["Is", "it"]))
+                expect(list2).to(equal(["OK"]))
+            }
+            
+            it("String") {
+                let list = "Hello World"
+                let (list1, list2) = splitAt(5, list)
+                expect(list1).to(equal("Hello"))
+                expect(list2).to(equal(" World"))
+            }
+        }
+        
+        describe("takeWhile") {
+            it("Int Array") {
+                let ints = [1, 2, 3]
+                let result = takeWhile( { $0 > 2} , ints)
+                expect(result).to(equal([3]))
+            }
+            
+            it("String Array") {
+                let list = ["Is", "it", "OK"]
+                let result = takeWhile({ x in head(x) == "I" || head(x) == "i" }, list)
+                expect(result).to(equal(["Is", "it"]))
+            }
+            
+            it("String") {
+                let list = "Hello World"
+                let result = takeWhile({ x in x > "Z"}, list)
+                expect(result).to(equal("elloorld"))
+            }
+        }
+        
+        describe("dropWhile") {
+            it("Int Array") {
+                let ints = [1, 2, 3]
+                let result = dropWhile( { $0 > 2} , ints)
+                expect(result).to(equal([1, 2]))
+            }
+            
+            it("String Array") {
+                let list = ["Is", "it", "OK"]
+                let result = dropWhile({ x in head(x) == "I" || head(x) == "i" }, list)
+                expect(result).to(equal(["OK"]))
+            }
+            
+            it("String") {
+                let list = "Hello World"
+                let result = dropWhile({ x in x > "Z"}, list)
+                expect(result).to(equal("H W"))
+            }
+        }
+        
         describe("filter") {
             it("String Array") {
                 let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }

@@ -545,6 +545,43 @@ public func drop(len: Int, _ xs: String)->String {
     return list
 }
 
+//MARK: splitAt :: Int -> [a] -> ([a], [a])
+public func splitAt<T>(len: Int, _ xs: [T]) -> ([T], [T]) {
+    assert(len >= 0, "Illegal Length")
+    
+    let list1 = take(len, xs)
+    let list2 = drop(len, xs)
+    
+    return (list1, list2)
+}
+
+public func splitAt(len: Int, _ xs: String)->(String, String) {
+    assert(len >= 0, "Illegal Length")
+    
+    let list1 = take(len, xs)
+    let list2 = drop(len, xs)
+    
+    return (list1, list2)
+}
+
+//MARK: takeWhile :: (a -> Bool) -> [a] -> [a]
+public func takeWhile<U>(check: U -> Bool, _ xs: [U]) -> [U] {
+    return filter(check, xs)
+}
+
+public func takeWhile(check: Character -> Bool, _ xs: String) -> String {
+    return filter(check, xs)
+}
+
+//MARK: dropWhile :: (a -> Bool) -> [a] -> [a]
+public func dropWhile<U>(check: U -> Bool, _ xs: [U]) -> [U] {
+    return filter( { x in !check(x)}, xs)
+}
+
+public func dropWhile(check: Character -> Bool, _ xs: String) -> String {
+    return filter({x in !check(x)}, xs)
+}
+
 //MARK: - Searching lists
 //MARK: Searching by equality
 
