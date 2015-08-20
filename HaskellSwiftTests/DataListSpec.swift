@@ -916,6 +916,26 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("group") {
+            it("Int Array") {
+                let ints            = [1, 1, 2, 3, 3, 5, 5]
+                let result          = group(ints)
+                expect(result).to(equal([[1,1],[2],[3,3],[5,5]]))
+            }
+            
+            it("String Array") {
+                let list    = ["Apple", "Pie", "Pie"]
+                let result  = group(list)
+                expect(result).to(equal([["Apple"], ["Pie", "Pie"]]))
+            }
+            
+            it("String") {
+                let list = "Hello World"
+                let result = group(list)
+                expect(result).to(equal(["H","e","ll","o"," ","W","o","r","l","d"]))
+            }
+        }
+        
         describe("filter") {
             it("String Array") {
                 let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }

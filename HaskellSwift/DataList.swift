@@ -577,10 +577,11 @@ public func takeWhile<U>(check: U -> Bool, _ xs: [U]) -> [U] {
 func lengthOfWhile<U>(check: U -> Bool, _ xs: [U]) -> Int {
     var len = 0
     for i in 0..<xs.count {
-        guard check(xs[i]) else {
-            len = i
+        let result = check(xs[i])
+        guard result else {
             break
         }
+        len = i + 1
     }
     
     return len
@@ -596,9 +597,9 @@ func lengthOfWhileForString(check: Character -> Bool, _ xs: String) -> Int {
     for i in 0..<xs.characters.count {
         let c = xs[advance(xs.startIndex, i)]
         guard check(c) else {
-            len = i
             break
         }
+        len = i + 1
     }
     return len
 }
@@ -641,6 +642,40 @@ public func breakx(check: Character -> Bool, _ xs: String) -> (String, String) {
     let len = lengthOfWhileForString({(x: Character) in !check(x)}, xs)
     return (take(len, xs), drop(len, xs))
 }
+
+//MARK: group :: Eq a => [a] -> [[a]]
+public func group<U: Equatable>(xs: [U]) -> [[U]] {
+    var result          = [[U]]()
+    var list            = xs
+    var groupedItems    = [U]()
+    while (list.count > 0) {
+        let item        = head(list)
+        groupedItems    = takeWhile( {x in x == item}, list)
+        list            = drop(groupedItems.count, list)
+        if groupedItems.count > 0 {
+            result.append(groupedItems)
+        }
+    }
+    
+    return result
+}
+
+public func group(xs: String) -> [String] {
+    var result          = [String]()
+    var list            = xs
+    var groupedItems    = String()
+    while (list.characters.count > 0) {
+        let item        = head(list)
+        groupedItems    = takeWhile( { x in x == item}, list)
+        list            = drop(groupedItems.characters.count, list)
+        if groupedItems.characters.count > 0 {
+            result.append(groupedItems)
+        }
+    }
+    
+    return result
+}
+
 //MARK: - Searching lists
 //MARK: Searching by equality
 
