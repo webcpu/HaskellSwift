@@ -675,6 +675,43 @@ public func group(xs: String) -> [String] {
     
     return result
 }
+//MARK: inits :: [a] -> [[a]]
+public func inits<U>(xs: [U]) -> [[U]] {
+    var result = [[U]]()
+    for i in 0...xs.count {
+        result.append(take(i, xs))
+    }
+    
+    return result
+}
+
+public func inits(xs: String) -> [String] {
+    var result = [String]()
+    for i in 0...xs.characters.count {
+        result.append(take(i, xs))
+    }
+    
+    return result
+}
+
+//MARK: tails :: [a] -> [[a]]
+public func tails<U>(xs: [U]) -> [[U]] {
+    var result = [[U]]()
+    for i in 0...xs.count {
+        result.append(drop(i, xs))
+    }
+    
+    return result
+}
+
+public func tails(xs: String) -> [String] {
+    var result = [String]()
+    for i in 0...xs.characters.count {
+        result.append(drop(i, xs))
+    }
+    
+    return result
+}
 
 //MARK: - Searching lists
 //MARK: Searching by equality

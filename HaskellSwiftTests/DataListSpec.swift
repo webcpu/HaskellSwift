@@ -936,6 +936,46 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("inits") {
+            it("Int Array") {
+                let ints            = [1, 1, 2, 3, 3, 5, 5]
+                let result          = inits(ints)
+                expect(result).to(equal([[],[1],[1,1],[1,1,2],[1,1,2,3],[1,1,2,3,3],[1,1,2,3,3,5],[1,1,2,3,3,5,5]]))
+            }
+            
+            it("String Array") {
+                let list    = ["Apple", "Pie", "Pie"]
+                let result  = inits(list)
+                expect(result).to(equal([[],["Apple"],["Apple","Pie"],["Apple","Pie","Pie"]]))
+            }
+            
+            it("String") {
+                let list = "Hello World"
+                let result = inits(list)
+                expect(result).to(equal(["","H","He","Hel","Hell","Hello","Hello ","Hello W","Hello Wo","Hello Wor","Hello Worl","Hello World"]))
+            }
+        }
+        
+        describe("tails") {
+            it("Int Array") {
+                let ints            = [1, 1, 2, 3, 3, 5, 5]
+                let result          = tails(ints)
+                expect(result).to(equal([[1,1,2,3,3,5,5],[1,2,3,3,5,5],[2,3,3,5,5],[3,3,5,5],[3,5,5],[5,5],[5],[]]))
+            }
+            
+            it("String Array") {
+                let list    = ["Apple", "Pie", "Pie"]
+                let result  = tails(list)
+                expect(result).to(equal([["Apple","Pie","Pie"],["Pie","Pie"],["Pie"],[]]))
+            }
+            
+            it("String") {
+                let list = "Hello World"
+                let result = tails(list)
+                expect(result).to(equal(["Hello World","ello World","llo World","lo World","o World"," World","World","orld","rld","ld","d",""]))
+            }
+        }
+        
         describe("filter") {
             it("String Array") {
                 let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
