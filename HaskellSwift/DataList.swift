@@ -13,6 +13,10 @@ func •<A,B,C>(f2: B->C, f1: A->B) -> (A->C) {
     return { (x: A) in f2(f1(x)) }
 }
 
+public func not(value: Bool) -> Bool {
+    return !value
+}
+
 //MARK: - Basic functions
 //MARK: (++) :: [a] -> [a] -> [a]
 infix operator ++ {}
@@ -79,7 +83,7 @@ public func tail(xs: String)->String {
 }
 
 //MARK: init :: [a] -> [a]
-public func xinit<T>(xs: [T])->[T] {
+public func initx<T>(xs: [T])->[T] {
     var list = [T]()
     assert(xs.count > 0, "Empty List")
     if xs.count == 1 {
@@ -93,7 +97,7 @@ public func xinit<T>(xs: [T])->[T] {
     return list
 }
 
-public func xinit(xs: String)->String {
+public func initx(xs: String)->String {
     var list = String()
     assert(xs.characters.count > 0, "Empty List")
     if xs.characters.count == 1 {
@@ -566,22 +570,77 @@ public func splitAt(len: Int, _ xs: String)->(String, String) {
 
 //MARK: takeWhile :: (a -> Bool) -> [a] -> [a]
 public func takeWhile<U>(check: U -> Bool, _ xs: [U]) -> [U] {
-    return filter(check, xs)
+    let len = lengthOfWhile(check, xs)
+    return take(len, xs)
+}
+
+func lengthOfWhile<U>(check: U -> Bool, _ xs: [U]) -> Int {
+    var len = 0
+    for i in 0..<xs.count {
+        guard check(xs[i]) else {
+            len = i
+            break
+        }
+    }
+    
+    return len
 }
 
 public func takeWhile(check: Character -> Bool, _ xs: String) -> String {
-    return filter(check, xs)
+    let len = lengthOfWhileForString(check, xs)
+    return take(len, xs)
+}
+
+func lengthOfWhileForString(check: Character -> Bool, _ xs: String) -> Int {
+    var len = 0
+    for i in 0..<xs.characters.count {
+        let c = xs[advance(xs.startIndex, i)]
+        guard check(c) else {
+            len = i
+            break
+        }
+    }
+    return len
 }
 
 //MARK: dropWhile :: (a -> Bool) -> [a] -> [a]
 public func dropWhile<U>(check: U -> Bool, _ xs: [U]) -> [U] {
-    return filter( { x in !check(x)}, xs)
+    var len = 0
+    for i in 0..<xs.count {
+        guard check(xs[i]) else {
+            len = i
+            break
+        }
+    }
+    return drop(len, xs)
 }
 
 public func dropWhile(check: Character -> Bool, _ xs: String) -> String {
-    return filter({x in !check(x)}, xs)
+    let len = lengthOfWhileForString(check, xs)
+    return drop(len, xs)
 }
 
+//MARK: span :: (a -> Bool) -> [a] -> ([a], [a])
+public func span<U>(check: U -> Bool, _ xs: [U]) -> ([U], [U]) {
+    let len = lengthOfWhile(check, xs)
+    return (take(len, xs), drop(len, xs))
+}
+
+public func span(check: Character -> Bool, _ xs: String) -> (String, String) {
+    let len = lengthOfWhileForString(check, xs)
+    return (take(len, xs), drop(len, xs))
+}
+
+//MARK: break :: (a -> Bool) -> [a] -> ([a], [a])
+public func breakx<U>(check: U -> Bool, _ xs: [U]) -> ([U], [U]) {
+    let len = lengthOfWhile({(x: U) in !check(x) }, xs)
+    return (take(len, xs), drop(len, xs))
+}
+
+public func breakx(check: Character -> Bool, _ xs: String) -> (String, String) {
+    let len = lengthOfWhileForString({(x: Character) in !check(x)}, xs)
+    return (take(len, xs), drop(len, xs))
+}
 //MARK: - Searching lists
 //MARK: Searching by equality
 

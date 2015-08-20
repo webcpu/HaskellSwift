@@ -14,6 +14,20 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let list = ["abc", "cde", "efg"]
+        let h = [head(list)]
+        print(h)
+        let i = initx(list)
+        print(i)
+        let result = reverse(list) + list
+        print(result)
+        let filteredWords = reverse(filter({ (x: String) in take(2,x) == "cd"}, result))
+        print(filteredWords)
+        
+        let isGood = and([true, false])
+        print(isGood)
+        //print(add([true, false]))
     }
 
     override var representedObject: AnyObject? {

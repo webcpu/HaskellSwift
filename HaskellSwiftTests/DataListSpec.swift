@@ -22,7 +22,7 @@ class DataListSpec: QuickSpec {
             }
             
             it("String Array") {
-                let process : [String]->String = last • xinit • reverse
+                let process : [String]->String = last • initx • reverse
                 let words           = ["Very", "Good", "Person"]
                 let result          = process(words)
                 expect(result).to(equal("Good"))
@@ -32,6 +32,13 @@ class DataListSpec: QuickSpec {
                 let fs              = head  • reverse  • reverse
                 let result          = fs("ABC")
                 expect(result).to(equal("A"))
+            }
+        }
+        
+        describe("not") {
+            it("Bool") {
+                expect(not(true)).to(beFalse())
+                expect(not(false)).to(beTrue())
             }
         }
         
@@ -118,20 +125,20 @@ class DataListSpec: QuickSpec {
             }
         }
        
-        describe("xinit") {
+        describe("initx") {
             it("Int Array") {
-                expect(xinit([1])).to(equal([Int]()))
-                expect(xinit([1,2])).to(equal([1]))
+                expect(initx([1])).to(equal([Int]()))
+                expect(initx([1,2])).to(equal([1]))
             }
             
             it("String Array") {
-                expect(xinit(["World"])).to(equal([String]()))
-                expect(xinit(files)).to(equal(Array(files[0..<(files.count - 1)])))
+                expect(initx(["World"])).to(equal([String]()))
+                expect(initx(files)).to(equal(Array(files[0..<(files.count - 1)])))
             }
             
             it("String") {
-                expect(xinit("1")).to(equal(String()))
-                expect(xinit("WHO")).to(equal("WH"))
+                expect(initx("1")).to(equal(String()))
+                expect(initx("WHO")).to(equal("WH"))
             }
         }
         
@@ -827,27 +834,27 @@ class DataListSpec: QuickSpec {
             it("Int Array") {
                 let ints = [1, 2, 3]
                 let result = takeWhile( { $0 > 2} , ints)
-                expect(result).to(equal([3]))
+                expect(result).to(equal([Int]()))
             }
             
             it("String Array") {
                 let list = ["Is", "it", "OK"]
-                let result = takeWhile({ x in head(x) == "I" || head(x) == "i" }, list)
-                expect(result).to(equal(["Is", "it"]))
+                let result = takeWhile({ x in head(x) == "I"}, list)
+                expect(result).to(equal(["Is"]))
             }
             
             it("String") {
                 let list = "Hello World"
-                let result = takeWhile({ x in x > "Z"}, list)
-                expect(result).to(equal("elloorld"))
+                let result = takeWhile({ x in x < "Z"}, list)
+                expect(result).to(equal("H"))
             }
         }
         
         describe("dropWhile") {
             it("Int Array") {
                 let ints = [1, 2, 3]
-                let result = dropWhile( { $0 > 2} , ints)
-                expect(result).to(equal([1, 2]))
+                let result = dropWhile( { $0 < 3} , ints)
+                expect(result).to(equal([3]))
             }
             
             it("String Array") {
@@ -858,8 +865,54 @@ class DataListSpec: QuickSpec {
             
             it("String") {
                 let list = "Hello World"
-                let result = dropWhile({ x in x > "Z"}, list)
-                expect(result).to(equal("H W"))
+                let result = dropWhile({ x in x < "Z"}, list)
+                expect(result).to(equal("ello World"))
+            }
+        }
+        
+        describe("span") {
+            it("Int Array") {
+                let ints            = [1, 2, 3]
+                let (list1, list2)  = span( { $0 < 2} , ints)
+                expect(list1).to(equal([1]))
+                expect(list2).to(equal([2, 3]))
+            }
+            
+            it("String Array") {
+                let list    = ["Is", "it", "OK"]
+                let (list1, list2)  = span({ x in head(x) == "I" || head(x) == "i" }, list)
+                expect(list1).to(equal(["Is", "it"]))
+                expect(list2).to(equal(["OK"]))
+            }
+            
+            it("String") {
+                let list = "Hello World"
+                let (list1, list2) = span({ x in x < "Z"}, list)
+                expect(list1).to(equal("H"))
+                expect(list2).to(equal("ello World"))
+            }
+        }
+        
+        describe("breakx") {
+            it("Int Array") {
+                let ints            = [1, 2, 3]
+                let (list1, list2)  = breakx( { $0 > 2} , ints)
+                expect(list1).to(equal([1, 2]))
+                expect(list2).to(equal([3]))
+            }
+            
+            it("String Array") {
+                let list    = ["Is", "it", "OK"]
+                let (list1, list2)  = breakx({ x in head(x) == "i" }, list)
+                expect(list1).to(equal(["Is"]))
+                expect(list2).to(equal(["it", "OK"]))
+            }
+            
+            it("String") {
+                let list = "Hello World"
+                let (list1, list2) = breakx({ x in x == " " }, list)
+                expect(list1).to(equal("Hello"))
+                expect(list2).to(equal(" World"))
             }
         }
         
