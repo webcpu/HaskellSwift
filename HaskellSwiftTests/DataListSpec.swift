@@ -976,6 +976,131 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("isPrefixOf") {
+            it("Int Array") {
+                let list1            = [1, 1, 2]
+                let list2            = [1, 1, 2, 3, 3, 5, 5]
+                let list3            = [1, 5]
+                expect(isPrefixOf(list1, list2)).to(beTrue())
+                expect(isPrefixOf(list1, list3)).to(beFalse())
+            }
+            
+            it("String Array") {
+                let list1            = ["Hello"]
+                let list2            = ["Hello", "World"]
+                let list3            = ["World", "Hello"]
+                expect(isPrefixOf(list1, list2)).to(beTrue())
+                expect(isPrefixOf(list1, list3)).to(beFalse())
+            }
+            
+            it("String") {
+                let list1            = "Hello"
+                let list2            = "Hello World"
+                let list3            = "World"
+                expect(isPrefixOf(list1, list2)).to(beTrue())
+                expect(isPrefixOf(list1, list3)).to(beFalse())
+            }
+        }
+        
+        describe("isSuffixOf") {
+            it("Int Array") {
+                let list1            = [3, 5, 5]
+                let list2            = [1, 1, 2, 3, 3, 5, 5]
+                let list3            = [1, 5]
+                expect(isSuffixOf(list1, list2)).to(beTrue())
+                expect(isSuffixOf(list1, list3)).to(beFalse())
+            }
+            
+            it("String Array") {
+                let list1            = ["Hello"]
+                let list2            = ["World", "Hello"]
+                let list3            = ["Hello", "World"]
+                expect(isSuffixOf(list1, list2)).to(beTrue())
+                expect(isSuffixOf(list1, list3)).to(beFalse())
+            }
+            
+            it("String") {
+                let list1            = "World"
+                let list2            = "Hello World"
+                let list3            = "Hello"
+                expect(isSuffixOf(list1, list2)).to(beTrue())
+                expect(isSuffixOf(list1, list3)).to(beFalse())
+            }
+        }
+        
+        describe("isInfixOf") {
+            it("Int Array") {
+                let list1            = [2, 3, 3]
+                let list2            = [1, 1, 2, 3, 3, 5, 5]
+                let list3            = [1, 5]
+                expect(isInfixOf(list1, list2)).to(beTrue())
+                expect(isInfixOf(list1, list3)).to(beFalse())
+            }
+            
+            it("String Array") {
+                let list1            = ["Hello"]
+                let list2            = ["World", "Hello"]
+                let list3            = ["Hello", "World"]
+                let list4            = ["Hello!", "World"]
+                expect(isInfixOf(list1, list2)).to(beTrue())
+                expect(isInfixOf(list1, list3)).to(beTrue())
+                expect(isInfixOf(list1, list4)).to(beFalse())
+            }
+            
+            it("String") {
+                let list1            = "World"
+                let list2            = "Hello World!"
+                let list3            = "Hello"
+                expect(isInfixOf(list1, list2)).to(beTrue())
+                expect(isInfixOf(list1, list3)).to(beFalse())
+            }
+        }
+        
+        describe("isSubsequenceOf") {
+            it("Int Array") {
+                let list1            = [2, 3, 3]
+                let list2            = [1, 1, 2, 3, 3, 5, 5]
+                let list3            = [1, 5]
+                expect(isSubsequenceOf(list1, list2)).to(beTrue())
+                expect(isSubsequenceOf(list1, list3)).to(beFalse())
+                expect(isSubsequenceOf(list1, list1)).to(beFalse())
+            }
+            
+            it("String Array") {
+                let list1            = ["Hello"]
+                let list2            = ["World", "Hello"]
+                let list3            = ["Hello", "World"]
+                let list4            = ["Hello!", "World"]
+                expect(isSubsequenceOf(list1, list2)).to(beTrue())
+                expect(isSubsequenceOf(list1, list3)).to(beTrue())
+                expect(isSubsequenceOf(list1, list4)).to(beFalse())
+                expect(isSubsequenceOf(list1, list1)).to(beFalse())
+            }
+            
+            it("String") {
+                let list1            = "World"
+                let list2            = "Hello World!"
+                let list3            = "Hello"
+                expect(isSubsequenceOf(list1, list2)).to(beTrue())
+                expect(isSubsequenceOf(list1, list3)).to(beFalse())
+                expect(isSubsequenceOf(list1, list1)).to(beFalse())
+            }
+        }
+        
+        describe("last") {
+            it("Int Array") {
+                
+            }
+            
+            it("String Array") {
+                
+            }
+            
+            it("String") {
+                
+            }
+        }
+        
         describe("filter") {
             it("String Array") {
                 let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }

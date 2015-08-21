@@ -713,6 +713,73 @@ public func tails(xs: String) -> [String] {
     return result
 }
 
+//MARK: - Predicates
+//MARK: isPrefixOf :: Eq a => [a] -> [a] -> Bool
+public func isPrefixOf<U: Equatable>(xs1: [U], _ xs2: [U]) -> Bool {
+    return take(xs1.count, xs2) == xs1
+}
+
+public func isPrefixOf(xs1: String, _ xs2: String) -> Bool {
+    return take(xs1.characters.count, xs2) == xs1
+}
+
+//MARK: isSuffixOf :: Eq a => [a] -> [a] -> Bool
+public func isSuffixOf<U: Equatable>(xs1: [U], _ xs2: [U]) -> Bool {
+    if xs1.count > xs2.count {
+        return false
+    }
+    
+    return drop(xs2.count - xs1.count, xs2) == xs1
+}
+
+public func isSuffixOf(xs1: String, _ xs2: String) -> Bool {
+    if xs1.characters.count > xs2.characters.count {
+        return false
+    }
+    
+    return drop(xs2.characters.count - xs1.characters.count, xs2) == xs1
+}
+
+//MARK: isInfixOf :: Eq a => [a] -> [a] -> Bool
+public func isInfixOf<U: Equatable>(xs1: [U], _ xs2: [U]) -> Bool {
+    if xs1.count > xs2.count {
+        return false
+    }
+    
+    for i in 0...xs2.count - xs1.count {
+        let xs = drop(i, xs2)
+        if isPrefixOf(xs1, xs) {
+            return true
+        }
+    }
+    
+    return false
+}
+
+public func isInfixOf(xs1: String, _ xs2: String) -> Bool {
+    if xs1.characters.count > xs2.characters.count {
+        return false
+    }
+    
+    for i in 0...xs2.characters.count - xs1.characters.count {
+        let xs = drop(i, xs2)
+        if isPrefixOf(xs1, xs) {
+            return true
+        }
+    }
+    
+    return false
+}
+
+//MARK: isSubsequenceOf :: Eq a => [a] -> [a] -> Bool
+public func isSubsequenceOf<U: Equatable>(xs1: [U], _ xs2: [U]) -> Bool {
+    return isInfixOf(xs1, xs2) && xs1.count < xs2.count
+}
+
+public func isSubsequenceOf(xs1: String, _ xs2: String) -> Bool {
+    return isInfixOf(xs1, xs2) && xs1.characters.count < xs2.characters.count
+}
+
 //MARK: - Searching lists
 //MARK: Searching by equality
 
