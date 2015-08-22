@@ -1550,5 +1550,169 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("unzip") {
+            it("Int Array") {
+                let (r0, r1)        = unzip([(1, 1), (2, 4), (3, 9)])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([1, 4, 9]))
+            }
+            
+            it("String Array") {
+                let (r0, r1)        = unzip([("1", ".swift"), ("2", ".o"), ("3",".cpp")])
+                expect(r0).to(equal(["1", "2", "3"]))
+                expect(r1).to(equal([".swift", ".o", ".cpp"]))
+            }
+            
+            it("String Array - Int") {
+                let (r0, r1)        = unzip([(1, ".swift"), (2, ".o"), (3, ".cpp")])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([".swift", ".o", ".cpp"]))
+            }
+        }
+
+        describe("unzip3") {
+            it("Int Array") {
+                let (r0, r1, r2)        = unzip3([(1,1,1),(2,4,8),(3,9,27)])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([1, 4, 9]))
+                expect(r2).to(equal([1, 8, 27]))
+            }
+            
+            it("String Array") {
+                let (r0, r1, r2)        = unzip3([("1",".","swift"),("2",".","o"),("3",".","cpp")])
+                expect(r0).to(equal(["1", "2", "3"]))
+                expect(r1).to(equal([".", ".", "." ]))
+                expect(r2).to(equal(["swift", "o", "cpp"]))
+            }
+            
+            it("String Array - Int") {
+                let (r0, r1, r2)        = unzip3([(1,".","swift"),(2,".","o"),(3,".","cpp")])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([".", ".", "." ]))
+                expect(r2).to(equal(["swift", "o", "cpp"]))
+            }
+        }
+        
+        describe("unzip4") {
+            it("Int Array") {
+                let (r0, r1, r2, r3)        = unzip4([(1,1,1,1),(2,4,8,2),(3,9,27,3)])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([1, 4, 9]))
+                expect(r2).to(equal([1, 8, 27]))
+                expect(r3).to(equal([1, 2, 3]))
+            }
+            
+            it("String Array") {
+                let (r0, r1, r2, r3)        = unzip4([("1",".","swift","1"),("2",".","o","2"),("3",".","cpp","3")])
+                expect(r0).to(equal(["1", "2", "3"]))
+                expect(r1).to(equal([".", ".", "." ]))
+                expect(r2).to(equal(["swift", "o", "cpp"]))
+                expect(r3).to(equal(["1", "2", "3"]))
+            }
+            
+            it("String Array - Int") {
+                let (r0, r1, r2, r3)        = unzip4([(1,".","swift",1),(2,".","o",2),(3,".","cpp",3)])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([".", ".", "." ]))
+                expect(r2).to(equal(["swift", "o", "cpp"]))
+                expect(r3).to(equal([1, 2, 3]))
+            }
+        }
+        
+        describe("unzip5") {
+            it("Int Array") {
+                let (r0, r1, r2, r3, r4)        = unzip5([(1,1,1,1,1),(2,4,8,2,4),(3,9,27,3,9)])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([1, 4, 9]))
+                expect(r2).to(equal([1, 8, 27]))
+                expect(r3).to(equal([1, 2, 3]))
+                expect(r4).to(equal([1, 4, 9]))
+            }
+            
+            it("String Array") {
+                let (r0, r1, r2, r3, r4)        = unzip5([("1",".","swift","1","."),("2",".","o","2","."),("3",".","cpp","3",".")])
+                expect(r0).to(equal(["1", "2", "3"]))
+                expect(r1).to(equal([".", ".", "." ]))
+                expect(r2).to(equal(["swift", "o", "cpp"]))
+                expect(r3).to(equal(["1", "2", "3"]))
+                expect(r4).to(equal( [".", ".", "." ]))
+            }
+            
+            it("String Array - Int") {
+                let (r0, r1, r2, r3, r4)        = unzip5([(1,".","swift",1,1),(2,".","o",2,4),(3,".","cpp",3,9)])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([".", ".", "." ]))
+                expect(r2).to(equal(["swift", "o", "cpp"]))
+                expect(r3).to(equal([1, 2, 3]))
+                expect(r4).to(equal([1, 4, 9]))
+            }
+        }
+       
+        describe("unzip6") {
+            it("Int Array") {
+                let (r0, r1, r2, r3, r4, r5)        = unzip6([(1,1,1,1,1,1),(2,4,8,2,4,8),(3,9,27,3,9,27)])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([1, 4, 9]))
+                expect(r2).to(equal([1, 8, 27]))
+                expect(r3).to(equal([1, 2, 3]))
+                expect(r4).to(equal([1, 4, 9]))
+                expect(r5).to(equal([1, 8, 27]))
+            }
+            
+            it("String Array") {
+                let (r0, r1, r2, r3, r4, r5)        = unzip6([("1",".","swift","1",".","swift"),("2",".","o","2",".","o"),("3",".","cpp","3",".","cpp")])
+                expect(r0).to(equal(["1", "2", "3"]))
+                expect(r1).to(equal([".", ".", "." ]))
+                expect(r2).to(equal(["swift", "o", "cpp"]))
+                expect(r3).to(equal(["1", "2", "3"]))
+                expect(r4).to(equal( [".", ".", "." ]))
+                expect(r5).to(equal(["swift", "o", "cpp"]))
+            }
+            
+            it("String Array - Int") {
+                let (r0, r1, r2, r3, r4, r5)        = unzip6([(1,".","swift",1,1,1),(2,".","o",2,4,8),(3,".","cpp",3,9,27)])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([".", ".", "." ]))
+                expect(r2).to(equal(["swift", "o", "cpp"]))
+                expect(r3).to(equal([1, 2, 3]))
+                expect(r4).to(equal([1, 4, 9]))
+                expect(r5).to(equal([1, 8, 27]))
+            }
+        }
+        
+        describe("unzip7") {
+            it("Int Array") {
+                let (r0, r1, r2, r3, r4, r5, r6)        = unzip7([(1,1,1,1,1,1,1),(2,4,8,2,4,8,2),(3,9,27,3,9,27,3)])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([1, 4, 9]))
+                expect(r2).to(equal([1, 8, 27]))
+                expect(r3).to(equal([1, 2, 3]))
+                expect(r4).to(equal([1, 4, 9]))
+                expect(r5).to(equal([1, 8, 27]))
+                expect(r6).to(equal([1, 2, 3]))
+            }
+            
+            it("String Array") {
+                let (r0, r1, r2, r3, r4, r5, r6)        = unzip7([("1",".","swift","1",".","swift","1"),("2",".","o","2",".","o","2"),("3",".","cpp","3",".","cpp","3")])
+                expect(r0).to(equal(["1", "2", "3"]))
+                expect(r1).to(equal([".", ".", "." ]))
+                expect(r2).to(equal(["swift", "o", "cpp"]))
+                expect(r3).to(equal(["1", "2", "3"]))
+                expect(r4).to(equal( [".", ".", "." ]))
+                expect(r5).to(equal(["swift", "o", "cpp"]))
+                expect(r6).to(equal(["1", "2", "3"]))
+            }
+            
+            it("String Array - Int") {
+                let (r0, r1, r2, r3, r4, r5, r6)        = unzip7([(1,".","swift",1,1,1,1),(2,".","o",2,4,8,2),(3,".","cpp",3,9,27,3)])
+                expect(r0).to(equal([1, 2, 3]))
+                expect(r1).to(equal([".", ".", "." ]))
+                expect(r2).to(equal(["swift", "o", "cpp"]))
+                expect(r3).to(equal([1, 2, 3]))
+                expect(r4).to(equal([1, 4, 9]))
+                expect(r5).to(equal([1, 8, 27]))
+                expect(r6).to(equal([1, 2, 3]))
+            }
+        }
     }
 }

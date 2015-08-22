@@ -1214,12 +1214,111 @@ public func zipWith7<A, B, C, D, E, F, G, U>(process: (A, B, C, D, E, F, G)->U, 
     return results
 }
 //MARK: unzip :: [(a, b)] -> ([a], [b])
-//MARK: unzip3 :: [(a, b, c)] -> ([a], [b], [c])
-//MARK: unzip4 :: [(a, b, c, d)] -> ([a], [b], [c], [d])
-//MARK: unzip5 :: [(a, b, c, d, e)] -> ([a], [b], [c], [d], [e])
-//MARK: unzip6 :: [(a, b, c, d, e, f)] -> ([a], [b], [c], [d], [e], [f])
-//MARK: unzip7 :: [(a, b, c, d, e, f, g)] -> ([a], [b], [c], [d], [e], [f], [g])
+public func unzip<A, B>(xs: [(A, B)]) -> ([A],[B])  {
+    var r0 = [A]()
+    var r1 = [B]()
+    for x in xs {
+        r0.append(x.0)
+        r1.append(x.1)
+    }
+    
+    return (r0, r1)
+}
 
+//MARK: unzip3 :: [(a, b, c)] -> ([a], [b], [c])
+public func unzip3<A, B, C>(xs: [(A, B, C)]) -> ([A],[B],[C])  {
+    var r0 = [A]()
+    var r1 = [B]()
+    var r2 = [C]()
+
+    for x in xs {
+        r0.append(x.0)
+        r1.append(x.1)
+        r2.append(x.2)
+    }
+    
+    return (r0, r1, r2)
+}
+
+//MARK: unzip4 :: [(a, b, c, d)] -> ([a], [b], [c], [d])
+public func unzip4<A, B, C, D>(xs: [(A, B, C, D)]) -> ([A],[B],[C],[D])  {
+    var r0 = [A]()
+    var r1 = [B]()
+    var r2 = [C]()
+    var r3 = [D]()
+    
+    for x in xs {
+        r0.append(x.0)
+        r1.append(x.1)
+        r2.append(x.2)
+        r3.append(x.3)
+    }
+    
+    return (r0, r1, r2, r3)
+}
+
+//MARK: unzip5 :: [(a, b, c, d, e)] -> ([a], [b], [c], [d], [e])
+public func unzip5<A, B, C, D, E>(xs: [(A, B, C, D, E)]) -> ([A],[B],[C],[D],[E])  {
+    var r0 = [A]()
+    var r1 = [B]()
+    var r2 = [C]()
+    var r3 = [D]()
+    var r4 = [E]()
+    
+    for x in xs {
+        r0.append(x.0)
+        r1.append(x.1)
+        r2.append(x.2)
+        r3.append(x.3)
+        r4.append(x.4)
+    }
+    
+    return (r0, r1, r2, r3, r4)
+}
+
+//MARK: unzip6 :: [(a, b, c, d, e, f)] -> ([a], [b], [c], [d], [e], [f])
+public func unzip6<A, B, C, D, E, F>(xs: [(A, B, C, D, E, F)]) -> ([A],[B],[C],[D],[E],[F])  {
+    var r0 = [A]()
+    var r1 = [B]()
+    var r2 = [C]()
+    var r3 = [D]()
+    var r4 = [E]()
+    var r5 = [F]()
+    
+    for x in xs {
+        r0.append(x.0)
+        r1.append(x.1)
+        r2.append(x.2)
+        r3.append(x.3)
+        r4.append(x.4)
+        r5.append(x.5)
+    }
+    
+    return (r0, r1, r2, r3, r4, r5)
+}
+
+//MARK: unzip7 :: [(a, b, c, d, e, f, g)] -> ([a], [b], [c], [d], [e], [f], [g])
+public func unzip7<A, B, C, D, E, F, G>(xs: [(A, B, C, D, E, F, G)]) -> ([A],[B],[C],[D],[E],[F],[G])  {
+    var r0 = [A]()
+    var r1 = [B]()
+    var r2 = [C]()
+    var r3 = [D]()
+    var r4 = [E]()
+    var r5 = [F]()
+    var r6 = [G]()
+
+    for x in xs {
+        r0.append(x.0)
+        r1.append(x.1)
+        r2.append(x.2)
+        r3.append(x.3)
+        r4.append(x.4)
+        r5.append(x.5)
+        r6.append(x.6)
+    }
+    
+    return (r0, r1, r2, r3, r4, r5, r6)
+}
 //MARK: - Special lists
 //MARK: Functions on strings
 //MARK: lines :: String -> [String]
