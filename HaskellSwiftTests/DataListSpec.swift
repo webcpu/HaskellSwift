@@ -1297,5 +1297,51 @@ class DataListSpec: QuickSpec {
                 expect(result).to(equal([4]))
             }
         }
+        
+        describe("zip") {
+            it("Int Array") {
+                let tuples          = zip([1, 2, 3], [1, 4, 9])
+                let expectedTuples  = [(1, 1), (2, 4), (3, 9)]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array") {
+                let tuples          = zip(["1", "2", "3"], [".swift", ".o", ".cpp"])
+                let expectedTuples  = [("1", ".swift"), ("2", ".o"), ("3",".cpp")]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array - Int") {
+                let tuples          = zip([1, 2, 3], [".swift", ".o", ".cpp"])
+                let expectedTuples  = [(1, ".swift"), (2, ".o"), (3, ".cpp")]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+        }
+        
+        describe("zip3") {
+            it("Int Array") {
+                let tuples          = zip3([1, 2, 3], [1, 4, 9], [1, 8, 27])
+                let expectedTuples  = [(1, 1, 1), (2, 4, 8), (3, 9, 27)]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array") {
+                let tuples          = zip3(["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"])
+                let expectedTuples  = [("1", ".", "swift"), ("2", ".", "o"), ("3", ".", "cpp")]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array - Int") {
+                let tuples          = zip3([1, 2, 3], [".", ".", ".", "." ], ["swift", "o", "cpp"])
+                let expectedTuples  = [(1, ".", "swift"), (2, ".", "o"), (3, ".", "cpp")]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+        }
     }
 }

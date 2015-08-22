@@ -959,7 +959,70 @@ public func findIndices(check: Character -> Bool, _ xs: String) -> [Int] {
 
 //MARK: - Zipping and unzipping lists
 //MARK: zip :: [a] -> [b] -> [(a, b)]
+public func zip<A, B>(xs1: [A], _ xs2: [B]) -> [(A, B)] {
+    let len = xs1.count > xs2.count ? xs1.count : xs2.count
+    var result = [(A, B)]()
+    for i in 0..<len {
+        result.append((xs1[i], xs2[i]))
+    }
+    
+    return result
+}
+
+//infix operator == {}
+//public func == <A: Equatable> (t1: (A, A), t2: (A, A)) -> Bool{
+//    return (t1.0 == t2.0) && (t1.1 == t2.1)
+//}
+
+public func compareTuples <A: Equatable, B: Equatable> (t1: (A, B), _ t2: (A, B)) -> Bool{
+    return (t1.0 == t2.0) && (t1.1 == t2.1)
+}
+
+public func compareTupleArray <A: Equatable, B: Equatable> (xs1: [(A, B)], _ xs2: [(A, B)]) -> Bool{
+    guard xs1.count == xs2.count else {
+        return false
+    }
+    
+    for i in 0..<xs1.count {
+        let result = compareTuples(xs1[i], xs2[i])
+        guard result == true else {
+            return false
+        }
+    }
+    
+    return true
+}
+
+public func compareTuples <A: Equatable, B: Equatable, C: Equatable> (t1: (A, B, C), _ t2: (A, B, C)) -> Bool{
+    return (t1.0 == t2.0) && (t1.1 == t2.1) && (t1.2 == t2.2)
+}
+
+public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable> (xs1: [(A, B, C)], _ xs2: [(A, B, C)]) -> Bool{
+    guard xs1.count == xs2.count else {
+        return false
+    }
+    
+    for i in 0..<xs1.count {
+        let result = compareTuples(xs1[i], xs2[i])
+        guard result == true else {
+            return false
+        }
+    }
+    
+    return true
+}
+
 //MARK: zip3 :: [a] -> [b] -> [c] -> [(a, b, c)]
+public func zip3<A, B, C>(xs1: [A], _ xs2: [B], _ xs3: [C]) -> [(A, B, C)] {
+    let len     = min(xs1.count, xs2.count, xs3.count)
+    var result  = [(A, B, C)]()
+    for i in 0..<len {
+        result.append((xs1[i], xs2[i], xs3[i]))
+    }
+    
+    return result
+}
+
 //MARK: zip4 :: [a] -> [b] -> [c] -> [d] -> [(a, b, c, d)]
 //MARK: zip5 :: [a] -> [b] -> [c] -> [d] -> [e] -> [(a, b, c, d, e)]
 //MARK: zip6 :: [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [(a, b, c, d, e, f)]
