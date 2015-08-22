@@ -1343,5 +1343,97 @@ class DataListSpec: QuickSpec {
                 expect(result).to(beTrue())
             }
         }
+        
+        describe("zip4") {
+            it("Int Array") {
+                let tuples          = zip4([1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3])
+                let expectedTuples  = [(1,1,1,1),(2,4,8,2),(3,9,27,3)]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array") {
+                let tuples          = zip4(["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"])
+                let expectedTuples  = [("1",".","swift","1"),("2",".","o","2"),("3",".","cpp","3")]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array - Int") {
+                let tuples          = zip4([1, 2, 3], [".", ".", ".", "." ], ["swift", "o", "cpp"], [1, 2, 3])
+                let expectedTuples  = [(1,".","swift",1),(2,".","o",2),(3,".","cpp",3)]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+        }
+        
+        describe("zip5") {
+            it("Int Array") {
+                let tuples          = zip5([1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9])
+                let expectedTuples  = [(1,1,1,1,1),(2,4,8,2,4),(3,9,27,3,9)]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array") {
+                let tuples          = zip5(["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ])
+                let expectedTuples  = [("1",".","swift","1","."),("2",".","o","2","."),("3",".","cpp","3",".")]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array - Int") {
+                let tuples          = zip5([1, 2, 3], [".", ".", ".", "." ], ["swift", "o", "cpp"], [1, 2, 3], [1, 4, 9])
+                let expectedTuples  = [(1,".","swift",1,1),(2,".","o",2,4),(3,".","cpp",3,9)]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+        }
+        
+        describe("zip6") {
+            it("Int Array") {
+                let tuples          = zip6([1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9], [1, 8, 27])
+                let expectedTuples  = [(1,1,1,1,1,1),(2,4,8,2,4,8),(3,9,27,3,9,27)]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array") {
+                let tuples          = zip6(["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"])
+                let expectedTuples  = [("1",".","swift","1",".","swift"),("2",".","o","2",".","o"),("3",".","cpp","3",".","cpp")]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array - Int") {
+                let tuples          = zip6([1, 2, 3], [".", ".", ".", "." ], ["swift", "o", "cpp"], [1, 2, 3], [1, 4, 9], [1, 8, 27])
+                let expectedTuples  = [(1,".","swift",1,1,1),(2,".","o",2,4,8),(3,".","cpp",3,9,27)]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+        }
+        
+        describe("zip7") {
+            it("Int Array") {
+                let tuples          = zip7([1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3])
+                let expectedTuples  = [(1,1,1,1,1,1,1),(2,4,8,2,4,8,2),(3,9,27,3,9,27,3)]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array") {
+                let tuples          = zip7(["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"])
+                let expectedTuples  = [("1",".","swift","1",".","swift","1"),("2",".","o","2",".","o","2"),("3",".","cpp","3",".","cpp","3")]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+            
+            it("String Array - Int") {
+                let tuples          = zip7([1, 2, 3], [".", ".", ".", "." ], ["swift", "o", "cpp"], [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3])
+                let expectedTuples  = [(1,".","swift",1,1,1,1),(2,".","o",2,4,8,2),(3,".","cpp",3,9,27,3)]
+                let result          = compareTupleArray(tuples, expectedTuples)
+                expect(result).to(beTrue())
+            }
+        }
     }
 }

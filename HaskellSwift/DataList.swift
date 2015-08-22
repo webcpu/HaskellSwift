@@ -1024,9 +1024,123 @@ public func zip3<A, B, C>(xs1: [A], _ xs2: [B], _ xs3: [C]) -> [(A, B, C)] {
 }
 
 //MARK: zip4 :: [a] -> [b] -> [c] -> [d] -> [(a, b, c, d)]
+public func zip4<A, B, C, D>(xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D]) -> [(A, B, C, D)] {
+    let len     = min(xs1.count, xs2.count, xs3.count, xs4.count)
+    var result  = [(A, B, C, D)]()
+    for i in 0..<len {
+        result.append((xs1[i], xs2[i], xs3[i], xs4[i]))
+    }
+    
+    return result
+}
+
+public func compareTuples <A: Equatable, B: Equatable, C: Equatable, D: Equatable> (t1: (A, B, C, D), _ t2: (A, B, C, D)) -> Bool{
+    return (t1.0 == t2.0) && (t1.1 == t2.1) && (t1.2 == t2.2) && (t1.3 == t2.3)
+}
+
+public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable, D: Equatable> (xs1: [(A, B, C, D)], _ xs2: [(A, B, C, D)]) -> Bool{
+    guard xs1.count == xs2.count else {
+        return false
+    }
+    
+    for i in 0..<xs1.count {
+        let result = compareTuples(xs1[i], xs2[i])
+        guard result == true else {
+            return false
+        }
+    }
+    
+    return true
+}
+
 //MARK: zip5 :: [a] -> [b] -> [c] -> [d] -> [e] -> [(a, b, c, d, e)]
+public func zip5<A, B, C, D, E>(xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D], _ xs5: [E]) -> [(A, B, C, D, E)] {
+    let len     = min(xs1.count, xs2.count, xs3.count, xs4.count, xs5.count)
+    var result  = [(A, B, C, D, E)]()
+    for i in 0..<len {
+        result.append((xs1[i], xs2[i], xs3[i], xs4[i], xs5[i]))
+    }
+    
+    return result
+}
+
+public func compareTuples <A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable> (t1: (A, B, C, D, E), _ t2: (A, B, C, D, E)) -> Bool{
+    return (t1.0 == t2.0) && (t1.1 == t2.1) && (t1.2 == t2.2) && (t1.3 == t2.3) && (t1.4 == t2.4)
+}
+
+public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable> (xs1: [(A, B, C, D, E)], _ xs2: [(A, B, C, D, E)]) -> Bool{
+    guard xs1.count == xs2.count else {
+        return false
+    }
+    
+    for i in 0..<xs1.count {
+        let result = compareTuples(xs1[i], xs2[i])
+        guard result == true else {
+            return false
+        }
+    }
+    
+    return true
+}
+
 //MARK: zip6 :: [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [(a, b, c, d, e, f)]
+public func zip6<A, B, C, D, E, F>(xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D], _ xs5: [E], _ xs6: [F]) -> [(A, B, C, D, E, F)] {
+    let len     = min(xs1.count, xs2.count, xs3.count, xs4.count, xs5.count, xs6.count)
+    var result  = [(A, B, C, D, E, F)]()
+    for i in 0..<len {
+        result.append((xs1[i], xs2[i], xs3[i], xs4[i], xs5[i], xs6[i]))
+    }
+    
+    return result
+}
+
+public func compareTuples <A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable, F: Equatable> (t1: (A, B, C, D, E, F), _ t2: (A, B, C, D, E, F)) -> Bool{
+    return (t1.0 == t2.0) && (t1.1 == t2.1) && (t1.2 == t2.2) && (t1.3 == t2.3) && (t1.4 == t2.4) && (t1.5 == t2.5)
+}
+
+public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable, F: Equatable> (xs1: [(A, B, C, D, E, F)], _ xs2: [(A, B, C, D, E, F)]) -> Bool{
+    guard xs1.count == xs2.count else {
+        return false
+    }
+    
+    for i in 0..<xs1.count {
+        let result = compareTuples(xs1[i], xs2[i])
+        guard result == true else {
+            return false
+        }
+    }
+    
+    return true
+}
 //MARK: zip7 :: [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g] -> [(a, b, c, d, e, f, g)]
+public func zip7<A, B, C, D, E, F, G>(xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D], _ xs5: [E], _ xs6: [F], _ xs7: [G]) -> [(A, B, C, D, E, F, G)] {
+    let len     = min(xs1.count, xs2.count, xs3.count, xs4.count, xs5.count, xs6.count, xs7.count)
+    var result  = [(A, B, C, D, E, F, G)]()
+    for i in 0..<len {
+        result.append((xs1[i], xs2[i], xs3[i], xs4[i], xs5[i], xs6[i], xs7[i]))
+    }
+    
+    return result
+}
+
+public func compareTuples <A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable, F: Equatable, G: Equatable > (t1: (A, B, C, D, E, F, G), _ t2: (A, B, C, D, E, F, G)) -> Bool{
+    return (t1.0 == t2.0) && (t1.1 == t2.1) && (t1.2 == t2.2) && (t1.3 == t2.3) && (t1.4 == t2.4) && (t1.5 == t2.5) && (t1.6 == t2.6)
+}
+
+public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable, D: Equatable, E: Equatable, F: Equatable, G: Equatable> (xs1: [(A, B, C, D, E, F, G)], _ xs2: [(A, B, C, D, E, F, G)]) -> Bool{
+    guard xs1.count == xs2.count else {
+        return false
+    }
+    
+    for i in 0..<xs1.count {
+        let result = compareTuples(xs1[i], xs2[i])
+        guard result == true else {
+            return false
+        }
+    }
+    
+    return true
+}
 //MARK: zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
 //MARK: zipWith3 :: (a -> b -> c -> d) -> [a] -> [b] -> [c] -> [d]
 //MARK: zipWith4 :: (a -> b -> c -> d -> e) -> [a] -> [b] -> [c] -> [d] -> [e]
