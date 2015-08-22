@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ECF75E931B7E1B420047B0F7"
+               BuildableName = "HaskellSwiftTests.xctest"
+               BlueprintName = "HaskellSwiftTests"
+               ReferencedContainer = "container:HaskellSwift.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "ECF75E821B7E1B420047B0F7"
                BuildableName = "HaskellSwift.app"
                BlueprintName = "HaskellSwift"
@@ -37,37 +51,14 @@
                BlueprintName = "HaskellSwiftTests"
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "HaskellSwiftSpec/tails__tails__String__UsersliangProjectsHaskellSwiftHaskellSwiftTestsHaskellSwiftSpecswift_71()">
-               </Test>
-               <Test
-                  Identifier = "HaskellSwiftSpec/testFilter()">
-               </Test>
-               <Test
-                  Identifier = "HaskellSwiftSpec/testHead()">
-               </Test>
-               <Test
-                  Identifier = "HaskellSwiftSpec/testMap()">
-               </Test>
-               <Test
-                  Identifier = "HaskellSwiftSpec/testReduce()">
-               </Test>
-               <Test
-                  Identifier = "HaskellSwiftSpec/testTail()">
-               </Test>
-               <Test
-                  Identifier = "HaskellSwiftSpec/testTake()">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECF75E821B7E1B420047B0F7"
-            BuildableName = "HaskellSwift.app"
-            BlueprintName = "HaskellSwift"
+            BlueprintIdentifier = "ECF75E931B7E1B420047B0F7"
+            BuildableName = "HaskellSwiftTests.xctest"
+            BlueprintName = "HaskellSwiftTests"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,16 +75,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECF75E821B7E1B420047B0F7"
-            BuildableName = "HaskellSwift.app"
-            BlueprintName = "HaskellSwift"
+            BlueprintIdentifier = "ECF75E931B7E1B420047B0F7"
+            BuildableName = "HaskellSwiftTests.xctest"
+            BlueprintName = "HaskellSwiftTests"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -103,16 +93,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECF75E821B7E1B420047B0F7"
-            BuildableName = "HaskellSwift.app"
-            BlueprintName = "HaskellSwift"
+            BlueprintIdentifier = "ECF75E931B7E1B420047B0F7"
+            BuildableName = "HaskellSwiftTests.xctest"
+            BlueprintName = "HaskellSwiftTests"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

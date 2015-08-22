@@ -782,8 +782,53 @@ public func isSubsequenceOf(xs1: String, _ xs2: String) -> Bool {
 
 //MARK: - Searching lists
 //MARK: Searching by equality
+//MARK: elem :: (Foldable t, Eq a) => a -> t a -> Bool
+public func elem<A: Equatable>(xs: [A], _ value: A )->Bool {
+    for x in xs {
+        if x == value {
+            return true
+        }
+    }
+    
+    return false
+}
+
+public func elem(xs: String, _ value: Character )->Bool {
+    for x in xs.characters {
+        if x == value {
+            return true
+        }
+    }
+    
+    return false
+}
+
+//MARK: notElem :: (Foldable t, Eq a) => a -> t a -> Bool 
+public func notElem<A: Equatable>(xs: [A], _ value: A )->Bool {
+    return not(elem(xs, value))
+}
+
+public func notElem(xs: String, _ value: Character )->Bool {
+    return not(elem(xs, value))
+}
+
+//MARK: lookup :: Eq a => a -> [(a, b)] -> Maybe b
+public func lookup<A: Equatable, B: Equatable>(key: A, _ dictionary: [A:B]) -> B? {
+    return dictionary[key]
+}
 
 //MARK: Searching with a predicate
+//MARK: find :: Foldable t => (a -> Bool) -> t a -> Maybe a
+public func find<U>(check: U -> Bool, _ xs: [U]) -> U? {
+    for x in xs {
+        if check(x) {
+            return x
+        }
+    }
+    
+    return nil
+}
+
 //MARK: filter :: (a -> Bool) -> [a] -> [a]
 public func filter<U>(check: U -> Bool, _ xs: [U]) -> [U] {
     var results = [U]()
@@ -807,4 +852,160 @@ public func filter(check: Character -> Bool, _ xs: String) -> String {
     return results
 }
 
+//MARK: partition :: (a -> Bool) -> [a] -> ([a], [a])
+public func partition<U>(check: U -> Bool, _ xs: [U]) -> ([U], [U]) {
+    let result = (filter(check, xs), filter( { x in not(check(x)) }, xs))
+    return result
+}
+
+public func partition(check: Character -> Bool, _ xs: String) -> (String, String) {
+    let result = (filter(check, xs), filter( { x in not(check(x)) }, xs))
+    return result
+}
+
 //MARK: Indexing lists
+//MARK: (!!) :: [a] -> Int -> a 
+
+//MARK: elemIndex :: Eq a => a -> [a] -> Maybe Int
+public func elemIndex<U: Equatable>(value: U, _ xs: [U]) -> Int? {
+    for i in 0..<xs.count {
+        if value == xs[i] {
+            return i
+        }
+    }
+    
+    return nil
+}
+
+public func elemIndex(value: Character, _ xs: String) -> Int? {
+    for i in 0..<xs.characters.count {
+        let c =  xs[advance(xs.startIndex, i)]
+        if value == c {
+            return i
+        }
+    }
+    
+    return nil
+}
+
+//MARK: elemIndices :: Eq a => a -> [a] -> [Int]
+public func elemIndices<U: Equatable>(value: U, _ xs: [U]) -> [Int] {
+    var result = [Int]()
+    for i in 0..<xs.count {
+        if value == xs[i] {
+            result.append(i)
+        }
+    }
+    
+    return result
+}
+
+public func elemIndices(value: Character, _ xs: String) -> [Int] {
+    var result = [Int]()
+    for i in 0..<xs.characters.count {
+        let c =  xs[advance(xs.startIndex, i)]
+        if value == c {
+            result.append(i)
+        }
+    }
+    
+    return result
+}
+
+//MARK: findIndex :: (a -> Bool) -> [a] -> Maybe Int
+public func findIndex<U>(check: U -> Bool, _ xs: [U]) -> Int? {
+    for i in 0..<xs.count {
+        if check(xs[i]) {
+            return i
+        }
+    }
+    
+    return nil
+}
+
+public func findIndex(check: Character -> Bool, _ xs: String) -> Int? {
+    for i in 0..<xs.characters.count {
+        let c =  xs[advance(xs.startIndex, i)]
+        if check(c) {
+            return i
+        }
+    }
+    
+    return nil
+}
+//MARK: findIndices :: (a -> Bool) -> [a] -> [Int]
+public func findIndices<U: Equatable>(check: U -> Bool, _ xs: [U]) -> [Int] {
+    var result = [Int]()
+    for i in 0..<xs.count {
+        if check(xs[i]) {
+            result.append(i)
+        }
+    }
+    
+    return result
+}
+
+public func findIndices(check: Character -> Bool, _ xs: String) -> [Int] {
+    var result = [Int]()
+    for i in 0..<xs.characters.count {
+        let c =  xs[advance(xs.startIndex, i)]
+        if check(c) {
+            result.append(i)
+        }
+    }
+    
+    return result
+}
+
+//MARK: - Zipping and unzipping lists
+//MARK: zip :: [a] -> [b] -> [(a, b)]
+//MARK: zip3 :: [a] -> [b] -> [c] -> [(a, b, c)]
+//MARK: zip4 :: [a] -> [b] -> [c] -> [d] -> [(a, b, c, d)]
+//MARK: zip5 :: [a] -> [b] -> [c] -> [d] -> [e] -> [(a, b, c, d, e)]
+//MARK: zip6 :: [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [(a, b, c, d, e, f)]
+//MARK: zip7 :: [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g] -> [(a, b, c, d, e, f, g)]
+//MARK: zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+//MARK: zipWith3 :: (a -> b -> c -> d) -> [a] -> [b] -> [c] -> [d]
+//MARK: zipWith4 :: (a -> b -> c -> d -> e) -> [a] -> [b] -> [c] -> [d] -> [e]
+//MARK: zipWith5 :: (a -> b -> c -> d -> e -> f) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f]
+//MARK: zipWith6 :: (a -> b -> c -> d -> e -> f -> g) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g]
+//MARK: zipWith7 :: (a -> b -> c -> d -> e -> f -> g -> h) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g] -> [h]
+//MARK: unzip :: [(a, b)] -> ([a], [b])
+//MARK: unzip3 :: [(a, b, c)] -> ([a], [b], [c])
+//MARK: unzip4 :: [(a, b, c, d)] -> ([a], [b], [c], [d])
+//MARK: unzip5 :: [(a, b, c, d, e)] -> ([a], [b], [c], [d], [e])
+//MARK: unzip6 :: [(a, b, c, d, e, f)] -> ([a], [b], [c], [d], [e], [f])
+//MARK: unzip7 :: [(a, b, c, d, e, f, g)] -> ([a], [b], [c], [d], [e], [f], [g])
+
+//MARK: - Special lists
+//MARK: Functions on strings
+//MARK: lines :: String -> [String]
+//MARK: words :: String -> [String]
+//MARK: unlines :: [String] -> String
+//MARK: unwords :: [String] -> String
+//MARK: "Set" operations
+
+//MARK: nub :: Eq a => [a] -> [a]
+//MARK: delete :: Eq a => a -> [a] -> [a]
+//MARK: (\\) :: Eq a => [a] -> [a] -> [a] infix 5
+//MARK: union :: Eq a => [a] -> [a] -> [a]
+//MARK: intersect :: Eq a => [a] -> [a] -> [a]
+//MARK: sort :: Ord a => [a] -> [a]
+//MARK: sortOn :: Ord b => (a -> b) -> [a] -> [a]
+//MARK: insert :: Ord a => a -> [a] -> [a]
+//MARK: nubBy :: (a -> a -> Bool) -> [a] -> [a]
+//MARK: deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]
+//MARK: deleteFirstsBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+//MARK: unionBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+//MARK: intersectBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+//MARK: groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
+//MARK: sortBy :: (a -> a -> Ordering) -> [a] -> [a]
+//MARK: insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
+//MARK: maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+//MARK: minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+//MARK: genericLength :: Num i => [a] -> i
+//MARK: genericTake :: Integral i => i -> [a] -> [a]
+//MARK: genericDrop :: Integral i => i -> [a] -> [a]
+//MARK: genericSplitAt :: Integral i => i -> [a] -> ([a], [a])
+//MARK: genericIndex :: Integral i => [a] -> i -> a
+//MARK: genericReplicate :: Integral i => i -> a -> [a]

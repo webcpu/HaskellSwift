@@ -1087,21 +1087,91 @@ class DataListSpec: QuickSpec {
             }
         }
         
-        describe("last") {
+        describe("elem") {
             it("Int Array") {
-                
+                let list            = [2, 3, 3]
+                expect(elem(list, 3)).to(beTrue())
+                expect(elem(list, 5)).to(beFalse())
             }
             
             it("String Array") {
-                
+                let list            = ["World", "Hello"]
+                expect(elem(list, "Hello")).to(beTrue())
+                expect(elem(list, "Good")).to(beFalse())
             }
             
             it("String") {
-                
+                let list            = "Hello"
+                expect(elem(list, "H")).to(beTrue())
+                expect(elem(list, "T")).to(beFalse())
+            }
+        }
+        
+        describe("notElem") {
+            it("Int Array") {
+                let list            = [2, 3, 3]
+                expect(notElem(list, 3)).to(beFalse())
+                expect(notElem(list, 5)).to(beTrue())
+            }
+            
+            it("String Array") {
+                let list            = ["World", "Hello"]
+                expect(notElem(list, "Hello")).to(beFalse())
+                expect(notElem(list, "Good")).to(beTrue())
+            }
+            
+            it("String") {
+                let list            = "Hello"
+                expect(notElem(list, "H")).to(beFalse())
+                expect(notElem(list, "T")).to(beTrue())
+            }
+        }
+       
+        describe("lookup") {
+            it("Int Array") {
+                let list            = ["a": 0, "b": 1]
+                expect(lookup("a", list)).to(equal(0))
+                expect(lookup("c", list)).to(beNil())
+            }
+            
+            it("String Array") {
+                let list            = ["firstname": "tom", "lastname": "sawyer"]
+                expect(lookup("firstname", list)).to(equal("tom"))
+                expect(lookup("middlename", list)).to(beNil())
+            }
+        }
+       
+        describe("find") {
+            it("Int Array") {
+                let list             = [1, 2, 3, 4, 5]
+                let greaterThanThree = { x in x > 3 }
+                let result           = find(greaterThanThree, list)
+                expect(result).to(equal(4))
+            }
+            
+            it("String Array") {
+                let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
+                let swiftFilter     = { xs in find(isSwift, xs) }
+                let swiftFile       = swiftFilter(files)
+                expect(swiftFile).to(equal("Haskell.swift"))
+            }
+            
+            it("String") {
+                let isA             = { (x : Character) in x == "a" }
+                let isAFilter       = { (xs : String) in filter(isA, xs) }
+                let result          = isAFilter("ABCDa")
+                expect(result).to(equal("a"))
             }
         }
         
         describe("filter") {
+            it("Int Array") {
+                let list             = [1, 2, 3, 4, 5]
+                let greaterThanThree = { x in x > 3 }
+                let result           = filter(greaterThanThree, list)
+                expect(result).to(equal([4, 5]))
+            }
+            
             it("String Array") {
                 let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
                 let swiftFilter     = { xs in filter(isSwift, xs) }
@@ -1114,6 +1184,117 @@ class DataListSpec: QuickSpec {
                 let isAFilter       = { (xs : String) in filter(isA, xs) }
                 let result          = isAFilter("ABCDa")
                 expect(result).to(equal("a"))
+            }
+        }
+        
+        describe("partition") {
+            it("Int Array") {
+                let list             = [1, 2, 3, 4, 5]
+                let greaterThanThree = { x in x > 3 }
+                let (r0, r1)         = partition(greaterThanThree, list)
+                expect(r0).to(equal([4, 5]))
+                expect(r1).to(equal([1, 2, 3]))
+            }
+            
+            it("String Array") {
+                let isSwift             = { (x : String) in x.lowercaseString.hasSuffix("swift") }
+                let (r0, r1)            = partition(isSwift, files)
+                expect(r0).to(equal(["Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]))
+                expect(r1).to(equal(["README.md"]))
+            }
+            
+            it("String") {
+                let isA                 = { (x : Character) in x == "a" }
+                let (r0, r1)            = partition(isA, "ABCDa")
+                expect(r0).to(equal("a"))
+                expect(r1).to(equal("ABCD"))
+            }
+        }
+        
+        describe("elemIndex") {
+            it("Int Array") {
+                let list             = [1, 2, 3, 4, 5]
+                expect(elemIndex(1, list)).to(equal(0))
+                expect(elemIndex(2, list)).to(equal(1))
+                expect(elemIndex(10, list)).to(beNil())
+            }
+            
+            it("String Array") {
+                let words  = ["Window", "Help", "Window"]
+                expect(elemIndex("Window", words)).to(equal(0))
+                expect(elemIndex("Help", words)).to(equal(1))
+                expect(elemIndex("Debug", words)).to(beNil())
+            }
+            
+            it("String") {
+                let word = "Window"
+                expect(elemIndex("W", word)).to(equal(0))
+                expect(elemIndex("i", word)).to(equal(1))
+                expect(elemIndex("T", word)).to(beNil())
+            }
+        }
+        
+        describe("elemIndices") {
+            it("Int Array") {
+                let list             = [1, 2, 3, 4, 3]
+                expect(elemIndices(1, list)).to(equal([0]))
+                expect(elemIndices(3, list)).to(equal([2,4]))
+                expect(elemIndices(10, list)).to(equal([Int]()))
+            }
+            
+            it("String Array") {
+                let words  = ["Window", "Help", "Window"]
+                expect(elemIndices("Help", words)).to(equal([1]))
+                expect(elemIndices("Window", words)).to(equal([0, 2]))
+                expect(elemIndices("D", words)).to(equal([Int]()))
+            }
+            
+            it("String") {
+                let word = "WINDOW"
+                expect(elemIndices("W", word)).to(equal([0, 5]))
+                expect(elemIndices("I", word)).to(equal([1]))
+                expect(elemIndices("T", word)).to(equal([Int]()))            }
+        }
+        
+        describe("findIndex") {
+            it("Int Array") {
+                let list             = [1, 2, 3, 4, 5]
+                let greaterThanThree = { x in x > 3 }
+                let result           = findIndex(greaterThanThree, list)
+                expect(result).to(equal(3))
+            }
+            
+            it("String Array") {
+                let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
+                let swiftFile       = findIndex(isSwift, files)
+                expect(swiftFile).to(equal(1))
+            }
+            
+            it("String") {
+                let isA             = { (x : Character) in x == "a" }
+                let result          =  findIndex(isA, "ABCDa")
+                expect(result).to(equal(4))
+            }
+        }
+        
+        describe("findIndices") {
+            it("Int Array") {
+                let list             = [1, 2, 3, 4, 5]
+                let greaterThanThree = { x in x > 3 }
+                let result           = findIndices(greaterThanThree, list)
+                expect(result).to(equal([3, 4]))
+            }
+            
+            it("String Array") {
+                let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
+                let swiftFile       = findIndices(isSwift, files)
+                expect(swiftFile).to(equal([1, 2, 3]))
+            }
+            
+            it("String") {
+                let isA             = { (x : Character) in x == "a" }
+                let result          =  findIndices(isA, "ABCDa")
+                expect(result).to(equal([4]))
             }
         }
     }
