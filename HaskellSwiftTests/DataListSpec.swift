@@ -1435,5 +1435,120 @@ class DataListSpec: QuickSpec {
                 expect(result).to(beTrue())
             }
         }
+        
+        describe("zipWith") {
+            it("Int Array") {
+                let result          = zipWith((+), [1, 2, 3], [1, 4, 9])
+                expect(result).to(equal([2,6,12]))
+            }
+            
+            it("String Array") {
+                let result          = zipWith( (+), ["1", "2", "3"], [".swift", ".o", ".cpp"])
+                expect(result).to(equal(["1.swift","2.o","3.cpp"]))
+            }
+            
+            it("String Array - Int") {
+                let result          = zipWith( { x, y in String(x) + y }, [1, 2, 3], [".swift", ".o", ".cpp"])
+                expect(result).to(equal(["1.swift","2.o","3.cpp"]))
+            }
+        }
+        
+        describe("zipWith3") {
+            it("Int Array") {
+                let result          = zipWith3({(x, y, z) in x+y+z}, [1, 2, 3], [1, 4, 9], [1, 8, 27])
+                expect(result).to(equal([3,14,39]))
+            }
+            
+            it("String Array") {
+                let result          = zipWith3({x, y, z in x+y+z }, ["1", "2", "3"], [".swift", ".o", ".cpp"],[".1", ".2", ".3"])
+                expect(result).to(equal(["1.swift.1","2.o.2","3.cpp.3"]))
+            }
+            
+            it("String Array - Int") {
+                let result          = zipWith3( { x, y, z in String(x)+y+z }, [1, 2, 3], [".swift", ".o", ".cpp"], [".1", ".2", ".3"])
+                expect(result).to(equal(["1.swift.1","2.o.2","3.cpp.3"]))
+            }
+        }
+        
+        describe("zipWith4") {
+            it("Int Array") {
+                let process         = {(a: Int, b: Int, c: Int, d: Int) -> Int in a+b+c+d}
+                let result          = zipWith4(process, [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3])
+                expect(result).to(equal([4,16,42]))
+            }
+            
+            it("String Array") {
+                let process         = {a,b,c,d-> String in a+b+c+d}
+                let result          = zipWith4(process, ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"])
+                expect(result).to(equal(["1.swift1","2.o2","3.cpp3"]))
+            }
+            
+            it("String Array - Int") {
+                let process         = {(a: Int,b: String,c: String,d: String) -> String in String(a)+b+c+d}
+                let result          = zipWith4(process, [1, 2, 3], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"])
+                expect(result).to(equal(["1.swift1","2.o2","3.cpp3"]))
+            }
+        }
+        
+        describe("zipWith5") {
+            it("Int Array") {
+                let process         = {(a: Int, b: Int, c: Int, d: Int, e: Int) -> Int in a+b+c+d+e}
+                let result          = zipWith5(process, [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9])
+                expect(result).to(equal([5,20,51]))
+            }
+            
+            it("String Array") {
+                let process         = {a,b,c,d,e-> String in a+b+c+d+e}
+                let result          = zipWith5(process, ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ])
+                expect(result).to(equal(["1.swift1.","2.o2.","3.cpp3."]))
+            }
+            
+            it("String Array - Int") {
+                let process         = {(a: Int,b: String,c: String,d: String,e: String) -> String in String(a)+b+c+d+e}
+                let result          = zipWith5(process, [1, 2, 3], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ])
+                expect(result).to(equal(["1.swift1.","2.o2.","3.cpp3."]))
+            }
+        }
+        
+        describe("zipWith6") {
+            it("Int Array") {
+                let process         = {(a: Int, b: Int, c: Int, d: Int, e: Int, f: Int) -> Int in a+b+c+d+e+f}
+                let result          = zipWith6(process, [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9], [1, 8, 27])
+                expect(result).to(equal([6,28,78]))
+            }
+            
+            it("String Array") {
+                let process         = {a,b,c,d,e,f-> String in a+b+c+d+e+f}
+                let result          = zipWith6(process, ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"])
+                expect(result).to(equal(["1.swift1.swift","2.o2.o","3.cpp3.cpp"]))
+            }
+            
+            it("String Array - Int") {
+                let process         = {(a: Int,b: String,c: String,d: String,e: String,f: String) -> String in String(a)+b+c+d+e+f}
+                let result          = zipWith6(process, [1, 2, 3], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"])
+                expect(result).to(equal(["1.swift1.swift","2.o2.o","3.cpp3.cpp"]))
+            }
+        }
+        
+        describe("zipWith7") {
+            it("Int Array") {
+                let process         = {(a: Int, b: Int, c: Int, d: Int, e: Int, f: Int, g: Int) -> Int in a+b+c+d+e+f+g}
+                let result          = zipWith7(process, [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9], [1, 8, 27], [2, 4, 6])
+                expect(result).to(equal([8,32,84]))
+            }
+            
+            it("String Array") {
+                let process         = {a,b,c,d,e,f,g -> String in a+b+c+d+e+f+g}
+                let result          = zipWith7(process, ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"])
+                expect(result).to(equal(["1.swift1.swift1","2.o2.o2","3.cpp3.cpp3"]))
+            }
+
+            it("String Array - Int") {
+                let process         = {(a: Int,b: String,c: String,d: String,e: String,f: String,g: String) -> String in String(a)+b+c+d+e+f+g}
+                let result          = zipWith7(process, [1, 2, 3], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"])
+                expect(result).to(equal(["1.swift1.swift1","2.o2.o2","3.cpp3.cpp3"]))
+            }
+        }
+        
     }
 }

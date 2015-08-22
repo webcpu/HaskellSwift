@@ -1141,12 +1141,78 @@ public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable, D: Equa
     
     return true
 }
+
 //MARK: zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+public func zipWith<A, B, U>(process: (A, B)->U, _ xs1: [A], _ xs2: [B]) -> [U] {
+    var results = [U]()
+    let len = min(xs1.count, xs2.count)
+    for i in 0..<len {
+        let c = process(xs1[i], xs2[i])
+        results.append(c)
+    }
+    
+    return results
+}
+
 //MARK: zipWith3 :: (a -> b -> c -> d) -> [a] -> [b] -> [c] -> [d]
+public func zipWith3<A, B, C, U>(process: (A, B, C)->U, _ xs1: [A], _ xs2: [B], _ xs3: [C]) -> [U] {
+    var results = [U]()
+    let len = min(xs1.count, xs2.count, xs3.count)
+    for i in 0..<len {
+        let c = process(xs1[i], xs2[i], xs3[i])
+        results.append(c)
+    }
+    
+    return results
+}
+
 //MARK: zipWith4 :: (a -> b -> c -> d -> e) -> [a] -> [b] -> [c] -> [d] -> [e]
+public func zipWith4<A, B, C, D, U>(process: (A, B, C, D)->U, _ xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D]) -> [U] {
+    var results = [U]()
+    let len = min(xs1.count, xs2.count, xs3.count, xs4.count)
+    for i in 0..<len {
+        let u = process(xs1[i], xs2[i], xs3[i], xs4[i])
+        results.append(u)
+    }
+    
+    return results
+}
+
 //MARK: zipWith5 :: (a -> b -> c -> d -> e -> f) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f]
+public func zipWith5<A, B, C, D, E, U>(process: (A, B, C, D, E)->U, _ xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D], _ xs5: [E]) -> [U] {
+    var results = [U]()
+    let len = min(xs1.count, xs2.count, xs3.count, xs4.count, xs5.count)
+    for i in 0..<len {
+        let u = process(xs1[i], xs2[i], xs3[i], xs4[i], xs5[i])
+        results.append(u)
+    }
+    
+    return results
+}
+
 //MARK: zipWith6 :: (a -> b -> c -> d -> e -> f -> g) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g]
+public func zipWith6<A, B, C, D, E, F, U>(process: (A, B, C, D, E, F)->U, _ xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D], _ xs5: [E], _ xs6: [F]) -> [U] {
+    var results = [U]()
+    let len = min(xs1.count, xs2.count, xs3.count, xs4.count, xs5.count, xs6.count)
+    for i in 0..<len {
+        let u = process(xs1[i], xs2[i], xs3[i], xs4[i], xs5[i], xs6[i])
+        results.append(u)
+    }
+    
+    return results
+}
+
 //MARK: zipWith7 :: (a -> b -> c -> d -> e -> f -> g -> h) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g] -> [h]
+public func zipWith7<A, B, C, D, E, F, G, U>(process: (A, B, C, D, E, F, G)->U, _ xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D], _ xs5: [E], _ xs6: [F], _ xs7: [G]) -> [U] {
+    var results = [U]()
+    let len = min(xs1.count, xs2.count, xs3.count, xs4.count, xs5.count, xs6.count, xs7.count)
+    for i in 0..<len {
+        let u = process(xs1[i], xs2[i], xs3[i], xs4[i], xs5[i], xs6[i], xs7[i])
+        results.append(u)
+    }
+    
+    return results
+}
 //MARK: unzip :: [(a, b)] -> ([a], [b])
 //MARK: unzip3 :: [(a, b, c)] -> ([a], [b], [c])
 //MARK: unzip4 :: [(a, b, c, d)] -> ([a], [b], [c], [d])
