@@ -1391,12 +1391,8 @@ public func nub<A: Equatable>(xs: [A]) -> [A] {
 
 //MARK: delete :: Eq a => a -> [a] -> [a]
 public func delete<A: Equatable>(value: A, _ xs: [A]) -> [A] {
-    let idx = elemIndex(value, xs)
-    if idx == nil {
-        return xs
-    }
-    
-    return take(idx!, xs) + drop(idx! + 1, xs)
+    let idx     = elemIndex(value, xs)
+    return idx == nil ? xs : take(idx!, xs) + drop(idx! + 1, xs)
 }
 
 //MARK: (\\) :: Eq a => [a] -> [a] -> [a] infix 5
