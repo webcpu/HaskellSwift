@@ -1385,15 +1385,41 @@ public func nub<A: Equatable>(xs: [A]) -> [A] {
             results.append(x)
         }
     }
+    
     return results
 }
 
 //MARK: delete :: Eq a => a -> [a] -> [a]
+public func delete<A: Equatable>(value: A, _ xs: [A]) -> [A] {
+    let idx = elemIndex(value, xs)
+    if idx == nil {
+        return xs
+    }
+    
+    return take(idx!, xs) + drop(idx! + 1, xs)
+}
+
 //MARK: (\\) :: Eq a => [a] -> [a] -> [a] infix 5
 //MARK: union :: Eq a => [a] -> [a] -> [a]
+public func union<A: Equatable>(xs1: [A], _ xs2: [A]) -> [A] {
+    return nub(xs1 + xs2)
+}
+
 //MARK: intersect :: Eq a => [a] -> [a] -> [a]
+public func intersect<A: Equatable>(xs1: [A], _ xs2: [A]) -> [A] {
+    let isElement   = { (x : A) -> Bool in elemIndex(x, xs2) != nil }
+    return filter(isElement, xs1)
+}
+
 //MARK: sort :: Ord a => [a] -> [a]
+public func sort<A: Comparable>(xs: [A]) -> [A] {
+    return sortOn({x, y in x < y}, xs)
+}
 //MARK: sortOn :: Ord b => (a -> b) -> [a] -> [a]
+public func sortOn<A: Comparable>(f: (A,A)->Bool, _ xs: [A]) -> [A] {
+    return xs.sort(f)
+}
+
 //MARK: insert :: Ord a => a -> [a] -> [a]
 //MARK: nubBy :: (a -> a -> Bool) -> [a] -> [a]
 //MARK: deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]

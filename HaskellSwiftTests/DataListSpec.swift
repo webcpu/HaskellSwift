@@ -1754,5 +1754,73 @@ class DataListSpec: QuickSpec {
                 expect(result).to(equal(["Create","Set","Any"]))
             }
         }
+        
+        describe("delete") {
+            it("Int Array") {
+                let list    = [1, 1, 2, 4, 1, 3, 9]
+                expect(delete(2, list)).to(equal([1,1,4,1,3,9]))
+                expect(delete(1, list)).to(equal([1,2,4,1,3,9]))
+            }
+            
+            it("String Array") {
+                let list    = ["Create", "Set", "Any", "Set", "Any"]
+                expect(delete("Set", list)).to(equal(["Create","Any","Set","Any"]))
+                expect(delete("Any", list)).to(equal(["Create","Set","Set","Any"]))
+            }
+        }
+        
+        describe("union") {
+            it("Int Array") {
+                let list1   = [1, 1, 2]
+                let list2   = [4, 1, 3, 9]
+                expect(union(list1, list2)).to(equal([1, 2, 4, 3, 9]))
+            }
+            
+            it("String Array") {
+                let list1   = ["Create", "Set"]
+                let list2   = ["Any", "Set", "Any"]
+                expect(union(list1, list2)).to(equal(["Create","Set", "Any"]))
+            }
+        }
+        
+        describe("intersect") {
+            it("Int Array") {
+                let list1   = [1, 1, 2]
+                let list2   = [4, 1, 3, 9]
+                expect(intersect(list1, list2)).to(equal([1, 1]))
+            }
+            
+            it("String Array") {
+                let list1   = ["Create", "Set", "Set"]
+                let list2   = ["Any", "Set", "Any"]
+                expect(intersect(list1, list2)).to(equal(["Set", "Set"]))
+            }
+        }
+       
+        describe("sortOn") {
+            it("Int Array") {
+                let list    = [1, 1, 2, 4, 1, 3, 9]
+                expect(sort(list)).to(equal([1, 1, 1, 2, 3, 4, 9]))
+            }
+            
+            it("String Array") {
+                let list    = ["Create", "Set", "Any", "Set", "Any"]
+                expect(sort(list)).to(equal(["Any", "Any", "Create", "Set", "Set"]))
+            }
+        }
+        
+        describe("sortOn") {
+            it("Int Array") {
+                let list    = [1, 1, 2, 4, 1, 3, 9]
+                expect(sortOn({x, y in x < y}, list)).to(equal([1, 1, 1, 2, 3, 4, 9]))
+                expect(sortOn({x, y in x < y}, list)).to(equal([9,4,3,2,1,1,1]))
+            }
+            
+            it("String Array") {
+                let list    = ["Create", "Set", "Any", "Set", "Any"]
+                expect(sortOn({x, y in x < y}, list)).to(equal(["Any", "Any", "Create", "Set", "Set"]))
+                expect(sortOn({x, y in x < y}, list)).to(equal(["Set","Set","Create","Any","Any"]))
+            }
+        }
     }
 }
