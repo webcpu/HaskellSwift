@@ -1319,15 +1319,75 @@ public func unzip7<A, B, C, D, E, F, G>(xs: [(A, B, C, D, E, F, G)]) -> ([A],[B]
     
     return (r0, r1, r2, r3, r4, r5, r6)
 }
+
 //MARK: - Special lists
 //MARK: Functions on strings
 //MARK: lines :: String -> [String]
-//MARK: words :: String -> [String]
-//MARK: unlines :: [String] -> String
-//MARK: unwords :: [String] -> String
-//MARK: "Set" operations
+public func lines(s: String)->[String] {
+    return splitWith({ x in x == "\n" }, s)
+}
 
+public func splitWith(check: Character->Bool, _ s: String)->[String] {
+    var xs      = [String]()
+    var i       = 0
+    var list    = s
+    for c in s.characters {
+        if check(c) {
+            xs.append(take(i, list))
+            list = drop(i + 1, list)
+            i   = 0
+        } else {
+            i   = i + 1
+        }
+    }
+    if i != 0 {
+        xs.append(list)
+    }
+    
+    return xs
+}
+
+//MARK: words :: String -> [String]
+public func words(s: String)->[String] {
+    let isWhiteSpace    = { (c: Character) in c == " " || c == "\n" || c == "\t" }
+    let xs              = splitWith(isWhiteSpace, s)
+    let result          = filter({ x in x.characters.count > 0} , xs)
+    return result
+}
+
+//MARK: unlines :: [String] -> String
+public func unlines(xs: [String])->String {
+    let result          = join("\n", xs)
+    return result
+}
+
+public func join(delimiter: String, _ xs: [String]) -> String {
+    var result = ""
+    for i in 0..<xs.count {
+        let t = i == xs.count - 1 ? xs[i] : xs[i] + delimiter
+        result = result + t
+    }
+    return result
+}
+
+//MARK: unwords :: [String] -> String
+public func unwords(xs: [String])->String {
+    let result          = join(" ", xs)
+    return result
+}
+
+//MARK: "Set" operations
 //MARK: nub :: Eq a => [a] -> [a]
+public func nub<A: Equatable>(xs: [A]) -> [A] {
+    var results  = [A]()
+    for x in xs {
+        if find( { y in x == y }, results) == nil {
+            results.append(x)
+        }
+    }
+    return results
+}
+
 //MARK: delete :: Eq a => a -> [a] -> [a]
 //MARK: (\\) :: Eq a => [a] -> [a] -> [a] infix 5
 //MARK: union :: Eq a => [a] -> [a] -> [a]

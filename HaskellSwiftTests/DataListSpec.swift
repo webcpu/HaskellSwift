@@ -1714,5 +1714,45 @@ class DataListSpec: QuickSpec {
                 expect(r6).to(equal([1, 2, 3]))
             }
         }
+        
+        describe("lines") {
+            it("String") {
+                let result = lines("Functions\n\n\n don't evaluate their arguments.")
+                expect(result).to(equal(["Functions","",""," don't evaluate their arguments."]))
+            }
+        }
+        
+        describe("words") {
+            it("String") {
+                let result = words("Functions\n\n\n don't evaluate their arguments.")
+                expect(result).to(equal(["Functions","don't","evaluate","their","arguments."]))
+            }
+        }
+        
+        describe("unlines") {
+            it("String") {
+                let result = unlines(["Functions","",""," don't evaluate their arguments."]) //()
+                expect(result).to(equal("Functions\n\n\n don't evaluate their arguments."))
+            }
+        }
+        
+        describe("unwords") {
+            it("String") {
+                let result = unwords(["Functions","don't","evaluate","their","arguments."])
+                expect(result).to(equal("Functions don't evaluate their arguments."))
+            }
+        }
+        
+        describe("nub") {
+            it("Int Array") {
+                let result  = nub([1, 1, 2, 4, 1, 3, 9])
+                expect(result).to(equal([1,2,4,3,9]))
+            }
+            
+            it("String Array") {
+                let result  = nub(["Create", "Set", "Any", "Set", "Any"])
+                expect(result).to(equal(["Create","Set","Any"]))
+            }
+        }
     }
 }

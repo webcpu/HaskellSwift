@@ -75,15 +75,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECF75E931B7E1B420047B0F7"
-            BuildableName = "HaskellSwiftTests.xctest"
-            BlueprintName = "HaskellSwiftTests"
+            BlueprintIdentifier = "ECF75E821B7E1B420047B0F7"
+            BuildableName = "HaskellSwift.app"
+            BlueprintName = "HaskellSwift"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

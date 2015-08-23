@@ -27,7 +27,10 @@ class ViewController: NSViewController {
         
         let isGood = and([true, false])
         print(isGood)
-        //print(add([true, false]))
+        //print(add([true, false]))                
+        let r1 = lines("Functions\n\n\n don't evaluate their arguments.")
+        print(r1)
+        
     }
 
     override var representedObject: AnyObject? {
