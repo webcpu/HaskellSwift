@@ -1753,6 +1753,11 @@ class DataListSpec: QuickSpec {
                 let result  = nub(["Create", "Set", "Any", "Set", "Any"])
                 expect(result).to(equal(["Create","Set","Any"]))
             }
+            
+            it("String") {
+                let result  = nub("are you ok")
+                expect(result).to(equal("are youk"))
+            }
         }
         
         describe("delete") {
@@ -1766,6 +1771,11 @@ class DataListSpec: QuickSpec {
                 let list    = ["Create", "Set", "Any", "Set", "Any"]
                 expect(delete("Set", list)).to(equal(["Create","Any","Set","Any"]))
                 expect(delete("Any", list)).to(equal(["Create","Set","Set","Any"]))
+            }
+            
+            it("String") {
+                expect(delete(Character("t"), "Swift")).to(equal("Swif"))
+                expect(delete("t", "Swift")).to(equal("Swif"))
             }
         }
         
@@ -1820,6 +1830,143 @@ class DataListSpec: QuickSpec {
                 let list    = ["Create", "Set", "Any", "Set", "Any"]
                 expect(sortOn({x, y in x < y}, list)).to(equal(["Any", "Any", "Create", "Set", "Set"]))
                 expect(sortOn({x, y in x < y}, list)).to(equal(["Set","Set","Create","Any","Any"]))
+            }
+        }
+        
+        describe("insert") {
+            it("Int Array") {
+                let list    = [1, 1, 2, 4, 1, 3, 9]
+                let result  = insert(10, list)
+                expect(result).to(equal([1, 1, 2, 4, 1, 3, 9, 10]))
+            }
+            
+            it("String Array") {
+                let list    = ["Create", "Set", "Any", "Set", "Any"]
+                expect(insert("Where", list)).to(equal(["Create", "Set", "Any", "Set", "Any", "Where"]))
+            }
+            
+            it("String") {
+                let list    = "Hello World"
+                expect(insert("!", list)).to(equal("Hello World!"))
+            }
+        }
+        
+        describe("nubBy") {
+            it("Int Array") {
+                expect(nubBy({ (x: Int, y: Int) in x == y }, [1, 1, 2, 4, 1, 3, 9])).to(equal([1,2,4,3,9]))
+                expect(nubBy({ (x: Int, y: Int) in x == y || x < 3}, [1, 1, 2, 4, 1, 3, 9])).to(equal([1, 4, 3, 9]))
+            }
+            
+            it("String Array") {
+                let list = ["Create", "Set", "Any", "Set", "Any"]
+                expect(nubBy({ (x: String, y: String) in x == y }, list)).to(equal(["Create","Set","Any"]))
+                expect(nubBy({ (x: String, y: String) in length(intersect(x, y)) > 0 }, list)).to(equal(["Create", "Any"]))
+            }
+            
+            it("String") {
+                let f       = { (x: Character, y: Character) -> Bool in
+                    let x1 = String(x).uppercaseString
+                    let y1 = String(y).uppercaseString
+                    return x1 == y1
+                }
+                let r1      = nubBy(f, "Create , cuT")
+                expect(r1).to(equal("Creat ,u"))
+                
+                let isSame  = { (x: Character, y: Character) -> Bool in x == y }
+                let r2      = nubBy(isSame, "Create a World")
+                expect(r2).to(equal("Creat Wold"))
+            }
+        }
+        
+        describe("deleteBy") {
+            it("Int Array") {
+                let list    = [1, 1, 2, 4, 1, 3, 9]
+                expect(deleteBy({x,y in x == y}, 2, list)).to(equal([1,1,4,1,3,9]))
+                expect(deleteBy({x,y in x == y}, 1, list)).to(equal([1,2,4,1,3,9]))
+            }
+            
+            it("String Array") {
+                let list    = ["Create", "Set", "Any", "Set", "Any"]
+                expect(deleteBy({x,y in x == y}, "Set", list)).to(equal(["Create","Any","Set","Any"]))
+                expect(deleteBy({x,y in x == y}, "Any", list)).to(equal(["Create","Set","Set","Any"]))
+            }
+            
+            it("String") {
+                expect(deleteBy({x,y in x == y}, Character("t"), "Swift")).to(equal("Swif"))
+                expect(deleteBy({x,y in x == y}, "t", "Swift")).to(equal("Swif"))
+            }
+        }
+        
+        describe("deleteFirstsBy") {
+            it("Int Array") {
+                let list1    = [1, 1, 2, 4, 1, 3, 9]
+                let list2    = [2, 4, 1, 3]
+                expect(deleteFirstsBy({x,y in x == y}, list1, list2)).to(equal([1,1,9]))
+                expect(deleteFirstsBy({x,y in x == y}, list2, list1)).to(equal([]))
+            }
+            
+            it("String Array") {
+                let list1    = ["Create", "Set", "Any", "Set", "Any"]
+                let list2    = ["Set", "Any", "Object"]
+                expect(deleteFirstsBy({x,y in x == y}, list1, list2)).to(equal(["Create","Set","Any"]))
+                expect(deleteFirstsBy({x,y in x == y}, list2, list1)).to(equal(["Object"]))
+            }
+            
+            it("String") {
+                let list1   = "overloaded"
+                let list2   = "number of elements"
+                expect(deleteFirstsBy({x,y in x == y}, list1, list2)).to(equal("voadd"))
+                expect(deleteFirstsBy({x,y in x == y}, list2, list1)).to(equal("numb f ements"))
+            }
+        }
+        
+        describe("unionBy") {
+            it("Int Array") {
+                let list1    = [1, 1, 2, 4, 1, 3, 9]
+                let list2    = [2, 4, 1, 3]
+                expect(unionBy({x,y in x == y}, list1, list2)).to(equal([1,1,2,4,1,3,9]))
+                expect(unionBy({x,y in x == y}, list2, list1)).to(equal([2,4,1,3,9]))
+            }
+            
+            it("String Array") {
+                let list1    = ["Create", "Set", "Any", "Set", "Any"]
+                let list2    = ["Set", "Any", "Object"]
+                let r0       = unionBy({x,y in x == y}, list1, list2)
+                expect(r0).to(equal(["Create","Set","Any","Set","Any","Object"]))
+                let r1       = unionBy({x,y in x == y}, list2, list1)
+                expect(r1).to(equal(["Set","Any","Object","Create"]))
+            }
+            
+            it("String") {
+                let list1   = "overloaded"
+                let list2   = "number of elements"
+                expect(unionBy({x,y in x == y}, list1, list2)).to(equal("overloadednumb fts"))
+                expect(unionBy({x,y in x == y}, list2, list1)).to(equal("number of elementsvad"))
+            }
+        }
+        
+        describe("intersectBy") {
+            it("Int Array") {
+                let list1    = [1, 1, 2, 4, 1, 3, 9]
+                let list2    = [2, 4, 1, 3]
+                expect(intersectBy({x,y in x == y}, list1, list2)).to(equal([1,1,2,4,1,3]))
+                expect(intersectBy({x,y in x == y}, list2, list1)).to(equal([2,4,1,3]))
+            }
+            
+            it("String Array") {
+                let list1    = ["Create", "Set", "Any", "Set", "Any"]
+                let list2    = ["Set", "Any", "Object"]
+                let r0       = intersectBy({x,y in x == y}, list1, list2)
+                expect(r0).to(equal(["Set","Any","Set","Any"]))
+                let r1       = intersectBy({x,y in x == y}, list2, list1)
+                expect(r1).to(equal(["Set","Any"]))
+            }
+        
+            it("String") {
+                let list1   = "overloaded"
+                let list2   = "number of elements"
+                expect(intersectBy({x,y in x == y}, list1, list2)).to(equal("oerloe"))
+                expect(intersectBy({x,y in x == y}, list2, list1)).to(equal("eroelee"))
             }
         }
     }

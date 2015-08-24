@@ -829,6 +829,16 @@ public func find<U>(check: U -> Bool, _ xs: [U]) -> U? {
     return nil
 }
 
+public func find(check: Character -> Bool, _ xs: String) -> Character? {
+    for x in xs.characters {
+        if check(x) {
+            return x
+        }
+    }
+    
+    return nil
+}
+
 //MARK: filter :: (a -> Bool) -> [a] -> [a]
 public func filter<U>(check: U -> Bool, _ xs: [U]) -> [U] {
     var results = [U]()
@@ -1379,19 +1389,28 @@ public func unwords(xs: [String])->String {
 //MARK: "Set" operations
 //MARK: nub :: Eq a => [a] -> [a]
 public func nub<A: Equatable>(xs: [A]) -> [A] {
-    var results  = [A]()
-    for x in xs {
-        if find( { y in x == y }, results) == nil {
-            results.append(x)
-        }
-    }
-    
-    return results
+    return nubBy( {x, y in x == y}, xs)
+}
+
+public func nub(xs: String) -> String {
+    return nubBy({(x: Character, y: Character) in x == y}, xs)
 }
 
 //MARK: delete :: Eq a => a -> [a] -> [a]
 public func delete<A: Equatable>(value: A, _ xs: [A]) -> [A] {
     let idx     = elemIndex(value, xs)
+    return idx == nil ? xs : take(idx!, xs) + drop(idx! + 1, xs)
+}
+
+public func delete(value: Character, _ xs: String) -> String {
+    let idx     = elemIndex(value, xs)
+    return idx == nil ? xs : take(idx!, xs) + drop(idx! + 1, xs)
+}
+
+public func delete(value: String, _ xs: String) -> String {
+    assert(value.characters.count == 1)
+    let c       = value[value.characters.startIndex]
+    let idx     = elemIndex(c, xs)
     return idx == nil ? xs : take(idx!, xs) + drop(idx! + 1, xs)
 }
 
@@ -1407,6 +1426,11 @@ public func intersect<A: Equatable>(xs1: [A], _ xs2: [A]) -> [A] {
     return filter(isElement, xs1)
 }
 
+public func intersect(xs1: String, _ xs2: String) -> String {
+    let isElement   = { (x ) -> Bool in elemIndex(x, xs2) != nil }
+    return filter(isElement, xs1)
+}
+
 //MARK: sort :: Ord a => [a] -> [a]
 public func sort<A: Comparable>(xs: [A]) -> [A] {
     return sortOn({x, y in x < y}, xs)
@@ -1417,16 +1441,117 @@ public func sortOn<A: Comparable>(f: (A,A)->Bool, _ xs: [A]) -> [A] {
 }
 
 //MARK: insert :: Ord a => a -> [a] -> [a]
+public func insert<A: Equatable>(value: A, _ xs: [A]) -> [A] {
+    return xs + [value]
+}
+
+public func insert(value: String, _ xs: String) -> String {
+    return xs + value
+}
+
+public func insert(value: Character, _ xs: String) -> String {
+    return xs + String(value)
+}
+
+//MARK: - Generalized functions
+//MARK: The "By" operations
 //MARK: nubBy :: (a -> a -> Bool) -> [a] -> [a]
+public func nubBy<A: Equatable>(f: (A,A)->Bool, _ xs: [A]) -> [A] {
+    var results  = [A]()
+    for x in xs {
+        if find( { y in f(x, y) }, results) == nil {
+            results.append(x)
+        }
+    }
+    
+    return results
+}
+
+public func nubBy(f: (Character, Character)->Bool, _ xs: String) -> String {
+    var results  = String()
+    for x in xs.characters {
+        if find( { y in f(x, y) }, results) == nil {
+            results.append(x)
+        }
+    }
+    
+    return results
+}
+
 //MARK: deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]
+public func deleteBy<A: Equatable>(f: (A,A)->Bool, _ y: A, _ xs: [A]) -> [A] {
+    let idx     = indexElemBy(f, y, xs)
+    return idx == nil ? xs : take(idx!, xs) + drop(idx!+1, xs)
+}
+
+func indexElemBy<A: Equatable>(f: (A,A)->Bool, _ y: A, _ xs: [A]) -> Int? {
+    for i in 0..<xs.count {
+        if f(xs[i], y) {
+            return i
+        }
+    }
+    return nil
+}
+
+public func deleteBy(f: (Character,Character)->Bool, _ y: Character, _ xs: String) -> String {
+    let idx     = indexElemBy(f, y, xs)
+    return idx == nil ? xs : take(idx!, xs) + drop(idx!+1, xs)
+}
+
+func indexElemBy(f: (Character,Character)->Bool, _ y: Character, _ xs: String) -> Int? {
+    for i in 0..<xs.characters.count {
+        let c =  xs[advance(xs.startIndex, i)]
+        if f(c, y) {
+            return i
+        }
+    }
+    return nil
+}
+
 //MARK: deleteFirstsBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+public func deleteFirstsBy<A: Equatable>(f: (A,A)->Bool, _ xs1: [A], _ xs2: [A]) -> [A] {
+    var result = xs1
+    for x in xs2 {
+        result = deleteBy(f, x, result)
+    }
+    
+    return result
+}
+
+public func deleteFirstsBy(f: (Character, Character)->Bool, _ xs1: String, _ xs2: String) -> String {
+    var result  = xs1
+    for i in 0..<xs2.characters.count {
+        let c   = xs2[advance(xs2.startIndex, i)]
+        result  = deleteBy(f, c, result)
+    }
+    return result
+}
+
 //MARK: unionBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+public func unionBy<A: Equatable>(f : (A, A)->Bool, _ xs1: [A], _ xs2: [A]) -> [A] {
+    return xs1 + deleteFirstsBy(f, nub(xs2), xs1)
+}
+
+public func unionBy(f: (Character, Character)->Bool, _ xs1: String, _ xs2: String) -> String {
+    return xs1 + deleteFirstsBy(f, nub(xs2), xs1)
+}
+
 //MARK: intersectBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+public func intersectBy<A: Equatable>(f : (A, A)->Bool, _ xs1: [A], _ xs2: [A]) -> [A] {
+    return filter( { x in any({ y in f(x, y)}, xs2)}, xs1)
+}
+
+public func intersectBy(f: (Character, Character)->Bool, _ xs1: String, _ xs2: String) -> String {
+    return filter( { x in any({ y in f(x, y)}, xs2)}, xs1)
+}
+
 //MARK: groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
 //MARK: sortBy :: (a -> a -> Ordering) -> [a] -> [a]
 //MARK: insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
 //MARK: maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
 //MARK: minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+
+//MARK: The "generic" operations
 //MARK: genericLength :: Num i => [a] -> i
 //MARK: genericTake :: Integral i => i -> [a] -> [a]
 //MARK: genericDrop :: Integral i => i -> [a] -> [a]
