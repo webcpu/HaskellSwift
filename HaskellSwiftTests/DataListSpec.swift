@@ -1969,5 +1969,31 @@ class DataListSpec: QuickSpec {
                 expect(intersectBy({x,y in x == y}, list2, list1)).to(equal("eroelee"))
             }
         }
+        
+        describe("groupBy") {
+            it("Int Array") {
+                let ints            = [1, 1, 2, 3, 3, 5, 5]
+                let r0              = groupBy({(x, y) in x == y}, ints)
+                expect(r0).to(equal([[1,1],[2],[3,3],[5,5]]))
+                let r1              = groupBy({(x,y) in x < y}, ints)
+                expect(r1).to(equal([[1],[1,2,3,3,5,5]]))
+            }
+            
+            it("String Array") {
+                let list    = ["Apple", "Pie", "Pie"]
+                let r0      = groupBy( {(x, y) in x == y}, list)
+                expect(r0).to(equal([["Apple"], ["Pie", "Pie"]]))
+                let r1      = groupBy({(x,y) in x > y}, list)
+                expect(r1).to(equal([["Apple"],["Pie"],["Pie"]]))
+            }
+            
+            it("String") {
+                let list    = "Hello World"
+                let r0      = groupBy({(x, y) in x == y}, list)
+                expect(r0).to(equal(["H","e","ll","o"," ","W","o","r","l","d"]))
+                let r1      = groupBy({(x, y) in x < y}, list)
+                expect(r1).to(equal(["Hello"," World"]))
+            }
+        }
     }
 }

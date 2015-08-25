@@ -645,36 +645,13 @@ public func breakx(check: Character -> Bool, _ xs: String) -> (String, String) {
 
 //MARK: group :: Eq a => [a] -> [[a]]
 public func group<U: Equatable>(xs: [U]) -> [[U]] {
-    var result          = [[U]]()
-    var list            = xs
-    var groupedItems    = [U]()
-    while (list.count > 0) {
-        let item        = head(list)
-        groupedItems    = takeWhile( {x in x == item}, list)
-        list            = drop(groupedItems.count, list)
-        if groupedItems.count > 0 {
-            result.append(groupedItems)
-        }
-    }
-    
-    return result
+    return groupBy({x,y in x == y}, xs)
 }
 
 public func group(xs: String) -> [String] {
-    var result          = [String]()
-    var list            = xs
-    var groupedItems    = String()
-    while (list.characters.count > 0) {
-        let item        = head(list)
-        groupedItems    = takeWhile( { x in x == item}, list)
-        list            = drop(groupedItems.characters.count, list)
-        if groupedItems.characters.count > 0 {
-            result.append(groupedItems)
-        }
-    }
-    
-    return result
+    return groupBy({x,y in x == y}, xs)
 }
+
 //MARK: inits :: [a] -> [[a]]
 public func inits<U>(xs: [U]) -> [[U]] {
     var result = [[U]]()
@@ -1546,6 +1523,37 @@ public func intersectBy(f: (Character, Character)->Bool, _ xs1: String, _ xs2: S
 }
 
 //MARK: groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
+public func groupBy<A: Equatable>(f : (A, A)->Bool, _ xs: [A]) -> [[A]] {
+    if xs.count <= 1 {
+        return [xs]
+    }
+    
+    var result          = [[A]]()
+    var list            = xs
+    while (list.count > 0) {
+        let y           = head(list)
+        let ys          = takeWhile( { x in f(y, x)}, drop(1, list))
+        list            = drop(ys.count > 0 ? ys.count + 1 : 1, list)
+        result.append(ys.count > 0 ? [y] + ys : [y])
+        print("y = \(y), items = \(ys), list = \(list)")
+    }
+    
+    return result
+}
+
+public func groupBy(f: (Character, Character)->Bool, _ xs: String) -> [String] {
+    var result          = [String]()
+    var list            = xs
+    while (list.characters.count > 0) {
+        let y           = head(list)
+        let ys          = takeWhile( { x in f(y, x)}, drop(1, list))
+        list            = drop(ys.characters.count > 0 ? ys.characters.count + 1 : 1 , list)
+        result.append(ys.characters.count > 0 ? String(y) + ys : String(y))
+    }
+    
+    return result
+}
+
 //MARK: sortBy :: (a -> a -> Ordering) -> [a] -> [a]
 //MARK: insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
 //MARK: maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
