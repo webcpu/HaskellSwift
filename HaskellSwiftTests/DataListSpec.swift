@@ -1807,7 +1807,7 @@ class DataListSpec: QuickSpec {
             }
         }
        
-        describe("sortOn") {
+        describe("sort") {
             it("Int Array") {
                 let list    = [1, 1, 2, 4, 1, 3, 9]
                 expect(sort(list)).to(equal([1, 1, 1, 2, 3, 4, 9]))
@@ -1823,13 +1823,13 @@ class DataListSpec: QuickSpec {
             it("Int Array") {
                 let list    = [1, 1, 2, 4, 1, 3, 9]
                 expect(sortOn({x, y in x < y}, list)).to(equal([1, 1, 1, 2, 3, 4, 9]))
-                expect(sortOn({x, y in x < y}, list)).to(equal([9,4,3,2,1,1,1]))
+                expect(sortOn({x, y in x > y}, list)).to(equal([9,4,3,2,1,1,1]))
             }
             
             it("String Array") {
                 let list    = ["Create", "Set", "Any", "Set", "Any"]
                 expect(sortOn({x, y in x < y}, list)).to(equal(["Any", "Any", "Create", "Set", "Set"]))
-                expect(sortOn({x, y in x < y}, list)).to(equal(["Set","Set","Create","Any","Any"]))
+                expect(sortOn({x, y in x > y}, list)).to(equal(["Set","Set","Create","Any","Any"]))
             }
         }
         
@@ -1993,6 +1993,34 @@ class DataListSpec: QuickSpec {
                 expect(r0).to(equal(["H","e","ll","o"," ","W","o","r","l","d"]))
                 let r1      = groupBy({(x, y) in x < y}, list)
                 expect(r1).to(equal(["Hello"," World"]))
+            }
+        }
+        
+        describe("sortBy") {
+            it("Int Array") {
+                let list    = [1, 1, 2, 4, 1, 3, 9]
+                expect(sortBy({x, y in x < y}, list)).to(equal([1,1,1,2,3,4,9]))
+                expect(sortBy({x, y in x > y}, list)).to(equal([9,4,3,2,1,1,1]))
+            }
+            
+            it("String Array") {
+                let list    = ["Create", "Set", "Any", "Set", "Any"]
+                expect(sortBy({x, y in x < y}, list)).to(equal(["Any", "Any", "Create", "Set", "Set"]))
+                expect(sortBy({x, y in x > y}, list)).to(equal(["Set","Set","Create","Any","Any"]))
+            }
+        }
+        
+        describe("insertBy") {
+            it("Int Array") {
+                let list    = [1, 1, 2, 4, 1, 3, 9]
+                expect(insertBy({x, y in x < y}, 6, list)).to(equal([1,1,2,4,1,3,6,9]))
+                expect(insertBy({x, y in x > y}, 2, list)).to(equal([2,1,1,2,4,1,3,9]))
+            }
+            
+            it("String Array") {
+                let list    = ["Create", "Set", "Any", "Set", "Any"]
+                expect(insertBy({x, y in x < y}, "Object", list)).to(equal(["Create","Object","Set","Any","Set","Any"]))
+                expect(insertBy({x, y in x > y}, "Object", list)).to(equal(["Object","Create","Set","Any","Set","Any"]))
             }
         }
     }

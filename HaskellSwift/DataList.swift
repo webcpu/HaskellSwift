@@ -1463,7 +1463,7 @@ public func deleteBy<A: Equatable>(f: (A,A)->Bool, _ y: A, _ xs: [A]) -> [A] {
 
 func indexElemBy<A: Equatable>(f: (A,A)->Bool, _ y: A, _ xs: [A]) -> Int? {
     for i in 0..<xs.count {
-        if f(xs[i], y) {
+        if f(y, xs[i]) {
             return i
         }
     }
@@ -1475,10 +1475,10 @@ public func deleteBy(f: (Character,Character)->Bool, _ y: Character, _ xs: Strin
     return idx == nil ? xs : take(idx!, xs) + drop(idx!+1, xs)
 }
 
-func indexElemBy(f: (Character,Character)->Bool, _ y: Character, _ xs: String) -> Int? {
+func indexElemBy(f: (Character, Character)->Bool, _ y: Character, _ xs: String) -> Int? {
     for i in 0..<xs.characters.count {
-        let c =  xs[xs.startIndex.advancedBy(i)]
-        if f(c, y) {
+        let c = xs[xs.startIndex.advancedBy(i)]
+        if f(y, c) {
             return i
         }
     }
@@ -1555,7 +1555,27 @@ public func groupBy(f: (Character, Character)->Bool, _ xs: String) -> [String] {
 }
 
 //MARK: sortBy :: (a -> a -> Ordering) -> [a] -> [a]
+public func sortBy<A: Comparable>(f : (A, A)->Bool, _ xs: [A]) -> [A] {
+    return xs.sort(f)
+}
+
 //MARK: insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
+public func insertBy<A: Equatable>(f : (A, A)->Bool, _ value: A, _ xs: [A]) -> [A] {
+    let idx = indexElemBy(f, value, xs)
+    if idx == nil {
+        return xs + [value]
+    }
+    return take(idx!, xs) + [value] + drop(idx!, xs)
+}
+
+public func insertBy(f : (Character, Character)->Bool, _ value: Character, _ xs: String) -> String {
+    let idx = indexElemBy(f, value, xs)
+    if idx == nil {
+        return xs + String(value)
+    }
+    return take(idx!, xs) + String(value) + drop(idx!, xs)
+}
+
 //MARK: maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
 //MARK: minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
 
