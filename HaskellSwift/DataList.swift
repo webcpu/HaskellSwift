@@ -36,7 +36,7 @@ public func head<T>(xs: [T]) ->T {
 
 public func head(xs: String) -> Character {
     assert(xs.isEmpty != true, "Empty List")
-    let c =  xs[advance(xs.startIndex, 0)]
+    let c =  xs[xs.startIndex]
     return c
 }
 
@@ -48,7 +48,7 @@ public func last<T>(xs: [T]) ->T {
 
 public func last(xs: String) -> Character {
     assert(xs.isEmpty != true, "Empty List")
-    let c =  xs[advance(xs.endIndex, -1)]
+    let c =  xs[xs.endIndex.advancedBy(-1)]
     return c
 }
 
@@ -75,7 +75,7 @@ public func tail(xs: String)->String {
     }
     
     for i in 1..<(xs.characters.count) {
-        let c = xs[advance(xs.startIndex, i)]
+        let c = xs[xs.startIndex.advancedBy(i)]
         list.append(c)
     }
     
@@ -105,7 +105,7 @@ public func initx(xs: String)->String {
     }
     
     for i in 0..<(xs.characters.count - 1) {
-        let c = xs[advance(xs.startIndex, i)]
+        let c = xs[xs.startIndex.advancedBy(i)]
         list.append(c)
     }
     
@@ -135,7 +135,7 @@ public func length(xs: String) -> Int {
 public func map(transform: Character->Character, _ xs: String) -> String {
     var results = String()
     for i in 0..<xs.characters.count {
-        let c = xs[advance(xs.startIndex, i)]
+        let c = xs[xs.startIndex.advancedBy(i)]
         results.append(transform(c))
     }
     
@@ -145,7 +145,7 @@ public func map(transform: Character->Character, _ xs: String) -> String {
 public func map<U>(transform: Character-> U, _ xs: String) -> [U] {
     var results = [U]()
     for i in 0..<xs.characters.count {
-        let c = xs[advance(xs.startIndex, i)]
+        let c = xs[xs.startIndex.advancedBy(i)]
         results.append(transform(c))
     }
     
@@ -504,7 +504,7 @@ public func take(len: Int, _ xs: String)->String {
     }
     
     for i in 0..<len {
-        let c = xs[advance(xs.startIndex, i)]
+        let c = xs[xs.startIndex.advancedBy(i)]
         list.append(c)
     }
     
@@ -542,7 +542,7 @@ public func drop(len: Int, _ xs: String)->String {
     }
     
     for i in len..<(xs.characters.count) {
-        let c = xs[advance(xs.startIndex, i)]
+        let c = xs[xs.startIndex.advancedBy(i)]
         list.append(c)
     }
     
@@ -595,7 +595,7 @@ public func takeWhile(check: Character -> Bool, _ xs: String) -> String {
 func lengthOfWhileForString(check: Character -> Bool, _ xs: String) -> Int {
     var len = 0
     for i in 0..<xs.characters.count {
-        let c = xs[advance(xs.startIndex, i)]
+        let c = xs[xs.startIndex.advancedBy(i)]
         guard check(c) else {
             break
         }
@@ -889,7 +889,7 @@ public func elemIndex<U: Equatable>(value: U, _ xs: [U]) -> Int? {
 
 public func elemIndex(value: Character, _ xs: String) -> Int? {
     for i in 0..<xs.characters.count {
-        let c =  xs[advance(xs.startIndex, i)]
+        let c =  xs[xs.startIndex.advancedBy(i)]
         if value == c {
             return i
         }
@@ -913,7 +913,7 @@ public func elemIndices<U: Equatable>(value: U, _ xs: [U]) -> [Int] {
 public func elemIndices(value: Character, _ xs: String) -> [Int] {
     var result = [Int]()
     for i in 0..<xs.characters.count {
-        let c =  xs[advance(xs.startIndex, i)]
+        let c =  xs[xs.startIndex.advancedBy(i)]
         if value == c {
             result.append(i)
         }
@@ -935,7 +935,7 @@ public func findIndex<U>(check: U -> Bool, _ xs: [U]) -> Int? {
 
 public func findIndex(check: Character -> Bool, _ xs: String) -> Int? {
     for i in 0..<xs.characters.count {
-        let c =  xs[advance(xs.startIndex, i)]
+        let c =  xs[xs.startIndex.advancedBy(i)]
         if check(c) {
             return i
         }
@@ -958,7 +958,7 @@ public func findIndices<U: Equatable>(check: U -> Bool, _ xs: [U]) -> [Int] {
 public func findIndices(check: Character -> Bool, _ xs: String) -> [Int] {
     var result = [Int]()
     for i in 0..<xs.characters.count {
-        let c =  xs[advance(xs.startIndex, i)]
+        let c =  xs[xs.startIndex.advancedBy(i)]
         if check(c) {
             result.append(i)
         }
@@ -1500,7 +1500,7 @@ public func deleteBy(f: (Character,Character)->Bool, _ y: Character, _ xs: Strin
 
 func indexElemBy(f: (Character,Character)->Bool, _ y: Character, _ xs: String) -> Int? {
     for i in 0..<xs.characters.count {
-        let c =  xs[advance(xs.startIndex, i)]
+        let c =  xs[xs.startIndex.advancedBy(i)]
         if f(c, y) {
             return i
         }
@@ -1521,7 +1521,7 @@ public func deleteFirstsBy<A: Equatable>(f: (A,A)->Bool, _ xs1: [A], _ xs2: [A])
 public func deleteFirstsBy(f: (Character, Character)->Bool, _ xs1: String, _ xs2: String) -> String {
     var result  = xs1
     for i in 0..<xs2.characters.count {
-        let c   = xs2[advance(xs2.startIndex, i)]
+        let c   = xs2[xs2.startIndex.advancedBy(i)]
         result  = deleteBy(f, c, result)
     }
     return result
