@@ -259,6 +259,28 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("foldl1") {
+            it("Int Array") {
+                let adds     = { (x: Int,y: Int) in x+y }
+                expect(foldl1(adds, [1, 2, 3])).to(equal(6))
+                
+                let product = {(x: Int, y: Int) in x*y}
+                expect(foldl1(product, [1,2,3,4,5])).to(equal(120))
+            }
+            
+            it("String Array") {
+                let letters : [String] = ["W", "o", "r", "l", "d"]
+                let adds = { (x: String, y: String) in x + y }
+                let result = foldl1(adds, letters)
+                expect(result).to(equal("World"))
+            }
+            
+            it("String") {
+                let insert = { (x: String, y: Character) in String(y) + x }
+                expect(foldl1(insert, "World")).to(equal("dlroW"))
+            }
+        }
+        
         describe("foldr") {
             it("Int Array") {
                 let adds     = { (a: Int,b: Int) in a+b }
@@ -278,6 +300,28 @@ class DataListSpec: QuickSpec {
             it("String") {
                 let insert = { (a: Character, b: String) in String(a) + b }
                 expect(foldr(insert, "", "World")).to(equal("World"))
+            }
+        }
+        
+        describe("foldr1") {
+            it("Int Array") {
+                let adds     = { (a: Int,b: Int) in a+b }
+                expect(foldr1(adds, [1, 2, 3])).to(equal(6))
+                
+                let multiply = {(a: Int, b: Int) in a*b}
+                expect(foldr1(multiply, [1,2,3,4,5])).to(equal(120))
+            }
+            
+            it("String Array") {
+                let letters : [String] = ["W", "o", "r", "l", "d"]
+                let adds = { (a: String, b: String) in b + a }
+                let result = foldr1(adds, letters)
+                expect(result).to(equal("dlroW"))
+            }
+            
+            it("String") {
+                let insert = { (a: Character, b: String) in String(a) + b }
+                expect(foldr1(insert, "World")).to(equal("World"))
             }
         }
         
@@ -753,6 +797,18 @@ class DataListSpec: QuickSpec {
                 let list : [UInt8]    = [5, 2, 3]
                 let result          = minimum(list)
                 expect(result).to(equal(2))
+            }
+        }
+        
+        describe("replicate") {
+            it("Int Array") {
+                let ints = replicate(100, 123)
+                expect(filter( { x in x == 123 }, ints).count).to(equal(100))
+            }
+            
+            it("String Array") {
+                let strings = replicate(100, "Good")
+                expect(filter( { x in x == "Good" }, strings).count).to(equal(100))
             }
         }
         
@@ -2021,6 +2077,52 @@ class DataListSpec: QuickSpec {
                 let list    = ["Create", "Set", "Any", "Set", "Any"]
                 expect(insertBy({x, y in x < y}, "Object", list)).to(equal(["Create","Object","Set","Any","Set","Any"]))
                 expect(insertBy({x, y in x > y}, "Object", list)).to(equal(["Object","Create","Set","Any","Set","Any"]))
+            }
+        }
+        
+        describe("maximumBy") {
+            it("Int Array") {
+                let list    = [1, 1, 2, 18, 4, 24, 6, 9]
+                expect(maximumBy({x, y in x < y ? Ordering.LT : Ordering.GT }, list)).to(equal(24))
+                expect(maximumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list)).to(equal(24))
+            }
+            
+            it("String Array") {
+                let list    = ["Create", "Set", "Any", "Set", "Any"]
+                expect(maximumBy({x, y in x < y ? Ordering.LT : Ordering.GT }, list)).to(equal("Set"))
+                expect(maximumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list)).to(equal("Set"))
+            }
+        }
+        
+        describe("minimumBy") {
+            it("Int Array") {
+                let list    = [1, 1, 2, 18, 4, 24, 6, 9]
+                expect(minimumBy({x, y in x < y ? Ordering.LT : Ordering.GT }, list)).to(equal(1))
+                expect(minimumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list)).to(equal(1))
+            }
+            
+            it("String Array") {
+                let list    = ["Create", "Set", "Any", "Set", "Any"]
+                expect(minimumBy({x, y in x < y ? Ordering.LT : Ordering.GT }, list)).to(equal("Any"))
+                expect(minimumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list)).to(equal("Any"))
+            }
+        }
+        
+        
+        describe("genericLength") {
+            it("Int Array") {
+                expect(genericLength([1])).to(equal(1))
+                expect(genericLength([1,2])).to(equal(2))
+            }
+            
+            it("String Array") {
+                expect(genericLength(["World"])).to(equal(1))
+                expect(genericLength(files)).to(equal(files.count))
+            }
+            
+            it("String") {
+                expect(genericLength("World")).to(equal(5))
+                expect(genericLength("")).to(equal(0))
             }
         }
     }

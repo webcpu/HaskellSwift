@@ -8,6 +8,12 @@
 
 import Foundation
 
+public enum Ordering {
+    case LT
+    case EQ
+    case GT
+}
+
 infix operator • { associativity right precedence 100}
 func •<A,B,C>(f2: B->C, f1: A->B) -> (A->C) {
     return { (x: A) in f2(f1(x)) }
@@ -173,13 +179,27 @@ public func reverse(xs: String) -> String {
 //MARK: - Reducing lists (folds)
 //MARK: foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
 public func foldl<A,B>(process: (A, B)->A, _ initialValue: A, _ xs: [B]) -> A {
+    assert(!xs.isEmpty, "Empty List")
     return reduce(process, initialValue, xs)
 }
 
 public func foldl(process: (String, Character)->String, _ initialValue: String, _ xs: String) -> String {
+    assert(!xs.isEmpty, "Empty List")
     return reduce(process, initialValue, xs)
 }
 
+//MARK: foldl1 :: Foldable t => (a -> a -> a) -> t a -> a
+public func foldl1<A>(process: (A, A)->A, _ xs: [A]) -> A {
+    assert(!xs.isEmpty, "Empty List")
+    return foldl(process, xs[0], drop(1, xs))
+}
+
+public func foldl1(process: (String, Character)->String, _ xs: String) -> String {
+    assert(xs.characters.count > 0, "Empty List")
+    return foldl(process, String(xs[xs.startIndex]), drop(1, xs))
+}
+
+//MARK: reduce :: Foldable t => (b -> a -> b) -> b -> t a -> b
 public func reduce<S, T> (combine: (T, S)->T, _ initial: T, _ xs: [S]) -> T {
     var result = initial
     for x in xs {
@@ -217,8 +237,24 @@ public func foldr(process: (Character, String)->String, _ initialValue: String, 
     return result
 }
 
+//MARK: foldr1 :: Foldable t => (a -> a -> a) -> t a -> a
+public func foldr1<A>(process: (A, A)->A, _ xs: [A]) -> A {
+    assert(!xs.isEmpty, "Empty List")
+    return foldr(process, xs[xs.count-1], take(xs.count - 1, xs))
+}
+
+public func foldr1(process: (Character, String)->String, _ xs: String) -> String {
+    assert(xs.characters.count > 0, "Empty List")
+    return foldr(process, String(xs[xs.endIndex.predecessor()]), take(xs.characters.count - 1, xs))
+}
+
 //MARK: - Building lists
 //MARK: Scans
+
+//MARK: Infinite lists
+public func replicate<A>(len: Int, _ value: A) -> [A] {
+    return [A].init(count: len, repeatedValue: value)
+}
 
 //MARK: - Sublists
 //MARK: Extracting sublists
@@ -246,6 +282,9 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
 public func concat<A> (xss: [[A]]) -> [A] {
    // assert(xs.count >= 0 , "Illegal Length")
     var xs = [A]()
+    if xss.isEmpty {
+        return xs
+    }
    
     let process = { (a : [A], b: [A]) in a + b }
     xs          = foldl(process, xs, xss)
@@ -255,6 +294,9 @@ public func concat<A> (xss: [[A]]) -> [A] {
 
 public func concat (xss: [String]) -> String {
     var xs = String()
+    if xss.isEmpty {
+        return xs
+    }
     
     let process = { (a : String, b: String) in a + b }
     xs          = foldl(process, xs, xss)
@@ -1577,12 +1619,56 @@ public func insertBy(f : (Character, Character)->Bool, _ value: Character, _ xs:
 }
 
 //MARK: maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
-//MARK: minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+public func maximumBy<A: Comparable>(f : (A, A)->Ordering, _ xs: [A]) -> A {
+    assert(xs.count > 0, "Empty List")
+    var result = xs[0]
+    foldl({(a: A, b: A) -> A in
+        result = f(a, b) == .GT ? a : b
+        return result
+        }, result, xs)
+    return result
+}
 
-//MARK: The "generic" operations
+//MARK: minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+public func minimumBy<A: Comparable>(f : (A, A)->Ordering, _ xs: [A]) -> A {
+    assert(xs.count > 0, "Empty List")
+    var result = xs[0]
+    foldl({(a: A, b: A) -> A in
+        result = f(a, b) == .LT ? a : b
+        return result
+        }, result, xs)
+    return result
+}
+
+//MARK: - The "generic" operations
 //MARK: genericLength :: Num i => [a] -> i
+public func genericLength<A>(xs: [A])->Int {
+    return xs.count
+}
+
+public func genericLength(xs: String)->Int {
+    return xs.characters.count
+}
+
 //MARK: genericTake :: Integral i => i -> [a] -> [a]
+public func genericTake<T>(len: Int, _ xs: [T]) -> [T] {
+    return take(len, xs)
+}
+
 //MARK: genericDrop :: Integral i => i -> [a] -> [a]
+public func genericDrop<T>(len: Int, _ xs: [T]) -> [T] {
+    return drop(len, xs)
+}
+
 //MARK: genericSplitAt :: Integral i => i -> [a] -> ([a], [a])
+public func genericSplitAt(len: Int, _ xs: String)->(String, String) {
+    return splitAt(len, xs)
+}
+
 //MARK: genericIndex :: Integral i => [a] -> i -> a
+
+
 //MARK: genericReplicate :: Integral i => i -> a -> [a]
+public func genericReplicate<A>(len: Int, _ value: A) -> [A] {
+    return replicate(len, value)
+}

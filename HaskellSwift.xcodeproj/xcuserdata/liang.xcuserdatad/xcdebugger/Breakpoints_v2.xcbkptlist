@@ -122,13 +122,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HaskellSwiftTests/DataListSpec.swift"
-            timestampString = "461929456.361271"
+            timestampString = "462277281.776502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1152"
-            endingLineNumber = "1152"
+            startingLineNumber = "1208"
+            endingLineNumber = "1208"
             landmarkName = "spec()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HaskellSwiftTests/DataListSpec.swift"
+            timestampString = "462277281.776502"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2034"
+            endingLineNumber = "2034"
+            landmarkName = "spec()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HaskellSwiftTests.DataListSpec.(spec (HaskellSwiftTests.DataListSpec) -&gt; () -&gt; ()).(closure #83).(closure #1)"
+                  moduleName = "HaskellSwiftTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liang/Projects/HaskellSwift/HaskellSwiftTests/DataListSpec.swift"
+                  timestampString = "462198662.7211"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1978"
+                  endingLineNumber = "1978"
+                  offsetFromSymbolStart = "1378">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HaskellSwiftTests.DataListSpec.(spec (HaskellSwiftTests.DataListSpec) -&gt; () -&gt; ()).(closure #83).(closure #1).(closure #2)"
+                  moduleName = "HaskellSwiftTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liang/Projects/HaskellSwift/HaskellSwiftTests/DataListSpec.swift"
+                  timestampString = "462198662.721279"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1978"
+                  endingLineNumber = "1978"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HaskellSwiftTests/DataListSpec.swift"
+            timestampString = "462277281.776502"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2035"
+            endingLineNumber = "2035"
+            landmarkName = "spec()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HaskellSwift/DataList.swift"
+            timestampString = "462277561.317476"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1606"
+            endingLineNumber = "1606"
+            landmarkName = "insertBy(_:_:_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
