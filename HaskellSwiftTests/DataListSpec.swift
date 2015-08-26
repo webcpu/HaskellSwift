@@ -812,6 +812,28 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("scanl") {
+            it("Int Array") {
+                let adds     = { (x: Int,y: Int) in x+y }
+                expect(scanl(adds, 0, [1, 2, 3])).to(equal([1, 3, 6]))
+                
+                let product = {(x: Int, y: Int) in x*y}
+                expect(scanl(product, 1, [1,2,3,4,5])).to(equal([1, 2, 6, 24, 120]))
+            }
+            
+            it("String Array") {
+                let letters : [String] = ["W", "o", "r", "l", "d"]
+                let adds    = { (x: String, y: String) in x + y }
+                let result  = scanl(adds, "", letters)
+                expect(result).to(equal(["W", "Wo", "Wor", "Worl", "World"]))
+            }
+            
+            it("String") {
+                let insert = { (x: String, y: Character) in String(y) + x }
+                expect(scanl(insert, "", "World")).to(equal(["W", "oW", "roW", "lroW", "dlroW"]))
+            }
+        }
+        
         describe("take") {
             it("Int Array") {
                 let ints = [1, 2, 3]

@@ -250,6 +250,35 @@ public func foldr1(process: (Character, String)->String, _ xs: String) -> String
 
 //MARK: - Building lists
 //MARK: Scans
+//MARK: scanl :: (b -> a -> b) -> b -> [a] -> [b]
+public func scanl<A,B>(combine: (A, B)->A, _ initialValue: A, _ xs: [B]) -> [A] {
+    assert(!xs.isEmpty, "Empty List")
+    var ys      = [A]()
+    var value   = initialValue
+    for x in xs {
+        value  = combine(value, x)
+        ys.append(value)
+    }
+    
+    return ys
+}
+
+public func scanl(combine: (String, Character)->String, _ initialValue: String, _ xs: String) -> [String] {
+    assert(!xs.isEmpty, "Empty List")
+    var ys      = [String]()
+    var value   = initialValue
+    for x in xs.characters {
+        value  = combine(value, x)
+        ys.append(value)
+    }
+    
+    return ys
+}
+
+//MARK: scanl' :: (b -> a -> b) -> b -> [a] -> [b]
+//MARK: scanl1 :: (a -> a -> a) -> [a] -> [a]
+//MARK: scanr :: (a -> b -> b) -> b -> [a] -> [b]
+//MARK: scanr1 :: (a -> a -> a) -> [a] -> [a]
 
 //MARK: Infinite lists
 public func replicate<A>(len: Int, _ value: A) -> [A] {

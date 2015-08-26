@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HaskellSwiftTests/DataListSpec.swift"
-            timestampString = "462277281.776502"
+            timestampString = "462283641.53809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1208"
-            endingLineNumber = "1208"
+            startingLineNumber = "1230"
+            endingLineNumber = "1230"
             landmarkName = "spec()"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HaskellSwiftTests/DataListSpec.swift"
-            timestampString = "462277281.776502"
+            timestampString = "462283641.53809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2034"
-            endingLineNumber = "2034"
+            startingLineNumber = "2056"
+            endingLineNumber = "2056"
             landmarkName = "spec()"
             landmarkType = "5">
             <Locations>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HaskellSwiftTests/DataListSpec.swift"
-            timestampString = "462277281.776502"
+            timestampString = "462283641.53809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2035"
-            endingLineNumber = "2035"
+            startingLineNumber = "2057"
+            endingLineNumber = "2057"
             landmarkName = "spec()"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HaskellSwift/DataList.swift"
-            timestampString = "462277561.317476"
+            timestampString = "462283641.53809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1606"
-            endingLineNumber = "1606"
+            startingLineNumber = "1635"
+            endingLineNumber = "1635"
             landmarkName = "insertBy(_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>
