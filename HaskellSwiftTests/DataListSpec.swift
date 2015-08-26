@@ -834,6 +834,74 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("scanl1") {
+            it("Int Array") {
+                let adds     = { (x: Int,y: Int) -> Int in x+y }
+                expect(scanl1(adds, [1, 2, 3])).to(equal([1, 3, 6]))
+                
+                let product = {(x: Int, y: Int) -> Int in x*y}
+                expect(scanl1(product, [1,2,3,4,5])).to(equal([1, 2, 6, 24, 120]))
+            }
+            
+            it("String Array") {
+                let letters : [String] = ["W", "o", "r", "l", "d"]
+                let adds    = { (x: String, y: String) in x + y }
+                let result  = scanl1(adds, letters)
+                expect(result).to(equal(["W", "Wo", "Wor", "Worl", "World"]))
+            }
+            
+            it("String") {
+                let insert = { (x: String, y: Character) in String(y) + x }
+                expect(scanl1(insert, "World")).to(equal(["W", "oW", "roW", "lroW", "dlroW"]))
+            }
+        }
+        
+        describe("scanr") {
+            it("Int Array") {
+                let adds     = { (x: Int,y: Int) in x+y }
+                expect(scanr(adds, 0, [1, 2, 3])).to(equal([3, 5, 6]))
+                
+                let product = {(x: Int, y: Int) in x*y}
+                expect(scanr(product, 1, [1,2,3,4,5])).to(equal([5, 20, 60, 120, 120]))
+            }
+            
+            it("String Array") {
+                let letters : [String] = ["W", "o", "r", "l", "d"]
+                let adds    = { (x: String, y: String) in x + y }
+                let result  = scanr(adds, "", letters)
+                expect(result).to(equal(["d", "ld", "rld", "orld", "World"]))
+            }
+            
+            it("String") {
+                let insert = { (x: Character, y: String) in String(x) + y }
+                expect(scanr(insert, "", "World")).to(equal(["d", "ld", "rld", "orld", "World"]))
+            }
+        }
+       
+        describe("scanr1") {
+            it("Int Array") {
+                let adds     = { (x: Int,y: Int) in x+y }
+                expect(scanr1(adds, [1, 2, 3])).to(equal([3, 5, 6]))
+                
+                let product = {(x: Int, y: Int) in x*y}
+                expect(scanr1(product, [1,2,3,4,5])).to(equal([5, 20, 60, 120, 120]))
+            }
+            
+            it("String Array") {
+                let letters : [String] = ["W", "o", "r", "l", "d"]
+                let adds    = { (x: String, y: String) in x + y }
+                let result  = scanr1(adds, letters)
+                expect(result).to(equal(["d", "ld", "rld", "orld", "World"]))
+            }
+            
+            it("String") {
+                //Very tricky
+                //let insert = { (x: Character, y: String) in String(x) + y } //Wrong
+                let insert = { (x: Character, y: String) -> String in String(x) + y } //Correct
+                expect(scanr1(insert, "World")).to(equal(["d", "ld", "rld", "orld", "World"]))
+            }
+        }
+        
         describe("take") {
             it("Int Array") {
                 let ints = [1, 2, 3]

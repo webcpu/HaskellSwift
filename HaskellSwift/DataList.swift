@@ -54,7 +54,7 @@ public func last<T>(xs: [T]) ->T {
 
 public func last(xs: String) -> Character {
     assert(xs.isEmpty != true, "Empty List")
-    let c =  xs[xs.endIndex.advancedBy(-1)]
+    let c =  xs[xs.endIndex.predecessor()]
     return c
 }
 
@@ -277,8 +277,65 @@ public func scanl(combine: (String, Character)->String, _ initialValue: String, 
 
 //MARK: scanl' :: (b -> a -> b) -> b -> [a] -> [b]
 //MARK: scanl1 :: (a -> a -> a) -> [a] -> [a]
+public func scanl1<A>(combine: (A, A)->A, _ xs: [A]) -> [A] {
+    assert(!xs.isEmpty, "Empty List")
+    if xs.count == 1 {
+        return xs
+    }
+    return [xs[0]] + scanl(combine, xs[0], drop(1, xs))
+}
+
+public func scanl1(combine: (String, Character)->String, _ xs: String) -> [String] {
+    assert(xs.characters.count > 0, "Empty List")
+    if xs.characters.count == 1 {
+        return [xs]
+    }
+    let result = scanl(combine, String(xs[xs.startIndex]), drop(1, xs))
+    return [String(xs[xs.startIndex])] + result
+}
+
 //MARK: scanr :: (a -> b -> b) -> b -> [a] -> [b]
+public func scanr<A,B>(combine: (A, B)->B, _ initialValue: B, _ xs: [A]) -> [B] {
+    assert(!xs.isEmpty, "Empty List")
+    var ys      = [B]()
+    var value   = initialValue
+    for x in xs.reverse() {
+        value  = combine(x, value)
+        ys.append(value)
+    }
+    
+    return ys
+}
+
+public func scanr(combine: (Character, String)->String, _ initialValue: String, _ xs: String) -> [String] {
+    assert(!xs.isEmpty, "Empty List")
+    var ys      = [String]()
+    var value   = initialValue
+    for x in xs.characters.reverse() {
+        value  = combine(x, value)
+        ys.append(value)
+    }
+    
+    return ys
+}
 //MARK: scanr1 :: (a -> a -> a) -> [a] -> [a]
+public func scanr1<A>(combine: (A, A)->A, _ xs: [A]) -> [A] {
+    assert(!xs.isEmpty, "Empty List")
+    if xs.count == 1 {
+        return xs
+    }
+    let ys = scanr(combine, last(xs), take(xs.count - 1, xs))
+    return [last(xs)] + ys
+}
+
+public func scanr1(combine: (Character, String)->String, _ xs: String) -> [String] {
+    assert(xs.characters.count > 0, "Empty List")
+    if xs.characters.count == 1 {
+        return [xs]
+    }
+    let ys = scanr(combine, String(last(xs)), take(xs.characters.count - 1, xs))
+    return [String(last(xs))] + ys
+}
 
 //MARK: Infinite lists
 public func replicate<A>(len: Int, _ value: A) -> [A] {
@@ -294,7 +351,7 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
     if len == 0 {
         return list
     }
-    
+
     if len >= xs.count {
         return xs
     }
