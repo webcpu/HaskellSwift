@@ -236,7 +236,46 @@ class DataListSpec: QuickSpec {
                 expect(reverse("")).to(equal(""))
             }
         }
-       
+        
+        describe("intersperse") {
+            it("Int Array") {
+                expect(intersperse(1, [])).to(equal([]))
+                expect(intersperse(1, [3])).to(equal([3]))
+                expect(intersperse(10, [1,2,3])).to(equal([1,10,2,10,3]))
+            }
+            
+            it("String Array"){
+                let list = ["File", "Edit", "View"]
+                expect(intersperse(".", [])).to(equal([]))
+                expect(intersperse("+", ["Fine"])).to(equal(["Fine"]))
+                expect(intersperse(".", list)).to(equal(["File",".","Edit",".","View"]))
+            }
+            
+            it("String") {
+                expect(intersperse("+", "")).to(equal(""))
+                expect(intersperse("+", "A")).to(equal("A"))
+                expect(intersperse("+", "ABC")).to(equal("A+B+C"))
+            }
+        }
+        
+        describe("transpose") {
+            it("Int Array") {
+                expect(transpose([[1,2,3],[4,5,6],[7,8,9]])).to(equal([[1,4,7],[2,5,8],[3,6,9]]))
+                expect(transpose([[1],[4,5],[7,8,9]])).to(equal([[1,4,7],[5,8],[9]]))
+            }
+            
+            it("String Array"){
+                let list = ["ABCD","abcd"]
+                expect(transpose(list)).to(equal(["Aa","Bb","Cc","Dd"]))
+            }
+            
+            it("String") {
+                expect(intersperse("+", "")).to(equal(""))
+                expect(intersperse("+", "A")).to(equal("A"))
+                expect(intersperse("+", "ABC")).to(equal("A+B+C"))
+            }
+        }
+        
         describe("foldl") {
             it("Int Array") {
                 let adds     = { (x: Int,y: Int) in x+y }
@@ -401,7 +440,7 @@ class DataListSpec: QuickSpec {
                 expect(and([false, true])).to(beFalse())
             }
         }
-       
+        
         describe("or") {
             it("Bool Array") {
                 expect(or([true,true])).to(beTrue())
@@ -719,7 +758,7 @@ class DataListSpec: QuickSpec {
                 expect(result).to(equal(3))
             }
         }
-       
+        
         describe("minimum") {
             it("CGFloat Array") {
                 let list : [CGFloat] = [4.4, 2.2, 3.3]
@@ -877,7 +916,7 @@ class DataListSpec: QuickSpec {
                 expect(scanr(insert, "", "World")).to(equal(["d", "ld", "rld", "orld", "World"]))
             }
         }
-       
+        
         describe("scanr1") {
             it("Int Array") {
                 let adds     = { (x: Int,y: Int) in x+y }
@@ -1272,7 +1311,7 @@ class DataListSpec: QuickSpec {
                 expect(notElem(list, "T")).to(beTrue())
             }
         }
-       
+        
         describe("lookup") {
             it("Int Array") {
                 let list            = ["a": 0, "b": 1]
@@ -1286,7 +1325,7 @@ class DataListSpec: QuickSpec {
                 expect(lookup("middlename", list)).to(beNil())
             }
         }
-       
+        
         describe("find") {
             it("Int Array") {
                 let list             = [1, 2, 3, 4, 5]
@@ -1688,7 +1727,7 @@ class DataListSpec: QuickSpec {
                 let result          = zipWith7(process, ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"])
                 expect(result).to(equal(["1.swift1.swift1","2.o2.o2","3.cpp3.cpp3"]))
             }
-
+            
             it("String Array - Int") {
                 let process         = {(a: Int,b: String,c: String,d: String,e: String,f: String,g: String) -> String in String(a)+b+c+d+e+f+g}
                 let result          = zipWith7(process, [1, 2, 3], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"], [".", ".", ".", "." ], ["swift", "o", "cpp"], ["1", "2", "3"])
@@ -1715,7 +1754,7 @@ class DataListSpec: QuickSpec {
                 expect(r1).to(equal([".swift", ".o", ".cpp"]))
             }
         }
-
+        
         describe("unzip3") {
             it("Int Array") {
                 let (r0, r1, r2)        = unzip3([(1,1,1),(2,4,8),(3,9,27)])
@@ -1793,7 +1832,7 @@ class DataListSpec: QuickSpec {
                 expect(r4).to(equal([1, 4, 9]))
             }
         }
-       
+        
         describe("unzip6") {
             it("Int Array") {
                 let (r0, r1, r2, r3, r4, r5)        = unzip6([(1,1,1,1,1,1),(2,4,8,2,4,8),(3,9,27,3,9,27)])
@@ -1952,7 +1991,7 @@ class DataListSpec: QuickSpec {
                 expect(intersect(list1, list2)).to(equal(["Set", "Set"]))
             }
         }
-       
+        
         describe("sort") {
             it("Int Array") {
                 let list    = [1, 1, 2, 4, 1, 3, 9]
@@ -2107,7 +2146,7 @@ class DataListSpec: QuickSpec {
                 let r1       = intersectBy({x,y in x == y}, list2, list1)
                 expect(r1).to(equal(["Set","Any"]))
             }
-        
+            
             it("String") {
                 let list1   = "overloaded"
                 let list2   = "number of elements"
@@ -2197,7 +2236,6 @@ class DataListSpec: QuickSpec {
                 expect(minimumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list)).to(equal("Any"))
             }
         }
-        
         
         describe("genericLength") {
             it("Int Array") {

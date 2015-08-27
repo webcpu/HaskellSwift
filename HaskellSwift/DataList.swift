@@ -176,6 +176,76 @@ public func reverse(xs: String) -> String {
     return String(xs.characters.reverse())
 }
 
+//MARK: intersperse :: a -> [a] -> [a]
+public func intersperse<T>(separator: T, _ xs: [T]) -> [T] {
+    if xs.count <= 1 {
+        return xs
+    }
+    let combine = { (a: [T], b: T) -> [T] in a + [separator] + [b] }
+    return foldl(combine, [xs[0]], tail(xs))
+}
+
+public func intersperse(separator: Character, _ xs: String) -> String {
+    if xs.characters.count <= 1 {
+        return xs
+    }
+    let combine = { (a: String, b: Character) -> String in a + String(separator) + String(b) }
+    return foldl(combine, String(head(xs)), tail(xs))
+}
+//MARK: transpose :: [[a]] -> [[a]]
+//r * c -> c * r
+public func transpose<B>(xss: [[B]]) -> [[B]] {
+    var bss = [[B]]()
+    
+    let cols = maximumBy({ (x , y) -> Ordering in
+        if x > y {
+            return Ordering.GT
+        } else {
+            return Ordering.LT
+        }}, map({ x in length(x)}, xss))
+    
+    for c in  0..<cols {
+        var bs = [B]()
+        for r in 0..<length(xss) {
+            if c < length(xss[r]) {
+                bs.append(xss[r][c])
+            }
+        }
+        bss.append(bs)
+    }
+    
+    return bss
+}
+
+public func transpose(xss: [String]) -> [String] {
+    var bss = [String]()
+    
+    let cols = maximumBy({ (x , y) -> Ordering in
+        if x > y {
+            return Ordering.GT
+        } else {
+            return Ordering.LT
+        }}, map({ x in length(x)}, xss))
+    
+    for c in  0..<cols {
+        var bs = String()
+        for r in 0..<length(xss) {
+            if c < length(xss[r]) {
+                let x = xss[r][xss[r].startIndex.advancedBy(c)]
+                bs.append(x)
+            }
+        }
+        bss.append(bs)
+    }
+    
+    return bss
+}
+//TODO
+//MARK: subsequences :: [a] -> [[a]]
+//TODO
+//MARK: permutations :: [a] -> [[a]]
+//TODO
+
 //MARK: - Reducing lists (folds)
 //MARK: foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
 public func foldl<A,B>(process: (A, B)->A, _ initialValue: A, _ xs: [B]) -> A {
@@ -336,11 +406,23 @@ public func scanr1(combine: (Character, String)->String, _ xs: String) -> [Strin
     let ys = scanr(combine, String(last(xs)), take(xs.characters.count - 1, xs))
     return [String(last(xs))] + ys
 }
+//MARK: - Accumulating maps
+//MARK: mapAccumL :: Traversable t => (a -> b -> (a, c)) -> a -> t b -> (a, t c)
+//MARK: mapAccumR :: Traversable t => (a -> b -> (a, c)) -> a -> t b -> (a, t c)
 
 //MARK: Infinite lists
+//MARK: iterate :: (a -> a) -> a -> [a]
+//MARK: repeat :: a -> [a]
+
+//MARK: replicate :: Int -> a -> [a]
 public func replicate<A>(len: Int, _ value: A) -> [A] {
     return [A].init(count: len, repeatedValue: value)
 }
+
+//MARK: cycle :: [a] -> [a]
+
+//MARK: Unfolding
+//MARK: unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
 
 //MARK: - Sublists
 //MARK: Extracting sublists
@@ -351,7 +433,7 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
     if len == 0 {
         return list
     }
-
+    
     if len >= xs.count {
         return xs
     }
@@ -366,12 +448,12 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
 //MARK: - Special folds
 //MARK: concat :: Foldable t => t [a] -> [a]
 public func concat<A> (xss: [[A]]) -> [A] {
-   // assert(xs.count >= 0 , "Illegal Length")
+    // assert(xs.count >= 0 , "Illegal Length")
     var xs = [A]()
     if xss.isEmpty {
         return xs
     }
-   
+    
     let process = { (a : [A], b: [A]) in a + b }
     xs          = foldl(process, xs, xss)
     
@@ -468,7 +550,7 @@ public func all(process: Character->Bool, _ xs: String) -> Bool {
 
 //MARK: sum :: (Foldable t, Num a) => t a -> a
 public func sum(xs: [CGFloat])-> CGFloat {
-     return reduce(+, 0, xs)
+    return reduce(+, 0, xs)
 }
 
 public func sum(xs: [Double])-> Double {
@@ -1345,7 +1427,7 @@ public func unzip3<A, B, C>(xs: [(A, B, C)]) -> ([A],[B],[C])  {
     var r0 = [A]()
     var r1 = [B]()
     var r2 = [C]()
-
+    
     for x in xs {
         r0.append(x.0)
         r1.append(x.1)
@@ -1421,7 +1503,7 @@ public func unzip7<A, B, C, D, E, F, G>(xs: [(A, B, C, D, E, F, G)]) -> ([A],[B]
     var r4 = [E]()
     var r5 = [F]()
     var r6 = [G]()
-
+    
     for x in xs {
         r0.append(x.0)
         r1.append(x.1)
@@ -1663,7 +1745,7 @@ public func groupBy<A: Equatable>(f : (A, A)->Bool, _ xs: [A]) -> [[A]] {
         let ys          = takeWhile( { x in f(y, x)}, drop(1, list))
         list            = drop(ys.count > 0 ? ys.count + 1 : 1, list)
         result.append(ys.count > 0 ? [y] + ys : [y])
-        print("y = \(y), items = \(ys), list = \(list)")
+        //print("y = \(y), items = \(ys), list = \(list)")
     }
     
     return result
