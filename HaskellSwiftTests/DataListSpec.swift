@@ -268,11 +268,34 @@ class DataListSpec: QuickSpec {
                 let list = ["ABCD","abcd"]
                 expect(transpose(list)).to(equal(["Aa","Bb","Cc","Dd"]))
             }
+        }
+        
+        describe("subsequences") {
+            it("Int Array") {
+                var emptySequence = [[Int]]()
+                emptySequence.append([Int]())
+                expect(subsequences([Int]())).to(equal(emptySequence))
+                
+                expect(subsequences([1,2,3])).to(equal([[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]))
+            }
             
+            it("String Array"){
+                var emptySequence = [[String]]()
+                emptySequence.append([String]())
+                expect(subsequences([String]())).to(equal(emptySequence))
+                
+                let list = ["ABCD","abcd"]
+                expect(subsequences(list)).to(equal([[],["ABCD"],["abcd"],["ABCD","abcd"]]))
+            }
+
             it("String") {
-                expect(intersperse("+", "")).to(equal(""))
-                expect(intersperse("+", "A")).to(equal("A"))
-                expect(intersperse("+", "ABC")).to(equal("A+B+C"))
+                var emptySequence = [String]()
+                emptySequence.append(String())
+                expect(subsequences(String())).to(equal(emptySequence))
+                
+                let list         = "ABCD"
+                let expectedList = ["","A","B","AB","C","AC","BC","ABC","D","AD","BD","ABD","CD","ACD","BCD","ABCD"]
+                expect(subsequences(list)).to(equal(expectedList))
             }
         }
         

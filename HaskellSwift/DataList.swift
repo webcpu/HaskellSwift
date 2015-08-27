@@ -240,9 +240,60 @@ public func transpose(xss: [String]) -> [String] {
     
     return bss
 }
-//TODO
+
 //MARK: subsequences :: [a] -> [[a]]
-//TODO
+public func subsequences<B>(xs: [B]) -> [[B]] {
+    if xs.isEmpty {
+        return emptySubSequence()
+    }
+    
+    return emptySubSequence() + nonEmptySubsequences(xs)
+}
+
+func emptySubSequence<B>() -> [[B]] {
+    var r = [[B]]()
+    r.append([B]())
+    return r
+}
+
+func nonEmptySubsequences<B>(xs: [B]) -> [[B]] {
+    if xs.isEmpty {
+        return [[B]]()
+    }
+    
+    let r0 = [head(xs)]
+    let f  = { (ys: [B], r: [[B]]) -> [[B]] in [ys] + [[head(xs)] + ys] + r }
+    let r1 = foldr(f, [[B]](), nonEmptySubsequences(tail(xs)))
+    
+    return [r0] + r1
+}
+
+public func subsequences(xs: String) -> [String] {
+    if xs.isEmpty {
+        return emptySubSequence()
+    }
+    
+    return emptySubSequence() + nonEmptySubsequences(xs)
+}
+
+func emptySubSequence() -> [String] {
+    var r = [String]()
+    r.append(String())
+    return r
+}
+
+func nonEmptySubsequences(xs: String) -> [String] {
+    if xs.isEmpty {
+        return [String]()
+    }
+    
+    let r0 = String(head(xs))
+    let f  = { (ys: String, r: [String]) -> [String] in [ys] + [String(head(xs)) + ys] + r }
+    let r1 = foldr(f, [String](), nonEmptySubsequences(tail(xs)))
+    
+    return [r0] + r1
+}
+
 //MARK: permutations :: [a] -> [[a]]
 //TODO
 
