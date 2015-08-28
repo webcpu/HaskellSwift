@@ -1228,6 +1228,29 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("stripPrefix") {
+            it("Int Array") {
+                let list1           = [1, 1]
+                let list2           = [1, 1, 2, 3, 3, 5, 5]
+                expect(stripPrefix([9,1], list2)).to(beNil())
+                expect(stripPrefix(list1, list2)).to(equal([2, 3, 3, 5, 5]))
+            }
+            
+            it("String Array") {
+                let list1           = ["foo"]
+                let list2           = ["foo", "bar"]
+                expect(stripPrefix(["bar"], list2)).to(beNil())
+                expect(stripPrefix(list1, list2)).to(equal(["bar"]))
+            }
+           
+            it("String") {
+                let list1           = "foo"
+                let list2           = "foobar"
+                expect(stripPrefix("bar", list2)).to(beNil())
+                expect(stripPrefix(list1, list2)).to(equal("bar"))
+            }
+        }
+        
         describe("group") {
             it("Int Array") {
                 let ints            = [1, 1, 2, 3, 3, 5, 5]
@@ -1375,7 +1398,7 @@ class DataListSpec: QuickSpec {
                 let list3            = [1, 5]
                 expect(isSubsequenceOf(list1, list2)).to(beTrue())
                 expect(isSubsequenceOf(list1, list3)).to(beFalse())
-                expect(isSubsequenceOf(list1, list1)).to(beFalse())
+                expect(isSubsequenceOf(list1, list1)).to(beTrue())
             }
             
             it("String Array") {
@@ -1386,7 +1409,7 @@ class DataListSpec: QuickSpec {
                 expect(isSubsequenceOf(list1, list2)).to(beTrue())
                 expect(isSubsequenceOf(list1, list3)).to(beTrue())
                 expect(isSubsequenceOf(list1, list4)).to(beFalse())
-                expect(isSubsequenceOf(list1, list1)).to(beFalse())
+                expect(isSubsequenceOf(list1, list1)).to(beTrue())
             }
             
             it("String") {
@@ -1395,47 +1418,47 @@ class DataListSpec: QuickSpec {
                 let list3            = "Hello"
                 expect(isSubsequenceOf(list1, list2)).to(beTrue())
                 expect(isSubsequenceOf(list1, list3)).to(beFalse())
-                expect(isSubsequenceOf(list1, list1)).to(beFalse())
+                expect(isSubsequenceOf(list1, list1)).to(beTrue())
             }
         }
         
         describe("elem") {
             it("Int Array") {
                 let list            = [2, 3, 3]
-                expect(elem(list, 3)).to(beTrue())
-                expect(elem(list, 5)).to(beFalse())
+                expect(elem(3, list)).to(beTrue())
+                expect(elem(5, list)).to(beFalse())
             }
             
             it("String Array") {
                 let list            = ["World", "Hello"]
-                expect(elem(list, "Hello")).to(beTrue())
-                expect(elem(list, "Good")).to(beFalse())
+                expect(elem("Hello", list)).to(beTrue())
+                expect(elem("Good", list)).to(beFalse())
             }
             
             it("String") {
                 let list            = "Hello"
-                expect(elem(list, "H")).to(beTrue())
-                expect(elem(list, "T")).to(beFalse())
+                expect(elem("H", list)).to(beTrue())
+                expect(elem("T", list)).to(beFalse())
             }
         }
         
         describe("notElem") {
             it("Int Array") {
                 let list            = [2, 3, 3]
-                expect(notElem(list, 3)).to(beFalse())
-                expect(notElem(list, 5)).to(beTrue())
+                expect(notElem(3, list)).to(beFalse())
+                expect(notElem(5, list)).to(beTrue())
             }
             
             it("String Array") {
                 let list            = ["World", "Hello"]
-                expect(notElem(list, "Hello")).to(beFalse())
-                expect(notElem(list, "Good")).to(beTrue())
+                expect(notElem("Hello", list)).to(beFalse())
+                expect(notElem("Good", list)).to(beTrue())
             }
             
             it("String") {
                 let list            = "Hello"
-                expect(notElem(list, "H")).to(beFalse())
-                expect(notElem(list, "T")).to(beTrue())
+                expect(notElem("H", list)).to(beFalse())
+                expect(notElem("T", list)).to(beTrue())
             }
         }
         

@@ -976,6 +976,15 @@ public func breakx(check: Character -> Bool, _ xs: String) -> (String, String) {
     return (take(len, xs), drop(len, xs))
 }
 
+//MARK: stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
+public func stripPrefix<U: Equatable>(xs: [U], _ ys: [U]) -> [U]? {
+    return isPrefixOf(xs, ys) ? drop(length(xs), ys) : nil
+}
+
+public func stripPrefix(xs: String, _ ys: String) -> String? {
+    return isPrefixOf(xs, ys) ? drop(length(xs), ys) : nil
+}
+
 //MARK: group :: Eq a => [a] -> [[a]]
 public func group<U: Equatable>(xs: [U]) -> [[U]] {
     return groupBy({x,y in x == y}, xs)
@@ -1083,17 +1092,17 @@ public func isInfixOf(xs1: String, _ xs2: String) -> Bool {
 
 //MARK: isSubsequenceOf :: Eq a => [a] -> [a] -> Bool
 public func isSubsequenceOf<U: Equatable>(xs1: [U], _ xs2: [U]) -> Bool {
-    return isInfixOf(xs1, xs2) && xs1.count < xs2.count
+    return elem(xs1, subsequences(xs2))
 }
 
 public func isSubsequenceOf(xs1: String, _ xs2: String) -> Bool {
-    return isInfixOf(xs1, xs2) && xs1.characters.count < xs2.characters.count
+    return elem(xs1, subsequences(xs2))
 }
 
 //MARK: - Searching lists
 //MARK: Searching by equality
 //MARK: elem :: (Foldable t, Eq a) => a -> t a -> Bool
-public func elem<A: Equatable>(xs: [A], _ value: A )->Bool {
+public func elem<A: Equatable>(value: A, _ xs: [A])->Bool {
     for x in xs {
         if x == value {
             return true
@@ -1103,8 +1112,8 @@ public func elem<A: Equatable>(xs: [A], _ value: A )->Bool {
     return false
 }
 
-public func elem(xs: String, _ value: Character )->Bool {
-    for x in xs.characters {
+public func elem<A: Equatable>(value: [A], _ xs: [[A]])->Bool {
+    for x in xs {
         if x == value {
             return true
         }
@@ -1113,13 +1122,23 @@ public func elem(xs: String, _ value: Character )->Bool {
     return false
 }
 
-//MARK: notElem :: (Foldable t, Eq a) => a -> t a -> Bool 
-public func notElem<A: Equatable>(xs: [A], _ value: A )->Bool {
-    return not(elem(xs, value))
+public func elem(c: Character , _ xs: String)->Bool {
+    for x in xs.characters {
+        if x == c {
+            return true
+        }
+    }
+    
+    return false
 }
 
-public func notElem(xs: String, _ value: Character )->Bool {
-    return not(elem(xs, value))
+//MARK: notElem :: (Foldable t, Eq a) => a -> t a -> Bool 
+public func notElem<A: Equatable>(x: A, _ xs: [A])->Bool {
+    return not(elem(x, xs))
+}
+
+public func notElem(x: Character, _ xs: String)->Bool {
+    return not(elem(x, xs))
 }
 
 //MARK: lookup :: Eq a => a -> [(a, b)] -> Maybe b
