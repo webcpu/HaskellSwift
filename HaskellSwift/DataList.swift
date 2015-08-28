@@ -118,6 +118,15 @@ public func initx(xs: String)->String {
     return list
 }
 
+//MARK: uncons :: [a] -> Maybe (a, [a])
+public func uncons<A>(xs: [A]) -> (A, Array<A>)? {
+    return length(xs) > 0 ? (head(xs), tail(xs)) : nil
+}
+
+public func uncons(xs: String) -> (Character, String)? {
+    return length(xs) > 0 ? (head(xs), tail(xs)) : nil
+}
+
 //MARK: null :: Foldable t => t a -> Bool
 public func null<T>(xs: [T]) -> Bool {
     return xs.isEmpty
@@ -192,6 +201,16 @@ public func intersperse(separator: Character, _ xs: String) -> String {
     let combine = { (a: String, b: Character) -> String in a + String(separator) + String(b) }
     return foldl(combine, String(head(xs)), tail(xs))
 }
+
+//MARK: intercalate :: [a] -> [[a]] -> [a]
+public func intercalate<T>(xs: [T], _ xss: [[T]]) -> [T] {
+    return concat(intersperse(xs, xss))
+}
+
+public func intercalate(xs: String, _ xss: [String]) -> String {
+    return concat(intersperse(xs, xss))
+}
+
 //MARK: transpose :: [[a]] -> [[a]]
 //r * c -> c * r
 public func transpose<B>(xss: [[B]]) -> [[B]] {
@@ -295,7 +314,46 @@ func nonEmptySubsequences(xs: String) -> [String] {
 }
 
 //MARK: permutations :: [a] -> [[a]]
-//TODO
+public func permutations<B>(xs: [B]) -> [[B]] {
+    if let (h, t) = uncons(xs) {
+        let r0 = permutations(t)
+        let r1 = r0 >>= { ys in between(h, ys) }
+        return r1
+    } else {
+        return [[]]
+    }
+}
+
+public func permutations(xs: String) -> [String] {
+    if let (h, t) = uncons(xs) {
+        let r0 = permutations(t)
+        let r1 = r0 >>= { (ys: String) -> [String] in between(h, ys) }
+        return r1
+    } else {
+        return [""]
+    }
+}
+
+func between<A>(x: A, _ ys: [A]) -> [[A]] {
+    if let (h, t) = uncons(ys) {
+        return [[x] + ys] + map({[h] + $0}, between(x, t))
+    } else {
+        return [[x]]
+    }
+}
+
+func between(x: Character, _ ys: String) -> [String] {
+    if let (h, t) = uncons(ys) {
+        return [String(x) + ys] + map({String(h) + $0}, between(x, t))
+    } else {
+        return [String(x)]
+    }
+}
+
+infix operator >>= {}
+func >>=<A, B>(xs: [A], f: A -> [B]) -> [B] {
+    return xs.map(f).reduce([], combine: +)
+}
 
 //MARK: - Reducing lists (folds)
 //MARK: foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
@@ -472,8 +530,22 @@ public func replicate<A>(len: Int, _ value: A) -> [A] {
 
 //MARK: cycle :: [a] -> [a]
 
-//MARK: Unfolding
+//MARK: - Unfolding
 //MARK: unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
+public func unfoldr<A,B>(f: B -> (A, B)?, _ seed: B) -> [A] {
+    var xs  = [A]()
+    var b   = seed
+    repeat {
+        let r    = f(b)
+        guard r != nil else {
+            break;
+        }
+        xs.append(r!.0)
+        b       = r!.1
+    } while (true)
+    
+    return xs
+}
 
 //MARK: - Sublists
 //MARK: Extracting sublists

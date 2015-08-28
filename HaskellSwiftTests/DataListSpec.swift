@@ -141,6 +141,40 @@ class DataListSpec: QuickSpec {
                 expect(initx("WHO")).to(equal("WH"))
             }
         }
+       
+        describe("uncons") {
+            it("Int Array") {
+                expect(uncons([Int]())).to(beNil())
+                
+                let t0 = uncons([1])
+                expect(t0!.0).to(equal(1))
+                expect(t0!.1).to(equal([]))
+                
+                let t1 = uncons([1,2])
+                expect(t1!.0).to(equal(1))
+                expect(t1!.1).to(equal([2]))
+            }
+            
+            it("String Array") {
+                expect(uncons([String]())).to(beNil())
+                let t0 = uncons(["World"])
+                expect(t0!.0).to(equal("World"))
+                expect(t0!.1).to(equal([String]()))
+
+            }
+            
+            it("String") {
+                expect(uncons(String())).to(beNil())
+                
+                let t0 = uncons("a")
+                expect(t0!.0).to(equal("a"))
+                expect(t0!.1).to(equal(""))
+
+                let t1 = uncons("ab")
+                expect(t1!.0).to(equal("a"))
+                expect(t1!.1).to(equal("b" as String))
+            }
+        }
         
         describe("null") {
             it("Int Array") {
@@ -258,6 +292,15 @@ class DataListSpec: QuickSpec {
             }
         }
         
+        describe("intercalate") {
+            it("String Array"){
+                let list = ["File", "Edit", "View"]
+                expect(intercalate(".", [])).to(equal(""))
+                expect(intercalate("+", ["Fine"])).to(equal("Fine"))
+                expect(intercalate(".", list)).to(equal("File.Edit.View"))
+            }
+        }
+        
         describe("transpose") {
             it("Int Array") {
                 expect(transpose([[1,2,3],[4,5,6],[7,8,9]])).to(equal([[1,4,7],[2,5,8],[3,6,9]]))
@@ -296,6 +339,30 @@ class DataListSpec: QuickSpec {
                 let list         = "ABCD"
                 let expectedList = ["","A","B","AB","C","AC","BC","ABC","D","AD","BD","ABD","CD","ACD","BCD","ABCD"]
                 expect(subsequences(list)).to(equal(expectedList))
+            }
+        }
+        
+        describe("permutations") {
+            it("Int Array") {
+                var emptySequence = [[Int]]()
+                emptySequence.append([Int]())
+                expect(permutations([Int]())).to(equal(emptySequence))
+                
+                expect(permutations([1,2,3])).to(equal([[1,2,3], [2,1,3], [2,3,1], [1,3,2], [3,1,2], [3,2,1]]))
+            }
+            
+            it("String Array"){
+                var emptySequence = [[String]]()
+                emptySequence.append([String]())
+                expect(permutations([String]())).to(equal(emptySequence))
+                
+                let list = ["IT", "IS", "BAD"]
+                expect(permutations(list)).to(equal([["IT","IS","BAD"], ["IS","IT","BAD"], ["IS","BAD","IT"], ["IT","BAD","IS"], ["BAD","IT","IS"], ["BAD","IS","IT"]]))
+            }
+            
+            it("String") {
+                expect(permutations(String())).to(equal([""]))
+                expect(permutations("abc")).to(equal(["abc", "bac", "bca", "acb", "cab", "cba"]))
             }
         }
         
@@ -862,18 +929,6 @@ class DataListSpec: QuickSpec {
             }
         }
         
-        describe("replicate") {
-            it("Int Array") {
-                let ints = replicate(100, 123)
-                expect(filter( { x in x == 123 }, ints).count).to(equal(100))
-            }
-            
-            it("String Array") {
-                let strings = replicate(100, "Good")
-                expect(filter( { x in x == "Good" }, strings).count).to(equal(100))
-            }
-        }
-        
         describe("scanl") {
             it("Int Array") {
                 let adds     = { (x: Int,y: Int) in x+y }
@@ -961,6 +1016,55 @@ class DataListSpec: QuickSpec {
                 //let insert = { (x: Character, y: String) in String(x) + y } //Wrong
                 let insert = { (x: Character, y: String) -> String in String(x) + y } //Correct
                 expect(scanr1(insert, "World")).to(equal(["d", "ld", "rld", "orld", "World"]))
+            }
+        }
+        
+        describe("replicate") {
+            it("Int Array") {
+                let ints = replicate(100, 123)
+                expect(filter( { x in x == 123 }, ints).count).to(equal(100))
+            }
+            
+            it("String Array") {
+                let strings = replicate(100, "Good")
+                expect(filter( { x in x == "Good" }, strings).count).to(equal(100))
+            }
+        }
+        
+        describe("unfoldr") {
+            it("Int Array") {
+                let ints = unfoldr({ (b: Int) -> (Int, Int)? in
+                    if b < 1 {
+                        return nil
+                    } else {
+                        return (b, b - 1)
+                    }
+                    }, 10)
+                expect(ints).to(equal([10,9,8,7,6,5,4,3,2,1]))
+            }
+            
+            it("String Array") {
+                let strings = unfoldr({(b: String) -> (String, String)? in
+                    if length(b) == 0 {
+                        return nil
+                    } else {
+                        return (b, tail(b))
+                    }
+                    }, "Good")
+                expect(strings).to(equal(["Good", "ood", "od", "d"]))
+            }
+            
+            it("String") {
+                var i = 0
+                let string = unfoldr({(b: Character) -> (String, Character)? in
+                    i += 1
+                    if i > 4 {
+                        return nil
+                    } else {
+                        return (String(b), b)
+                    }
+                    }, "A")
+                expect(string).to(equal(["A", "A", "A", "A"]))
             }
         }
         
