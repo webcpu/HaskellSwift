@@ -19,6 +19,8 @@
 		ECF75EC01B7E1E810047B0F7 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF75EC11B7E1EA00047B0F7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; };
 		ECF75EC21B7E1EA00047B0F7 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; };
+		ECFAB3471B92089300017F83 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3461B92089300017F83 /* Data.Tuple.swift */; settings = {ASSET_TAGS = (); }; };
+		ECFAB3491B92096300017F83 /* Data.TupleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		ECF75EB11B7E1B6E0047B0F7 /* Data.List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.List.swift; sourceTree = "<group>"; };
 		ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		ECF75EB51B7E1DA60047B0F7 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
+		ECFAB3461B92089300017F83 /* Data.Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Tuple.swift; sourceTree = "<group>"; };
+		ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.TupleSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,7 @@
 				ECF75E8F1B7E1B420047B0F7 /* Info.plist */,
 				ECF75EB11B7E1B6E0047B0F7 /* Data.List.swift */,
 				EC05C2081B90E79300D93E51 /* Data.Char.swift */,
+				ECFAB3461B92089300017F83 /* Data.Tuple.swift */,
 			);
 			path = HaskellSwift;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 				ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */,
 				EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */,
 				ECF75E9A1B7E1B420047B0F7 /* Info.plist */,
+				ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */,
 			);
 			path = HaskellSwiftTests;
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 				EC05C2091B90E79300D93E51 /* Data.Char.swift in Sources */,
 				ECF75E891B7E1B420047B0F7 /* ViewController.swift in Sources */,
 				ECF75EB21B7E1B6E0047B0F7 /* Data.List.swift in Sources */,
+				ECFAB3471B92089300017F83 /* Data.Tuple.swift in Sources */,
 				ECF75E871B7E1B420047B0F7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECFAB3491B92096300017F83 /* Data.TupleSpec.swift in Sources */,
 				EC05C20B1B90E83200D93E51 /* Data.CharSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
