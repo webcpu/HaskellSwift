@@ -501,6 +501,13 @@ class DataListSpec: QuickSpec {
                 let emptyString = [String]()
                 expect(concat(emptyString)).to(equal(String()))
             }
+            
+            it("Character Array") {
+                let strings = ["H", "e", "l", "l", "o"]
+                expect(concat(strings)).to(equal("Hello"))
+                let emptyString = [Character]()
+                expect(concat(emptyString)).to(equal(String()))
+            }
         }
         
         describe("concatMap") {
@@ -516,8 +523,21 @@ class DataListSpec: QuickSpec {
             
             it("String Arrays") {
                 let strings = ["Hello", "World"]
-                expect(concat(strings)).to(equal("HelloWorld"))
+                let f       = { (s: String) in  [s.uppercaseString, "1"] }
+                let r0      = concatMap(f, strings)
+                expect(r0).to(equal(["HELLO", "1", "WORLD", "1"]))
+                
                 let emptyString = [String]()
+                expect(concat(emptyString)).to(equal(String()))
+            }
+            
+            it("Character Array") {
+                let chars : [Character] = ["H", "e", "l", "l", "o"]
+                let f       = { (x: Character) in String(x) + "1" }
+                let r0      = concatMap(f, chars)
+                expect(r0).to(equal("H1e1l1l1o1"))
+                
+                let emptyString = [Character]()
                 expect(concat(emptyString)).to(equal(String()))
             }
         }

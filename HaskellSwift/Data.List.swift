@@ -595,11 +595,35 @@ public func concat (xss: [String]) -> String {
     return xs
 }
 
+public func concat (xss: [Character]) -> String {
+    var xs = String()
+    if xss.isEmpty {
+        return xs
+    }
+    
+    let process = { (a : String, b: Character) in a + String(b) }
+    xs          = foldl(process, xs, xss)
+    
+    return xs
+}
 //MARK: concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
 public func concatMap<A, B> (process: A->[B], _ xs: [A]) -> [B] {
     // assert(xs.count >= 0 , "Illegal Length")
     
     var xss          = [[B]]()
+    for x in xs {
+        xss.append(process(x))
+    }
+    
+    let results      = concat(xss)
+    
+    return results
+}
+
+public func concatMap(process: Character->String, _ xs: [Character]) -> String {
+    // assert(xs.count >= 0 , "Illegal Length")
+    
+    var xss          = [String]()
     for x in xs {
         xss.append(process(x))
     }
