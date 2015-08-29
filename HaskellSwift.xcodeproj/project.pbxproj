@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC05C2091B90E79300D93E51 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C2081B90E79300D93E51 /* Data.Char.swift */; settings = {ASSET_TAGS = (); }; };
+		EC05C20B1B90E83200D93E51 /* Data.CharSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		ECF75E871B7E1B420047B0F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E861B7E1B420047B0F7 /* AppDelegate.swift */; };
 		ECF75E891B7E1B420047B0F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E881B7E1B420047B0F7 /* ViewController.swift */; };
 		ECF75E8B1B7E1B420047B0F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECF75E8A1B7E1B420047B0F7 /* Assets.xcassets */; };
 		ECF75E8E1B7E1B420047B0F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECF75E8C1B7E1B420047B0F7 /* Main.storyboard */; };
-		ECF75E991B7E1B420047B0F7 /* DataListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* DataListSpec.swift */; };
 		ECF75EA41B7E1B420047B0F7 /* HaskellSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EA31B7E1B420047B0F7 /* HaskellSwiftUITests.swift */; };
-		ECF75EB21B7E1B6E0047B0F7 /* DataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EB11B7E1B6E0047B0F7 /* DataList.swift */; };
+		ECF75EB21B7E1B6E0047B0F7 /* Data.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EB11B7E1B6E0047B0F7 /* Data.List.swift */; };
 		ECF75EBF1B7E1E810047B0F7 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF75EC01B7E1E810047B0F7 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF75EC11B7E1EA00047B0F7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; };
@@ -61,6 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EC05C2081B90E79300D93E51 /* Data.Char.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Char.swift; sourceTree = "<group>"; };
+		EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.CharSpec.swift; sourceTree = "<group>"; };
 		ECF75E831B7E1B420047B0F7 /* HaskellSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HaskellSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF75E861B7E1B420047B0F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECF75E881B7E1B420047B0F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,12 +71,12 @@
 		ECF75E8D1B7E1B420047B0F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ECF75E8F1B7E1B420047B0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECF75E941B7E1B420047B0F7 /* HaskellSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HaskellSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECF75E981B7E1B420047B0F7 /* DataListSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListSpec.swift; sourceTree = "<group>"; };
+		ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.ListSpec.swift; sourceTree = "<group>"; };
 		ECF75E9A1B7E1B420047B0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECF75E9F1B7E1B420047B0F7 /* HaskellSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HaskellSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF75EA31B7E1B420047B0F7 /* HaskellSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaskellSwiftUITests.swift; sourceTree = "<group>"; };
 		ECF75EA51B7E1B420047B0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECF75EB11B7E1B6E0047B0F7 /* DataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataList.swift; sourceTree = "<group>"; };
+		ECF75EB11B7E1B6E0047B0F7 /* Data.List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.List.swift; sourceTree = "<group>"; };
 		ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		ECF75EB51B7E1DA60047B0F7 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,7 +137,8 @@
 				ECF75E8A1B7E1B420047B0F7 /* Assets.xcassets */,
 				ECF75E8C1B7E1B420047B0F7 /* Main.storyboard */,
 				ECF75E8F1B7E1B420047B0F7 /* Info.plist */,
-				ECF75EB11B7E1B6E0047B0F7 /* DataList.swift */,
+				ECF75EB11B7E1B6E0047B0F7 /* Data.List.swift */,
+				EC05C2081B90E79300D93E51 /* Data.Char.swift */,
 			);
 			path = HaskellSwift;
 			sourceTree = "<group>";
@@ -142,7 +146,8 @@
 		ECF75E971B7E1B420047B0F7 /* HaskellSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				ECF75E981B7E1B420047B0F7 /* DataListSpec.swift */,
+				ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */,
+				EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */,
 				ECF75E9A1B7E1B420047B0F7 /* Info.plist */,
 			);
 			path = HaskellSwiftTests;
@@ -297,8 +302,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC05C2091B90E79300D93E51 /* Data.Char.swift in Sources */,
 				ECF75E891B7E1B420047B0F7 /* ViewController.swift in Sources */,
-				ECF75EB21B7E1B6E0047B0F7 /* DataList.swift in Sources */,
+				ECF75EB21B7E1B6E0047B0F7 /* Data.List.swift in Sources */,
 				ECF75E871B7E1B420047B0F7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF75E991B7E1B420047B0F7 /* DataListSpec.swift in Sources */,
+				EC05C20B1B90E83200D93E51 /* Data.CharSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
