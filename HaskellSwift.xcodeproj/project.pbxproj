@@ -23,6 +23,7 @@
 		ECF7E2781B94851D00E5AC1F /* Data.MaybeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		ECF7E27A1B949B0800E5AC1F /* Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2791B949B0800E5AC1F /* Num.swift */; settings = {ASSET_TAGS = (); }; };
 		ECF7E27C1B949B1C00E5AC1F /* NumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E27B1B949B1C00E5AC1F /* NumSpec.swift */; settings = {ASSET_TAGS = (); }; };
+		ECF7E27D1B94E73C00E5AC1F /* Data.ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		ECFA70021B93319100DCEA5C /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70011B93319100DCEA5C /* Data.Functor.swift */; settings = {ASSET_TAGS = (); }; };
 		ECFA70041B93319E00DCEA5C /* Data.FunctorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		ECFAB3471B92089300017F83 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3461B92089300017F83 /* Data.Tuple.swift */; settings = {ASSET_TAGS = (); }; };
@@ -344,6 +345,7 @@
 				ECF7E2781B94851D00E5AC1F /* Data.MaybeSpec.swift in Sources */,
 				ECF7E27C1B949B1C00E5AC1F /* NumSpec.swift in Sources */,
 				ECFAB3491B92096300017F83 /* Data.TupleSpec.swift in Sources */,
+				ECF7E27D1B94E73C00E5AC1F /* Data.ListSpec.swift in Sources */,
 				EC05C20B1B90E83200D93E51 /* Data.CharSpec.swift in Sources */,
 				ECFA70041B93319E00DCEA5C /* Data.FunctorSpec.swift in Sources */,
 			);

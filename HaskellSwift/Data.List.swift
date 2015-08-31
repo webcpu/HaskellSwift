@@ -696,6 +696,10 @@ public func all(process: Character->Bool, _ xs: String) -> Bool {
 }
 
 //MARK: sum :: (Foldable t, Num a) => t a -> a
+public func sum<A: IntegerType>(xs: [A]) -> A {
+    return reduce(+, 0, xs)
+}
+
 public func sum(xs: [CGFloat])-> CGFloat {
     return reduce(+, 0, xs)
 }
@@ -705,46 +709,6 @@ public func sum(xs: [Double])-> Double {
 }
 
 public func sum(xs: [Float])-> Float {
-    return reduce(+, 0, xs)
-}
-
-public func sum(xs: [Int])-> Int {
-    return reduce(+, 0, xs)
-}
-
-public func sum(xs: [Int16])-> Int16 {
-    return reduce(+, 0, xs)
-}
-
-public func sum(xs: [Int32])-> Int32 {
-    return reduce(+, 0, xs)
-}
-
-public func sum(xs: [Int64])-> Int64 {
-    return reduce(+, 0, xs)
-}
-
-public func sum(xs: [Int8])-> Int8 {
-    return reduce(+, 0, xs)
-}
-
-public func sum(xs: [UInt])-> UInt {
-    return reduce(+, 0, xs)
-}
-
-public func sum(xs: [UInt16])-> UInt16 {
-    return reduce(+, 0, xs)
-}
-
-public func sum(xs: [UInt32])-> UInt32 {
-    return reduce(+, 0, xs)
-}
-
-public func sum(xs: [UInt64])-> UInt64 {
-    return reduce(+, 0, xs)
-}
-
-public func sum(xs: [UInt8])-> UInt8 {
     return reduce(+, 0, xs)
 }
 
@@ -780,43 +744,7 @@ public func product(xs: [Float])-> Float {
     return reduce(*, 1, xs)
 }
 
-public func product(xs: [Int])-> Int {
-    return reduce(*, 1, xs)
-}
-
-public func product(xs: [Int16])-> Int16 {
-    return reduce(*, 1, xs)
-}
-
-public func product(xs: [Int32])-> Int32 {
-    return reduce(*, 1, xs)
-}
-
-public func product(xs: [Int64])-> Int64 {
-    return reduce(*, 1, xs)
-}
-
-public func product(xs: [Int8])-> Int8 {
-    return reduce(*, 1, xs)
-}
-
-public func product(xs: [UInt])-> UInt {
-    return reduce(*, 1, xs)
-}
-
-public func product(xs: [UInt16])-> UInt16 {
-    return reduce(*, 1, xs)
-}
-
-public func product(xs: [UInt32])-> UInt32 {
-    return reduce(*, 1, xs)
-}
-
-public func product(xs: [UInt64])-> UInt64 {
-    return reduce(*, 1, xs)
-}
-
-public func product(xs: [UInt8])-> UInt8 {
+public func product<A: IntegerType>(xs: [A])-> A {
     return reduce(*, 1, xs)
 }
 

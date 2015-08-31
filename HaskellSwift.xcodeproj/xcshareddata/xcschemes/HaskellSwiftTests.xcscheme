@@ -24,6 +24,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "DataListSpec">
+               </Test>
+               <Test
                   Identifier = "HaskellSwiftSpec/tails__tails__String__UsersliangProjectsHaskellSwiftHaskellSwiftTestsHaskellSwiftSpecswift_71()">
                </Test>
                <Test
