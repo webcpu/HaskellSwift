@@ -43,3 +43,4 @@ xcuserdata
 Carthage/Build
 UserInterfaceState.xcuserstate
 HaskellSwift.xcodeproj/xcuserdata/liang.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+.DS_Store
