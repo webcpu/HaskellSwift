@@ -19,6 +19,12 @@
 		ECF75EC01B7E1E810047B0F7 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF75EC11B7E1EA00047B0F7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; };
 		ECF75EC21B7E1EA00047B0F7 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; };
+		ECF7E2761B94850100E5AC1F /* Data.Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2751B94850100E5AC1F /* Data.Maybe.swift */; settings = {ASSET_TAGS = (); }; };
+		ECF7E2781B94851D00E5AC1F /* Data.MaybeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */; settings = {ASSET_TAGS = (); }; };
+		ECF7E27A1B949B0800E5AC1F /* Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2791B949B0800E5AC1F /* Num.swift */; settings = {ASSET_TAGS = (); }; };
+		ECF7E27C1B949B1C00E5AC1F /* NumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E27B1B949B1C00E5AC1F /* NumSpec.swift */; settings = {ASSET_TAGS = (); }; };
+		ECFA70021B93319100DCEA5C /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70011B93319100DCEA5C /* Data.Functor.swift */; settings = {ASSET_TAGS = (); }; };
+		ECFA70041B93319E00DCEA5C /* Data.FunctorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		ECFAB3471B92089300017F83 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3461B92089300017F83 /* Data.Tuple.swift */; settings = {ASSET_TAGS = (); }; };
 		ECFAB3491B92096300017F83 /* Data.TupleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -81,6 +87,12 @@
 		ECF75EB11B7E1B6E0047B0F7 /* Data.List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.List.swift; sourceTree = "<group>"; };
 		ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		ECF75EB51B7E1DA60047B0F7 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
+		ECF7E2751B94850100E5AC1F /* Data.Maybe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Maybe.swift; sourceTree = "<group>"; };
+		ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.MaybeSpec.swift; sourceTree = "<group>"; };
+		ECF7E2791B949B0800E5AC1F /* Num.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Num.swift; sourceTree = "<group>"; };
+		ECF7E27B1B949B1C00E5AC1F /* NumSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumSpec.swift; sourceTree = "<group>"; };
+		ECFA70011B93319100DCEA5C /* Data.Functor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Functor.swift; sourceTree = "<group>"; };
+		ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.FunctorSpec.swift; sourceTree = "<group>"; };
 		ECFAB3461B92089300017F83 /* Data.Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Tuple.swift; sourceTree = "<group>"; };
 		ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.TupleSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +156,9 @@
 				ECF75EB11B7E1B6E0047B0F7 /* Data.List.swift */,
 				EC05C2081B90E79300D93E51 /* Data.Char.swift */,
 				ECFAB3461B92089300017F83 /* Data.Tuple.swift */,
+				ECFA70011B93319100DCEA5C /* Data.Functor.swift */,
+				ECF7E2751B94850100E5AC1F /* Data.Maybe.swift */,
+				ECF7E2791B949B0800E5AC1F /* Num.swift */,
 			);
 			path = HaskellSwift;
 			sourceTree = "<group>";
@@ -151,10 +166,13 @@
 		ECF75E971B7E1B420047B0F7 /* HaskellSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				ECF75E9A1B7E1B420047B0F7 /* Info.plist */,
 				ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */,
 				EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */,
-				ECF75E9A1B7E1B420047B0F7 /* Info.plist */,
 				ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */,
+				ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */,
+				ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */,
+				ECF7E27B1B949B1C00E5AC1F /* NumSpec.swift */,
 			);
 			path = HaskellSwiftTests;
 			sourceTree = "<group>";
@@ -310,9 +328,12 @@
 			files = (
 				EC05C2091B90E79300D93E51 /* Data.Char.swift in Sources */,
 				ECF75E891B7E1B420047B0F7 /* ViewController.swift in Sources */,
+				ECFA70021B93319100DCEA5C /* Data.Functor.swift in Sources */,
 				ECF75EB21B7E1B6E0047B0F7 /* Data.List.swift in Sources */,
+				ECF7E27A1B949B0800E5AC1F /* Num.swift in Sources */,
 				ECFAB3471B92089300017F83 /* Data.Tuple.swift in Sources */,
 				ECF75E871B7E1B420047B0F7 /* AppDelegate.swift in Sources */,
+				ECF7E2761B94850100E5AC1F /* Data.Maybe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,8 +341,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECF7E2781B94851D00E5AC1F /* Data.MaybeSpec.swift in Sources */,
+				ECF7E27C1B949B1C00E5AC1F /* NumSpec.swift in Sources */,
 				ECFAB3491B92096300017F83 /* Data.TupleSpec.swift in Sources */,
 				EC05C20B1B90E83200D93E51 /* Data.CharSpec.swift in Sources */,
+				ECFA70041B93319E00DCEA5C /* Data.FunctorSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,12 +20,11 @@ public func snd<A,B>(t: (A,B)) -> B {
 
 //MARK: curry :: ((a, b) -> c) -> a -> b -> c
 public func curry<A,B,C>(f: (A, B)->C)->(A->B->C) {
-    let fab = { (a: A)->(B->C) in { (b: B) -> C in f(a, b)} }
-    return fab
+    return { (a: A)->(B->C) in { (b: B) -> C in f(a, b)} }
 }
 
 public func curry<A,B,C>(f: (A, B)->C, _ a: A)-> (B->C) {
-    return {y in f(a, y) }
+    return {b in f(a, b) }
 }
 
 //MARK: uncurry :: (a -> b -> c) -> (a, b) -> c
