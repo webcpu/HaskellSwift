@@ -8,6 +8,15 @@
 
 import Foundation
 
+public func Nothing() -> AnyObject? {
+    return nil
+}
+
+public func Just<A>(x: A) -> A? {
+    let a : A? = x
+    return a
+}
+
 //MARK: maybe :: b -> (a -> b) -> Maybe a -> b
 public func maybe<A, B>(a: A, _ f:(B->A), _ b: B?) -> A {
     return b == nil ? a : f(b!) //Don't use ??, it is different from this one.

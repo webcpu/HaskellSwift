@@ -13,6 +13,22 @@ import Nimble
 
 class DataMaybeSpec: QuickSpec {
     override func spec() {
+        describe("Nothing") {
+            it("Nothing") {
+                expect(Nothing()).to(beNil())
+            }
+        }
+        
+        describe("Just") {
+            it("Int") {
+                expect(Just(1)).to(equal(1 as Int?))
+            }
+            
+            it("String") {
+                expect(Just("1")).to(equal("1" as String?))
+            }
+        }
+        
         describe("maybe") {
             it("Function") {
                 let _lookup = {x in lookup(x, ["a":1, "b":2])}
