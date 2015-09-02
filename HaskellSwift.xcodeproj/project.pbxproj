@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EC05C2091B90E79300D93E51 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C2081B90E79300D93E51 /* Data.Char.swift */; settings = {ASSET_TAGS = (); }; };
 		EC05C20B1B90E83200D93E51 /* Data.CharSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */; settings = {ASSET_TAGS = (); }; };
+		EC0F91021B959CEE00A79D74 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91011B959CEE00A79D74 /* Data.Ord.swift */; settings = {ASSET_TAGS = (); }; };
+		EC0F91041B959CFF00A79D74 /* Data.OrdSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		ECF75E871B7E1B420047B0F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E861B7E1B420047B0F7 /* AppDelegate.swift */; };
 		ECF75E891B7E1B420047B0F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E881B7E1B420047B0F7 /* ViewController.swift */; };
 		ECF75E8B1B7E1B420047B0F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECF75E8A1B7E1B420047B0F7 /* Assets.xcassets */; };
@@ -21,8 +23,8 @@
 		ECF75EC21B7E1EA00047B0F7 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; };
 		ECF7E2761B94850100E5AC1F /* Data.Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2751B94850100E5AC1F /* Data.Maybe.swift */; settings = {ASSET_TAGS = (); }; };
 		ECF7E2781B94851D00E5AC1F /* Data.MaybeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF7E27A1B949B0800E5AC1F /* Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2791B949B0800E5AC1F /* Num.swift */; settings = {ASSET_TAGS = (); }; };
-		ECF7E27C1B949B1C00E5AC1F /* NumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E27B1B949B1C00E5AC1F /* NumSpec.swift */; settings = {ASSET_TAGS = (); }; };
+		ECF7E27A1B949B0800E5AC1F /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2791B949B0800E5AC1F /* GHC.Num.swift */; settings = {ASSET_TAGS = (); }; };
+		ECF7E27C1B949B1C00E5AC1F /* GHC.NumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		ECF7E27D1B94E73C00E5AC1F /* Data.ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		ECFA70021B93319100DCEA5C /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70011B93319100DCEA5C /* Data.Functor.swift */; settings = {ASSET_TAGS = (); }; };
 		ECFA70041B93319E00DCEA5C /* Data.FunctorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */; settings = {ASSET_TAGS = (); }; };
@@ -73,6 +75,8 @@
 /* Begin PBXFileReference section */
 		EC05C2081B90E79300D93E51 /* Data.Char.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Char.swift; sourceTree = "<group>"; };
 		EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.CharSpec.swift; sourceTree = "<group>"; };
+		EC0F91011B959CEE00A79D74 /* Data.Ord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Ord.swift; sourceTree = "<group>"; };
+		EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.OrdSpec.swift; sourceTree = "<group>"; };
 		ECF75E831B7E1B420047B0F7 /* HaskellSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HaskellSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF75E861B7E1B420047B0F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECF75E881B7E1B420047B0F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,8 +94,8 @@
 		ECF75EB51B7E1DA60047B0F7 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
 		ECF7E2751B94850100E5AC1F /* Data.Maybe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Maybe.swift; sourceTree = "<group>"; };
 		ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.MaybeSpec.swift; sourceTree = "<group>"; };
-		ECF7E2791B949B0800E5AC1F /* Num.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Num.swift; sourceTree = "<group>"; };
-		ECF7E27B1B949B1C00E5AC1F /* NumSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumSpec.swift; sourceTree = "<group>"; };
+		ECF7E2791B949B0800E5AC1F /* GHC.Num.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHC.Num.swift; sourceTree = "<group>"; };
+		ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHC.NumSpec.swift; sourceTree = "<group>"; };
 		ECFA70011B93319100DCEA5C /* Data.Functor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Functor.swift; sourceTree = "<group>"; };
 		ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.FunctorSpec.swift; sourceTree = "<group>"; };
 		ECFAB3461B92089300017F83 /* Data.Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Tuple.swift; sourceTree = "<group>"; };
@@ -159,7 +163,8 @@
 				ECFAB3461B92089300017F83 /* Data.Tuple.swift */,
 				ECFA70011B93319100DCEA5C /* Data.Functor.swift */,
 				ECF7E2751B94850100E5AC1F /* Data.Maybe.swift */,
-				ECF7E2791B949B0800E5AC1F /* Num.swift */,
+				EC0F91011B959CEE00A79D74 /* Data.Ord.swift */,
+				ECF7E2791B949B0800E5AC1F /* GHC.Num.swift */,
 			);
 			path = HaskellSwift;
 			sourceTree = "<group>";
@@ -173,7 +178,8 @@
 				ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */,
 				ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */,
 				ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */,
-				ECF7E27B1B949B1C00E5AC1F /* NumSpec.swift */,
+				EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */,
+				ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */,
 			);
 			path = HaskellSwiftTests;
 			sourceTree = "<group>";
@@ -329,9 +335,10 @@
 			files = (
 				EC05C2091B90E79300D93E51 /* Data.Char.swift in Sources */,
 				ECF75E891B7E1B420047B0F7 /* ViewController.swift in Sources */,
+				EC0F91021B959CEE00A79D74 /* Data.Ord.swift in Sources */,
 				ECFA70021B93319100DCEA5C /* Data.Functor.swift in Sources */,
 				ECF75EB21B7E1B6E0047B0F7 /* Data.List.swift in Sources */,
-				ECF7E27A1B949B0800E5AC1F /* Num.swift in Sources */,
+				ECF7E27A1B949B0800E5AC1F /* GHC.Num.swift in Sources */,
 				ECFAB3471B92089300017F83 /* Data.Tuple.swift in Sources */,
 				ECF75E871B7E1B420047B0F7 /* AppDelegate.swift in Sources */,
 				ECF7E2761B94850100E5AC1F /* Data.Maybe.swift in Sources */,
@@ -342,8 +349,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC0F91041B959CFF00A79D74 /* Data.OrdSpec.swift in Sources */,
 				ECF7E2781B94851D00E5AC1F /* Data.MaybeSpec.swift in Sources */,
-				ECF7E27C1B949B1C00E5AC1F /* NumSpec.swift in Sources */,
+				ECF7E27C1B949B1C00E5AC1F /* GHC.NumSpec.swift in Sources */,
 				ECFAB3491B92096300017F83 /* Data.TupleSpec.swift in Sources */,
 				ECF7E27D1B94E73C00E5AC1F /* Data.ListSpec.swift in Sources */,
 				EC05C20B1B90E83200D93E51 /* Data.CharSpec.swift in Sources */,

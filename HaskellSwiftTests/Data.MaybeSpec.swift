@@ -23,5 +23,66 @@ class DataMaybeSpec: QuickSpec {
                 expect(r1).to(equal(-1))
             }
         }
+        
+        describe("isJust") {
+            it("Int") {
+                var a : Int?
+                expect(isJust(a)).to(beFalse())
+                a = 3
+                expect(isJust(a)).to(beTrue())
+            }
+        }
+        
+        describe("isJust") {
+            it("Int") {
+                var a : Int?
+                expect(isJust(a)).to(beFalse())
+                a = 3
+                expect(isJust(a)).to(beTrue())
+            }
+        }
+        
+        describe("fromMaybe") {
+            it("Int") {
+                var a : Int?
+                expect(fromMaybe(3, a)).to(equal(3))
+                a = 10
+                expect(fromMaybe(3, a)).to(equal(10))
+            }
+        }
+        
+        describe("listToMaybe") {
+            it("Int") {
+                expect(listToMaybe([3])).to(equal(3))
+                expect(listToMaybe([1,2,3])).to(equal(1))
+                expect(listToMaybe([Int]())).to(beNil())
+            }
+        }
+        
+        describe("maybeToList") {
+            it("Int") {
+                var x : Int? = nil
+                expect(maybeToList(x)).to(equal([Int]()))
+                x = 3
+                expect(maybeToList(x)).to(equal([3]))
+            }
+        }
+        
+        describe("catMaybes") {
+            it("Int") {
+                let xs: [Int?] = [1, nil, 3]
+                expect(catMaybes(xs)).to(equal([1,3]))
+            }
+        }
+        
+        describe("mapMaybe") {
+            it("Int") {
+                let xs = [1, 2, 3]
+                let f = {(a: Int) -> String? in
+                    return lookup(a, [1:"a", 5:"e"])
+                }
+                expect(mapMaybe(f, xs)).to(equal(["a"]))
+            }
+        }
     }
 }

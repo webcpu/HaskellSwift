@@ -54,5 +54,12 @@ class NumSpec: QuickSpec {
                 expect(negate(Int8(-1))).to(equal(1))
             }
         }
+        
+        describe("abs") {
+            it("CGFloat") {
+                expect(abs(CGFloat(-1))).to(beCloseTo(CGFloat(1)))
+                expect(abs(CGFloat(1))).to(beCloseTo(CGFloat(1)))
+            }
+        }
     }
 }
