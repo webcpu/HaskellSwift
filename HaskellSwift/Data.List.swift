@@ -350,10 +350,7 @@ func between(x: Character, _ ys: String) -> [String] {
     }
 }
 
-infix operator >>= {}
-func >>=<A, B>(xs: [A], f: A -> [B]) -> [B] {
-    return xs.map(f).reduce([], combine: +)
-}
+//infix operator >>= { associativity left precedence 100}
 
 //MARK: - Reducing lists (folds)
 //MARK: foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b

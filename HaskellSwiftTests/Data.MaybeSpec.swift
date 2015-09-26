@@ -49,12 +49,12 @@ class DataMaybeSpec: QuickSpec {
             }
         }
         
-        describe("isJust") {
+        describe("isNothing") {
             it("Int") {
                 var a : Int?
-                expect(isJust(a)).to(beFalse())
+                expect(isNothing(a)).to(beTrue())
                 a = 3
-                expect(isJust(a)).to(beTrue())
+                expect(isNothing(a)).to(beFalse())
             }
         }
         

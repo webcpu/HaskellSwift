@@ -21,22 +21,30 @@ class DataFunctorSpec: QuickSpec {
             }
         }
         
-        describe("<$") {
+        describe("<^>") {
             it("Function") {
-                let f = 5 <^> {x in x*2 }
+                //true <- "d" <- "D" <- "D321" <- "123D"
+                let f = isLower <^> toLower <^> head <^> reverse
+                expect(f("123D")).to(beTrue())
+            }
+        }
+        
+        describe("<|") {
+            it("Function") {
+                let f = 5 <| {x in x*2 }
                 expect(f(3)).to(equal(10))
             }
             
             it("Int Int") {
-                expect(10 <^> [1,2,3]).to(equal([10,10,10]))
+                expect(10 <| [1,2,3]).to(equal([10,10,10]))
             }
             
             it("Int String") {
-                expect("AA" <^> [1,2,3]).to(equal(["AA","AA","AA"]))
+                expect("AA" <| [1,2,3]).to(equal(["AA","AA","AA"]))
             }
             
             it("Tuple") {
-                let (r0, r1) = "AA" <^> (1, 3)
+                let (r0, r1) = "AA" <| (1, 3)
                 expect(r0).to(equal(1))
                 expect(r1).to(equal("AA"))
             }

@@ -51,23 +51,6 @@
                BlueprintName = "HaskellSwiftTests"
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "DataCharSpec">
-               </Test>
-               <Test
-                  Identifier = "DataFunctorSpec">
-               </Test>
-               <Test
-                  Identifier = "DataListSpec">
-               </Test>
-               <Test
-                  Identifier = "DataOrdSpec">
-               </Test>
-               <Test
-                  Identifier = "DataTupleSpec">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
