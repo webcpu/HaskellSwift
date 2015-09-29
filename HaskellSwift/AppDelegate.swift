@@ -51,22 +51,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print(r2)
         
         // Insert code here to initialize your application
-        let f           = { (x: Int) -> [Int] in
-            var ys = [Int]()
-            ys.append(x + 1)
-            ys.append(x + 2)
-            return ys
+        let d1           = { (x: Int) -> [Int] in
+            return [x+1, x+2]
         }
         
-        let g = { (x: Int) -> [Int] in
-            var xs = [Int]()
-            xs.append(x*2)
-            xs.append(x*3)
-            return xs
+        let d2 = { (x: Int) -> [Int] in
+            return [x*2, x*3]
         }
         
-        let r3 = [1,2,3] >>= f >>= g
+        let d3 = d2
+        
+        let r3 = [1] >>= d1 >>= d2 >>= d3
         print(r3)
+        
+        let r4 = [1] >>= d3 <=< d2 <=< d1
+        print(r4)
+        
+        let r5 = [1] >>= d1 >=> d2 >=> d3
+        print(r5)
+        
+        let ds = [d3,d2,d1]
+        let f6 = { (f:Int->[Int], g: Int->[Int]) -> Int->[Int] in
+                return f <=< g
+            }
+        let r6 = [1] >>= foldr1(f6, ds)
+        print(r6)
     }
 
 }

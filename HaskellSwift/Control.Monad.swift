@@ -8,6 +8,7 @@
 
 import Foundation
 
+//(>>=) :: forall a b. m a -> (a -> m b) -> m b
 infix operator >>= {associativity right precedence 100}
 
 public func >>=<A, B>(xs: [A], f: A -> [B]) -> [B] {
@@ -17,5 +18,21 @@ public func >>=<A, B>(xs: [A], f: A -> [B]) -> [B] {
 public func >>=<A, B, C>(f: A->[B], g: B->[C]) -> (A->[C]) {
     return { (x : A) -> [C] in
         return concat(map(g, f(x)))
+    }
+}
+
+//(<=<) :: Monad m => (b -> m c) -> (a -> m b) -> a -> m c
+infix operator <=< {associativity right precedence 100}
+public func <=<<A, B, C>(f: B->[C], g: A -> [B]) -> (A->[C]) {
+    return { (x: A) -> [C] in
+        return (g >>= f)(x)
+    }
+}
+
+//(>=>) :: Monad m => (a -> m b) -> (b -> m c) -> a -> m c
+infix operator >=> {associativity right precedence 100}
+public func >=><A, B, C>(f: A->[B], g: B -> [C]) -> (A->[C]) {
+    return { (x: A) -> [C] in
+        return (f >>= g)(x)
     }
 }
