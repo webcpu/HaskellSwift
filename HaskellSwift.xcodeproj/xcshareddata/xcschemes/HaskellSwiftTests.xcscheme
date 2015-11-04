@@ -24,6 +24,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "ControlMonadSpec">
+               </Test>
+               <Test
                   Identifier = "DataCharSpec">
                </Test>
                <Test
