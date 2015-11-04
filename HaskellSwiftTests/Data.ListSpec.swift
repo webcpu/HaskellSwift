@@ -14,24 +14,71 @@ class DataListSpec: QuickSpec {
     override func spec() {
         let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
        
-        describe("•") {
-            it ("Int Array") {
-                let process : [Int] -> Int = last • reverse
+        describe("..") {
+            it ("A->B->C|Int Array") {
+                let process : [Int] -> Int = last .. reverse
                 let ints            = [1,2,3,4,5]
                 expect(process(ints)).to(equal(1))
             }
             
-            it("String Array") {
-                let process : [String]->String = last • initx • reverse
+            it("A->B->C|String Array") {
+                let process : [String]->String = last .. initx .. reverse
                 let words           = ["Very", "Good", "Person"]
                 let result          = process(words)
                 expect(result).to(equal("Good"))
             }
             
-            it("String") {
-                let fs              = head  • reverse  • reverse
+            it("A->B->C|String") {
+                let fs              = head .. reverse  .. reverse
                 let result          = fs("ABC")
                 expect(result).to(equal("A"))
+            }
+            
+            it("A->B->C?") {
+                let f0 : Int -> Int = { x in x + 1 }
+                let f1 : Int -> Int? = { x in x % 2 == 0 ? .Some(x + 1) : nil }
+                let fs               = f1 .. f0
+                expect(fs(0)).to(beNil())
+                expect(fs(1)).to(equal(.Some(3)))
+            }
+            
+            it("A->B?->C") {
+                let f0 : Int -> Int? = { x in .Some(x) }
+                let f1 : Int? -> Int = { x in x! + 1 }
+                let fs               = f1 .. f0
+                expect(fs(1)).to(equal(2))
+            }
+            
+            it("A->B?->C?") {
+                let f0 : Int -> Int? = { x in .Some(x+1) }
+                let f1 : Int? -> Int? = { x in .Some(x! + 1) }
+                let fs               = f1 .. f0
+                expect(fs(1)).to(equal(3))
+            }
+            
+            it("A?->B->C") {
+                let f0 : Int? -> Int = { x in x ?? -1 }
+                let f1 : Int -> Int  = { x in x + 1 }
+                let fs               = f1 .. f0
+                expect(fs(1)).to(equal(2))
+                expect(fs(nil)).to(equal(0))
+            }
+            
+            it("A?->B->C?") {
+                let f0 : Int? -> Int = { x in x ?? -1 }
+                let f1 : Int -> Int? = { x in .Some(x + 1) }
+                let fs               = f1 .. f0
+                expect(fs(1)).to(equal(2))
+                expect(fs(nil)).to(equal(.Some(0)))
+            }
+            
+            it("A?->B?->C?") {
+                let f0 : Int? -> Int? = { x in x ?? .Some(-1) }
+                let f1 : Int? -> Int? = { x in .Some(x! + 1) }
+                let fs                = f1 .. f0
+                expect(fs(2)).to(equal(.Some(3)))
+                expect(fs(1)).to(equal(.Some(2)))
+                expect(fs(nil)).to(equal(0))
             }
         }
         
@@ -221,7 +268,14 @@ class DataListSpec: QuickSpec {
                 expect(uppercases).to(equal(uppercaseFiles))
             }
             
-            it("Int Array") {
+            it("Int Array 1") {
+                let countLength     = { (x: String) in x.characters.count }
+                let countLengths     = { xs in map(countLength, xs) }
+                let lengths         = countLengths(files)
+                expect(lengths).to(equal(files.map({ (x: String) in x.characters.count })))
+            }
+            
+            it("Int Array 2") {
                 let countLength     = { (x: String) in x.characters.count }
                 let countLengths     = { xs in map(countLength, xs) }
                 let lengths         = countLengths(files)

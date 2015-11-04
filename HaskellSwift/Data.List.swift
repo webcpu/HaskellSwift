@@ -19,6 +19,47 @@ func •<A,B,C>(f2: B->C, f1: A->B) -> (A->C) {
     return { (x: A) in f2(f1(x)) }
 }
 
+infix operator .. { associativity right precedence 100}
+//A->B->C
+public func ..<A,B,C>(f2: B->C, f1: A->B) -> (A->C) {
+    return { (x: A) in f2(f1(x)) }
+}
+
+//A->B-C?
+public func ..<A,B,C>(f2: B->C?, f1: A->B) -> (A->C?) {
+    return { (x: A) in f2(f1(x)) }
+}
+
+//A->B?-C
+public func ..<A,B,C>(f2: B?->C, f1: A->B?) -> (A->C) {
+    return { (x: A) in f2(f1(x)) }
+}
+
+//A->B?-C?
+public func ..<A,B,C>(f2: B?->C?, f1: A->B?) -> (A->C?) {
+    return { (x: A) in f2(f1(x)) }
+}
+
+//A?->B->C
+public func ..<A,B,C>(f2: B->C, f1: A?->B) -> (A?->C) {
+    return { (x: A?) in f2(f1(x)) }
+}
+
+//A?->B->C?
+public func ..<A,B,C>(f2: B->C?, f1: A?->B) -> (A?->C?) {
+    return { (x: A?) in f2(f1(x)) }
+}
+
+//A?->B?->C
+public func ..<A,B,C>(f2: B?->C, f1: A?->B?) -> (A?->C) {
+    return { (x: A?) in f2(f1(x)) }
+}
+
+//A?->B?->C?
+public func ..<A,B,C>(f2: B?->C?, f1: A?->B?) -> (A?->C?) {
+    return { (x: A?) in f2(f1(x)) }
+}
+
 public func not(value: Bool) -> Bool {
     return !value
 }
