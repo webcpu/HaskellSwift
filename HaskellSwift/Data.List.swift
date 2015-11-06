@@ -217,6 +217,10 @@ public func map<T, U>(transform: T->U, _ xs: [T]) -> [U] {
     return results
 }
 
+public func map<T, U>(transform: T->U)(xs: [T]) -> [U] {
+    return map(transform, xs)
+}
+
 //MARK: reverse :: [a] -> [a]
 public func reverse<T>(xs: [T]) -> [T] {
     return [T](xs.reverse())
@@ -394,7 +398,7 @@ func between(x: Character, _ ys: String) -> [String] {
 //infix operator >>= { associativity left precedence 100}
 
 //MARK: - Reducing lists (folds)
-//MARK: foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
+//MARK: foldl :: Foldable t => (a -> b -> a) -> a -> t b -> a
 public func foldl<A,B>(process: (A, B)->A, _ initialValue: A, _ xs: [B]) -> A {
     assert(!xs.isEmpty, "Empty List")
     return reduce(process, initialValue, xs)
@@ -405,7 +409,7 @@ public func foldl(process: (String, Character)->String, _ initialValue: String, 
     return reduce(process, initialValue, xs)
 }
 
-//MARK: foldl1 :: Foldable t => (a -> a -> a) -> t a -> a
+//MARK: foldl1 :: Foldable t => (a -> b -> a) -> t b -> a
 public func foldl1<A>(process: (A, A)->A, _ xs: [A]) -> A {
     assert(!xs.isEmpty, "Empty List")
     return foldl(process, xs[0], drop(1, xs))
@@ -417,7 +421,7 @@ public func foldl1(process: (String, Character)->String, _ xs: String) -> String
 }
 
 //MARK: reduce :: Foldable t => (b -> a -> b) -> b -> t a -> b
-public func reduce<S, T> (combine: (T, S)->T, _ initial: T, _ xs: [S]) -> T {
+public func reduce<A, B> (combine: (A, B)->A, _ initial: A, _ xs: [B]) -> A {
     var result = initial
     for x in xs {
         result = combine(result, x)
@@ -1170,6 +1174,10 @@ public func filter<U>(check: U -> Bool, _ xs: [U]) -> [U] {
     return results
 }
 
+public func filter<U>(check: U -> Bool)(xs: [U]) -> [U] {
+    return filter(check, xs)
+}
+
 public func filter(check: Character -> Bool, _ xs: String) -> String {
     var results = String()
     for x in xs.characters {
@@ -1296,6 +1304,10 @@ public func zip<A, B>(xs1: [A], _ xs2: [B]) -> [(A, B)] {
     }
     
     return result
+}
+
+public func zip<A, B>(xs1: [A])(xs2: [B]) -> [(A, B)] {
+    return zip(xs1, xs2)
 }
 
 //infix operator == {}

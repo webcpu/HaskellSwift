@@ -33,9 +33,6 @@
                   Identifier = "DataFunctorSpec">
                </Test>
                <Test
-                  Identifier = "DataListSpec">
-               </Test>
-               <Test
                   Identifier = "DataMaybeSpec">
                </Test>
                <Test
@@ -70,6 +67,9 @@
                </Test>
                <Test
                   Identifier = "NumSpec">
+               </Test>
+               <Test
+                  Identifier = "PlayTests/testGenerator()">
                </Test>
             </SkippedTests>
          </TestableReference>

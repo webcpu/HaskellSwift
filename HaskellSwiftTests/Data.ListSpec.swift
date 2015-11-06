@@ -8,6 +8,7 @@
 
 import Quick
 import Nimble
+import SwiftCheck
 @testable import HaskellSwift
 
 class DataListSpec: QuickSpec {
@@ -87,6 +88,14 @@ class DataListSpec: QuickSpec {
                 expect(not(true)).to(beFalse())
                 expect(not(false)).to(beTrue())
             }
+            
+            it("QuickCheck") {
+                property("DeMorgan's Law 1") <- forAll { (a: Bool, b:Bool) in
+                    let l = not(a && b) == (not(a) || not(b))
+                    let r = not(a || b) == (not(a) && not(b))
+                    return l && r
+                }
+            }
         }
         
         describe("++") {
@@ -110,6 +119,28 @@ class DataListSpec: QuickSpec {
                 let result          = list1 ++ list2
                 expect(result).to(equal("Helloworld"))
             }
+            
+            it("QuickCheck") {
+                func isEqual<A : Equatable>(xs0 : ArrayOf<A>, _ xs1: ArrayOf<A>) -> Bool {
+                    return (xs0.getArray + xs1.getArray) == (xs0.getArray ++ xs1.getArray)
+                }
+                
+                property("[Int]") <- forAll { (xs0 : ArrayOf<Int>, xs1 : ArrayOf<Int>) in
+                    return isEqual(xs0, xs1)
+                }
+                
+                property("[Character]") <- forAll { (xs0 : ArrayOf<Character>, xs1 : ArrayOf<Character>) in
+                    return isEqual(xs0, xs1)
+                }
+                
+                property("[String]") <- forAll { (xs0 : ArrayOf<String>, xs1 : ArrayOf<String>) in
+                    return isEqual(xs0, xs1)
+                }
+                
+                property("String") <- forAll { (s0 : String, s1 : String) in
+                    return (s0 + s1) == (s0 ++ s1)
+                }
+            }
         }
         
         describe("head") {
@@ -129,6 +160,32 @@ class DataListSpec: QuickSpec {
                 let result = head("World")
                 expect(result).to(equal("W"))
                 expect(head("W")).to(equal("W"))
+            }
+            
+            it("QuickCheck") {
+                func qualifier<T:Equatable>(xs : Array<T>) -> Property {
+                    return xs.count > 0 ==> {
+                        return head(xs) == (reverse(xs).last)!
+                    }
+                }
+                
+                property("[Int]") <- forAll { (xs : ArrayOf<Int>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("[Character]") <- forAll { (xs : ArrayOf<Character>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("[String]") <- forAll { (xs : ArrayOf<String>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("String") <- forAll { (xs : String) in
+                    return xs.characters.count > 0 ==> {
+                        return head(xs) == xs[xs.startIndex]
+                    }
+                }
             }
         }
        
@@ -151,6 +208,32 @@ class DataListSpec: QuickSpec {
                 expect(result).to(equal("d"))
                 expect(last("W")).to(equal("W"))
             }
+            
+            it("QuickCheck") {
+                func qualifier<T:Equatable>(xs : Array<T>) -> Property {
+                    return xs.count > 0 ==> {
+                        return last(xs) == head(reverse(xs))
+                    }
+                }
+                
+                property("[Int]") <- forAll { (xs : ArrayOf<Int>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("[Character]") <- forAll { (xs : ArrayOf<Character>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("[String]") <- forAll { (xs : ArrayOf<String>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("String") <- forAll { (xs : String) in
+                    return xs.characters.count > 0 ==> {
+                        return last(xs) == xs[xs.endIndex.predecessor()]
+                    }
+                }
+            }
         }
         
         describe("tail") {
@@ -170,6 +253,32 @@ class DataListSpec: QuickSpec {
                 expect(result).to(equal("orld"))
                 expect(tail("W")).to(equal(""))
             }
+            
+            it("QuickCheck") {
+                func qualifier<T:Equatable>(xs : Array<T>) -> Property {
+                    return xs.count > 0 ==> {
+                        return tail(xs) == drop(1, xs)
+                    }
+                }
+                
+                property("[Int]") <- forAll { (xs : ArrayOf<Int>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("[Character]") <- forAll { (xs : ArrayOf<Character>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("[String]") <- forAll { (xs : ArrayOf<String>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("String") <- forAll { (xs : String) in
+                    return xs.characters.count > 0 ==> {
+                        return tail(xs) == drop(1, xs)
+                    }
+                }
+            }
         }
        
         describe("initx") {
@@ -186,6 +295,32 @@ class DataListSpec: QuickSpec {
             it("String") {
                 expect(initx("1")).to(equal(String()))
                 expect(initx("WHO")).to(equal("WH"))
+            }
+            
+            it("QuickCheck") {
+                func qualifier<T:Equatable>(xs : Array<T>) -> Property {
+                    return xs.count > 0 ==> {
+                        return initx(xs) == take(xs.count - 1, xs)
+                    }
+                }
+                
+                property("[Int]") <- forAll { (xs : ArrayOf<Int>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("[Character]") <- forAll { (xs : ArrayOf<Character>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("[String]") <- forAll { (xs : ArrayOf<String>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("String") <- forAll { (xs : String) in
+                    return xs.characters.count > 0 ==> {
+                        return initx(xs) == take(length(xs)-1, xs)
+                    }
+                }
             }
         }
        
@@ -220,6 +355,34 @@ class DataListSpec: QuickSpec {
                 let t1 = uncons("ab")
                 expect(t1!.0).to(equal("a"))
                 expect(t1!.1).to(equal("b" as String))
+            }
+            
+            it("QuickCheck") {
+                func qualifier<T:Equatable>(xs : Array<T>) -> Property {
+                    return xs.count > 0 ==> {
+                        let t = uncons(xs)
+                        return ([t!.0] + t!.1) == xs
+                    }
+                }
+                
+                property("[Int]") <- forAll { (xs : ArrayOf<Int>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("[Character]") <- forAll { (xs : ArrayOf<Character>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("[String]") <- forAll { (xs : ArrayOf<String>) in
+                    return qualifier(xs.getArray)
+                }
+                
+                property("String") <- forAll { (xs : String) in
+                    return xs.characters.count > 0 ==> {
+                        let t = uncons(xs)
+                        return (String(t!.0) + t!.1) == xs
+                    }
+                }
             }
         }
         
