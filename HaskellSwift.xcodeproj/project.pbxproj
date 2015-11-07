@@ -14,6 +14,7 @@
 		EC07BEAC1BE7543A003E0EE8 /* SwiftCheck.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC0F91021B959CEE00A79D74 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91011B959CEE00A79D74 /* Data.Ord.swift */; };
 		EC0F91041B959CFF00A79D74 /* Data.OrdSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */; };
+		EC17FE9D1BEE952E00633AFC /* QualifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */; };
 		EC6634961BB48E0B0086B71B /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634951BB48E0B0086B71B /* Control.Monad.swift */; };
 		EC6634981BB48E2B0086B71B /* Control.MonadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */; };
 		EC72BA2C1B97711100192C2B /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2B1B97711100192C2B /* Control.Applicative.swift */; };
@@ -86,6 +87,7 @@
 		EC07BEAA1BE75265003E0EE8 /* PlaySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySpec.swift; sourceTree = "<group>"; };
 		EC0F91011B959CEE00A79D74 /* Data.Ord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Ord.swift; sourceTree = "<group>"; };
 		EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.OrdSpec.swift; sourceTree = "<group>"; };
+		EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualifierProtocol.swift; sourceTree = "<group>"; };
 		EC6634951BB48E0B0086B71B /* Control.Monad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Monad.swift; sourceTree = "<group>"; };
 		EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.MonadSpec.swift; sourceTree = "<group>"; };
 		EC72BA2B1B97711100192C2B /* Control.Applicative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Applicative.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */,
 				EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */,
 				EC07BEAA1BE75265003E0EE8 /* PlaySpec.swift */,
+				EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */,
 			);
 			path = HaskellSwiftTests;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				EC07BEAB1BE75265003E0EE8 /* PlaySpec.swift in Sources */,
 				EC0F91041B959CFF00A79D74 /* Data.OrdSpec.swift in Sources */,
 				ECF7E2781B94851D00E5AC1F /* Data.MaybeSpec.swift in Sources */,
+				EC17FE9D1BEE952E00633AFC /* QualifierProtocol.swift in Sources */,
 				ECF7E27C1B949B1C00E5AC1F /* GHC.NumSpec.swift in Sources */,
 				ECFAB3491B92096300017F83 /* Data.TupleSpec.swift in Sources */,
 				EC72BA2E1B97712000192C2B /* Control.ApplicativeSpec.swift in Sources */,
@@ -542,6 +546,7 @@
 				);
 				INFOPLIST_FILE = HaskellSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.unchartedworks.HaskellSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -562,6 +567,7 @@
 				);
 				INFOPLIST_FILE = HaskellSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.unchartedworks.HaskellSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -573,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -580,6 +587,7 @@
 				);
 				INFOPLIST_FILE = HaskellSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_SWIFT_FLAGS = "-j 4";
 				PRODUCT_BUNDLE_IDENTIFIER = com.unchartedworks.HaskellSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -591,6 +599,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -598,6 +607,7 @@
 				);
 				INFOPLIST_FILE = HaskellSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_SWIFT_FLAGS = "-j 4";
 				PRODUCT_BUNDLE_IDENTIFIER = com.unchartedworks.HaskellSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

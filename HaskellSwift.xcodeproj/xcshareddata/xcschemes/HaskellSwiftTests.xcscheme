@@ -33,6 +33,9 @@
                   Identifier = "DataFunctorSpec">
                </Test>
                <Test
+                  Identifier = "DataListSpec">
+               </Test>
+               <Test
                   Identifier = "DataMaybeSpec">
                </Test>
                <Test

@@ -14,34 +14,59 @@ import HaskellSwift
 import SwiftCheck
 import XCTest
 
+//func arrayQualifier<A: Equatable>(arbitrary : ArrayOf<A>) -> Property {
+//    return  arbitrary.getArray.count >= 0 ==> {
+//        return false
+//    }
+//}
+//
+//func stringQualifier(xs: String) -> Property {
+//    return (xs.characters.count >= 0) ==> {
+//        return false
+//    }
+//}
+
+//public struct Properties <A : Arbitrary> {
+
+
+
+//func properties<T: Equatable>(arrayQualifier: [T] -> Property, _ stringQualifier: (String -> Property)) {
+////        property("[Int]") <- forAll { (xs : ArrayOf<Int>) in
+////            let f = arrayQualifier.self as ([Int] -> Property)
+////            return f(xs.getArray)
+////        }
+//    
+////        property("[Character]") <- forAll { (xs : ArrayOf<Character>) in
+////            return arrayQualifier<Character>(xs.getArray)
+////        }
+////        
+////        property("[String]") <- forAll { (xs : ArrayOf<String>) in
+////            return arrayQualifier(xs.getArray as [String])
+////        }
+//    
+//        property("String") <- forAll { (xs : String) in
+//            return stringQualifier(xs)
+//        }
+//}
+
 class PlaySpec: QuickSpec {
     override func spec() {
         it("QuickCheck") {
-            func qualifier<T:Equatable>(xs : Array<T>) -> Property {
-                return xs.count > 0 ==> {
-                    let t = uncons(xs)
-                    return ([t!.0] + t!.1) == xs
+            struct LengthProperty: QualifierProtocol {
+                func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
+                    return xs.count >= 0 ==> {
+                        return length(xs) == xs.count
+                    }
+                }
+                
+                func stringQualifier(xs: String) -> Property {
+                    return xs.characters.count >= 0 ==> {
+                        return length(xs) == xs.characters.count
+                    }
                 }
             }
             
-            property("[Int]") <- forAll { (xs : ArrayOf<Int>) in
-                return qualifier(xs.getArray)
-            }
-            
-            property("[Character]") <- forAll { (xs : ArrayOf<Character>) in
-                return qualifier(xs.getArray)
-            }
-            
-            property("[String]") <- forAll { (xs : ArrayOf<String>) in
-                return qualifier(xs.getArray)
-            }
-            
-            property("String") <- forAll { (xs : String) in
-                return xs.characters.count > 0 ==> {
-                    let t = uncons(xs)
-                    return (String(t!.0) + t!.1) == xs
-                }
-            }
+            LengthProperty().generate()
         }
     }
 }
@@ -61,7 +86,7 @@ struct ArbitraryDate : Arbitrary {
 }
 
 class PlayTests: XCTestCase {
-    func testGenerator() {
+    func ftestGenerator() {
         func show<A>(gen: SwiftCheck.Gen<A>)->Int {
             print(gen.generate)
             return 0
@@ -165,16 +190,16 @@ class PlayTests: XCTestCase {
         }
         let emailGen = localEmail.fmap(glue5) <*> Gen.pure("@") <*> hostname <*> Gen.pure(".") <*> tld
         
-        let xs : [Any]      = [
-            onlyFive, fromOnetoFive, lowerCaseLetters, upperCaseLetters,
-            specialCharacters, uppersAndLowers, pairsOfNumbers,
-            weightedGen, biasedUppersAndLowers, oneToFiveEven,
-            characterArray, oddLengthArray, fromTwoToSix,
-            generatorBoundedSizeArrays, fromTwoToSix_, allowedLocalCharacters,
-            localEmail, hostname, tld, emailGen, ArbitraryDate.arbitrary
-        ]
+//        let xs : [Any]      = [
+//            onlyFive, fromOnetoFive, lowerCaseLetters, upperCaseLetters,
+//            specialCharacters, uppersAndLowers, pairsOfNumbers,
+//            weightedGen, biasedUppersAndLowers, oneToFiveEven,
+//            characterArray, oddLengthArray, fromTwoToSix,
+//            generatorBoundedSizeArrays, fromTwoToSix_, allowedLocalCharacters,
+//            localEmail, hostname, tld, emailGen, ArbitraryDate.arbitrary
+//        ]
         
-        map(showAll .. generatorToTransform, xs)
+       // map(showAll .. generatorToTransform, xs)
     }
     
     func testProperties() {
