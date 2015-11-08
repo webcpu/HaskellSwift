@@ -12,6 +12,7 @@
 		EC07BEA91BE75082003E0EE8 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */; };
 		EC07BEAB1BE75265003E0EE8 /* PlaySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC07BEAA1BE75265003E0EE8 /* PlaySpec.swift */; };
 		EC07BEAC1BE7543A003E0EE8 /* SwiftCheck.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC0807311BEFF0C4003DA6CC /* Data.List.QuickCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0807301BEFF0C4003DA6CC /* Data.List.QuickCheck.swift */; };
 		EC0F91021B959CEE00A79D74 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91011B959CEE00A79D74 /* Data.Ord.swift */; };
 		EC0F91041B959CFF00A79D74 /* Data.OrdSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */; };
 		EC17FE9D1BEE952E00633AFC /* QualifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */; };
@@ -85,6 +86,7 @@
 		EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.CharSpec.swift; sourceTree = "<group>"; };
 		EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftCheck.framework; sourceTree = "<group>"; };
 		EC07BEAA1BE75265003E0EE8 /* PlaySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySpec.swift; sourceTree = "<group>"; };
+		EC0807301BEFF0C4003DA6CC /* Data.List.QuickCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.List.QuickCheck.swift; sourceTree = "<group>"; };
 		EC0F91011B959CEE00A79D74 /* Data.Ord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Ord.swift; sourceTree = "<group>"; };
 		EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.OrdSpec.swift; sourceTree = "<group>"; };
 		EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualifierProtocol.swift; sourceTree = "<group>"; };
@@ -144,6 +146,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC0807321BEFF289003DA6CC /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */,
+				EC0807301BEFF0C4003DA6CC /* Data.List.QuickCheck.swift */,
+				EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */,
+				ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */,
+				ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */,
+				ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */,
+				EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		EC72BA2F1B97932A00192C2B /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,13 +236,8 @@
 		ECF75E971B7E1B420047B0F7 /* HaskellSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				EC0807321BEFF289003DA6CC /* Data */,
 				ECF75E9A1B7E1B420047B0F7 /* Info.plist */,
-				ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */,
-				EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */,
-				ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */,
-				ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */,
-				ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */,
-				EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */,
 				ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */,
 				EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */,
 				EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */,
@@ -406,6 +417,7 @@
 			files = (
 				EC07BEAB1BE75265003E0EE8 /* PlaySpec.swift in Sources */,
 				EC0F91041B959CFF00A79D74 /* Data.OrdSpec.swift in Sources */,
+				EC0807311BEFF0C4003DA6CC /* Data.List.QuickCheck.swift in Sources */,
 				ECF7E2781B94851D00E5AC1F /* Data.MaybeSpec.swift in Sources */,
 				EC17FE9D1BEE952E00633AFC /* QualifierProtocol.swift in Sources */,
 				ECF7E27C1B949B1C00E5AC1F /* GHC.NumSpec.swift in Sources */,

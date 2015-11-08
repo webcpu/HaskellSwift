@@ -217,7 +217,11 @@ public func map<T, U>(transform: T->U, _ xs: [T]) -> [U] {
     return results
 }
 
-public func map<T, U>(transform: T->U)(xs: [T]) -> [U] {
+public func map<T, U>(transform: T->U)(_ xs: [T]) -> [U] {
+    return map(transform, xs)
+}
+
+public func map<U>(transform: Character-> U)(_ xs: String) -> [U] {
     return map(transform, xs)
 }
 
@@ -247,6 +251,14 @@ public func intersperse(separator: Character, _ xs: String) -> String {
     return foldl(combine, String(head(xs)), tail(xs))
 }
 
+public func intersperse<T>(separator: T)(_ xs: [T]) -> [T] {
+    return intersperse(separator, xs)
+}
+
+public func intersperse(separator: Character)(_ xs: String) -> String {
+    return intersperse(separator, xs)
+}
+
 //MARK: intercalate :: [a] -> [[a]] -> [a]
 public func intercalate<T>(xs: [T], _ xss: [[T]]) -> [T] {
     return concat(intersperse(xs, xss))
@@ -254,6 +266,14 @@ public func intercalate<T>(xs: [T], _ xss: [[T]]) -> [T] {
 
 public func intercalate(xs: String, _ xss: [String]) -> String {
     return concat(intersperse(xs, xss))
+}
+
+public func intercalate<T>(xs: [T])(_ xss: [[T]]) -> [T] {
+    return intercalate(xs, xss)
+}
+
+public func intercalate(xs: String)(_ xss: [String]) -> String {
+    return intercalate(xs, xss)
 }
 
 //MARK: transpose :: [[a]] -> [[a]]

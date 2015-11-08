@@ -14,45 +14,10 @@ import HaskellSwift
 import SwiftCheck
 import XCTest
 
-//func arrayQualifier<A: Equatable>(arbitrary : ArrayOf<A>) -> Property {
-//    return  arbitrary.getArray.count >= 0 ==> {
-//        return false
-//    }
-//}
-//
-//func stringQualifier(xs: String) -> Property {
-//    return (xs.characters.count >= 0) ==> {
-//        return false
-//    }
-//}
-
-//public struct Properties <A : Arbitrary> {
-
-
-
-//func properties<T: Equatable>(arrayQualifier: [T] -> Property, _ stringQualifier: (String -> Property)) {
-////        property("[Int]") <- forAll { (xs : ArrayOf<Int>) in
-////            let f = arrayQualifier.self as ([Int] -> Property)
-////            return f(xs.getArray)
-////        }
-//    
-////        property("[Character]") <- forAll { (xs : ArrayOf<Character>) in
-////            return arrayQualifier<Character>(xs.getArray)
-////        }
-////        
-////        property("[String]") <- forAll { (xs : ArrayOf<String>) in
-////            return arrayQualifier(xs.getArray as [String])
-////        }
-//    
-//        property("String") <- forAll { (xs : String) in
-//            return stringQualifier(xs)
-//        }
-//}
-
 class PlaySpec: QuickSpec {
     override func spec() {
         it("QuickCheck") {
-            struct LengthProperty: QualifierProtocol {
+            struct PropertyGenerator: QualifierProtocol {
                 func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
                     return xs.count >= 0 ==> {
                         return length(xs) == xs.count
@@ -66,7 +31,7 @@ class PlaySpec: QuickSpec {
                 }
             }
             
-            LengthProperty().generate()
+            PropertyGenerator().generate()
         }
     }
 }
@@ -188,7 +153,7 @@ class PlayTests: XCTestCase {
         func glue5(l : String)(m: String)(m2 : String)(m3 : String)(r : String) -> String {
             return l + m + m2 + m3 + r
         }
-        let emailGen = localEmail.fmap(glue5) <*> Gen.pure("@") <*> hostname <*> Gen.pure(".") <*> tld
+        _  = localEmail.fmap(glue5) <*> Gen.pure("@") <*> hostname <*> Gen.pure(".") <*> tld
         
 //        let xs : [Any]      = [
 //            onlyFive, fromOnetoFive, lowerCaseLetters, upperCaseLetters,
