@@ -11,8 +11,18 @@ import Nimble
 import SwiftCheck
 @testable import HaskellSwift
 
-class DataListQuickCheck: QuickSpec {
+class DataListBasic0QuickCheck: QuickSpec {
     override func spec() {
+        describe("not") {
+            it("QuickCheck") {
+                property("DeMorgan's Law 1") <- forAll { (a: Bool, b:Bool) in
+                    let l = not(a && b) == (not(a) || not(b))
+                    let r = not(a || b) == (not(a) && not(b))
+                    return l && r
+                }
+            }
+        }
+        
         describe("++") {
             it("QuickCheck") {
                 func isEqual<A : Equatable>(xs0 : ArrayOf<A>, _ xs1: ArrayOf<A>) -> Bool {
@@ -96,7 +106,7 @@ class DataListQuickCheck: QuickSpec {
                 PropertyGenerator().generate()
             }
         }
-        
+
         describe("initx") {
             it("QuickCheck") {
                 struct PropertyGenerator: QualifierProtocol {
@@ -116,7 +126,11 @@ class DataListQuickCheck: QuickSpec {
                 PropertyGenerator().generate()
             }
         }
-        
+    }
+}
+
+class DataListBasic1QuickCheck: QuickSpec {
+    override func spec() {
         describe("uncons") {
             it("QuickCheck") {
                 struct PropertyGenerator: QualifierProtocol {
@@ -178,98 +192,5 @@ class DataListQuickCheck: QuickSpec {
                 PropertyGenerator().generate()
             }
         }
-        
-        describe("map") {
-            it("QuickCheck") {
-                func qualifier<A, B : Equatable>(transform: ArrowOf<A, B>, _ xs: ArrayOf<A>) -> Bool {
-                    return map(transform.getArrow, xs.getArray) == map(transform.getArrow)(xs.getArray)
-                }
-                
-                property("[Int]") <- forAll { (transform : ArrowOf<Int, Bool>, xs : ArrayOf<Int>) in
-                    return qualifier(transform, xs)
-                }
-                
-                property("[Character]") <- forAll { (transform : ArrowOf<Character, Bool>, xs : ArrayOf<Character>) in
-                    return qualifier(transform, xs)
-                }
-                
-                property("[String]") <- forAll { (transform : ArrowOf<String, Bool>, xs : ArrayOf<String>) in
-                    return qualifier(transform, xs)
-                }
-                
-                property("String") <- forAll { (transform : ArrowOf<Character, Bool>, xs : String) in
-                    return map(transform.getArrow, xs) == map(transform.getArrow)(xs)
-                }
-            }
-        }
-        
-        describe("reverse") {
-            it("QuickCheck") {
-                struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
-                        return xs.count >= 0 ==> {
-                            return reverse(reverse(xs)) == xs
-                        }
-                    }
-                    
-                    func stringQualifier(xs: String) -> Property {
-                        return xs.characters.count >= 0 ==> {
-                            return reverse(reverse(xs)) == xs
-                        }
-                    }
-                }
-                
-                PropertyGenerator().generate()
-            }
-        }
-        describe("intersperse") {
-            it("QuickCheck") {
-                func qualifier<A : Equatable>(separator: A, _ xs: ArrayOf<A>) -> Bool {
-                    return intersperse(separator, xs.getArray) == intersperse(separator)(xs.getArray)
-                }
-                
-                property("[Int]") <- forAll { (separator : Int, xs : ArrayOf<Int>) in
-                    return qualifier(separator, xs)
-                }
-                
-                property("[Character]") <- forAll { (separator : Character, xs : ArrayOf<Character>) in
-                    return qualifier(separator, xs)
-                }
-                
-                property("[String]") <- forAll { (separator : String, xs : ArrayOf<String>) in
-                    return qualifier(separator, xs)
-                }
-                
-                property("String") <- forAll { (separator : Character, xs : String) in
-                    return intersperse(separator, xs) == intersperse(separator)(xs)
-                }
-            }
-        }
-        
-        describe("intercalate") {
-            it("QuickCheck") {
-                func qualifier<A : Equatable>(xs: ArrayOf<A>, _ xss: ArrayOf<ArrayOf<A>>) -> Bool {
-                    let _xss = xss.getArray.map( { $0.getArray })
-                    return intercalate(xs.getArray, _xss) == intercalate(xs.getArray)(_xss)
-                }
-                
-                property("[Int]") <- forAll { (xs : ArrayOf<Int>, xss : ArrayOf<ArrayOf<Int>>) in
-                    return qualifier(xs, xss)
-                }
-                
-                property("[Character]") <- forAll { (xs : ArrayOf<Character>, xss : ArrayOf<ArrayOf<Character>>) in
-                    return qualifier(xs, xss)
-                }
-                
-                property("[String]") <- forAll { (xs: ArrayOf<String>, xss : ArrayOf<ArrayOf<String>>) in
-                    return qualifier(xs, xss)
-                }
-                
-                property("String") <- forAll { (xs: String, xss : ArrayOf<String>) in
-                    return intercalate(xs, xss.getArray) == intercalate(xs)(xss.getArray)
-                }
-            }
-        }
-
     }
 }

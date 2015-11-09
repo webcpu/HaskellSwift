@@ -415,8 +415,6 @@ func between(x: Character, _ ys: String) -> [String] {
     }
 }
 
-//infix operator >>= { associativity left precedence 100}
-
 //MARK: - Reducing lists (folds)
 //MARK: foldl :: Foldable t => (a -> b -> a) -> a -> t b -> a
 public func foldl<A,B>(process: (A, B)->A, _ initialValue: A, _ xs: [B]) -> A {
@@ -429,6 +427,14 @@ public func foldl(process: (String, Character)->String, _ initialValue: String, 
     return reduce(process, initialValue, xs)
 }
 
+public func foldl<A,B>(process: (A, B)->A)(_ initialValue: A)(_ xs: [B]) -> A {
+    return foldl(process, initialValue, xs)
+}
+
+public func foldl(process: (String, Character)->String)(_ initialValue: String)(_ xs: String) -> String {
+    return foldl(process, initialValue, xs)
+}
+
 //MARK: foldl1 :: Foldable t => (a -> b -> a) -> t b -> a
 public func foldl1<A>(process: (A, A)->A, _ xs: [A]) -> A {
     assert(!xs.isEmpty, "Empty List")
@@ -438,6 +444,10 @@ public func foldl1<A>(process: (A, A)->A, _ xs: [A]) -> A {
 public func foldl1(process: (String, Character)->String, _ xs: String) -> String {
     assert(xs.characters.count > 0, "Empty List")
     return foldl(process, String(xs[xs.startIndex]), drop(1, xs))
+}
+
+public func foldl1<A>(process: (A, A)->A)(_ xs: [A]) -> A {
+    return foldl1(process, xs)
 }
 
 //MARK: reduce :: Foldable t => (b -> a -> b) -> b -> t a -> b
@@ -459,6 +469,14 @@ public func reduce(combine: (String, Character)->String, _ initial: String, _ xs
     return result
 }
 
+public func reduce<A, B> (combine: (A, B)->A)(_ initial: A)(_ xs: [B]) -> A {
+    return reduce(combine, initial, xs)
+}
+
+public func reduce(combine: (String, Character)->String)(_ initial: String)(_ xs: String) -> String {
+    return reduce(combine, initial, xs)
+}
+
 //MARK: foldr :: Foldable t => (a -> b -> b) -> b -> t a -> b
 public func foldr<A,B>(process: (A, B)->B, _ initialValue: B, _ xs: [A]) -> B {
     var result = initialValue
@@ -478,6 +496,14 @@ public func foldr(process: (Character, String)->String, _ initialValue: String, 
     return result
 }
 
+public func foldr<A,B>(process: (A, B)->B)(_ initialValue: B)(_ xs: [A]) -> B {
+    return foldr(process, initialValue, xs)
+}
+
+public func foldr(process: (Character, String)->String)(_ initialValue: String)(_ xs: String) -> String {
+    return foldr(process, initialValue, xs)
+}
+
 //MARK: foldr1 :: Foldable t => (a -> a -> a) -> t a -> a
 public func foldr1<A>(process: (A, A)->A, _ xs: [A]) -> A {
     assert(!xs.isEmpty, "Empty List")
@@ -487,6 +513,14 @@ public func foldr1<A>(process: (A, A)->A, _ xs: [A]) -> A {
 public func foldr1(process: (Character, String)->String, _ xs: String) -> String {
     assert(xs.characters.count > 0, "Empty List")
     return foldr(process, String(xs[xs.endIndex.predecessor()]), take(xs.characters.count - 1, xs))
+}
+
+public func foldr1<A>(process: (A, A)->A)(_ xs: [A]) -> A {
+    return foldr1(process, xs)
+}
+
+public func foldr1(process: (Character, String)->String)(_ xs: String) -> String {
+    return foldr1(process, xs)
 }
 
 //MARK: - Building lists

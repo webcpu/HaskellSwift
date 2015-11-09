@@ -11,7 +11,7 @@ import Nimble
 import SwiftCheck
 @testable import HaskellSwift
 
-class DataListSpec: QuickSpec {
+class DataList0Spec: QuickSpec {
     override func spec() {
         let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
         
@@ -87,14 +87,6 @@ class DataListSpec: QuickSpec {
             it("Bool") {
                 expect(not(true)).to(beFalse())
                 expect(not(false)).to(beTrue())
-            }
-            
-            it("QuickCheck") {
-                property("DeMorgan's Law 1") <- forAll { (a: Bool, b:Bool) in
-                    let l = not(a && b) == (not(a) || not(b))
-                    let r = not(a || b) == (not(a) && not(b))
-                    return l && r
-                }
             }
         }
         
@@ -196,24 +188,6 @@ class DataListSpec: QuickSpec {
                 expect(initx("1")).to(equal(String()))
                 expect(initx("WHO")).to(equal("WH"))
             }
-            
-            it("QuickCheck") {
-                struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
-                        return xs.count > 0 ==> {
-                            return initx(xs) == take(xs.count - 1, xs)
-                        }
-                    }
-                    
-                    func stringQualifier(xs: String) -> Property {
-                        return xs.characters.count > 0 ==> {
-                            return initx(xs) == take(length(xs)-1, xs)
-                        }
-                    }
-                }
-                
-                PropertyGenerator().generate()
-            }
         }
         
         describe("uncons") {
@@ -248,26 +222,6 @@ class DataListSpec: QuickSpec {
                 expect(t1!.0).to(equal("a"))
                 expect(t1!.1).to(equal("b" as String))
             }
-            
-            it("QuickCheck") {
-                struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
-                        return xs.count > 0 ==> {
-                            let t = uncons(xs)
-                            return ([t!.0] + t!.1) == xs
-                        }
-                    }
-                    
-                    func stringQualifier(xs: String) -> Property {
-                        return xs.characters.count > 0 ==> {
-                            let t = uncons(xs)
-                            return (String(t!.0) + t!.1) == xs
-                        }
-                    }
-                }
-                
-                PropertyGenerator().generate()
-            }
         }
         
         describe("null") {
@@ -286,24 +240,6 @@ class DataListSpec: QuickSpec {
                 expect(null("World")).to(beFalse())
                 expect(null("")).to(beTrue())
             }
-            
-            it("QuickCheck") {
-                struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
-                        return xs.count >= 0 ==> {
-                            return null(xs) == (length(xs) == 0)
-                        }
-                    }
-                    
-                    func stringQualifier(xs: String) -> Property {
-                        return xs.characters.count >= 0 ==> {
-                            return null(xs) == (length(xs) == 0)
-                        }
-                    }
-                }
-                
-                PropertyGenerator().generate()
-            }
         }
         
         describe("length") {
@@ -321,25 +257,13 @@ class DataListSpec: QuickSpec {
                 expect(length("World")).to(equal(5))
                 expect(length("")).to(equal(0))
             }
-            
-            it("QuickCheck") {
-                struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
-                        return xs.count >= 0 ==> {
-                            return length(xs) == xs.count
-                        }
-                    }
-                    
-                    func stringQualifier(xs: String) -> Property {
-                        return xs.characters.count >= 0 ==> {
-                            return length(xs) == xs.characters.count
-                        }
-                    }
-                }
-                
-                PropertyGenerator().generate()
-            }
         }
+    }
+}
+
+class DataList1Spec: QuickSpec {
+    override func spec() {
+        let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
         
         describe("map") {
             it("String Array") {
@@ -388,28 +312,6 @@ class DataListSpec: QuickSpec {
                 let uppercases = checkUppercases("Haskell")
                 expect(uppercases).to(equal([true, false, false, false, false, false, false]))
             }
-            
-            it("QuickCheck") {
-                func qualifier<A, B : Equatable>(transform: ArrowOf<A, B>, _ xs: ArrayOf<A>) -> Bool {
-                    return map(transform.getArrow, xs.getArray) == map(transform.getArrow)(xs.getArray)
-                }
-                
-                property("[Int]") <- forAll { (transform : ArrowOf<Int, Bool>, xs : ArrayOf<Int>) in
-                    return qualifier(transform, xs)
-                }
-                
-                property("[Character]") <- forAll { (transform : ArrowOf<Character, Bool>, xs : ArrayOf<Character>) in
-                    return qualifier(transform, xs)
-                }
-                
-                property("[String]") <- forAll { (transform : ArrowOf<String, Bool>, xs : ArrayOf<String>) in
-                    return qualifier(transform, xs)
-                }
-                
-                property("String") <- forAll { (transform : ArrowOf<Character, Bool>, xs : String) in
-                    return map(transform.getArrow, xs) == map(transform.getArrow)(xs)
-                }
-            }
         }
         
         describe("reverse") {
@@ -427,24 +329,6 @@ class DataListSpec: QuickSpec {
             it("String") {
                 expect(reverse("World")).to(equal("dlroW"))
                 expect(reverse("")).to(equal(""))
-            }
-            
-            it("QuickCheck") {
-                struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
-                        return xs.count >= 0 ==> {
-                            return reverse(reverse(xs)) == xs
-                        }
-                    }
-                    
-                    func stringQualifier(xs: String) -> Property {
-                        return xs.characters.count >= 0 ==> {
-                            return reverse(reverse(xs)) == xs
-                        }
-                    }
-                }
-                
-                PropertyGenerator().generate()
             }
         }
         
@@ -467,28 +351,6 @@ class DataListSpec: QuickSpec {
                 expect(intersperse("+", "A")).to(equal("A"))
                 expect(intersperse("+", "ABC")).to(equal("A+B+C"))
             }
-            
-            it("QuickCheck") {
-                func qualifier<A : Equatable>(separator: A, _ xs: ArrayOf<A>) -> Bool {
-                    return intersperse(separator, xs.getArray) == intersperse(separator)(xs.getArray)
-                }
-                
-                property("[Int]") <- forAll { (separator : Int, xs : ArrayOf<Int>) in
-                    return qualifier(separator, xs)
-                }
-                
-                property("[Character]") <- forAll { (separator : Character, xs : ArrayOf<Character>) in
-                    return qualifier(separator, xs)
-                }
-                
-                property("[String]") <- forAll { (separator : String, xs : ArrayOf<String>) in
-                    return qualifier(separator, xs)
-                }
-                
-                property("String") <- forAll { (separator : Character, xs : String) in
-                    return intersperse(separator, xs) == intersperse(separator)(xs)
-                }
-            }
         }
         
         describe("intercalate") {
@@ -497,29 +359,6 @@ class DataListSpec: QuickSpec {
                 expect(intercalate(".", [])).to(equal(""))
                 expect(intercalate("+", ["Fine"])).to(equal("Fine"))
                 expect(intercalate(".", list)).to(equal("File.Edit.View"))
-            }
-            
-            it("QuickCheck") {
-                func qualifier<A : Equatable>(xs: ArrayOf<A>, _ xss: ArrayOf<ArrayOf<A>>) -> Bool {
-                    let _xss = xss.getArray.map( { $0.getArray })
-                    return intercalate(xs.getArray, _xss) == intercalate(xs.getArray)(_xss)
-                }
-                
-                property("[Int]") <- forAll { (xs : ArrayOf<Int>, xss : ArrayOf<ArrayOf<Int>>) in
-                    return qualifier(xs, xss)
-                }
-
-                property("[Character]") <- forAll { (xs : ArrayOf<Character>, xss : ArrayOf<ArrayOf<Character>>) in
-                    return qualifier(xs, xss)
-                }
-                
-                property("[String]") <- forAll { (xs: ArrayOf<String>, xss : ArrayOf<ArrayOf<String>>) in
-                    return qualifier(xs, xss)
-                }
-                
-                property("String") <- forAll { (xs: String, xss : ArrayOf<String>) in
-                    return intercalate(xs, xss.getArray) == intercalate(xs)(xss.getArray)
-                }
             }
         }
         
@@ -587,7 +426,11 @@ class DataListSpec: QuickSpec {
                 expect(permutations("abc")).to(equal(["abc", "bac", "bca", "acb", "cab", "cba"]))
             }
         }
-        
+    }
+}
+
+class DataList2Spec: QuickSpec {
+    override func spec() {
         describe("foldl") {
             it("Int Array") {
                 let adds     = { (x: Int,y: Int) in x+y }
@@ -704,6 +547,11 @@ class DataListSpec: QuickSpec {
             }
         }
         
+    }
+}
+
+class DataList3Spec: QuickSpec {
+    override func spec() {
         describe("concat") {
             it("Int Arrays Array") {
                 var ints = [[1, 2, 3], [4, 5, 6]]
@@ -729,33 +577,6 @@ class DataListSpec: QuickSpec {
                 expect(concat(strings)).to(equal("Hello"))
                 let emptyString = [Character]()
                 expect(concat(emptyString)).to(equal(String()))
-            }
-            
-            it("QuickCheck") {
-                func qualifier<A : Equatable>(xss: ArrayOf<ArrayOf<A>>) -> Property {
-                    return xss.getArray.count > 0 ==> {
-                        let _xss = xss.getArray.map( { $0.getArray })
-                        return concat(_xss) == foldl1((+) , _xss)
-                    }
-                }
-                
-                property("[Int]") <- forAll { (xss : ArrayOf<ArrayOf<Int>>) in
-                    return qualifier(xss)
-                }
-                
-                property("[Character]") <- forAll { (xss : ArrayOf<ArrayOf<Character>>) in
-                    return qualifier(xss)
-                }
-                
-                property("[String]") <- forAll { (xss : ArrayOf<ArrayOf<String>>) in
-                    return qualifier(xss)
-                }
-                
-                property("String") <- forAll { (xss : ArrayOf<String>) in
-                    return xss.getArray.count > 0 ==> {
-                        return concat(xss.getArray) == foldl1((+) , xss.getArray)
-                    }
-                }
             }
         }
         
@@ -1288,6 +1109,11 @@ class DataListSpec: QuickSpec {
             }
         }
         
+    }
+}
+
+class DataList4Spec: QuickSpec {
+    override func spec() {
         describe("replicate") {
             it("Int Array") {
                 let ints = replicate(100, 123)
@@ -1336,6 +1162,12 @@ class DataListSpec: QuickSpec {
                 expect(string).to(equal(["A", "A", "A", "A"]))
             }
         }
+    }
+}
+
+class DataList5Spec: QuickSpec {
+    override func spec() {
+        let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
         
         describe("take") {
             it("Int Array") {
@@ -1579,6 +1411,12 @@ class DataListSpec: QuickSpec {
                 expect(result).to(equal(["Hello World","ello World","llo World","lo World","o World"," World","World","orld","rld","ld","d",""]))
             }
         }
+    }
+}
+
+class DataList6Spec: QuickSpec {
+    override func spec() {
+        let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
         
         describe("isPrefixOf") {
             it("Int Array") {
@@ -1901,6 +1739,13 @@ class DataListSpec: QuickSpec {
                 expect(result).to(equal([4]))
             }
         }
+        
+    }
+}
+
+class DataList7Spec: QuickSpec {
+    override func spec() {
+        let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
         
         describe("zip") {
             it("Int Array") {
