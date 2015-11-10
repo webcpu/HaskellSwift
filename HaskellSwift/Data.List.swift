@@ -550,6 +550,14 @@ public func scanl(combine: (String, Character)->String, _ initialValue: String, 
     return ys
 }
 
+public func scanl<A,B>(combine: (A, B)->A)( _ initialValue: A)( _ xs: [B]) -> [A] {
+    return scanl(combine, initialValue, xs)
+}
+
+public func scanl(combine: (String, Character)->String)( _ initialValue: String)( _ xs: String) -> [String] {
+    return scanl(combine, initialValue, xs)
+}
+
 //MARK: scanl' :: (b -> a -> b) -> b -> [a] -> [b]
 //MARK: scanl1 :: (a -> a -> a) -> [a] -> [a]
 public func scanl1<A>(combine: (A, A)->A, _ xs: [A]) -> [A] {
@@ -567,6 +575,14 @@ public func scanl1(combine: (String, Character)->String, _ xs: String) -> [Strin
     }
     let result = scanl(combine, String(xs[xs.startIndex]), drop(1, xs))
     return [String(xs[xs.startIndex])] + result
+}
+
+public func scanl1<A>(combine: (A, A)->A)( _ xs: [A]) -> [A] {
+    return scanl1(combine, xs)
+}
+
+public func scanl1(combine: (String, Character)->String)( _ xs: String) -> [String] {
+    return scanl1(combine, xs)
 }
 
 //MARK: scanr :: (a -> b -> b) -> b -> [a] -> [b]
@@ -593,6 +609,15 @@ public func scanr(combine: (Character, String)->String, _ initialValue: String, 
     
     return ys
 }
+
+public func scanr<A,B>(combine: (A, B)->B)( _ initialValue: B)( _ xs: [A]) -> [B] {
+    return scanr(combine, initialValue, xs)
+}
+
+public func scanr(combine: (Character, String)->String)( _ initialValue: String)( _ xs: String) -> [String] {
+    return scanr(combine, initialValue, xs)
+}
+
 //MARK: scanr1 :: (a -> a -> a) -> [a] -> [a]
 public func scanr1<A>(combine: (A, A)->A, _ xs: [A]) -> [A] {
     assert(!xs.isEmpty, "Empty List")
@@ -611,6 +636,14 @@ public func scanr1(combine: (Character, String)->String, _ xs: String) -> [Strin
     let ys = scanr(combine, String(last(xs)), take(xs.characters.count - 1, xs))
     return [String(last(xs))] + ys
 }
+
+public func scanr1<A>(combine: (A, A)->A)( _ xs: [A]) -> [A] {
+    return scanr1(combine, xs)
+}
+
+public func scanr1(combine: (Character, String)->String)( _ xs: String) -> [String] {
+    return scanr1(combine, xs)
+}
 //MARK: - Accumulating maps
 //MARK: mapAccumL :: Traversable t => (a -> b -> (a, c)) -> a -> t b -> (a, t c)
 //MARK: mapAccumR :: Traversable t => (a -> b -> (a, c)) -> a -> t b -> (a, t c)
@@ -622,6 +655,10 @@ public func scanr1(combine: (Character, String)->String, _ xs: String) -> [Strin
 //MARK: replicate :: Int -> a -> [a]
 public func replicate<A>(len: Int, _ value: A) -> [A] {
     return [A].init(count: len, repeatedValue: value)
+}
+
+public func replicate<A>(len: Int)( _ value: A) -> [A] {
+    return replicate(len, value)
 }
 
 //MARK: cycle :: [a] -> [a]
@@ -643,6 +680,10 @@ public func unfoldr<A,B>(f: B -> (A, B)?, _ seed: B) -> [A] {
     return xs
 }
 
+public func unfoldr<A,B>(f: B -> (A, B)?)( _ seed: B) -> [A] {
+    return unfoldr(f, seed)
+}
+
 //MARK: - Sublists
 //MARK: Extracting sublists
 //MARK: take :: Int -> [a] -> [a]
@@ -662,6 +703,10 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
     }
     
     return list
+}
+
+public func take<T>(len: Int)( _ xs: [T]) -> [T] {
+    return take(len, xs)
 }
 
 //MARK: - Special folds
