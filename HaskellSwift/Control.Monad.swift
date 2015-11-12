@@ -36,3 +36,19 @@ public func >=><A, B, C>(f: A->[B], g: B -> [C]) -> (A->[C]) {
         return (f >>= g)(x)
     }
 }
+
+//Maybe Monad
+public func fmap<A, B>(x: A?, _ f: A -> B?) -> B? {
+    return isNothing(x) ? nil : f(x!)
+}
+
+infix operator >>>= {associativity right precedence 100}
+public func >>>=<A, B>(x: A?, f: A -> B?) -> B? {
+    return isNothing(x) ? nil : f(x!)
+}
+
+public func >>>=<A, B, C>(f: A->B?, g: B->C?) -> (A->C?) {
+    return { (a : A) -> C? in
+        return f(a) >>>= g
+    }
+}

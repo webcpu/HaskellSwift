@@ -73,14 +73,14 @@ class DataList0Spec: QuickSpec {
                 expect(fs(nil)).to(equal(.Some(0)))
             }
             
-            it("A?->B?->C?") {
-                let f0 : Int? -> Int? = { x in x ?? .Some(-1) }
-                let f1 : Int? -> Int? = { x in .Some(x! + 1) }
-                let fs                = f1 .. f0
-                expect(fs(2)).to(equal(.Some(3)))
-                expect(fs(1)).to(equal(.Some(2)))
-                expect(fs(nil)).to(equal(0))
-            }
+//            it("A?->B?->C?") {
+//                let f0 : Int? -> Int? = { x in x ?? .Some(-1) }
+//                let f1 : Int? -> Int? = { x in .Some(x! + 1) }
+//                let fs                = f1 .. f0
+//                expect(fs(2)).to(equal(.Some(3)))
+//                expect(fs(1)).to(equal(.Some(2)))
+//                expect(fs(nil)).to(equal(0))
+//            }
         }
         
         describe("not") {
@@ -519,33 +519,34 @@ class DataList2Spec: QuickSpec {
             }
         }
         
-        describe("reduce") {
-            it("Int Array") {
-                let adds             = { (initial: Int, x: Int) -> Int in initial + x }
-                let result          = reduce(adds, 0, [1,2,3,4])
-                expect(result).to(equal(10))
-            }
-            
-            it("String Array 1") {
-                let adds             = { (initial: String, x: String) -> String in initial + x }
-                let concat          = { xs in reduce(adds, "", xs) }
-                let result          = concat(["Hello", "World", "!"])
-                expect(result).to(equal("HelloWorld!"))
-            }
-            
-            it("String Array 2") {
-                let adds             = { (initial: String, x: String) -> String in initial + x }
-                let concat          = { xs in reduce(adds, "", xs) }
-                let result          = concat(["C", "a", "t", "!"] )
-                expect(result).to(equal("Cat!"))
-            }
-            
-            it("String") {
-                let adds             = { (initial: String, x: Character) -> String in initial + String(x) }
-                let result          = reduce(adds, "", ["C", "a", "t", "!"])
-                expect(result).to(equal("Cat!"))
-            }
-        }
+//        describe("reduce") {
+//            it("Int Array") {
+//                let adds             = { (initial: String, x: Int) -> String in initial + String(x) }
+//                let result          = reduce(adds, "", [1,2,3,4])
+//                expect(result).to(equal("1234"))
+//            }
+//            
+//            it("String Array 1") {
+//                let adds             = { (initial: String, x: String) -> String in initial + x }
+//                let concat          = { xs in reduce(adds, "", xs) }
+//                let result          = concat(["Hello", "World", "!"])
+//                expect(result).to(equal("HelloWorld!"))
+//            }
+//            
+//            it("String Array 2") {
+//                let adds             = { (initial: String, x: String) -> String in initial + x }
+//                let concat          = { (xs : [String]) in reduce(adds, "", xs) }
+//                let result          = concat(["C", "a", "t", "!"] )
+//                expect(result).to(equal("Cat!"))
+//            }
+//            
+//            it("String") {
+//                let adds             = { (initial: String, x: Character) -> String in initial + String(x) }
+//                let xs : [Character] = ["C", "a", "t", "!"]
+//                let result           = reduce(adds, "", xs)
+//                expect(result).to(equal("Cat!"))
+//            }
+//        }
         
     }
 }

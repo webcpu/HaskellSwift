@@ -217,11 +217,15 @@ public func map<T, U>(transform: T->U, _ xs: [T]) -> [U] {
     return results
 }
 
-public func map<T, U>(transform: T->U)(_ xs: [T]) -> [U] {
+public func map(transform: Character->Character)(_ xs: String) -> String {
     return map(transform, xs)
 }
 
 public func map<U>(transform: Character-> U)(_ xs: String) -> [U] {
+    return map(transform, xs)
+}
+
+public func map<T, U>(transform: T->U)(_ xs: [T]) -> [U] {
     return map(transform, xs)
 }
 
@@ -1764,8 +1768,13 @@ public func unzip7<A, B, C, D, E, F, G>(xs: [(A, B, C, D, E, F, G)]) -> ([A],[B]
 //MARK: Functions on strings
 //MARK: lines :: String -> [String]
 public func lines(s: String)->[String] {
-    return splitWith({ x in x == "\n" }, s)
+    return s.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
 }
+
+//public func lines(s: String)->[String] {
+//    let linefeed : Character = "\n"
+//    return splitWith({ (x : Character) in x == linefeed }, s)
+//}
 
 public func splitWith(check: Character->Bool, _ s: String)->[String] {
     var xs      = [String]()
@@ -1819,6 +1828,10 @@ public func unwords(xs: [String])->String {
 //MARK: "Set" operations
 //MARK: nub :: Eq a => [a] -> [a]
 public func nub<A: Equatable>(xs: [A]) -> [A] {
+    return nubBy( {x, y in x == y}, xs)
+}
+
+public func nub<A: Equatable>(xs: [A?]) -> [A?] {
     return nubBy( {x, y in x == y}, xs)
 }
 
@@ -1888,6 +1901,17 @@ public func insert(value: Character, _ xs: String) -> String {
 //MARK: nubBy :: (a -> a -> Bool) -> [a] -> [a]
 public func nubBy<A: Equatable>(f: (A,A)->Bool, _ xs: [A]) -> [A] {
     var results  = [A]()
+    for x in xs {
+        if find( { y in f(x, y) }, results) == nil {
+            results.append(x)
+        }
+    }
+    
+    return results
+}
+
+public func nubBy<A: Equatable>(f: (A?,A?)->Bool, _ xs: [A?]) -> [A?] {
+    var results  = [A?]()
     for x in xs {
         if find( { y in f(x, y) }, results) == nil {
             results.append(x)

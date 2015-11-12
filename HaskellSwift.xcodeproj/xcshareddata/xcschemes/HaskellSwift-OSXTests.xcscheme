@@ -16,35 +16,17 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECF75E931B7E1B420047B0F7"
-               BuildableName = "HaskellSwiftTests.xctest"
-               BlueprintName = "HaskellSwiftTests"
+               BlueprintIdentifier = "EC24C2021BF21A06000CB663"
+               BuildableName = "HaskellSwift-OSXTests.xctest"
+               BlueprintName = "HaskellSwift-OSXTests"
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "ControlMonadSpec">
+                  Identifier = "DataListListTransformation0QuickCheck">
                </Test>
                <Test
-                  Identifier = "DataCharSpec">
-               </Test>
-               <Test
-                  Identifier = "DataFunctorSpec">
-               </Test>
-               <Test
-                  Identifier = "DataListSpec">
-               </Test>
-               <Test
-                  Identifier = "DataMaybeSpec">
-               </Test>
-               <Test
-                  Identifier = "DataOrdSpec">
-               </Test>
-               <Test
-                  Identifier = "DataTupleSpec">
-               </Test>
-               <Test
-                  Identifier = "NumSpec">
+                  Identifier = "DataListListTransformation1QuickCheck">
                </Test>
             </SkippedTests>
          </TestableReference>

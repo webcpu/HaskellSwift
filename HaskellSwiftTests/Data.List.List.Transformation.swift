@@ -11,7 +11,7 @@ import Nimble
 import SwiftCheck
 @testable import HaskellSwift
 
-class DataListListTransformation1QuickCheck: QuickSpec {
+class DataListListTransformation0QuickCheck: QuickSpec {
     override func spec() {
         describe("map") {
             it("QuickCheck") {
@@ -147,7 +147,7 @@ class DataListListTransformation1QuickCheck: QuickSpec {
     }
 }
 
-class DataListListTransformation0QuickCheck: QuickSpec {
+class DataListListTransformation1QuickCheck: QuickSpec {
     override func spec() {
         describe("foldl") {
             it("QuickCheck") {

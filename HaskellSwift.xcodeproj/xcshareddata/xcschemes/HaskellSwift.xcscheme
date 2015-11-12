@@ -8,15 +8,15 @@
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
+            buildForRunning = "NO"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECF75E931B7E1B420047B0F7"
-               BuildableName = "HaskellSwiftTests.xctest"
-               BlueprintName = "HaskellSwiftTests"
+               BlueprintIdentifier = "ECFBE9111BF217D300D23E20"
+               BuildableName = "HaskellSwift.framework"
+               BlueprintName = "HaskellSwift"
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECF75E821B7E1B420047B0F7"
-               BuildableName = "HaskellSwift.app"
-               BlueprintName = "HaskellSwift"
+               BlueprintIdentifier = "EC24C2021BF21A06000CB663"
+               BuildableName = "HaskellSwift-OSXTests.xctest"
+               BlueprintName = "HaskellSwift-OSXTests"
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECF75E931B7E1B420047B0F7"
-               BuildableName = "HaskellSwiftTests.xctest"
-               BlueprintName = "HaskellSwiftTests"
+               BlueprintIdentifier = "EC24C2021BF21A06000CB663"
+               BuildableName = "HaskellSwift-OSXTests.xctest"
+               BlueprintName = "HaskellSwift-OSXTests"
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECF75E931B7E1B420047B0F7"
-            BuildableName = "HaskellSwiftTests.xctest"
-            BlueprintName = "HaskellSwiftTests"
+            BlueprintIdentifier = "ECFBE9111BF217D300D23E20"
+            BuildableName = "HaskellSwift.framework"
+            BlueprintName = "HaskellSwift"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,16 +75,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECF75E821B7E1B420047B0F7"
-            BuildableName = "HaskellSwift.app"
-            BlueprintName = "HaskellSwift"
+            BlueprintIdentifier = "EC24C2021BF21A06000CB663"
+            BuildableName = "HaskellSwift-OSXTests.xctest"
+            BlueprintName = "HaskellSwift-OSXTests"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -97,9 +96,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ECF75E931B7E1B420047B0F7"
-            BuildableName = "HaskellSwiftTests.xctest"
-            BlueprintName = "HaskellSwiftTests"
+            BlueprintIdentifier = "EC24C2021BF21A06000CB663"
+            BuildableName = "HaskellSwift-OSXTests.xctest"
+            BlueprintName = "HaskellSwift-OSXTests"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

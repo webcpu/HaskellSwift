@@ -153,7 +153,7 @@ class PlayTests: XCTestCase {
         func glue5(l : String)(m: String)(m2 : String)(m3 : String)(r : String) -> String {
             return l + m + m2 + m3 + r
         }
-        let emailGen  = localEmail.fmap(glue5) <*> Gen.pure("@") <*> hostname <*> Gen.pure(".") <*> tld
+        _  = localEmail.fmap(glue5) <*> Gen.pure("@") <*> hostname <*> Gen.pure(".") <*> tld
         
 //        let xs : [Any]      = [
 //            onlyFive, fromOnetoFive, lowerCaseLetters, upperCaseLetters,
