@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ECF945DF1BF5E5560039C177"
-               BuildableName = "HaskellSwift-tvOS.framework"
+               BuildableName = "HaskellSwift.framework"
                BlueprintName = "HaskellSwift-tvOS"
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ECF945DF1BF5E5560039C177"
-            BuildableName = "HaskellSwift-tvOS.framework"
+            BuildableName = "HaskellSwift.framework"
             BlueprintName = "HaskellSwift-tvOS"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ECF945DF1BF5E5560039C177"
-            BuildableName = "HaskellSwift-tvOS.framework"
+            BuildableName = "HaskellSwift.framework"
             BlueprintName = "HaskellSwift-tvOS"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>

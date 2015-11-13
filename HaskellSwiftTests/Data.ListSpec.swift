@@ -2213,19 +2213,19 @@ class DataList7Spec: QuickSpec {
         describe("delete") {
             it("Int Array") {
                 let list    = [1, 1, 2, 4, 1, 3, 9]
-                expect(delete(2, list)).to(equal([1,1,4,1,3,9]))
-                expect(delete(1, list)).to(equal([1,2,4,1,3,9]))
+                expect(HaskellSwift.delete(2, list)).to(equal([1,1,4,1,3,9]))
+                expect(HaskellSwift.delete(1, list)).to(equal([1,2,4,1,3,9]))
             }
             
             it("String Array") {
                 let list    = ["Create", "Set", "Any", "Set", "Any"]
-                expect(delete("Set", list)).to(equal(["Create","Any","Set","Any"]))
-                expect(delete("Any", list)).to(equal(["Create","Set","Set","Any"]))
+                expect(HaskellSwift.delete("Set", list)).to(equal(["Create","Any","Set","Any"]))
+                expect(HaskellSwift.delete("Any", list)).to(equal(["Create","Set","Set","Any"]))
             }
             
             it("String") {
-                expect(delete(Character("t"), "Swift")).to(equal("Swif"))
-                expect(delete("t", "Swift")).to(equal("Swif"))
+                expect(HaskellSwift.delete(Character("t"), "Swift")).to(equal("Swif"))
+                expect(HaskellSwift.delete("t", "Swift")).to(equal("Swif"))
             }
         }
         
