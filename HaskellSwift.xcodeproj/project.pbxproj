@@ -775,9 +775,9 @@
 				EC24C2021BF21A06000CB663 /* HaskellSwift-OSXTests */,
 				EC7F1F571BF5319800D424EC /* HaskellSwift-iOS */,
 				EC7F1F601BF5319800D424EC /* HaskellSwift-iOSTests */,
-				ECF945D21BF5E5240039C177 /* HaskellSwift-watchOS */,
 				ECF945DF1BF5E5560039C177 /* HaskellSwift-tvOS */,
 				ECF945E81BF5E5570039C177 /* HaskellSwift-tvOSTests */,
+				ECF945D21BF5E5240039C177 /* HaskellSwift-watchOS */,
 			);
 		};
 /* End PBXProject section */
