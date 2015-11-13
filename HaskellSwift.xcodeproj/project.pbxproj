@@ -19,6 +19,9 @@
 		EC24C2171BF21A31000CB663 /* Control.ApplicativeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */; };
 		EC24C2181BF21A31000CB663 /* Control.MonadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */; };
 		EC24C21A1BF21A31000CB663 /* QualifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */; };
+		EC52E5F81BF64C2800633CF6 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF948A91BF618DD0039C177 /* Quick.framework */; };
+		EC52E5F91BF64C3200633CF6 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF948C41BF619000039C177 /* Nimble.framework */; };
+		EC52E5FA1BF64C3E00633CF6 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF948D71BF619190039C177 /* SwiftCheck.framework */; };
 		EC7F1F621BF5319800D424EC /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7F1F581BF5319800D424EC /* HaskellSwift.framework */; };
 		EC7F1F741BF5331D00D424EC /* HaskellSwift.h in Sources */ = {isa = PBXBuildFile; fileRef = ECFBE9141BF217D300D23E20 /* HaskellSwift.h */; };
 		EC7F1F751BF5331D00D424EC /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2791B949B0800E5AC1F /* GHC.Num.swift */; };
@@ -375,6 +378,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECF945EA1BF5E5570039C177 /* HaskellSwift.framework in Frameworks */,
+				EC52E5F81BF64C2800633CF6 /* Quick.framework in Frameworks */,
+				EC52E5F91BF64C3200633CF6 /* Nimble.framework in Frameworks */,
+				EC52E5FA1BF64C3E00633CF6 /* SwiftCheck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
