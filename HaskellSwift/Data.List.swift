@@ -8,6 +8,10 @@
 
 import Foundation
 
+#if os(iOS) || os(tvOS)
+import UIKit
+#endif
+
 public enum Ordering {
     case LT
     case EQ

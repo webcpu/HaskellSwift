@@ -22,11 +22,70 @@
 		EC24C21B1BF21A5E000CB663 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */; };
 		EC24C21C1BF21A5E000CB663 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; };
 		EC24C21D1BF21A5E000CB663 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; };
-		ECDB4F951BF21D0A00A7AA28 /* SwiftCheck.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ECDB4F961BF21D0A00A7AA28 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ECDB4F971BF21D0A00A7AA28 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ECDB4F981BF21D0A00A7AA28 /* HaskellSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ECFB19D71BF4879D00195926 /* Data.List.List.Transformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC743FC11BF124D500374B35 /* Data.List.List.Transformation.swift */; };
+		EC7F1F621BF5319800D424EC /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7F1F581BF5319800D424EC /* HaskellSwift.framework */; };
+		EC7F1F741BF5331D00D424EC /* HaskellSwift.h in Sources */ = {isa = PBXBuildFile; fileRef = ECFBE9141BF217D300D23E20 /* HaskellSwift.h */; };
+		EC7F1F751BF5331D00D424EC /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2791B949B0800E5AC1F /* GHC.Num.swift */; };
+		EC7F1F761BF5331D00D424EC /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2B1B97711100192C2B /* Control.Applicative.swift */; };
+		EC7F1F771BF5331D00D424EC /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634951BB48E0B0086B71B /* Control.Monad.swift */; };
+		EC7F1F781BF5331D00D424EC /* Data.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EB11B7E1B6E0047B0F7 /* Data.List.swift */; };
+		EC7F1F791BF5331D00D424EC /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C2081B90E79300D93E51 /* Data.Char.swift */; };
+		EC7F1F7A1BF5331D00D424EC /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3461B92089300017F83 /* Data.Tuple.swift */; };
+		EC7F1F7B1BF5331D00D424EC /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70011B93319100DCEA5C /* Data.Functor.swift */; };
+		EC7F1F7C1BF5331D00D424EC /* Data.Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2751B94850100E5AC1F /* Data.Maybe.swift */; };
+		EC7F1F7D1BF5331D00D424EC /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91011B959CEE00A79D74 /* Data.Ord.swift */; };
+		EC7F1F7F1BF5335800D424EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7F1F7E1BF5335800D424EC /* CoreGraphics.framework */; };
+		ECDB4F951BF21D0A00A7AA28 /* SwiftCheck.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECDB4F961BF21D0A00A7AA28 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECDB4F971BF21D0A00A7AA28 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECDB4F981BF21D0A00A7AA28 /* HaskellSwift.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECF945EA1BF5E5570039C177 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF945E01BF5E5560039C177 /* HaskellSwift.framework */; };
+		ECF945F71BF5EE9B0039C177 /* Data.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EB11B7E1B6E0047B0F7 /* Data.List.swift */; };
+		ECF945F81BF5EE9B0039C177 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C2081B90E79300D93E51 /* Data.Char.swift */; };
+		ECF945F91BF5EE9B0039C177 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3461B92089300017F83 /* Data.Tuple.swift */; };
+		ECF945FA1BF5EE9B0039C177 /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70011B93319100DCEA5C /* Data.Functor.swift */; };
+		ECF945FB1BF5EE9B0039C177 /* Data.Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2751B94850100E5AC1F /* Data.Maybe.swift */; };
+		ECF945FC1BF5EE9B0039C177 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91011B959CEE00A79D74 /* Data.Ord.swift */; };
+		ECF945FD1BF5EE9D0039C177 /* Data.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EB11B7E1B6E0047B0F7 /* Data.List.swift */; };
+		ECF945FE1BF5EE9D0039C177 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C2081B90E79300D93E51 /* Data.Char.swift */; };
+		ECF945FF1BF5EE9D0039C177 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3461B92089300017F83 /* Data.Tuple.swift */; };
+		ECF946001BF5EE9D0039C177 /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70011B93319100DCEA5C /* Data.Functor.swift */; };
+		ECF946011BF5EE9D0039C177 /* Data.Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2751B94850100E5AC1F /* Data.Maybe.swift */; };
+		ECF946021BF5EE9D0039C177 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91011B959CEE00A79D74 /* Data.Ord.swift */; };
+		ECF946031BF5EEB00039C177 /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2B1B97711100192C2B /* Control.Applicative.swift */; };
+		ECF946041BF5EEB00039C177 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634951BB48E0B0086B71B /* Control.Monad.swift */; };
+		ECF946051BF5EEB10039C177 /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2B1B97711100192C2B /* Control.Applicative.swift */; };
+		ECF946061BF5EEB10039C177 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634951BB48E0B0086B71B /* Control.Monad.swift */; };
+		ECF946071BF5EEBA0039C177 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2791B949B0800E5AC1F /* GHC.Num.swift */; };
+		ECF946081BF5EEBC0039C177 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2791B949B0800E5AC1F /* GHC.Num.swift */; };
+		ECF9460A1BF5EEE70039C177 /* Data.ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */; };
+		ECF9460B1BF5EEE70039C177 /* Data.List.Basic.QuickCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0807301BEFF0C4003DA6CC /* Data.List.Basic.QuickCheck.swift */; };
+		ECF9460D1BF5EEE70039C177 /* Data.CharSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */; };
+		ECF9460E1BF5EEE70039C177 /* Data.TupleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */; };
+		ECF9460F1BF5EEE70039C177 /* Data.FunctorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */; };
+		ECF946101BF5EEE70039C177 /* Data.MaybeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */; };
+		ECF946111BF5EEE70039C177 /* Data.OrdSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */; };
+		ECF946121BF5EEE90039C177 /* Data.ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */; };
+		ECF946131BF5EEE90039C177 /* Data.List.Basic.QuickCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0807301BEFF0C4003DA6CC /* Data.List.Basic.QuickCheck.swift */; };
+		ECF946151BF5EEE90039C177 /* Data.CharSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */; };
+		ECF946161BF5EEE90039C177 /* Data.TupleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */; };
+		ECF946171BF5EEE90039C177 /* Data.FunctorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */; };
+		ECF946181BF5EEE90039C177 /* Data.MaybeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */; };
+		ECF946191BF5EEE90039C177 /* Data.OrdSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */; };
+		ECF946221BF5EEF50039C177 /* GHC.NumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */; };
+		ECF946231BF5EEF50039C177 /* Control.ApplicativeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */; };
+		ECF946241BF5EEF50039C177 /* Control.MonadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */; };
+		ECF946251BF5EEF50039C177 /* QualifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */; };
+		ECF946261BF5EEF60039C177 /* GHC.NumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */; };
+		ECF946271BF5EEF60039C177 /* Control.ApplicativeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */; };
+		ECF946281BF5EEF60039C177 /* Control.MonadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */; };
+		ECF946291BF5EEF60039C177 /* QualifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */; };
+		ECF9462A1BF5EFA80039C177 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */; };
+		ECF9462B1BF5EFA80039C177 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; };
+		ECF9462C1BF5EFA80039C177 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; };
+		ECF9462E1BF5EFF10039C177 /* SwiftCheck.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECF9462F1BF5EFF10039C177 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECF946301BF5EFF10039C177 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECF946311BF5EFFD0039C177 /* HaskellSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF945E01BF5E5560039C177 /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECFBE9151BF217D300D23E20 /* HaskellSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = ECFBE9141BF217D300D23E20 /* HaskellSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ECFBE91A1BF2183900D23E20 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2791B949B0800E5AC1F /* GHC.Num.swift */; };
 		ECFBE91B1BF2183900D23E20 /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2B1B97711100192C2B /* Control.Applicative.swift */; };
@@ -47,19 +106,47 @@
 			remoteGlobalIDString = ECFBE9111BF217D300D23E20;
 			remoteInfo = HaskellSwift;
 		};
+		EC7F1F631BF5319800D424EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECF75E7B1B7E1B420047B0F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC7F1F571BF5319800D424EC;
+			remoteInfo = "HaskellSwift-iOS";
+		};
+		ECF945EB1BF5E5570039C177 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECF75E7B1B7E1B420047B0F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECF945DF1BF5E5560039C177;
+			remoteInfo = "HaskellSwift-tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		ECDB4F941BF21CF700A7AA28 /* CopyFiles */ = {
+		ECDB4F941BF21CF700A7AA28 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				ECDB4F951BF21D0A00A7AA28 /* SwiftCheck.framework in CopyFiles */,
-				ECDB4F961BF21D0A00A7AA28 /* Nimble.framework in CopyFiles */,
-				ECDB4F971BF21D0A00A7AA28 /* Quick.framework in CopyFiles */,
-				ECDB4F981BF21D0A00A7AA28 /* HaskellSwift.framework in CopyFiles */,
+				ECDB4F951BF21D0A00A7AA28 /* SwiftCheck.framework in Copy Files */,
+				ECDB4F961BF21D0A00A7AA28 /* Nimble.framework in Copy Files */,
+				ECDB4F971BF21D0A00A7AA28 /* Quick.framework in Copy Files */,
+				ECDB4F981BF21D0A00A7AA28 /* HaskellSwift.framework in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF9462D1BF5EFD30039C177 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ECF9462E1BF5EFF10039C177 /* SwiftCheck.framework in CopyFiles */,
+				ECF9462F1BF5EFF10039C177 /* Nimble.framework in CopyFiles */,
+				ECF946301BF5EFF10039C177 /* Quick.framework in CopyFiles */,
+				ECF946311BF5EFFD0039C177 /* HaskellSwift.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,12 +162,14 @@
 		EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.OrdSpec.swift; sourceTree = "<group>"; };
 		EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualifierProtocol.swift; sourceTree = "<group>"; };
 		EC24C2031BF21A06000CB663 /* HaskellSwift-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HaskellSwift-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC24C2071BF21A06000CB663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC6634951BB48E0B0086B71B /* Control.Monad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Monad.swift; sourceTree = "<group>"; };
 		EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.MonadSpec.swift; sourceTree = "<group>"; };
 		EC72BA2B1B97711100192C2B /* Control.Applicative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Applicative.swift; sourceTree = "<group>"; };
 		EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.ApplicativeSpec.swift; sourceTree = "<group>"; };
 		EC743FC11BF124D500374B35 /* Data.List.List.Transformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.List.List.Transformation.swift; sourceTree = "<group>"; };
+		EC7F1F581BF5319800D424EC /* HaskellSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HaskellSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC7F1F611BF5319800D424EC /* HaskellSwift-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HaskellSwift-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC7F1F7E1BF5335800D424EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		ECF75E861B7E1B420047B0F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.ListSpec.swift; sourceTree = "<group>"; };
 		ECF75E9A1B7E1B420047B0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +180,9 @@
 		ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.MaybeSpec.swift; sourceTree = "<group>"; };
 		ECF7E2791B949B0800E5AC1F /* GHC.Num.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHC.Num.swift; sourceTree = "<group>"; };
 		ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHC.NumSpec.swift; sourceTree = "<group>"; };
+		ECF945D31BF5E5240039C177 /* HaskellSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HaskellSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF945E01BF5E5560039C177 /* HaskellSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HaskellSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF945E91BF5E5570039C177 /* HaskellSwift-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HaskellSwift-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFA70011B93319100DCEA5C /* Data.Functor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Functor.swift; sourceTree = "<group>"; };
 		ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.FunctorSpec.swift; sourceTree = "<group>"; };
 		ECFAB3461B92089300017F83 /* Data.Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Tuple.swift; sourceTree = "<group>"; };
@@ -109,6 +201,47 @@
 				EC24C21B1BF21A5E000CB663 /* SwiftCheck.framework in Frameworks */,
 				EC24C21C1BF21A5E000CB663 /* Nimble.framework in Frameworks */,
 				EC24C21D1BF21A5E000CB663 /* Quick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC7F1F541BF5319800D424EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC7F1F7F1BF5335800D424EC /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC7F1F5E1BF5319800D424EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC7F1F621BF5319800D424EC /* HaskellSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945CF1BF5E5240039C177 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945DC1BF5E5560039C177 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945E61BF5E5570039C177 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF945EA1BF5E5570039C177 /* HaskellSwift.framework in Frameworks */,
+				ECF9462A1BF5EFA80039C177 /* SwiftCheck.framework in Frameworks */,
+				ECF9462B1BF5EFA80039C177 /* Nimble.framework in Frameworks */,
+				ECF9462C1BF5EFA80039C177 /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,14 +268,6 @@
 				EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */,
 			);
 			name = Data;
-			sourceTree = "<group>";
-		};
-		EC24C2041BF21A06000CB663 /* HaskellSwift-OSXTests */ = {
-			isa = PBXGroup;
-			children = (
-				EC24C2071BF21A06000CB663 /* Info.plist */,
-			);
-			path = "HaskellSwift-OSXTests";
 			sourceTree = "<group>";
 		};
 		EC72BA2F1B97932A00192C2B /* Data */ = {
@@ -189,7 +314,6 @@
 			children = (
 				ECF75E851B7E1B420047B0F7 /* HaskellSwift */,
 				ECF75E971B7E1B420047B0F7 /* HaskellSwiftTests */,
-				EC24C2041BF21A06000CB663 /* HaskellSwift-OSXTests */,
 				ECF75EB31B7E1DA60047B0F7 /* Frameworks */,
 				ECF75E841B7E1B420047B0F7 /* Products */,
 			);
@@ -200,6 +324,11 @@
 			children = (
 				ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */,
 				EC24C2031BF21A06000CB663 /* HaskellSwift-OSXTests.xctest */,
+				EC7F1F581BF5319800D424EC /* HaskellSwift.framework */,
+				EC7F1F611BF5319800D424EC /* HaskellSwift-iOSTests.xctest */,
+				ECF945D31BF5E5240039C177 /* HaskellSwift.framework */,
+				ECF945E01BF5E5560039C177 /* HaskellSwift.framework */,
+				ECF945E91BF5E5570039C177 /* HaskellSwift-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -233,6 +362,7 @@
 		ECF75EB31B7E1DA60047B0F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC7F1F7E1BF5335800D424EC /* CoreGraphics.framework */,
 				EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */,
 				ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */,
 				ECF75EB51B7E1DA60047B0F7 /* Quick.framework */,
@@ -243,6 +373,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		EC7F1F551BF5319800D424EC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945D01BF5E5240039C177 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945DD1BF5E5560039C177 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ECFBE90F1BF217D300D23E20 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -261,7 +412,7 @@
 				EC24C1FF1BF21A06000CB663 /* Sources */,
 				EC24C2001BF21A06000CB663 /* Frameworks */,
 				EC24C2011BF21A06000CB663 /* Resources */,
-				ECDB4F941BF21CF700A7AA28 /* CopyFiles */,
+				ECDB4F941BF21CF700A7AA28 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -273,9 +424,100 @@
 			productReference = EC24C2031BF21A06000CB663 /* HaskellSwift-OSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		ECFBE9111BF217D300D23E20 /* HaskellSwift */ = {
+		EC7F1F571BF5319800D424EC /* HaskellSwift-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ECFBE9171BF217D300D23E20 /* Build configuration list for PBXNativeTarget "HaskellSwift" */;
+			buildConfigurationList = EC7F1F6D1BF5319800D424EC /* Build configuration list for PBXNativeTarget "HaskellSwift-iOS" */;
+			buildPhases = (
+				EC7F1F531BF5319800D424EC /* Sources */,
+				EC7F1F541BF5319800D424EC /* Frameworks */,
+				EC7F1F551BF5319800D424EC /* Headers */,
+				EC7F1F561BF5319800D424EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HaskellSwift-iOS";
+			productName = "HaskellSwift-iOS";
+			productReference = EC7F1F581BF5319800D424EC /* HaskellSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EC7F1F601BF5319800D424EC /* HaskellSwift-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC7F1F6E1BF5319800D424EC /* Build configuration list for PBXNativeTarget "HaskellSwift-iOSTests" */;
+			buildPhases = (
+				EC7F1F5D1BF5319800D424EC /* Sources */,
+				EC7F1F5E1BF5319800D424EC /* Frameworks */,
+				EC7F1F5F1BF5319800D424EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC7F1F641BF5319800D424EC /* PBXTargetDependency */,
+			);
+			name = "HaskellSwift-iOSTests";
+			productName = "HaskellSwift-iOSTests";
+			productReference = EC7F1F611BF5319800D424EC /* HaskellSwift-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ECF945D21BF5E5240039C177 /* HaskellSwift-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECF945D81BF5E5240039C177 /* Build configuration list for PBXNativeTarget "HaskellSwift-watchOS" */;
+			buildPhases = (
+				ECF945CE1BF5E5240039C177 /* Sources */,
+				ECF945CF1BF5E5240039C177 /* Frameworks */,
+				ECF945D01BF5E5240039C177 /* Headers */,
+				ECF945D11BF5E5240039C177 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HaskellSwift-watchOS";
+			productName = "HaskellSwift-watchOS";
+			productReference = ECF945D31BF5E5240039C177 /* HaskellSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		ECF945DF1BF5E5560039C177 /* HaskellSwift-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECF945F11BF5E5570039C177 /* Build configuration list for PBXNativeTarget "HaskellSwift-tvOS" */;
+			buildPhases = (
+				ECF945DB1BF5E5560039C177 /* Sources */,
+				ECF945DC1BF5E5560039C177 /* Frameworks */,
+				ECF945DD1BF5E5560039C177 /* Headers */,
+				ECF945DE1BF5E5560039C177 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HaskellSwift-tvOS";
+			productName = "HaskellSwift-tvOS";
+			productReference = ECF945E01BF5E5560039C177 /* HaskellSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		ECF945E81BF5E5570039C177 /* HaskellSwift-tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECF945F41BF5E5570039C177 /* Build configuration list for PBXNativeTarget "HaskellSwift-tvOSTests" */;
+			buildPhases = (
+				ECF945E51BF5E5570039C177 /* Sources */,
+				ECF945E61BF5E5570039C177 /* Frameworks */,
+				ECF945E71BF5E5570039C177 /* Resources */,
+				ECF9462D1BF5EFD30039C177 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ECF945EC1BF5E5570039C177 /* PBXTargetDependency */,
+			);
+			name = "HaskellSwift-tvOSTests";
+			productName = "HaskellSwift-tvOSTests";
+			productReference = ECF945E91BF5E5570039C177 /* HaskellSwift-tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ECFBE9111BF217D300D23E20 /* HaskellSwift-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECFBE9171BF217D300D23E20 /* Build configuration list for PBXNativeTarget "HaskellSwift-OSX" */;
 			buildPhases = (
 				ECFBE90D1BF217D300D23E20 /* Sources */,
 				ECFBE90E1BF217D300D23E20 /* Frameworks */,
@@ -286,7 +528,7 @@
 			);
 			dependencies = (
 			);
-			name = HaskellSwift;
+			name = "HaskellSwift-OSX";
 			productName = HaskellSwift;
 			productReference = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */;
 			productType = "com.apple.product-type.framework";
@@ -303,6 +545,21 @@
 				TargetAttributes = {
 					EC24C2021BF21A06000CB663 = {
 						CreatedOnToolsVersion = 7.1;
+					};
+					EC7F1F571BF5319800D424EC = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					EC7F1F601BF5319800D424EC = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					ECF945D21BF5E5240039C177 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					ECF945DF1BF5E5560039C177 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					ECF945E81BF5E5570039C177 = {
+						CreatedOnToolsVersion = 7.1.1;
 					};
 					ECFBE9111BF217D300D23E20 = {
 						CreatedOnToolsVersion = 7.1;
@@ -322,14 +579,54 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ECFBE9111BF217D300D23E20 /* HaskellSwift */,
+				ECFBE9111BF217D300D23E20 /* HaskellSwift-OSX */,
 				EC24C2021BF21A06000CB663 /* HaskellSwift-OSXTests */,
+				EC7F1F571BF5319800D424EC /* HaskellSwift-iOS */,
+				EC7F1F601BF5319800D424EC /* HaskellSwift-iOSTests */,
+				ECF945D21BF5E5240039C177 /* HaskellSwift-watchOS */,
+				ECF945DF1BF5E5560039C177 /* HaskellSwift-tvOS */,
+				ECF945E81BF5E5570039C177 /* HaskellSwift-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EC24C2011BF21A06000CB663 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC7F1F561BF5319800D424EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC7F1F5F1BF5319800D424EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945D11BF5E5240039C177 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945DE1BF5E5560039C177 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945E71BF5E5570039C177 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -355,13 +652,97 @@
 				EC24C2111BF21A31000CB663 /* Data.CharSpec.swift in Sources */,
 				EC24C2121BF21A31000CB663 /* Data.TupleSpec.swift in Sources */,
 				EC24C2131BF21A31000CB663 /* Data.FunctorSpec.swift in Sources */,
-				ECFB19D71BF4879D00195926 /* Data.List.List.Transformation.swift in Sources */,
 				EC24C2141BF21A31000CB663 /* Data.MaybeSpec.swift in Sources */,
 				EC24C2151BF21A31000CB663 /* Data.OrdSpec.swift in Sources */,
 				EC24C2161BF21A31000CB663 /* GHC.NumSpec.swift in Sources */,
 				EC24C2171BF21A31000CB663 /* Control.ApplicativeSpec.swift in Sources */,
 				EC24C2181BF21A31000CB663 /* Control.MonadSpec.swift in Sources */,
 				EC24C21A1BF21A31000CB663 /* QualifierProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC7F1F531BF5319800D424EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC7F1F741BF5331D00D424EC /* HaskellSwift.h in Sources */,
+				EC7F1F751BF5331D00D424EC /* GHC.Num.swift in Sources */,
+				EC7F1F761BF5331D00D424EC /* Control.Applicative.swift in Sources */,
+				EC7F1F771BF5331D00D424EC /* Control.Monad.swift in Sources */,
+				EC7F1F781BF5331D00D424EC /* Data.List.swift in Sources */,
+				EC7F1F791BF5331D00D424EC /* Data.Char.swift in Sources */,
+				EC7F1F7A1BF5331D00D424EC /* Data.Tuple.swift in Sources */,
+				EC7F1F7B1BF5331D00D424EC /* Data.Functor.swift in Sources */,
+				EC7F1F7C1BF5331D00D424EC /* Data.Maybe.swift in Sources */,
+				EC7F1F7D1BF5331D00D424EC /* Data.Ord.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC7F1F5D1BF5319800D424EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF9460B1BF5EEE70039C177 /* Data.List.Basic.QuickCheck.swift in Sources */,
+				ECF946281BF5EEF60039C177 /* Control.MonadSpec.swift in Sources */,
+				ECF946291BF5EEF60039C177 /* QualifierProtocol.swift in Sources */,
+				ECF946101BF5EEE70039C177 /* Data.MaybeSpec.swift in Sources */,
+				ECF9460A1BF5EEE70039C177 /* Data.ListSpec.swift in Sources */,
+				ECF9460E1BF5EEE70039C177 /* Data.TupleSpec.swift in Sources */,
+				ECF946111BF5EEE70039C177 /* Data.OrdSpec.swift in Sources */,
+				ECF946271BF5EEF60039C177 /* Control.ApplicativeSpec.swift in Sources */,
+				ECF946261BF5EEF60039C177 /* GHC.NumSpec.swift in Sources */,
+				ECF9460D1BF5EEE70039C177 /* Data.CharSpec.swift in Sources */,
+				ECF9460F1BF5EEE70039C177 /* Data.FunctorSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945CE1BF5E5240039C177 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF945F81BF5EE9B0039C177 /* Data.Char.swift in Sources */,
+				ECF946031BF5EEB00039C177 /* Control.Applicative.swift in Sources */,
+				ECF945FB1BF5EE9B0039C177 /* Data.Maybe.swift in Sources */,
+				ECF945FC1BF5EE9B0039C177 /* Data.Ord.swift in Sources */,
+				ECF946041BF5EEB00039C177 /* Control.Monad.swift in Sources */,
+				ECF945F71BF5EE9B0039C177 /* Data.List.swift in Sources */,
+				ECF946071BF5EEBA0039C177 /* GHC.Num.swift in Sources */,
+				ECF945FA1BF5EE9B0039C177 /* Data.Functor.swift in Sources */,
+				ECF945F91BF5EE9B0039C177 /* Data.Tuple.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945DB1BF5E5560039C177 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF945FE1BF5EE9D0039C177 /* Data.Char.swift in Sources */,
+				ECF946051BF5EEB10039C177 /* Control.Applicative.swift in Sources */,
+				ECF946011BF5EE9D0039C177 /* Data.Maybe.swift in Sources */,
+				ECF946021BF5EE9D0039C177 /* Data.Ord.swift in Sources */,
+				ECF946061BF5EEB10039C177 /* Control.Monad.swift in Sources */,
+				ECF945FD1BF5EE9D0039C177 /* Data.List.swift in Sources */,
+				ECF946081BF5EEBC0039C177 /* GHC.Num.swift in Sources */,
+				ECF946001BF5EE9D0039C177 /* Data.Functor.swift in Sources */,
+				ECF945FF1BF5EE9D0039C177 /* Data.Tuple.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF945E51BF5E5570039C177 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF946131BF5EEE90039C177 /* Data.List.Basic.QuickCheck.swift in Sources */,
+				ECF946241BF5EEF50039C177 /* Control.MonadSpec.swift in Sources */,
+				ECF946251BF5EEF50039C177 /* QualifierProtocol.swift in Sources */,
+				ECF946181BF5EEE90039C177 /* Data.MaybeSpec.swift in Sources */,
+				ECF946121BF5EEE90039C177 /* Data.ListSpec.swift in Sources */,
+				ECF946161BF5EEE90039C177 /* Data.TupleSpec.swift in Sources */,
+				ECF946191BF5EEE90039C177 /* Data.OrdSpec.swift in Sources */,
+				ECF946231BF5EEF50039C177 /* Control.ApplicativeSpec.swift in Sources */,
+				ECF946221BF5EEF50039C177 /* GHC.NumSpec.swift in Sources */,
+				ECF946151BF5EEE90039C177 /* Data.CharSpec.swift in Sources */,
+				ECF946171BF5EEE90039C177 /* Data.FunctorSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,8 +767,18 @@
 /* Begin PBXTargetDependency section */
 		EC24C20A1BF21A06000CB663 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ECFBE9111BF217D300D23E20 /* HaskellSwift */;
+			target = ECFBE9111BF217D300D23E20 /* HaskellSwift-OSX */;
 			targetProxy = EC24C2091BF21A06000CB663 /* PBXContainerItemProxy */;
+		};
+		EC7F1F641BF5319800D424EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC7F1F571BF5319800D424EC /* HaskellSwift-iOS */;
+			targetProxy = EC7F1F631BF5319800D424EC /* PBXContainerItemProxy */;
+		};
+		ECF945EC1BF5E5570039C177 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECF945DF1BF5E5560039C177 /* HaskellSwift-tvOS */;
+			targetProxy = ECF945EB1BF5E5570039C177 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -401,7 +792,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
-				INFOPLIST_FILE = "HaskellSwift-OSXTests/Info.plist";
+				INFOPLIST_FILE = HaskellSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -417,10 +808,84 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
-				INFOPLIST_FILE = "HaskellSwift-OSXTests/Info.plist";
+				INFOPLIST_FILE = HaskellSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EC7F1F691BF5319800D424EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HaskellSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
+				PRODUCT_NAME = HaskellSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EC7F1F6A1BF5319800D424EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HaskellSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
+				PRODUCT_NAME = HaskellSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EC7F1F6B1BF5319800D424EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = HaskellSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EC7F1F6C1BF5319800D424EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = HaskellSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -504,6 +969,133 @@
 			};
 			name = Release;
 		};
+		ECF945D91BF5E5240039C177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HaskellSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
+				PRODUCT_NAME = HaskellSwift;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		ECF945DA1BF5E5240039C177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HaskellSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
+				PRODUCT_NAME = HaskellSwift;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		ECF945F21BF5E5570039C177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HaskellSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
+				PRODUCT_NAME = HaskellSwift;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		ECF945F31BF5E5570039C177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HaskellSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
+				PRODUCT_NAME = HaskellSwift;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ECF945F51BF5E5570039C177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = HaskellSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		ECF945F61BF5E5570039C177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = HaskellSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		ECFBE9181BF217D300D23E20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -518,7 +1110,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HaskellSwift;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -539,7 +1131,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HaskellSwift;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -558,6 +1150,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		EC7F1F6D1BF5319800D424EC /* Build configuration list for PBXNativeTarget "HaskellSwift-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC7F1F691BF5319800D424EC /* Debug */,
+				EC7F1F6A1BF5319800D424EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC7F1F6E1BF5319800D424EC /* Build configuration list for PBXNativeTarget "HaskellSwift-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC7F1F6B1BF5319800D424EC /* Debug */,
+				EC7F1F6C1BF5319800D424EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ECF75E7E1B7E1B420047B0F7 /* Build configuration list for PBXProject "HaskellSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -567,7 +1177,31 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ECFBE9171BF217D300D23E20 /* Build configuration list for PBXNativeTarget "HaskellSwift" */ = {
+		ECF945D81BF5E5240039C177 /* Build configuration list for PBXNativeTarget "HaskellSwift-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECF945D91BF5E5240039C177 /* Debug */,
+				ECF945DA1BF5E5240039C177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ECF945F11BF5E5570039C177 /* Build configuration list for PBXNativeTarget "HaskellSwift-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECF945F21BF5E5570039C177 /* Debug */,
+				ECF945F31BF5E5570039C177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ECF945F41BF5E5570039C177 /* Build configuration list for PBXNativeTarget "HaskellSwift-tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECF945F51BF5E5570039C177 /* Debug */,
+				ECF945F61BF5E5570039C177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ECFBE9171BF217D300D23E20 /* Build configuration list for PBXNativeTarget "HaskellSwift-OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ECFBE9181BF217D300D23E20 /* Debug */,
