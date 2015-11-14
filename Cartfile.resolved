@@ -1,0 +1,3 @@
+github "Quick/Nimble" "13d4a2bca41d41e53b1c9681bc2039e5f5bca5fe"
+github "Quick/Quick" "a98f8e37867462c8f00fea1a7b255d12f5a4b611"
+github "typelift/SwiftCheck" "39717e97bdd8b57aaa83e5cd2ffca6c8f651f7ad"
