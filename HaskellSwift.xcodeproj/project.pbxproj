@@ -454,10 +454,10 @@
 				ECF75E851B7E1B420047B0F7 /* HaskellSwift */,
 				ECF75E971B7E1B420047B0F7 /* HaskellSwiftTests */,
 				ECF75EB31B7E1DA60047B0F7 /* Frameworks */,
+				ECF75E841B7E1B420047B0F7 /* Products */,
 				ECF9489C1BF618DD0039C177 /* Quick.xcodeproj */,
 				ECF948BA1BF619000039C177 /* Nimble.xcodeproj */,
 				ECF948CF1BF619190039C177 /* SwiftCheck.xcodeproj */,
-				ECF75E841B7E1B420047B0F7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};

@@ -164,7 +164,7 @@ public func initx(xs: String)->String {
 }
 
 //MARK: uncons :: [a] -> Maybe (a, [a])
-public func uncons<A>(xs: [A]) -> (A, Array<A>)? {
+public func uncons<A>(xs: [A]) -> (A, [A])? {
     return length(xs) > 0 ? (head(xs), tail(xs)) : nil
 }
 
