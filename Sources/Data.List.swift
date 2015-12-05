@@ -221,9 +221,9 @@ public func map<T, U>(transform: T->U, _ xs: [T]) -> [U] {
     return results
 }
 
-public func map(transform: Character->Character)(_ xs: String) -> String {
-    return map(transform, xs)
-}
+//public func map(transform: Character->Character)(_ xs: String) -> String {
+//    return map(transform, xs)
+//}
 
 public func map<U>(transform: Character-> U)(_ xs: String) -> [U] {
     return map(transform, xs)
@@ -390,8 +390,7 @@ func nonEmptySubsequences(xs: String) -> [String] {
 public func permutations<B>(xs: [B]) -> [[B]] {
     if let (h, t) = uncons(xs) {
         let r0 = permutations(t)
-        let r1 = r0 >>= { ys in between(h, ys) }
-        return r1
+        return permutations(t) >>= { ys in between(h, ys) }
     } else {
         return [[]]
     }
@@ -400,8 +399,7 @@ public func permutations<B>(xs: [B]) -> [[B]] {
 public func permutations(xs: String) -> [String] {
     if let (h, t) = uncons(xs) {
         let r0 = permutations(t)
-        let r1 = r0 >>= { (ys: String) -> [String] in between(h, ys) }
-        return r1
+        return r0 >>= { (ys: String) -> [String] in between(h, ys) }
     } else {
         return [""]
     }
