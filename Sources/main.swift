@@ -5,7 +5,7 @@
 //  Created by Liang on 14/08/2015.
 //  Copyright © 2015 Liang. All rights reserved.
 //
-
+//import HaskellSwift
     //func test() {
       //        let list = ["abc", "cde", "efg"]
       //        let h = [head(list)]
@@ -28,8 +28,7 @@
         //        let expectedList = ["abc","bac","cba","bca","cab","acb"]
         //  let r0 = list >>= { ys in between(head(list), ys)}
         //let r0 = permutations(["a", "b", "c"])
-
-
+        
         let r1 = permutations("abc")
         print(r1)
         let r2 = scanl((*), 1, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])

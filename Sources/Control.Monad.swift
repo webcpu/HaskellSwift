@@ -1,5 +1,5 @@
 //
-//  Control.Monad.swift
+//  Data.Monad.swift
 //  HaskellSwift
 //
 //  Created by Liang on 24/09/2015.

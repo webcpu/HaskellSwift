@@ -221,16 +221,16 @@ public func map<T, U>(transform: T->U, _ xs: [T]) -> [U] {
     return results
 }
 
-//public func map(transform: Character->Character)(_ xs: String) -> String {
-//    return map(transform, xs)
-//}
-
-public func map<U>(transform: Character-> U)(_ xs: String) -> [U] {
-    return map(transform, xs)
+public func map(transform: Character->Character) -> (String -> String) {
+    return curry(map, transform)
 }
 
-public func map<T, U>(transform: T->U)(_ xs: [T]) -> [U] {
-    return map(transform, xs)
+public func map<U>(transform: Character-> U) -> (String -> [U]) {
+    return curry(map, transform)
+}
+
+public func map<T, U>(transform: T->U) -> ([T] -> [U]) {
+    return curry(map, transform)
 }
 
 //MARK: reverse :: [a] -> [a]
@@ -259,12 +259,12 @@ public func intersperse(separator: Character, _ xs: String) -> String {
     return foldl(combine, String(head(xs)), tail(xs))
 }
 
-public func intersperse<T>(separator: T)(_ xs: [T]) -> [T] {
-    return intersperse(separator, xs)
+public func intersperse<T>(separator: T) -> ([T] -> [T]) {
+    return curry(intersperse, separator)
 }
 
-public func intersperse(separator: Character)(_ xs: String) -> String {
-    return intersperse(separator, xs)
+public func intersperse(separator: Character) -> (String -> String) {
+    return curry(intersperse, separator)
 }
 
 //MARK: intercalate :: [a] -> [[a]] -> [a]
@@ -274,14 +274,6 @@ public func intercalate<T>(xs: [T], _ xss: [[T]]) -> [T] {
 
 public func intercalate(xs: String, _ xss: [String]) -> String {
     return concat(intersperse(xs, xss))
-}
-
-public func intercalate<T>(xs: [T])(_ xss: [[T]]) -> [T] {
-    return intercalate(xs, xss)
-}
-
-public func intercalate(xs: String)(_ xss: [String]) -> String {
-    return intercalate(xs, xss)
 }
 
 //MARK: transpose :: [[a]] -> [[a]]
@@ -390,7 +382,7 @@ func nonEmptySubsequences(xs: String) -> [String] {
 public func permutations<B>(xs: [B]) -> [[B]] {
     if let (h, t) = uncons(xs) {
         let r0 = permutations(t)
-        return permutations(t) >>= { ys in between(h, ys) }
+        return r0 >>= { ys in between(h, ys) }
     } else {
         return [[]]
     }
@@ -433,14 +425,29 @@ public func foldl(process: (String, Character)->String, _ initialValue: String, 
     return reduce(process, initialValue, xs)
 }
 
-public func foldl<A,B>(process: (A, B)->A)(_ initialValue: A)(_ xs: [B]) -> A {
-    return foldl(process, initialValue, xs)
+public func foldl<A,B>(process: (A, B)->A, _ initialValue: A) -> ([B] -> A) {
+    return { (xs: [B]) -> A in
+        foldl(process, initialValue, xs)
+    }
 }
 
-public func foldl(process: (String, Character)->String)(_ initialValue: String)(_ xs: String) -> String {
-    return foldl(process, initialValue, xs)
+public func foldl<A,B>(process: (A, B)->A) -> (A -> [B] -> A) {
+    return { (initialValue: A) -> ([B] -> A) in
+        foldl(process, initialValue)
+    }
 }
 
+public func foldl(process: (String, Character)->String, _ initialValue: String) ->(String -> String) {
+    return {(xs: String) -> String in
+        foldl(process, initialValue, xs)
+    }
+}
+
+public func foldl(process: (String, Character)->String) -> (String -> String -> String) {
+    return  {(initialValue: String) -> (String -> String) in
+        foldl(process, initialValue)
+    }
+}
 //MARK: foldl1 :: Foldable t => (a -> b -> a) -> t b -> a
 public func foldl1<A>(process: (A, A)->A, _ xs: [A]) -> A {
     assert(!xs.isEmpty, "Empty List")
@@ -452,8 +459,8 @@ public func foldl1(process: (String, Character)->String, _ xs: String) -> String
     return foldl(process, String(xs[xs.startIndex]), drop(1, xs))
 }
 
-public func foldl1<A>(process: (A, A)->A)(_ xs: [A]) -> A {
-    return foldl1(process, xs)
+public func foldl1<A>(process: (A, A)->A) -> ([A] -> A) {
+    return curry(foldl1, process)
 }
 
 //MARK: reduce :: Foldable t => (b -> a -> b) -> b -> t a -> b
@@ -475,12 +482,28 @@ public func reduce(combine: (String, Character)->String, _ initial: String, _ xs
     return result
 }
 
-public func reduce<A, B> (combine: (A, B)->A)(_ initial: A)(_ xs: [B]) -> A {
-    return reduce(combine, initial, xs)
+public func reduce<A, B> (combine: (A, B)->A, _ initial: A) -> ([B] -> A) {
+    return { (xs: [B]) -> A in
+        return reduce(combine, initial, xs)
+    }
 }
 
-public func reduce(combine: (String, Character)->String)(_ initial: String)(_ xs: String) -> String {
-    return reduce(combine, initial, xs)
+public func reduce<A, B> (combine: (A, B) -> A) -> (A -> [B] -> A) {
+    return { (initial: A) -> ([B] -> A) in
+        return reduce(combine, initial)
+    }
+}
+
+public func reduce(combine: (String, Character)->String, _ initial: String) -> (String -> String) {
+    return { (xs: String) -> String in
+        return reduce(combine, initial, xs)
+    }
+}
+
+public func reduce(combine: (String, Character)-> String) -> String -> String -> String {
+    return { (initial: String) -> (String -> String) in
+        return reduce(combine, initial)
+    }
 }
 
 //MARK: foldr :: Foldable t => (a -> b -> b) -> b -> t a -> b
@@ -502,12 +525,28 @@ public func foldr(process: (Character, String)->String, _ initialValue: String, 
     return result
 }
 
-public func foldr<A,B>(process: (A, B)->B)(_ initialValue: B)(_ xs: [A]) -> B {
-    return foldr(process, initialValue, xs)
+public func foldr<A,B>(process: (A, B)->B, _ initialValue: B) -> ([A] -> B) {
+    return { (xs: [A]) -> B in
+        return foldr(process, initialValue, xs)
+    }
 }
 
-public func foldr(process: (Character, String)->String)(_ initialValue: String)(_ xs: String) -> String {
-    return foldr(process, initialValue, xs)
+public func foldr<A,B>(process: (A, B)->B) ->  (B -> [A] -> B) {
+    return { (initialValue: B) -> ([A] -> B) in
+        return foldr(process, initialValue)
+    }
+}
+
+public func foldr(process: (Character, String)->String, _ initialValue: String) -> (String -> String) {
+    return { (xs: String) -> String in
+        return foldr(process, initialValue, xs)
+    }
+}
+
+public func foldr(process: (Character, String)->String) -> (String -> String -> String) {
+    return { (initialValue: String) -> (String -> String) in
+        return foldr(process, initialValue)
+    }
 }
 
 //MARK: foldr1 :: Foldable t => (a -> a -> a) -> t a -> a
@@ -521,12 +560,12 @@ public func foldr1(process: (Character, String)->String, _ xs: String) -> String
     return foldr(process, String(xs[xs.endIndex.predecessor()]), take(xs.characters.count - 1, xs))
 }
 
-public func foldr1<A>(process: (A, A)->A)(_ xs: [A]) -> A {
-    return foldr1(process, xs)
+public func foldr1<A>(process: (A, A)->A) -> ([A] -> A) {
+    return curry(foldr1, process)
 }
 
-public func foldr1(process: (Character, String)->String)(_ xs: String) -> String {
-    return foldr1(process, xs)
+public func foldr1(process: (Character, String)->String) -> (String -> String) {
+    return curry(foldr1, process)
 }
 
 //MARK: - Building lists
@@ -556,12 +595,28 @@ public func scanl(combine: (String, Character)->String, _ initialValue: String, 
     return ys
 }
 
-public func scanl<A,B>(combine: (A, B)->A)( _ initialValue: A)( _ xs: [B]) -> [A] {
-    return scanl(combine, initialValue, xs)
+public func scanl<A,B>(combine: (A, B)->A, _ initialValue: A) -> ([B] -> [A]) {
+    return { (xs: [B]) -> [A] in
+        return scanl(combine, initialValue, xs)
+    }
 }
 
-public func scanl(combine: (String, Character)->String)( _ initialValue: String)( _ xs: String) -> [String] {
-    return scanl(combine, initialValue, xs)
+public func scanl<A,B>(combine: (A, B)->A) -> (A -> ([B] -> [A])) {
+    return { (initialValue: A) -> ([B] -> [A]) in
+        return scanl(combine, initialValue)
+    }
+}
+
+public func scanl(combine: (String, Character)->String, _ initialValue: String) -> (String -> [String]) {
+    return { (xs: String) -> [String] in
+        return scanl(combine, initialValue, xs)
+    }
+}
+
+public func scanl(combine: (String, Character)->String) -> (String -> (String -> [String])) {
+    return { (initialValue: String) -> (String -> [String]) in
+        return scanl(combine, initialValue)
+    }
 }
 
 //MARK: scanl' :: (b -> a -> b) -> b -> [a] -> [b]
@@ -583,12 +638,12 @@ public func scanl1(combine: (String, Character)->String, _ xs: String) -> [Strin
     return [String(xs[xs.startIndex])] + result
 }
 
-public func scanl1<A>(combine: (A, A)->A)( _ xs: [A]) -> [A] {
-    return scanl1(combine, xs)
+public func scanl1<A>(combine: (A, A)->A) -> ([A] -> [A]) {
+    return curry(scanl1, combine)
 }
 
-public func scanl1(combine: (String, Character)->String)( _ xs: String) -> [String] {
-    return scanl1(combine, xs)
+public func scanl1(combine: (String, Character)->String) -> (String -> [String]) {
+    return curry(scanl1, combine)
 }
 
 //MARK: scanr :: (a -> b -> b) -> b -> [a] -> [b]
@@ -616,12 +671,28 @@ public func scanr(combine: (Character, String)->String, _ initialValue: String, 
     return ys
 }
 
-public func scanr<A,B>(combine: (A, B)->B)( _ initialValue: B)( _ xs: [A]) -> [B] {
-    return scanr(combine, initialValue, xs)
+public func scanr<A,B>(combine: (A, B)->B, _ initialValue: B) -> ([A] -> [B]){
+    return { (xs: [A]) -> [B] in
+        return scanr(combine, initialValue, xs)
+    }
 }
 
-public func scanr(combine: (Character, String)->String)( _ initialValue: String)( _ xs: String) -> [String] {
-    return scanr(combine, initialValue, xs)
+public func scanr<A,B>(combine: (A, B)->B) -> (B -> ([A] -> [B])) {
+    return { (initialValue: B) -> ([A] -> [B]) in
+        return scanr(combine, initialValue)
+    }
+}
+
+public func scanr(combine: (Character, String)->String, _ initialValue: String) -> (String -> [String]) {
+    return { (xs: String) -> [String] in
+        return scanr(combine, initialValue, xs)
+    }
+}
+
+public func scanr(combine: (Character, String)->String) -> (String -> (String -> [String])) {
+    return { (initialValue: String) -> (String -> [String]) in
+        return scanr(combine, initialValue)
+    }
 }
 
 //MARK: scanr1 :: (a -> a -> a) -> [a] -> [a]
@@ -643,13 +714,14 @@ public func scanr1(combine: (Character, String)->String, _ xs: String) -> [Strin
     return [String(last(xs))] + ys
 }
 
-public func scanr1<A>(combine: (A, A)->A)( _ xs: [A]) -> [A] {
-    return scanr1(combine, xs)
+public func scanr1<A>(combine: (A, A)->A) -> ([A] -> [A]) {
+    return curry(scanr1, combine)
 }
 
-public func scanr1(combine: (Character, String)->String)( _ xs: String) -> [String] {
-    return scanr1(combine, xs)
+public func scanr1(combine: (Character, String)->String) -> (String -> [String]) {
+    return curry(scanr1, combine)
 }
+
 //MARK: - Accumulating maps
 //MARK: mapAccumL :: Traversable t => (a -> b -> (a, c)) -> a -> t b -> (a, t c)
 //MARK: mapAccumR :: Traversable t => (a -> b -> (a, c)) -> a -> t b -> (a, t c)
@@ -663,8 +735,8 @@ public func replicate<A>(len: Int, _ value: A) -> [A] {
     return [A].init(count: len, repeatedValue: value)
 }
 
-public func replicate<A>(len: Int)( _ value: A) -> [A] {
-    return replicate(len, value)
+public func replicate<A>(len: Int) -> (A -> [A]) {
+    return curry(replicate, len)
 }
 
 //MARK: cycle :: [a] -> [a]
@@ -686,8 +758,8 @@ public func unfoldr<A,B>(f: B -> (A, B)?, _ seed: B) -> [A] {
     return xs
 }
 
-public func unfoldr<A,B>(f: B -> (A, B)?)( _ seed: B) -> [A] {
-    return unfoldr(f, seed)
+public func unfoldr<A,B>(f: B -> (A, B)?) -> (B -> [A]) {
+    return curry(unfoldr,f)
 }
 
 //MARK: - Sublists
@@ -711,8 +783,8 @@ public func take<T>(len: Int, _ xs: [T]) -> [T] {
     return list
 }
 
-public func take<T>(len: Int)( _ xs: [T]) -> [T] {
-    return take(len, xs)
+public func take<T>(len: Int) -> ([T] -> [T]) {
+    return curry(take, len)
 }
 
 //MARK: - Special folds
@@ -1279,8 +1351,8 @@ public func filter<U>(check: U -> Bool, _ xs: [U]) -> [U] {
     return results
 }
 
-public func filter<U>(check: U -> Bool)(xs: [U]) -> [U] {
-    return filter(check, xs)
+public func filter<U>(check: U -> Bool) -> ([U] -> [U]) {
+    return curry(filter, check)
 }
 
 public func filter(check: Character -> Bool, _ xs: String) -> String {
@@ -1411,8 +1483,8 @@ public func zip<A, B>(xs1: [A], _ xs2: [B]) -> [(A, B)] {
     return result
 }
 
-public func zip<A, B>(xs1: [A])(xs2: [B]) -> [(A, B)] {
-    return zip(xs1, xs2)
+public func zip<A, B>(xs1: [A]) -> ([B] -> [(A, B)]) {
+    return curry(zip, xs1)
 }
 
 //infix operator == {}
