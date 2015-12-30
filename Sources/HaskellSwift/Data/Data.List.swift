@@ -382,7 +382,9 @@ func nonEmptySubsequences(xs: String) -> [String] {
 public func permutations<B>(xs: [B]) -> [[B]] {
     if let (h, t) = uncons(xs) {
         let r0 = permutations(t)
-        return r0 >>= { ys in between(h, ys) }
+        //return r0 >>= f
+        let f =  { ys in between(h, ys) }
+        return r0.map(f).reduce([], combine: +)
     } else {
         return [[]]
     }
@@ -391,7 +393,9 @@ public func permutations<B>(xs: [B]) -> [[B]] {
 public func permutations(xs: String) -> [String] {
     if let (h, t) = uncons(xs) {
         let r0 = permutations(t)
-        return r0 >>= { (ys: String) -> [String] in between(h, ys) }
+        let f  = { (ys: String) -> [String] in between(h, ys) }
+        //return r0 >>=
+        return r0.map(f).reduce([], combine: +)
     } else {
         return [""]
     }
@@ -448,6 +452,7 @@ public func foldl(process: (String, Character)->String) -> (String -> String -> 
         foldl(process, initialValue)
     }
 }
+
 //MARK: foldl1 :: Foldable t => (a -> b -> a) -> t b -> a
 public func foldl1<A>(process: (A, A)->A, _ xs: [A]) -> A {
     assert(!xs.isEmpty, "Empty List")
@@ -525,29 +530,29 @@ public func foldr(process: (Character, String)->String, _ initialValue: String, 
     return result
 }
 
-public func foldr<A,B>(process: (A, B)->B, _ initialValue: B) -> ([A] -> B) {
-    return { (xs: [A]) -> B in
-        return foldr(process, initialValue, xs)
-    }
-}
-
-public func foldr<A,B>(process: (A, B)->B) ->  (B -> [A] -> B) {
-    return { (initialValue: B) -> ([A] -> B) in
-        return foldr(process, initialValue)
-    }
-}
-
-public func foldr(process: (Character, String)->String, _ initialValue: String) -> (String -> String) {
-    return { (xs: String) -> String in
-        return foldr(process, initialValue, xs)
-    }
-}
-
-public func foldr(process: (Character, String)->String) -> (String -> String -> String) {
-    return { (initialValue: String) -> (String -> String) in
-        return foldr(process, initialValue)
-    }
-}
+//public func foldr<A,B>(process: (A, B)->B, _ initialValue: B) -> ([A] -> B) {
+//    return { (xs: [A]) -> B in
+//        return foldr(process, initialValue, xs)
+//    }
+//}
+//
+//public func foldr<A,B>(process: (A, B)->B) ->  (B -> [A] -> B) {
+//    return { (initialValue: B) -> ([A] -> B) in
+//        return foldr(process, initialValue)
+//    }
+//}
+//
+//public func foldr(process: (Character, String)->String, _ initialValue: String) -> (String -> String) {
+//    return { (xs: String) -> String in
+//        return foldr(process, initialValue, xs)
+//    }
+//}
+//
+//public func foldr(process: (Character, String)->String) -> (String -> String -> String) {
+//    return { (initialValue: String) -> (String -> String) in
+//        return foldr(process, initialValue)
+//    }
+//}
 
 //MARK: foldr1 :: Foldable t => (a -> a -> a) -> t a -> a
 public func foldr1<A>(process: (A, A)->A, _ xs: [A]) -> A {

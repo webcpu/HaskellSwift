@@ -45,6 +45,7 @@
 
         let d3 = d2
 
+
         let r3 = [1] >>= d1 >>= d2 >>= d3
         print(r3)
 

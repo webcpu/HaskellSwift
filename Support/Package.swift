@@ -3,11 +3,10 @@ import PackageDescription
 let package = Package(
       name: "HaskellSwift",
       targets: [
-      Target(
+      /*Target(
                  name: "HaskellSwift",
-      dependencies: []),
-      //dependencies: [.Target(name: "Data"), .Target(name: "Control"), .Target(name: "GHC")]),
-      /*    Target(
+      dependencies: [.Target(name: "Data"), .Target(name: "Control"), .Target(name: "GHC")]),*/
+          Target(
                  name: "Data",
       dependencies: []),
           Target(
@@ -15,5 +14,5 @@ let package = Package(
       dependencies: []),
           Target(
                  name: "Control",
-      dependencies: [.Target(name: "Data")])*/
+      dependencies: [.Target(name: "Data")])
       ])
