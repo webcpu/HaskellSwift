@@ -15,7 +15,10 @@ targets = [
     # Target('sys-tests', subpath="../Tests/sys",
             # dependencies=["sys", "POSIX", "libc"],
             # is_test=True),
-    Target('datalist-tests', subpath="../Tests/datalist",
+    Target('data-tests', subpath="../Tests/data",
         dependencies=["HaskellSwift"],
-        is_test=True)
+        is_test=True),
+    #Target('SwiftCheck', subpath="../Tests/SwiftCheck",
+    #    dependencies=[],
+    #    is_test=False)
     ]

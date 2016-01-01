@@ -11,6 +11,7 @@ class DataListTests: XCTestCase {
     //]
     //}
 
+    //MARK: Function Composition
     //A->B->C|IntArray()
     func testDotABCIntArray() {
         let process : [Int] -> Int = last .. reverse
@@ -81,7 +82,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(not(false))
     }
 
-    //++
+    //MARK: ++
     func testPlusPlusIntArray() {
         let list1           = [1, 2, 3]
         let list2           = [4, 5, 6]
@@ -139,7 +140,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == "d")
         XCTAssertTrue(last("W") == "W")
     }
-    //tail
+    //MARK: tail
     func testTailIntArray() {
         XCTAssertTrue(tail([1]) == [Int]())
         XCTAssertTrue(tail([1,2,3]) == [2,3])
@@ -157,7 +158,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(tail("W") == "")
     }
 
-    //initx
+    //MARK: initx
     func testInitxIntArray() {
         XCTAssertTrue(initx([1]) == [Int]())
         XCTAssertTrue(initx([1,2]) == [1])
@@ -173,7 +174,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(initx("WHO") == "WH")
     }
 
-    //uncons
+    //MARK: uncons
     func testUncosIntArray() {
         XCTAssertTrue(uncons([Int]()) == nil)
         let t0 = uncons([1])
@@ -203,7 +204,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(t1!.1 == "b" as String)
     }
 
-    //null
+    //MARK: null
     func testNullIntArray() {
         XCTAssertTrue(null([1]) == false)
         XCTAssertTrue(null([Int]()))
@@ -220,7 +221,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(null(""))
     }
 
-    //length
+    //MARK: length
     func testLengthIntArray() {
         XCTAssertTrue(length([1]) == 1)
         XCTAssertTrue(length([1,2]) == 2)
@@ -238,7 +239,7 @@ class DataListTests: XCTestCase {
 
     let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
 
-    //map
+    //MARK: map
     func testMapStringArray() {
         let uppercaseFiles  = ["README.MD", "HASKELL.SWIFT", "HASKELLTESTS.SWIFT", "HASKELLSWIFT.SWIFT"]
 
@@ -286,7 +287,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(uppercases == [true, false, false, false, false, false, false])
     }
 
-    //reverse
+    //MARK: reverse
     func testReverseIntArray() {
         XCTAssertTrue(reverse([3]) == [3])
         XCTAssertTrue(reverse([1,2]) == [2,1])
@@ -303,7 +304,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(reverse("") == "")
     }
 
-    //intersperse
+    //MARK: intersperse
     func testIntersperseIntArray() {
         XCTAssertTrue(intersperse(1, []) == [])
         XCTAssertTrue(intersperse(1, [3]) == [3])
@@ -323,7 +324,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(intersperse("+", "ABC") == "A+B+C")
     }
 
-    //intercalate
+    //MARK: intercalate
     func testIntercalateStringArray(){
         let list = ["File", "Edit", "View"]
         XCTAssertTrue(intercalate(".", []) == "")
@@ -331,7 +332,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(intercalate(".", list) == "File.Edit.View")
     }
 
-    //transpose
+    //MARK: transpose
     func testTransposeIntArray() {
         XCTAssertTrue(transpose([[1,2,3],[4,5,6],[7,8,9]]) == [[1,4,7],[2,5,8],[3,6,9]])
         XCTAssertTrue(transpose([[1],[4,5],[7,8,9]]) == [[1,4,7],[5,8],[9]])
@@ -342,7 +343,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(transpose(list) == ["Aa","Bb","Cc","Dd"])
     }
 
-    //subsequences
+    //MARK: subsequences
     func testsubsequenceIntArray() {
         var emptySequence = [[Int]]()
         emptySequence.append([Int]())
@@ -370,7 +371,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(subsequences(list) == XCTAssertTrueedList)
     }
 
-    //permutations
+    //MARK: permutations
     func testPermutationIntArray() {
         var emptySequence = [[Int]]()
         emptySequence.append([Int]())
@@ -393,7 +394,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(permutations("abc") == ["abc", "bac", "bca", "acb", "cab", "cba"])
     }
 
-    //foldl
+    //MARK: foldl
     func testFoldlIntArray() {
         let adds        = { (x: Int,y: Int) in x+y }
         let result      = foldl(adds, 0, [1, 2, 3])
@@ -414,7 +415,7 @@ class DataListTests: XCTestCase {
         let insert = { (x: String, y: Character) in String(y) + x }
         XCTAssertTrue(foldl(insert, "", "World") == "dlroW")
     }
-    //foldl1
+    //MARK: foldl1
     func testFoldl1IntArray() {
         let adds     = { (x: Int,y: Int) in x+y }
         XCTAssertTrue(foldl1(adds, [1, 2, 3]) == 6)
@@ -435,7 +436,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(foldl1(insert, "World") == "dlroW")
     }
 
-    //foldr
+    //MARK: foldr
     func testFoldrIntArray() {
         let adds     = { (a: Int,b: Int) in a+b }
         XCTAssertTrue(foldr(adds, 0, [1, 2, 3]) == 6)
@@ -456,7 +457,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(foldr(insert, "", "World") == "World")
     }
 
-    //foldr1
+    //MARK: foldr1
     func testFoldr1IntArray() {
         let adds     = { (a: Int,b: Int) in a+b }
         XCTAssertTrue(foldr1(adds, [1, 2, 3]) == 6)
@@ -477,7 +478,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(foldr1(insert, "World") == "World")
     }
 
-    //        //reduce() {
+    //MARK: reduce
     //            func testIntArray() {
     //                let adds             = { (initial: String, x: Int) -> String in initial + String(x) }
     //                let result          = reduce(adds, "", [1,2,3,4])
@@ -506,7 +507,7 @@ class DataListTests: XCTestCase {
     //            }
     //        }
 
-    //concat
+    //MARK: concat
     func testConcatIntArraysArray() {
         var ints = [[1, 2, 3], [4, 5, 6]]
         XCTAssertTrue(concat(ints) == [1, 2, 3, 4, 5, 6])
@@ -533,7 +534,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(concat(emptyString) == String())
     }
 
-    //concatMap
+    //MARK: concatMap
     func testconcatMapIntArraysArray() {
         let ints = [1, 2]
         XCTAssertTrue(concatMap({x in [x, x*x]}, ints) == [1, 1, 2, 4])
@@ -564,7 +565,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(concat(emptyString) == String())
     }
 
-    //and
+    //MARK: and
     func testandBoolArray() {
         XCTAssertTrue(and([false, false]) == false)
         XCTAssertTrue(and([true, false]) == false)
@@ -572,7 +573,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(and([false, true]) == false)
     }
 
-    //or
+    //MARK: or
     func testorBoolArray() {
         XCTAssertTrue(or([true,true]))
         XCTAssertTrue(or([false,true]))
@@ -580,7 +581,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(or([true, false]))
     }
 
-    //any
+    //MARK: any
     func testanyIntArray() {
         let ints = [1,3,7]
         XCTAssertTrue(any({ x in x < 10}, ints))
@@ -599,7 +600,7 @@ class DataListTests: XCTestCase {
         XCTAssertFalse(any({ x in x == "t"}, word))
     }
 
-    //all
+    //MARK: all
     func testallIntArray() {
         let ints = [1,3,7]
         XCTAssertTrue(all({ x in x < 10}, ints))
@@ -621,7 +622,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(all({ x in x == "t"}, ""))
     }
 
-    //sum
+    //MARK: sum
     func testsumCGFloatArray() {
         let list : [CGFloat] = [1.0, 2.0, 3.0]
         let result = sum(list)
@@ -713,7 +714,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(sum([UInt8]()) == 0)
     }
 
-    //product
+    //MARK: product
     func testproductCGFloatArray() {
         let list : [CGFloat] = [1.0, 2.0, 3.0]
         let result = product(list)
@@ -805,7 +806,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(product([UInt8]()) == 1)
     }
 
-    //maximum
+    //MARK: maximum
     func testmaximumCGFloatArray() {
         let list : [CGFloat] = [1.0, 2.0, 3.0]
         let result           = maximum(list)
@@ -884,7 +885,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == 3)
     }
 
-    //minimum
+    //MARK: minimum
     func testminimumCGFloatArray() {
         let list : [CGFloat] = [4.4, 2.2, 3.3]
         let result           = minimum(list)
@@ -963,7 +964,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == 2)
     }
 
-    //scanl
+    //MARK: scanl
     func testscanlIntArray() {
         let adds     = { (x: Int,y: Int) in x+y }
         XCTAssertTrue(scanl(adds, 0, [1, 2, 3]) == [1, 3, 6])
@@ -984,7 +985,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(scanl(insert, "", "World") == ["W", "oW", "roW", "lroW", "dlroW"])
     }
 
-    //scanl1
+    //MARK: scanl1
     func testscanl1IntArray() {
         let adds     = { (x: Int,y: Int) -> Int in x+y }
         XCTAssertTrue(scanl1(adds, [1, 2, 3]) == [1, 3, 6])
@@ -1005,7 +1006,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(scanl1(insert, "World") == ["W", "oW", "roW", "lroW", "dlroW"])
     }
 
-    //scanr
+    //MARK: scanr
     func testscanrIntArray() {
         let adds     = { (x: Int,y: Int) in x+y }
         XCTAssertTrue(scanr(adds, 0, [1, 2, 3]) == [3, 5, 6])
@@ -1026,7 +1027,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(scanr(insert, "", "World") == ["d", "ld", "rld", "orld", "World"])
     }
 
-    //scanr1
+    //MARK: scanr1
     func testscanr1IntArray() {
         let adds     = { (x: Int,y: Int) in x+y }
         XCTAssertTrue(scanr1(adds, [1, 2, 3]) == [3, 5, 6])
@@ -1049,7 +1050,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(scanr1(insert, "World") == ["d", "ld", "rld", "orld", "World"])
     }
 
-    //replicate
+    //MARK: replicate
     func testreplicateIntArray() {
         let ints = replicate(100, 123)
         XCTAssertTrue(filter( { x in x == 123 }, ints).count == 100)
@@ -1060,7 +1061,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(filter( { x in x == "Good" }, strings).count == 100)
     }
 
-    //unfoldr
+    //MARK: unfoldr
     func testunfoldrIntArray() {
         let ints = unfoldr({ (b: Int) -> (Int, Int)? in
             if b < 1 {
@@ -1095,9 +1096,8 @@ class DataListTests: XCTestCase {
             }, "A")
         XCTAssertTrue(string == ["A", "A", "A", "A"])
     }
-    //let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
 
-    //take() {
+    //MARK: take() {
     func testtakeIntArray() {
         let ints = [1, 2, 3]
         XCTAssertTrue(take(0, ints) == [Int]())
@@ -1122,7 +1122,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(take(10, str) == str)
     }
 
-    //drop() {
+    //MARK: drop() {
     func testdropIntArray() {
         let ints = [1, 2, 3]
         XCTAssertTrue(drop(0, ints) == ints)
@@ -1146,7 +1146,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(drop(10, "World") == "")
     }
 
-    //splitAt() {
+    //MARK: splitAt() {
     func testsplitAtIntArray() {
         let ints = [1, 2, 3]
         let (list1, list2) = splitAt(2, ints)
@@ -1168,7 +1168,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(list2 == " World")
     }
 
-    //takeWhile() {
+    //MARK: takeWhile() {
     func testtakeWhileIntArray() {
         let ints = [1, 2, 3]
         let result = takeWhile( { $0 > 2} , ints)
@@ -1187,7 +1187,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == "H")
     }
 
-    //dropWhile() {
+    //MARK: dropWhile() {
     func testdropWhileIntArray() {
         let ints = [1, 2, 3]
         let result = dropWhile( { $0 < 3} , ints)
@@ -1206,7 +1206,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == "ello World")
     }
 
-    //span() {
+    //MARK: span() {
     func testspanIntArray() {
         let ints            = [1, 2, 3]
         let (list1, list2)  = span( { $0 < 2} , ints)
@@ -1228,7 +1228,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(list2 == "ello World")
     }
 
-    //breakx() {
+    //MARK: breakx() {
     func testbreakxIntArray() {
         let ints            = [1, 2, 3]
         let (list1, list2)  = breakx( { $0 > 2} , ints)
@@ -1250,7 +1250,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(list2 == " World")
     }
 
-    //stripPrefix() {
+    //MARK: stripPrefix() {
     func teststripPrefixIntArray() {
         let list1           = [1, 1]
         let list2           = [1, 1, 2, 3, 3, 5, 5]
@@ -1274,7 +1274,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(stripPrefix(list1, list2) == "bar")
     }
 
-    //group() {
+    //MARK: group() {
     func testgroupIntArray() {
         let ints            = [1, 1, 2, 3, 3, 5, 5]
         let result          = group(ints)
@@ -1293,7 +1293,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == ["H","e","ll","o"," ","W","o","r","l","d"])
     }
 
-    //inits() {
+    //MARK: inits() {
     func testinitsIntArray() {
         let ints            = [1, 1, 2, 3, 3, 5, 5]
         let result          = inits(ints)
@@ -1312,7 +1312,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == ["","H","He","Hel","Hell","Hello","Hello ","Hello W","Hello Wo","Hello Wor","Hello Worl","Hello World"])
     }
 
-    //tails() {
+    //MARK: tails() {
     func testtailsIntArray() {
         let ints            = [1, 1, 2, 3, 3, 5, 5]
         let result          = tails(ints)
@@ -1330,9 +1330,8 @@ class DataListTests: XCTestCase {
         let result = tails(list)
         XCTAssertTrue(result == ["Hello World","ello World","llo World","lo World","o World"," World","World","orld","rld","ld","d",""])
     }
-    //let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
 
-    //isPrefixOf() {
+    //MARK: isPrefixOf() {
     func testisPrefixOfIntArray() {
         let list1            = [1, 1, 2]
         let list2            = [1, 1, 2, 3, 3, 5, 5]
@@ -1357,7 +1356,7 @@ class DataListTests: XCTestCase {
         XCTAssertFalse(isPrefixOf(list1, list3))
     }
 
-    //isSuffixOf() {
+    //MARK: isSuffixOf() {
     func testisSuffixOfIntArray() {
         let list1            = [3, 5, 5]
         let list2            = [1, 1, 2, 3, 3, 5, 5]
@@ -1382,7 +1381,7 @@ class DataListTests: XCTestCase {
         XCTAssertFalse(isSuffixOf(list1, list3))
     }
 
-    //isInfixOf() {
+    //MARK: isInfixOf() {
     func testisInfixOfIntArray() {
         let list1            = [2, 3, 3]
         let list2            = [1, 1, 2, 3, 3, 5, 5]
@@ -1409,7 +1408,7 @@ class DataListTests: XCTestCase {
         XCTAssertFalse(isInfixOf(list1, list3))
     }
 
-    //isSubsequenceOf() {
+    //MARK: isSubsequenceOf() {
     func testisSubsequenceOfIntArray() {
         let list1            = [2, 3, 3]
         let list2            = [1, 1, 2, 3, 3, 5, 5]
@@ -1439,7 +1438,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(isSubsequenceOf(list1, list1))
     }
 
-    //elem() {
+    //MARK: elem() {
     func testelemIntArray() {
         let list            = [2, 3, 3]
         XCTAssertTrue(elem(3, list))
@@ -1458,7 +1457,7 @@ class DataListTests: XCTestCase {
         XCTAssertFalse(elem("T", list))
     }
 
-    //notElem() {
+    //MARK: notElem() {
     func testnotElemIntArray() {
         let list            = [2, 3, 3]
         XCTAssertFalse(notElem(3, list))
@@ -1477,7 +1476,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(notElem("T", list))
     }
 
-    //lookup() {
+    //MARK: lookup() {
     func testlookupIntArray() {
         let list            = ["a": 0, "b": 1]
         XCTAssertTrue(lookup("a", list) == 0)
@@ -1490,7 +1489,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(lookup("middlename", list) == nil)
     }
 
-    //find() {
+    //MARK: find() {
     func testfindIntArray() {
         let list             = [1, 2, 3, 4, 5]
         let greaterThanThree = { x in x > 3 }
@@ -1512,7 +1511,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == "a")
     }
 
-    //filter() {
+    //MARK: filter() {
     func testfilterIntArray() {
         let list             = [1, 2, 3, 4, 5]
         let greaterThanThree = { x in x > 3 }
@@ -1534,7 +1533,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == "a")
     }
 
-    //partition() {
+    //MARK: partition() {
     func testpartitionIntArray() {
         let list             = [1, 2, 3, 4, 5]
         let greaterThanThree = { x in x > 3 }
@@ -1557,7 +1556,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(r1 == "ABCD")
     }
 
-    //elemIndex() {
+    //MARK: elemIndex() {
     func testelemIndexIntArray() {
         let list             = [1, 2, 3, 4, 5]
         XCTAssertTrue(elemIndex(1, list) == 0)
@@ -1579,7 +1578,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(elemIndex("T", word) == nil)
     }
 
-    //elemIndices() {
+    //MARK: elemIndices() {
     func testelemIndicesIntArray() {
         let list             = [1, 2, 3, 4, 3]
         XCTAssertTrue(elemIndices(1, list) == [0])
@@ -1601,7 +1600,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(elemIndices("T", word) == [Int]())
     }
 
-    //findIndex() {
+    //MARK: findIndex() {
     func testfindIndexIntArray() {
         let list             = [1, 2, 3, 4, 5]
         let greaterThanThree = { x in x > 3 }
@@ -1621,7 +1620,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == 4)
     }
 
-    //findIndices() {
+    //MARK: findIndices() {
     func testfindIndicesIntArray() {
         let list             = [1, 2, 3, 4, 5]
         let greaterThanThree = { x in x > 3 }
@@ -1641,9 +1640,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == [4])
     }
 
-//let files           = ["README.md", "Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
-
-    //zip() {
+    //MARK: zip() {
     func testzipIntArray() {
         let tuples          = zip([1, 2, 3], [1, 4, 9])
         let XCTAssertTrueedTuples  = [(1, 1), (2, 4), (3, 9)]
@@ -1665,7 +1662,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result)
     }
 
-    //zip3() {
+    //MARK: zip3() {
     func testzip3IntArray() {
         let tuples          = zip3([1, 2, 3], [1, 4, 9], [1, 8, 27])
         let XCTAssertTrueedTuples  = [(1, 1, 1), (2, 4, 8), (3, 9, 27)]
@@ -1687,7 +1684,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result)
     }
 
-    //zip4() {
+    //MARK: zip4() {
     func testzip4IntArray() {
         let tuples          = zip4([1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3])
         let XCTAssertTrueedTuples  = [(1,1,1,1),(2,4,8,2),(3,9,27,3)]
@@ -1709,7 +1706,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result)
     }
 
-    //zip5() {
+    //MARK: zip5() {
     func testzip5IntArray() {
         let tuples          = zip5([1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9])
         let XCTAssertTrueedTuples  = [(1,1,1,1,1),(2,4,8,2,4),(3,9,27,3,9)]
@@ -1731,7 +1728,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result)
     }
 
-    //zip6() {
+    //MARK: zip6() {
     func testzip6IntArray() {
         let tuples          = zip6([1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9], [1, 8, 27])
         let XCTAssertTrueedTuples  = [(1,1,1,1,1,1),(2,4,8,2,4,8),(3,9,27,3,9,27)]
@@ -1753,7 +1750,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result)
     }
 
-    //zip7() {
+    //MARK: zip7() {
     func testzip7IntArray() {
         let tuples          = zip7([1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3])
         let XCTAssertTrueedTuples  = [(1,1,1,1,1,1,1),(2,4,8,2,4,8,2),(3,9,27,3,9,27,3)]
@@ -1775,7 +1772,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result)
     }
 
-    //zipWith() {
+    //MARK: zipWith() {
     func testzipWithIntArray() {
         let result          = zipWith((+), [1, 2, 3], [1, 4, 9])
         XCTAssertTrue(result == [2,6,12])
@@ -1791,7 +1788,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == ["1.swift","2.o","3.cpp"])
     }
 
-    //zipWith3() {
+    //MARK: zipWith3() {
     func testzipWith3IntArray() {
         let result          = zipWith3({(x, y, z) in x+y+z}, [1, 2, 3], [1, 4, 9], [1, 8, 27])
         XCTAssertTrue(result == [3,14,39])
@@ -1807,7 +1804,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == ["1.swift.1","2.o.2","3.cpp.3"])
     }
 
-    //zipWith4() {
+    //MARK: zipWith4() {
     func testzipWith4IntArray() {
         let process         = {(a: Int, b: Int, c: Int, d: Int) -> Int in a+b+c+d}
         let result          = zipWith4(process, [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3])
@@ -1826,7 +1823,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == ["1.swift1","2.o2","3.cpp3"])
     }
 
-    //zipWith5() {
+    //MARK: zipWith5() {
     func testzipWith5IntArray() {
         let process         = {(a: Int, b: Int, c: Int, d: Int, e: Int) -> Int in a+b+c+d+e}
         let result          = zipWith5(process, [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9])
@@ -1845,7 +1842,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == ["1.swift1.","2.o2.","3.cpp3."])
     }
 
-    //zipWith6() {
+    //MARK: zipWith6() {
     func testzipWith6IntArray() {
         let process         = {(a: Int, b: Int, c: Int, d: Int, e: Int, f: Int) -> Int in a+b+c+d+e+f}
         let result          = zipWith6(process, [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9], [1, 8, 27])
@@ -1864,7 +1861,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == ["1.swift1.swift","2.o2.o","3.cpp3.cpp"])
     }
 
-    //zipWith7() {
+    //MARK: zipWith7() {
     func testzipWith7IntArray() {
         let process         = {(a: Int, b: Int, c: Int, d: Int, e: Int, f: Int, g: Int) -> Int in a+b+c+d+e+f+g}
         let result          = zipWith7(process, [1, 2, 3], [1, 4, 9], [1, 8, 27], [1, 2, 3], [1, 4, 9], [1, 8, 27], [2, 4, 6])
@@ -1883,7 +1880,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(result == ["1.swift1.swift1","2.o2.o2","3.cpp3.cpp3"])
     }
 
-    //unzip() {
+    //MARK: unzip() {
     func testunzipIntArray() {
         let (r0, r1)        = unzip([(1, 1), (2, 4), (3, 9)])
         XCTAssertTrue(r0 == [1, 2, 3])
@@ -1902,7 +1899,7 @@ class DataListTests: XCTestCase {
             XCTAssertTrue(r1 == [".swift", ".o", ".cpp"])
     }
 
-    //unzip3() {
+    //MARK: unzip3() {
     func testunzip3IntArray() {
         let (r0, r1, r2)        = unzip3([(1,1,1),(2,4,8),(3,9,27)])
         XCTAssertTrue(r0 == [1, 2, 3])
@@ -1924,7 +1921,7 @@ class DataListTests: XCTestCase {
             XCTAssertTrue(r2 == ["swift", "o", "cpp"])
     }
 
-    //unzip4() {
+    //MARK: unzip4() {
     func testunzip4IntArray() {
         let (r0, r1, r2, r3)        = unzip4([(1,1,1,1),(2,4,8,2),(3,9,27,3)])
         XCTAssertTrue(r0 == [1, 2, 3])
@@ -1949,7 +1946,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(r3 == [1, 2, 3])
     }
 
-    //unzip5() {
+    //MARK: unzip5() {
     func testunzip5IntArray() {
         let (r0, r1, r2, r3, r4)        = unzip5([(1,1,1,1,1),(2,4,8,2,4),(3,9,27,3,9)])
         XCTAssertTrue(r0 == [1, 2, 3])
@@ -1977,7 +1974,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(r4 == [1, 4, 9])
     }
 
-    //unzip6() {
+    //MARK: unzip6() {
     func testunzip6IntArray() {
         let (r0, r1, r2, r3, r4, r5)        = unzip6([(1,1,1,1,1,1),(2,4,8,2,4,8),(3,9,27,3,9,27)])
         XCTAssertTrue(r0 == [1, 2, 3])
@@ -2008,7 +2005,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(r5 == [1, 8, 27])
     }
 
-    //unzip7() {
+    //MARK: unzip7() {
     func testunzip7IntArray() {
         let (r0, r1, r2, r3, r4, r5, r6)        = unzip7([(1,1,1,1,1,1,1),(2,4,8,2,4,8,2),(3,9,27,3,9,27,3)])
         XCTAssertTrue(r0 == [1, 2, 3])
@@ -2042,31 +2039,31 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(r6 == [1, 2, 3])
     }
 
-    //lines() {
+    //MARK: lines() {
     func testlinesString() {
         let result = lines("Functions\n\n\n don't evaluate their arguments.")
             XCTAssertTrue(result == ["Functions","",""," don't evaluate their arguments."])
     }
 
-    //words() {
+    //MARK: words() {
     func testwordsString() {
         let result = words("Functions\n\n\n don't evaluate their arguments.")
             XCTAssertTrue(result == ["Functions","don't","evaluate","their","arguments."])
     }
 
-    //unlines() {
+    //MARK: unlines() {
     func testunlinesString() {
-        let result = unlines(["Functions","",""," don't evaluate their arguments."]) //()
+        let result = unlines(["Functions","",""," don't evaluate their arguments."]) //MARK: ()
         XCTAssertTrue(result == "Functions\n\n\n don't evaluate their arguments.")
     }
 
-    //unwords() {
+    //MARK: unwords() {
     func testunwordsString() {
         let result = unwords(["Functions","don't","evaluate","their","arguments."])
         XCTAssertTrue(result == "Functions don't evaluate their arguments.")
     }
 
-    //nub() {
+    //MARK: nub() {
     func testnubIntArray() {
         let result  = nub([1, 1, 2, 4, 1, 3, 9])
         XCTAssertTrue(result == [1,2,4,3,9])
@@ -2082,7 +2079,7 @@ class DataListTests: XCTestCase {
             XCTAssertTrue(result == "are youk")
     }
 
-    //delete() {
+    //MARK: delete() {
     func testdeleteIntArray() {
         let list    = [1, 1, 2, 4, 1, 3, 9]
         XCTAssertTrue(delete(2, list) == [1,1,4,1,3,9])
@@ -2100,7 +2097,7 @@ class DataListTests: XCTestCase {
             XCTAssertTrue(delete("t", "Swift") == "Swif")
     }
 
-    //union() {
+    //MARK: union() {
     func testunionIntArray() {
         let list1   = [1, 1, 2]
         let list2   = [4, 1, 3, 9]
@@ -2113,7 +2110,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(union(list1, list2) == ["Create","Set", "Any"])
     }
 
-    //intersect() {
+    //MARK: intersect() {
     func testintersectIntArray() {
         let list1   = [1, 1, 2]
         let list2   = [4, 1, 3, 9]
@@ -2126,7 +2123,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(intersect(list1, list2) == ["Set", "Set"])
     }
 
-    //sort() {
+    //MARK: sort() {
     func testsortIntArray() {
         let list    = [1, 1, 2, 4, 1, 3, 9]
         XCTAssertTrue(sort(list) == [1, 1, 1, 2, 3, 4, 9])
@@ -2137,7 +2134,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(sort(list) == ["Any", "Any", "Create", "Set", "Set"])
     }
 
-    //sortOn() {
+    //MARK: sortOn() {
     func testsortOnIntArray() {
         let list    = [1, 1, 2, 4, 1, 3, 9]
         XCTAssertTrue(sortOn({x, y in x < y}, list) == [1, 1, 1, 2, 3, 4, 9])
@@ -2150,7 +2147,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(sortOn({x, y in x > y}, list) == ["Set","Set","Create","Any","Any"])
     }
 
-    //insert() {
+    //MARK: insert() {
     func testinsertIntArray() {
         let list    = [1, 1, 2, 4, 1, 3, 9]
         let result  = insert(10, list)
@@ -2167,7 +2164,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(insert("!", list) == "Hello World!")
     }
 
-    //nubBy
+    //MARK: nubBy
     func testnubByIntArray() {
         XCTAssertTrue(nubBy({ (x: Int, y: Int) in x == y }, [1, 1, 2, 4, 1, 3, 9]) == [1,2,4,3,9])
         XCTAssertTrue(nubBy({ (x: Int, y: Int) in x == y || x < 3}, [1, 1, 2, 4, 1, 3, 9]) == [1, 4, 3, 9])
@@ -2193,7 +2190,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(r2 == "Creat Wold")
     }
 
-    //deleteBy
+    //MARK: deleteBy
     func testdeleteByIntArray() {
         let list    = [1, 1, 2, 4, 1, 3, 9]
         XCTAssertTrue(deleteBy({x,y in x == y}, 2, list) == [1,1,4,1,3,9])
@@ -2211,7 +2208,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(deleteBy({x,y in x == y}, "t", "Swift") == "Swif")
     }
 
-    //deleteFirstsBy() {
+    //MARK: deleteFirstsBy() {
     func testdeleteFirstsByIntArray() {
         let list1    = [1, 1, 2, 4, 1, 3, 9]
         let list2    = [2, 4, 1, 3]
@@ -2233,7 +2230,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(deleteFirstsBy({x,y in x == y}, list2, list1) == "numb f ements")
     }
 
-    //unionBy() {
+    //MARK: unionBy() {
     func testunionByIntArray() {
         let list1    = [1, 1, 2, 4, 1, 3, 9]
         let list2    = [2, 4, 1, 3]
@@ -2256,7 +2253,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(unionBy({x,y in x == y}, list1, list2) == "overloadednumb fts")
         XCTAssertTrue(unionBy({x,y in x == y}, list2, list1) == "number of elementsvad")
     }
-    //intersectBy
+    //MARK: intersectBy
     func testintersectByIntArray() {
         let list1    = [1, 1, 2, 4, 1, 3, 9]
         let list2    = [2, 4, 1, 3]
@@ -2280,7 +2277,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(intersectBy({x,y in x == y}, list2, list1) == "eroelee")
     }
 
-    //groupBy
+    //MARK: groupBy
     func testgroupByIntArray() {
         let ints            = [1, 1, 2, 3, 3, 5, 5]
         let r0              = groupBy({(x, y) in x == y}, ints)
@@ -2305,7 +2302,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(r1 == ["Hello"," World"])
     }
     
-    //sortBy
+    //MARK: sortBy
     func testsortByIntArray() {
         let list    = [1, 1, 2, 4, 1, 3, 9]
         XCTAssertTrue(sortBy({x, y in x < y}, list) == [1,1,1,2,3,4,9])
@@ -2318,7 +2315,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(sortBy({x, y in x > y}, list) == ["Set","Set","Create","Any","Any"])
     }
     
-    //insertBy
+    //MARK: insertBy
     func testinsertByIntArray() {
         let list    = [1, 1, 2, 4, 1, 3, 9]
         XCTAssertTrue(insertBy({x, y in x < y}, 6, list) == [1,1,2,4,1,3,6,9])
@@ -2330,7 +2327,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(insertBy({x, y in x < y}, "Object", list) == ["Create","Object","Set","Any","Set","Any"])
         XCTAssertTrue(insertBy({x, y in x > y}, "Object", list) == ["Object","Create","Set","Any","Set","Any"])
     }
-    //maximumBy
+    //MARK: maximumBy
     func testmaximumByIntArray() {
         let list    = [1, 1, 2, 18, 4, 24, 6, 9]
         XCTAssertTrue(maximumBy({x, y in x < y ? Ordering.LT : Ordering.GT }, list) == 24)
@@ -2343,7 +2340,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(maximumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list) == "Set")
     }
     
-    //minimumBy
+    //MARK: minimumBy
     func testIntArray() {
         let list    = [1, 1, 2, 18, 4, 24, 6, 9]
         XCTAssertTrue(minimumBy({x, y in x < y ? Ordering.LT : Ordering.GT }, list) == 1)
@@ -2356,7 +2353,7 @@ class DataListTests: XCTestCase {
         XCTAssertTrue(minimumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list) == "Any")
     }
     
-    //genericLength
+    //MARK: genericLength
     func testgenericLengthIntArray() {
         XCTAssertTrue(genericLength([1]) == 1)
         XCTAssertTrue(genericLength([1,2]) == 2)

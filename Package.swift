@@ -6,6 +6,10 @@ let package = Package(
       Target(
                  name: "HaskellSwift",
       dependencies: []),
+      /*Target(
+                         name: "SwiftCheck",
+      dependencies: []),*/
+
       //dependencies: [.Target(name: "Data"), .Target(name: "Control"), .Target(name: "GHC")]),
       /*    Target(
                  name: "Data",
