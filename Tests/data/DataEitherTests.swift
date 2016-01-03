@@ -2,8 +2,6 @@ import XCTest
 
 @testable import HaskellSwift
 
-//class LogTests: XCTestCase , XCTestCaseProvider {
-
 class DataEitherTests: XCTestCase {
     //MARK: Left
     func testisLeft() {
@@ -50,5 +48,28 @@ class DataEitherTests: XCTestCase {
 
         XCTAssertTrue(r0)
         XCTAssertTrue(r1)
+    }
+
+    typealias SI    = Either<String, Int>
+    //MARK: lefts
+    func testlefts() {
+        let es          = [SI.Left("foo"), SI.Right(3), SI.Left("bar"), SI.Right(7), SI.Left("baz")]
+        let xs          = lefts(es)
+        XCTAssertTrue( xs == ["foo", "bar", "baz"])
+    }
+
+    //MARK: rights
+    func testrights() {
+        let es          = [SI.Left("foo"), SI.Right(3), SI.Left("bar"), SI.Right(7), SI.Left("baz")]
+        let xs          = rights(es)
+        XCTAssertTrue( xs == [3, 7])
+    }
+
+    //MARK: partitionEithers
+    func testpartitionEithers() {
+        let es          = [SI.Left("foo"), SI.Right(3), SI.Left("bar"), SI.Right(7), SI.Left("baz")]
+        let (ls, rs)    = partitionEithers(es)
+        XCTAssertTrue( ls == ["foo", "bar", "baz"])
+        XCTAssertTrue( rs == [3, 7])
     }
 }

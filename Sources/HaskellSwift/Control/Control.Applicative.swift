@@ -7,3 +7,52 @@
 //
 
 import Foundation
+
+//MARK: - Applicative []
+//MARK: <*>
+infix operator <*> { associativity right precedence 100}
+public func <*> <A,B>(fs: [A->B], xs: [A])->[B] {
+    let transform   = {(f: A->B)->[B] in
+        return map(f, xs)
+    }
+    let xss         = map(transform, fs)
+    return xss.flatMap { $0 }
+}
+
+infix operator *> { associativity right precedence 100}
+public func *><A, B>(xs: [A], ys: [B]) -> [B]{
+    return ys
+}
+
+infix operator <* { associativity right precedence 100}
+public func <*<A, B>(xs: [A], ys: [B]) -> [A]{
+    return xs
+}
+
+//MARK: - Applicative Maybe
+public func <*> <A,B>(f: (A->B)?, a: A?)->B? {
+    let b: B? = f!(fromJust(a))
+    return b
+}
+
+public func *><A, B>(x: A?, y: B?) -> B?{
+    return y
+}
+
+public func <*<A, B>(x: A?, y: B?) -> A?{
+    return x
+}
+
+//MARK: - Applicative Either
+public func <*> <A, B, E>(f: Either<E, A->B>, a: Either<E, A>)->Either<E, B> {
+    let b = fromRight(f)(fromRight(a))
+    return Either<E, B>.Right(b)
+}
+
+public func *><A, B, E>(x: Either<E, A>, y: Either<E, B>) -> Either<E, B> {
+    return y
+}
+
+public func <*<A, B, E>(x: Either<E, A>, y: Either<E, B>) -> Either<E, A> {
+    return x
+}

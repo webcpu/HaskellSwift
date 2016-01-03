@@ -13,8 +13,7 @@ public func Nothing() -> AnyObject? {
 }
 
 public func Just<A>(x: A) -> A? {
-    let a : A? = x
-    return a
+    return Optional<A>.Some(x)
 }
 
 //MARK: maybe :: b -> (a -> b) -> Maybe a -> b

@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public indirect enum Either<A, B> {
     case Left(A)
     case Right(B)
@@ -56,4 +55,25 @@ func either<A, B, C>(leftHandler: A->C, _ rightHandler: B->C, _ e: Either<A, B>)
     } else {
         return rightHandler(fromRight(e))
     }
+}
+
+//MARK: lefts :: [Either a b] -> [a]
+func lefts<A, B>(es: [Either<A, B>]) -> [A] {
+    let xs = es.filter( { (e: Either<A, B>) -> Bool in
+        return isLeft(e)
+    })
+    return xs.map(fromLeft)
+}
+
+//MARK: rights:: [Either a b] -> [b]
+func rights<A, B>(es: [Either<A, B>]) -> [B] {
+    let xs = es.filter( { (e: Either<A, B>) -> Bool in
+        return isRight(e)
+    })
+    return xs.map(fromRight)
+}
+
+//MARK: partitionEithers :: [Either a b] -> ([a], [b])
+func partitionEithers<A, B>(es: [Either<A, B>]) -> ([A], [B]) {
+    return (lefts(es), rights(es))
 }

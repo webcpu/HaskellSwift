@@ -2,8 +2,6 @@ import XCTest
 
 @testable import HaskellSwift
 
-//class LogTests: XCTestCase , XCTestCaseProvider {
-
 class DataFunctorTests: XCTestCase {
     //MARK: fmap
     func testfmap() {

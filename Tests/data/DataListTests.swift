@@ -2,80 +2,12 @@ import XCTest
 
 @testable import HaskellSwift
 
-//class LogTests: XCTestCase , XCTestCaseProvider {
-
 class DataListTests: XCTestCase {
     //var allTests : [(String, () -> ")] {
     //return [
     //("testError", testError)
     //]
     //}
-
-    //MARK: Function Composition
-    //A->B->C|IntArray()
-    func testDotABCIntArray() {
-        let process : [Int] -> Int = last .. reverse
-        let ints            = [1,2,3,4,5]
-        XCTAssertTrue(process(ints) == 1)
-    }
-
-    //A->B->C|StringArray"
-    func testDotABCStringArray() {
-        let process : [String]->String = last .. initx .. reverse
-        let words           = ["Very", "Good", "Person"]
-        let result          = process(words)
-        XCTAssertTrue(result == "Good")
-    }
-
-    //A->B->C|String
-    func testDotABCString() {
-        let fs              = head .. reverse  .. reverse
-        let result          = fs("ABC")
-        XCTAssertTrue(result == "A")
-    }
-
-    //A->B->C?
-    func testDotABOptionalC() {
-        let f0 : Int -> Int  = { x in x + 1 }
-        let f1 : Int -> Int? = { x in x % 2 == 0 ? .Some(x + 1) : nil }
-        let fs               = f1 .. f0
-        XCTAssertTrue(fs(0) == nil)
-        XCTAssertTrue(fs(1) == 3)
-    }
-
-    //A->B?->C
-    func testDotAOptionalBC() {
-        let f0 : Int -> Int? = { x in .Some(x) }
-        let f1 : Int? -> Int = { x in x! + 1 }
-        let fs               = f1 .. f0
-        XCTAssertTrue(fs(1) == 2)
-    }
-
-    //A->B?->C?
-    func testDotAOptionalBOptionalC() {
-        let f0 : Int -> Int?  = { x in .Some(x+1) }
-        let f1 : Int? -> Int? = { x in .Some(x! + 1) }
-        let fs                = f1 .. f0
-        XCTAssertTrue(fs(1) == 3)
-    }
-
-    //A?->B->C
-    func testDotOptionalABC() {
-        let f0 : Int? -> Int = { x in x ?? -1 }
-        let f1 : Int -> Int  = { x in x + 1 }
-        let fs               = f1 .. f0
-        XCTAssertTrue(fs(1) == 2)
-        XCTAssertTrue(fs(nil) == 0)
-    }
-
-    //A?->B->C?
-    func testDotOptionalABOptionalC() {
-        let f0 : Int? -> Int = { x in x ?? -1 }
-        let f1 : Int -> Int? = { x in .Some(x + 1) }
-        let fs               = f1 .. f0
-        XCTAssertTrue(fs(1) == 2)
-        XCTAssertTrue(fs(nil) == 0)
-    }
 
     func testNotBool() {
         XCTAssertTrue(not(true) == false)
