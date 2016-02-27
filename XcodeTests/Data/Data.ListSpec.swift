@@ -431,27 +431,27 @@ class DataList1Spec: QuickSpec {
 
 class DataList2Spec: QuickSpec {
     override func spec() {
-        describe("foldl") {
-            it("Int Array") {
-                let adds     = { (x: Int,y: Int) in x+y }
-                expect(foldl(adds, 0, [1, 2, 3])).to(equal(6))
-                
-                let product = {(x: Int, y: Int) in x*y}
-                expect(foldl(product, 1, [1,2,3,4,5])).to(equal(120))
-            }
-            
-            it("String Array") {
-                let letters : [String] = ["W", "o", "r", "l", "d"]
-                let adds = { (x: String, y: String) in x + y }
-                let result = foldl(adds, "", letters)
-                expect(result).to(equal("World"))
-            }
-            
-            it("String") {
-                let insert = { (x: String, y: Character) in String(y) + x }
-                expect(foldl(insert, "", "World")).to(equal("dlroW"))
-            }
-        }
+//        describe("foldl") {
+//            it("Int Array") {
+//                let adds     = { (x: Int,y: Int) in x+y }
+//                expect(foldl(adds, 0, [1, 2, 3])).to(equal(6))
+//                
+//                let product = {(x: Int, y: Int) in x*y}
+//                expect(foldl(product, 1, [1,2,3,4,5])).to(equal(120))
+//            }
+//            
+//            it("String Array") {
+//                let letters : [String] = ["W", "o", "r", "l", "d"]
+//                let adds = { (x: String, y: String) in x + y }
+//                let result = foldl(adds, "", letters)
+//                expect(result).to(equal("World"))
+//            }
+//            
+//            it("String") {
+//                let insert = { (x: String, y: Character) in String(y) + x }
+//                expect(foldl(insert, "", "World")).to(equal("dlroW"))
+//            }
+//        }
         
         describe("foldl1") {
             it("Int Array") {

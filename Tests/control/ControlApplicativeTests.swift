@@ -94,4 +94,20 @@ class ControlApplicativeTests: XCTestCase {
         let result =  x <* y
         XCTAssertTrue(fromRight(result) == fromRight(x))
     }
+
+    //MARK: liftA []
+    func testliftA() {
+        let xs = [1, 2, 3]
+        let f  = { $0 + 1}
+        XCTAssertTrue(liftA(f, xs) == [2, 3, 4])
+    }
+
+    func testliftA2() {
+        let xs = [1, 2, 3]
+        let ys = [3, 2, 1]
+        let f  = { (x: Int, y: Int) -> Int in
+            return x + y
+        }
+        XCTAssertTrue(liftA2(f, xs, ys) == [4, 4, 4])
+    }
 }

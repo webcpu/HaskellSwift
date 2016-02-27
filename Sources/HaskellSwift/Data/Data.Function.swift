@@ -1,25 +1,25 @@
 //MARK: id
-func id<A>(a: A)->A {
+public func id<A>(a: A)->A {
     return a
 }
 
-func id<A, B>(a: A->B)->A->B {
+public func id<A, B>(a: A->B)->A->B {
     return a
 }
 
 //MARK: const
-func const<A, B>(a: A, _ b: B) -> A {
+public func const<A, B>(a: A, _ b: B) -> A {
     return a
 }
 
-func const<A, B>(a: A) -> B -> A {
+public func const<A, B>(a: A) -> B -> A {
     return { (b: B) -> A in
         return a
     }
 }
 
 //MARK flip :: (a -> b -> c) -> b -> a -> c
-func flip<A, B, C>(f: (A, B) -> C) -> (B, A) -> C {
+public func flip<A, B, C>(f: (A, B) -> C) -> (B, A) -> C {
     let g = { (b: B,  a: A) -> C in
         let result = f(a, b)
         return result

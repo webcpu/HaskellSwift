@@ -56,3 +56,17 @@ public func *><A, B, E>(x: Either<E, A>, y: Either<E, B>) -> Either<E, B> {
 public func <*<A, B, E>(x: Either<E, A>, y: Either<E, B>) -> Either<E, A> {
     return x
 }
+
+//MARK: liftA []
+func liftA<A, B>(f: A->B, _ xs: [A]) -> [B] {
+    return map(f, xs)
+}
+
+func liftA2<A, B, C>(f: (A, B)->C, _ xs: [A], _ ys: [B]) -> [C] {
+    typealias T = (A, B)
+    let xys = zip(xs, ys)
+    let transform = { (t: T) -> C in
+        return f(fst(t), snd(t))
+    }
+    return map(transform, xys)
+}

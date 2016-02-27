@@ -52,3 +52,4 @@ public func >>>=<A, B, C>(f: A->B?, g: B->C?) -> (A->C?) {
         return f(a) >>>= g
     }
 }
+
