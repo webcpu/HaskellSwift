@@ -7,24 +7,21 @@
 //
 
 import Foundation
-import Quick
+//import XCTest
+import Quick.QuickSpec
 import Nimble
 @testable import HaskellSwift
 
 class ControlMonadSpec: QuickSpec {
     override func spec() {
-        describe(">>=") {
+        describe(">>>=") {
             it("Left Law") {
-                var xs : [Int] = [Int]()
-                xs.append(1)
-                /*let f           = { (x: Int) -> [Int] in
-                    var ys = [Int]()
-                    ys.append(x + 1)
-                    return ys
+                let xs : [Int] = [1, 2, 3]
+                let f: Int -> [Int]           = { (x: Int) -> [Int] in
+                    return [x*x]
                 }
-//                let result      = xs >>= f
-//                expect(result).to(equal(f(1)))
-*/
+                let result      = xs >>>= f
+                expect(result).to(equal([1, 4, 9]))
             }
         }
     }

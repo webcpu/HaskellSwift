@@ -9,9 +9,14 @@
 import Foundation
 
 //(>>=) :: forall a b. m a -> (a -> m b) -> m b
-infix operator >>= {associativity right precedence 100}
 
-public func >>=<A, B>(xs: [A], f: A -> [B]) -> [B] {
+//infix operator >>= {associativity left precedence 100}
+
+public func >>>=<A>(xs: [A], f: A -> [A]) -> [A] {
+    return xs.map(f).reduce([], combine: +)
+}
+
+public func >>>=<A, B>(xs: [A], f: A -> [B]) -> [B] {
     return xs.map(f).reduce([], combine: +)
 }
 

@@ -54,3 +54,33 @@ public func until<B>(@noescape condition: B -> Bool, @noescape _ process: B -> B
     } while (!condition(value))
     return value
 }
+
+//MARK: - Integer
+//MARK: div
+//m (dividend) n (divisor)
+public func div<A: IntegerType>(m: A, _ n: A) -> A {
+    return m / n
+}
+
+//MARK: mod
+public func mod<A: IntegerType>(m: A, _ n: A) -> A {
+    return m % n
+}
+
+//MARK: divMod
+public func divMod<A: IntegerType>(m: A, _ n: A) -> (A, A) {
+    let quotient  = m / n
+    let remainder = m % n
+    return (quotient, remainder)
+}
+
+//MARK: - Numberic
+//MARK: even
+public func even<A: IntegerType>(x: A) -> Bool {
+    return x % 2 == 0
+}
+
+//MARK: odd
+public func odd<A: IntegerType>(x: A) -> Bool {
+    return !even(x)
+}

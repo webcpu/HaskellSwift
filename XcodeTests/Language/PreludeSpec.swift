@@ -10,6 +10,7 @@ import Nimble
 
 class PreludeSpec: QuickSpec {
     override func spec() {
+        //MARK: succ
         describe("succ") {
             it("Int") {
                 let x = Int(1)
@@ -78,6 +79,7 @@ class PreludeSpec: QuickSpec {
             }
         }
 
+        //MARK: pred
         describe("pred") {
             it("Int") {
                 let x = Int(1)
@@ -153,35 +155,7 @@ class PreludeSpec: QuickSpec {
             }
         }
 
-        describe("until") {
-            it("Int") {
-                let condition = { x in
-                    return x > 10
-                }
-                
-                let process  = { x in
-                    return x + 1
-                }
-                
-                let x = until(condition, process, 0)
-                expect(x).to(equal(11))
-            }
-            
-            it("tuple") {
-                let condition = { (t: (name: String, age: Int))  in
-                    return t.age > 10
-                }
-                
-                let process  = { (t: (String, Int)) in
-                    return (t.0, t.1 + 1)
-                }
-                
-                let t = until(condition, process, ("Jack", 0))
-                expect(t.0).to(equal("Jack"))
-                expect(t.1).to(equal(11))
-            }
-        }
-        
+        //MARK: enumFromTo
         describe("enumFromTo") {
             it("Int") {
                 let xs = enumFromTo(1, 3)
@@ -257,6 +231,79 @@ class PreludeSpec: QuickSpec {
                 let xs = enumFromTo(Character("z"), Character("a"))
                 let ys = ""
                 expect(xs).to(equal(ys))
+            }
+        }
+
+        //MARK: until
+        describe("until") {
+            it("Int") {
+                let condition = { x in
+                    return x > 10
+                }
+
+                let process  = { x in
+                    return x + 1
+                }
+
+                let x = until(condition, process, 0)
+                expect(x).to(equal(11))
+            }
+
+            it("tuple") {
+                let condition = { (t: (name: String, age: Int))  in
+                    return t.age > 10
+                }
+
+                let process  = { (t: (String, Int)) in
+                    return (t.0, t.1 + 1)
+                }
+
+                let t = until(condition, process, ("Jack", 0))
+                expect(t.0).to(equal("Jack"))
+                expect(t.1).to(equal(11))
+            }
+        }
+
+        //MARK: - Integer
+        //MARK: div
+        describe("div") {
+            it("Int") {
+                let x = div(7, 3)
+                expect(x).to(equal(2))
+            }
+        }
+
+        //MARK: mod
+        describe("mod") {
+            it("Int") {
+                let x = mod(7, 3)
+                expect(x).to(equal(1))
+            }
+        }
+
+        //MARK: divMod
+        describe("divMod") {
+            it("Int") {
+                let t = divMod(7, 3)
+                expect(t.0).to(equal(2))
+                expect(t.1).to(equal(1))
+            }
+        }
+
+        //MARK: - Numberic
+        //MARK: even
+        describe("even") {
+            it("Int") {
+                expect(even(1)).to(equal(false))
+                expect(even(2)).to(equal(true))
+            }
+        }
+
+        //MARK: odd
+        describe("odd") {
+            it("Int") {
+                expect(odd(2)).to(equal(false))
+                expect(odd(1)).to(equal(true))
             }
         }
     }

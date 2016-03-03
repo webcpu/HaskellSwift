@@ -93,10 +93,12 @@
 		ECF946311BF5EFFD0039C177 /* HaskellSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF945E01BF5E5560039C177 /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF948E41BF61AFD0039C177 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF948C41BF619000039C177 /* Nimble.framework */; };
 		ECF948E51BF61AFD0039C177 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF948A91BF618DD0039C177 /* Quick.framework */; };
-		ECF948E61BF61AFD0039C177 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF948D71BF619190039C177 /* SwiftCheck.framework */; };
 		ECF948EB1BF61B410039C177 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECF948C81BF619000039C177 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF948ED1BF61B510039C177 /* SwiftCheck.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECF948D71BF619190039C177 /* SwiftCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF948EF1BF61B710039C177 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECF948A91BF618DD0039C177 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECFF2D4C1C88E77900D8ABD3 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084E1C78A84B0056F309 /* Control.Monad.swift */; };
+		ECFF2D4D1C88E77B00D8ABD3 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084E1C78A84B0056F309 /* Control.Monad.swift */; };
+		ECFF2D4E1C88E77D00D8ABD3 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084E1C78A84B0056F309 /* Control.Monad.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -367,7 +369,6 @@
 			files = (
 				ECF948E41BF61AFD0039C177 /* Nimble.framework in Frameworks */,
 				ECF948E51BF61AFD0039C177 /* Quick.framework in Frameworks */,
-				ECF948E61BF61AFD0039C177 /* SwiftCheck.framework in Frameworks */,
 				EC24C2081BF21A06000CB663 /* HaskellSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1062,6 +1063,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECFF2D4C1C88E77900D8ABD3 /* Control.Monad.swift in Sources */,
 				EC9359241C87302D00A9307C /* Prelude.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1089,6 +1091,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECFF2D4E1C88E77D00D8ABD3 /* Control.Monad.swift in Sources */,
 				EC9359261C87302D00A9307C /* Prelude.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1097,6 +1100,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECFF2D4D1C88E77B00D8ABD3 /* Control.Monad.swift in Sources */,
 				EC9359251C87302D00A9307C /* Prelude.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
