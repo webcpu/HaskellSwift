@@ -44,7 +44,14 @@
 		EC52E5F81BF64C2800633CF6 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF948A91BF618DD0039C177 /* Quick.framework */; };
 		EC52E5F91BF64C3200633CF6 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF948C41BF619000039C177 /* Nimble.framework */; };
 		EC52E5FA1BF64C3E00633CF6 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF948D71BF619190039C177 /* SwiftCheck.framework */; };
+		EC53E1C21C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
+		EC53E1C31C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
+		EC53E1C41C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
 		EC7F1F621BF5319800D424EC /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7F1F581BF5319800D424EC /* HaskellSwift.framework */; };
+		EC9359231C87302D00A9307C /* Prelude.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9359221C87302D00A9307C /* Prelude.swift */; };
+		EC9359241C87302D00A9307C /* Prelude.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9359221C87302D00A9307C /* Prelude.swift */; };
+		EC9359251C87302D00A9307C /* Prelude.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9359221C87302D00A9307C /* Prelude.swift */; };
+		EC9359261C87302D00A9307C /* Prelude.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9359221C87302D00A9307C /* Prelude.swift */; };
 		ECAB085C1C78A84B0056F309 /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084D1C78A84B0056F309 /* Control.Applicative.swift */; };
 		ECAB085D1C78A84B0056F309 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084E1C78A84B0056F309 /* Control.Monad.swift */; };
 		ECAB08601C78A84B0056F309 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08521C78A84B0056F309 /* Data.Char.swift */; };
@@ -317,11 +324,13 @@
 		EC3AAAFC1C07069300F89619 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphonesimulator/Nimble.framework"; sourceTree = "<group>"; };
 		EC3AAAFD1C07069300F89619 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphonesimulator/Quick.framework"; sourceTree = "<group>"; };
 		EC3AAAFE1C07069300F89619 /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphonesimulator/SwiftCheck.framework"; sourceTree = "<group>"; };
+		EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreludeSpec.swift; sourceTree = "<group>"; };
 		EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.MonadSpec.swift; sourceTree = "<group>"; };
 		EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.ApplicativeSpec.swift; sourceTree = "<group>"; };
 		EC743FC11BF124D500374B35 /* Data.List.List.Transformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.List.List.Transformation.swift; sourceTree = "<group>"; };
 		EC7F1F581BF5319800D424EC /* HaskellSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HaskellSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7F1F611BF5319800D424EC /* HaskellSwift-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HaskellSwift-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC9359221C87302D00A9307C /* Prelude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prelude.swift; sourceTree = "<group>"; };
 		ECAB084D1C78A84B0056F309 /* Control.Applicative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Applicative.swift; sourceTree = "<group>"; };
 		ECAB084E1C78A84B0056F309 /* Control.Monad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Monad.swift; sourceTree = "<group>"; };
 		ECAB08521C78A84B0056F309 /* Data.Char.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Char.swift; sourceTree = "<group>"; };
@@ -439,6 +448,23 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		EC9359211C87301700A9307C /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				EC9359221C87302D00A9307C /* Prelude.swift */,
+			);
+			name = Language;
+			path = HaskellSwift/Language;
+			sourceTree = "<group>";
+		};
+		EC93597A1C876CDB00A9307C /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
 		ECAB084C1C78A84B0056F309 /* Control */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,6 +532,7 @@
 		ECF75E851B7E1B420047B0F7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EC9359211C87301700A9307C /* Language */,
 				ECAB084C1C78A84B0056F309 /* Control */,
 				ECAB08511C78A84B0056F309 /* Data */,
 				ECAB085A1C78A84B0056F309 /* GHC */,
@@ -516,6 +543,7 @@
 		ECF75E971B7E1B420047B0F7 /* XcodeTests */ = {
 			isa = PBXGroup;
 			children = (
+				EC93597A1C876CDB00A9307C /* Language */,
 				EC0807321BEFF289003DA6CC /* Data */,
 				ECF75E9A1B7E1B420047B0F7 /* Info.plist */,
 				ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */,
@@ -1019,6 +1047,7 @@
 				EC24C20F1BF21A31000CB663 /* Data.List.Basic.QuickCheck.swift in Sources */,
 				EC24C2111BF21A31000CB663 /* Data.CharSpec.swift in Sources */,
 				EC24C2121BF21A31000CB663 /* Data.TupleSpec.swift in Sources */,
+				EC53E1C21C8770DE00A38310 /* PreludeSpec.swift in Sources */,
 				EC24C2131BF21A31000CB663 /* Data.FunctorSpec.swift in Sources */,
 				EC24C2141BF21A31000CB663 /* Data.MaybeSpec.swift in Sources */,
 				EC24C2151BF21A31000CB663 /* Data.OrdSpec.swift in Sources */,
@@ -1033,6 +1062,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9359241C87302D00A9307C /* Prelude.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1044,6 +1074,7 @@
 				ECF946281BF5EEF60039C177 /* Control.MonadSpec.swift in Sources */,
 				ECF946291BF5EEF60039C177 /* QualifierProtocol.swift in Sources */,
 				ECF946101BF5EEE70039C177 /* Data.MaybeSpec.swift in Sources */,
+				EC53E1C31C8770DE00A38310 /* PreludeSpec.swift in Sources */,
 				ECF9460A1BF5EEE70039C177 /* Data.ListSpec.swift in Sources */,
 				ECF9460E1BF5EEE70039C177 /* Data.TupleSpec.swift in Sources */,
 				ECF946111BF5EEE70039C177 /* Data.OrdSpec.swift in Sources */,
@@ -1058,6 +1089,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9359261C87302D00A9307C /* Prelude.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1065,6 +1097,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9359251C87302D00A9307C /* Prelude.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,6 +1109,7 @@
 				ECF946241BF5EEF50039C177 /* Control.MonadSpec.swift in Sources */,
 				ECF946251BF5EEF50039C177 /* QualifierProtocol.swift in Sources */,
 				ECF946181BF5EEE90039C177 /* Data.MaybeSpec.swift in Sources */,
+				EC53E1C41C8770DE00A38310 /* PreludeSpec.swift in Sources */,
 				ECF946121BF5EEE90039C177 /* Data.ListSpec.swift in Sources */,
 				ECF946161BF5EEE90039C177 /* Data.TupleSpec.swift in Sources */,
 				ECF946191BF5EEE90039C177 /* Data.OrdSpec.swift in Sources */,
@@ -1099,6 +1133,7 @@
 				ECAB085C1C78A84B0056F309 /* Control.Applicative.swift in Sources */,
 				ECAB08631C78A84B0056F309 /* Data.Functor.swift in Sources */,
 				ECAB08611C78A84B0056F309 /* Data.Either.swift in Sources */,
+				EC9359231C87302D00A9307C /* Prelude.swift in Sources */,
 				ECAB08661C78A84B0056F309 /* Data.Ord.swift in Sources */,
 				ECAB08681C78A84B0056F309 /* GHC.Num.swift in Sources */,
 			);
@@ -1188,6 +1223,7 @@
 		EC7F1F691BF5319800D424EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1202,6 +1238,7 @@
 				PRODUCT_NAME = HaskellSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1211,6 +1248,7 @@
 		EC7F1F6A1BF5319800D424EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1442,6 +1480,7 @@
 		ECF945F51BF5E5570039C177 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1458,6 +1497,7 @@
 		ECF945F61BF5E5570039C177 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
