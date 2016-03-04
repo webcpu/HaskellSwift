@@ -8,37 +8,59 @@
 
 import Foundation
 
-//(>>=) :: forall a b. m a -> (a -> m b) -> m b
-
-//infix operator >>= {associativity left precedence 100}
-
-public func >>>=<A>(xs: [A], f: A -> [A]) -> [A] {
-    return xs.map(f).reduce([], combine: +)
-}
-
+//MARK: - (>>=) :: Monad m => a -> (a -> m b) -> m b
+infix operator >>>= {associativity right precedence 100}
+//Array
 public func >>>=<A, B>(xs: [A], f: A -> [B]) -> [B] {
     return xs.map(f).reduce([], combine: +)
 }
 
-public func >>=<A, B, C>(f: A->[B], g: B->[C]) -> (A->[C]) {
-    return { (x : A) -> [C] in
-        return concat(map(g, f(x)))
-    }
+//Maybe
+public func >>>=<A, B>(x: A?, f: A -> B?) -> B? {
+    return x == nil ? nil : f(x!)
 }
 
-//(<=<) :: Monad m => (b -> m c) -> (a -> m b) -> a -> m c
-infix operator <=< {associativity right precedence 100}
-public func <=<<A, B, C>(f: B->[C], g: A -> [B]) -> (A->[C]) {
-    return { (x: A) -> [C] in
-        return (g >>= f)(x)
-    }
+//MARK: - (=<<) :: Monad m => (a -> m b) -> m a -> m b
+infix operator =<<< {associativity left precedence 100}
+//Array
+public func =<<<<A, B>(f: A -> [B], xs: [A]) -> [B] {
+    return xs.map(f).reduce([], combine: +)
 }
 
-//(>=>) :: Monad m => (a -> m b) -> (b -> m c) -> a -> m c
+//Maybe
+public func =<<<<A, B>(f: A -> B?, a: A?) -> B? {
+    return a == nil ? nil : f(a!)
+}
+
+//MARK: - (>=>) :: Monad m => (a -> m b) -> (b -> m c) -> a -> m c
 infix operator >=> {associativity right precedence 100}
-public func >=><A, B, C>(f: A->[B], g: B -> [C]) -> (A->[C]) {
-    return { (x: A) -> [C] in
-        return (f >>= g)(x)
+//Array
+public func >=><A, B, C>(f: A->[B], g: B->[C]) -> (A->[C]) {
+    return { (a : A) -> [C] in
+        return concat(map(g, f(a)))
+    }
+}
+
+//Maybe
+public func >=><A, B, C>(f: A->B?, g: B->C?) -> (A->C?) {
+    return { (a : A) -> C? in
+        return f(a) >>>= g
+    }
+}
+
+//MARK: - (<=<) :: Monad m => (b -> m c) -> (a -> m b) -> a -> m c
+infix operator <=< {associativity left precedence 100}
+//Array
+public func <=<<A, B, C>(f: B->[C], g: A -> [B]) -> (A->[C]) {
+    return { (a: A) -> [C] in
+        return concat(map(f, g(a)))
+    }
+}
+
+//Maybe
+public func <=<<A, B, C>(f: B->C?, g: A->B?) -> (A->C?) {
+    return { (a : A) -> C? in
+        return g(a) >>>= f
     }
 }
 
@@ -46,15 +68,3 @@ public func >=><A, B, C>(f: A->[B], g: B -> [C]) -> (A->[C]) {
 public func fmap<A, B>(x: A?, _ f: A -> B?) -> B? {
     return x == nil ? nil : f(x!)
 }
-
-infix operator >>>= {associativity right precedence 100}
-public func >>>=<A, B>(x: A?, f: A -> B?) -> B? {
-    return x == nil ? nil : f(x!)
-}
-
-public func >>>=<A, B, C>(f: A->B?, g: B->C?) -> (A->C?) {
-    return { (a : A) -> C? in
-        return f(a) >>>= g
-    }
-}
-

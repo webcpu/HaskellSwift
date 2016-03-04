@@ -19,6 +19,10 @@ public func succ(x: Character) -> Character {
     return Character(UnicodeScalar(value! + 1))
 }
 
+public func succ(x: Bool) -> Bool {
+    return !x
+}
+
 //MARK: pred
 public func pred<A: IntegerType>(x: A) -> A {
     return x - 1
@@ -29,6 +33,10 @@ public func pred(x: Character) -> Character {
     assert(value != nil, "Unexpected Character: \(x)")
     let newValue = value! == 0 ?  0 : value! - 1
     return Character(UnicodeScalar(newValue))
+}
+
+public func pred(x: Bool) -> Bool {
+    return !x
 }
 
 //MARK: enumFromTo
