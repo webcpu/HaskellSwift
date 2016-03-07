@@ -31,10 +31,11 @@ class ControlMonadSpec: QuickSpec {
             return x.characters.count
         }
         
-        describe(">>>= and >=>") {
+        describe(">>>= and >=> , >>>") {
             it("Array") {
                 let xs : [Int]  = [1, 2, 3]
                 let ys          = [false, true, false]
+                let zs : [Int]  = [1, 3, 5]
                 
                 let bs          = xs >>>= square
                 let r0          = bs >>>= isEven
@@ -43,11 +44,18 @@ class ControlMonadSpec: QuickSpec {
                 let f           = square >=> isEven
                 let r1          = xs >>>= f
                 expect(r1).to(equal(ys))
-                
-                let r           = xs >>>= square >=> isEven
-                expect(r).to(equal(ys))
+
+                let r2          = xs >>>= square >>>= isEven
+                expect(r2).to(equal(ys))
+
+                let trueOrEmpty = { (x: Bool) -> [Bool] in return x ? [x] : [] }
+                let r3          = xs >>>= square >>>= isEven >>>= trueOrEmpty >>> [false]
+                expect(r3).to(equal([true]))
+
+                let r4          = zs >>>= square >>>= isEven >>>= trueOrEmpty >>> [false]
+                expect(r4).to(equal([false]))
             }
-            
+
             it("Maybe") {
                 let a           = 2
                 let c           = 4
@@ -59,16 +67,23 @@ class ControlMonadSpec: QuickSpec {
                 let f           = name >=> len
                 let r1          = f(a)
                 expect(r1).to(equal(c))
-                
-                let r           = a >>>= name >=> len
-                expect(r).to(equal(c))
+
+                let r2          = a >>>= name >>>= len
+                expect(r2).to(equal(c))
+
+                let r3          = 3 >>>= name >>>= len >>> 0
+                expect(r3).to(equal(0))
+
+                let r4          = 2 >>>= name >>>= len >>> 0
+                expect(r4).to(equal(4))
             }
         }
         
-        describe("=<<< and <=<") {
+        describe("=<<< and <=<, <<<") {
             it("Array") {
                 let xs : [Int]  = [1, 2, 3]
                 let ys          = [false, true, false]
+                let zs : [Int]  = [1, 3, 5]
                 
                 let bs          = square =<<< xs
                 let r0          = isEven =<<< bs
@@ -78,8 +93,15 @@ class ControlMonadSpec: QuickSpec {
                 let r1          = f =<<< xs
                 expect(r1).to(equal(ys))
                 
-                let r           = isEven <=< square =<<< xs
-                expect(r).to(equal(ys))
+                let r2          = isEven =<<< square =<<< xs
+                expect(r2).to(equal(ys))
+                
+                let trueOrEmpty = { (x: Bool) -> [Bool] in return x ? [x] : [] }
+                let r3          = [false] <<< trueOrEmpty =<<< isEven =<<< square =<<< xs
+                expect(r3).to(equal([true]))
+
+                let r4          = [false] <<< trueOrEmpty =<<< isEven =<<< square =<<< zs
+                expect(r4).to(equal([false]))
             }
             
             it("Maybe") {
@@ -94,8 +116,14 @@ class ControlMonadSpec: QuickSpec {
                 let r1          = f =<<< a
                 expect(r1).to(equal(c))
                 
-                let r           = len <=< name =<<< a
-                expect(r).to(equal(c))
+                let r2          = len =<<< name =<<< a
+                expect(r2).to(equal(c))
+
+                let r3          = 0 <<< len =<<< name =<<< 3
+                expect(r3).to(equal(0))
+
+                let r4          = 0 <<< len =<<< name =<<< 2
+                expect(r4).to(equal(4))
             }
         }
 
