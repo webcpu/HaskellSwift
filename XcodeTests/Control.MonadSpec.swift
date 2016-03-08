@@ -49,11 +49,11 @@ class ControlMonadSpec: QuickSpec {
                 expect(r2).to(equal(ys))
 
                 let trueOrEmpty = { (x: Bool) -> [Bool] in return x ? [x] : [] }
-                let r3          = xs >>>= square >>>= isEven >>>= trueOrEmpty >>> [false]
-                expect(r3).to(equal([true]))
+                let r3          = xs >>>= square >>>= isEven >>>= trueOrEmpty >>> [100]
+                expect(r3).to(equal([100]))
 
-                let r4          = zs >>>= square >>>= isEven >>>= trueOrEmpty >>> [false]
-                expect(r4).to(equal([false]))
+                let r4          = zs >>>= square >>>= isEven >>>= trueOrEmpty >>> [100]
+                expect(r4).to(equal([]))
             }
 
             it("Maybe") {
@@ -71,11 +71,11 @@ class ControlMonadSpec: QuickSpec {
                 let r2          = a >>>= name >>>= len
                 expect(r2).to(equal(c))
 
-                let r3          = 3 >>>= name >>>= len >>> 0
-                expect(r3).to(equal(0))
+                let r3          = 3 >>>= name >>>= len >>> "even"
+                expect(r3).to(beNil())
 
-                let r4          = 2 >>>= name >>>= len >>> 0
-                expect(r4).to(equal(4))
+                let r4          = 2 >>>= name >>>= len >>> "even"
+                expect(r4).to(equal("even"))
             }
         }
         
@@ -119,13 +119,24 @@ class ControlMonadSpec: QuickSpec {
                 let r2          = len =<<< name =<<< a
                 expect(r2).to(equal(c))
 
-                let r3          = 0 <<< len =<<< name =<<< 3
-                expect(r3).to(equal(0))
+                let r3          = "even" <<< len =<<< name =<<< 3
+                expect(r3).to(beNil())
 
-                let r4          = 0 <<< len =<<< name =<<< 2
-                expect(r4).to(equal(4))
+                let r4          = "even" <<< len =<<< name =<<< 2
+                expect(r4).to(equal("even"))
             }
         }
 
+        describe("pure/return") {
+            it("Array") {
+                let xs: [Int] = pure(3)
+                expect(xs).to(equal([3]))
+            }
+
+            it("Maybe") {
+                let x: Int? = pure(3)
+                expect(x).to(equal(3))
+            }
+        }
     }
 }

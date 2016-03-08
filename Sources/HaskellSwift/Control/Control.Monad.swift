@@ -51,12 +51,12 @@ public func >=><A, B, C>(f: A->B?, g: B->C?) -> (A->C?) {
 
 //MARK: - (>>>):: Monad m => m a -> m a -> m a
 infix operator >>> {associativity left precedence 100}
-public func >>><A>(xs: [A], ys: [A]) -> [A] {
-    return xs.count > 0 ? xs : ys
+public func >>><A, B>(xs: [A], ys: [B]) -> [B] {
+    return xs.isEmpty ? [] : ys
 }
 
-public func >>><A>(x: A?, y: A?) -> A? {
-    return x ?? y
+public func >>><A, B>(x: A?, y: B?) -> B? {
+    return x == nil ? nil : y
 }
 
 //MARK: - (=<<) :: Monad m => (a -> m b) -> m a -> m b
@@ -105,22 +105,24 @@ public func <<<<A>(ys: [A], xs: [A]) -> [A] {
     return xs.count > 0 ? xs : ys
 }
 
-public func <<<<A>(ys: [A], f: A -> [A]) -> (A->[A]) {
-    return { (x: A) in
-        let xs = f(x)
-        return xs.count > 0 ? xs : ys
-    }
+//MARK: - return :: Monad m => a -> m a
+public func pure<A>(x: A) -> [A] {
+    return [x]
+}
+
+public func pure<A>(x: A) -> A? {
+    return Optional<A>.Some(x)
 }
 
 public func <<<<A, B>(ys: [B], f: A -> [B]) -> (A->[B]) {
     return { (x: A) in
         let xs = f(x)
-        return xs.count > 0 ? xs : ys
+        return xs.isEmpty ? [] : ys
     }
 }
 
-public func <<< <A>(y: A?, x: A?) -> A? {
-    return x ?? y
+public func <<< <A, B>(y: B?, x: A?) -> B? {
+    return x == nil ? nil : y
 }
 
 //Maybe Monad
