@@ -39,7 +39,7 @@ public func fromLeft<A,B>(a: Either<A,B>) -> A {
 }
 
 //MARK: fromRight :: Either a b -> b
-public func fromRight<A,B>(a: Either<A,B>) -> B {
+public func fromRight<A,B>(a: Either<A,B>) -> B! {
     switch a {
     case .Left(_):
         assert(false)
@@ -50,10 +50,11 @@ public func fromRight<A,B>(a: Either<A,B>) -> B {
 
 //MARK: either :: (a -> c) -> (b -> c) -> Either a b -> c
 func either<A, B, C>(leftHandler: A->C, _ rightHandler: B->C, _ e: Either<A, B>) -> C {
-    if isLeft(e) {
-        return leftHandler(fromLeft(e))
-    } else {
-        return rightHandler(fromRight(e))
+    switch e {
+    case .Left(let left):
+        return leftHandler(left)
+    case .Right(let right):
+        return rightHandler(right)
     }
 }
 

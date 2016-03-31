@@ -43,19 +43,19 @@ public func <*<A, B>(x: A?, y: B?) -> A?{
     return x
 }
 
-//MARK: - Applicative Either
-public func <*> <A, B, E>(f: Either<E, A->B>, a: Either<E, A>)->Either<E, B> {
-    let b = fromRight(f)(fromRight(a))
-    return Either<E, B>.Right(b)
-}
-
-public func *><A, B, E>(x: Either<E, A>, y: Either<E, B>) -> Either<E, B> {
-    return y
-}
-
-public func <*<A, B, E>(x: Either<E, A>, y: Either<E, B>) -> Either<E, A> {
-    return x
-}
+////MARK: - Applicative Either
+//public func <*> <A, B, E>(f: Either<E, A->B>, a: Either<E, A>)->Either<E, B> {
+//    let b = fromRight(f)(fromRight(a))
+//    return Either<E, B>.Right(b)
+//}
+//
+//public func *><A, B, E>(x: Either<E, A>, y: Either<E, B>) -> Either<E, B> {
+//    return y
+//}
+//
+//public func <*<A, B, E>(x: Either<E, A>, y: Either<E, B>) -> Either<E, A> {
+//    return x
+//}
 
 //MARK: liftA []
 func liftA<A, B>(f: A->B, _ xs: [A]) -> [B] {
