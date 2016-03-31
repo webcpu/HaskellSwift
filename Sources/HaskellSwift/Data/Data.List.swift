@@ -132,7 +132,7 @@ public func null<T>(xs: [T]) -> Bool {
 }
 
 public func null(xs: String) -> Bool {
-    return xs.characters.count == 0
+    return xs.characters.isEmpty
 }
 
 //MARK: length :: Foldable t => t a -> Int
@@ -696,6 +696,10 @@ public func replicate<A>(len: Int, _ value: A) -> [A] {
 
 public func replicate<A>(len: Int) -> (A -> [A]) {
     return curry(replicate, len)
+}
+
+public func replicate(len: Int, _ value: Character) -> String {
+    return String(count: len, repeatedValue: value)
 }
 
 //MARK: cycle :: [a] -> [a]

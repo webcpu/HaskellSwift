@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -47,6 +47,36 @@
 		EC53E1C21C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
 		EC53E1C31C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
 		EC53E1C41C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
+		EC6258691C955FFF003A1306 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08521C78A84B0056F309 /* Data.Char.swift */; };
+		EC62586A1C955FFF003A1306 /* Data.Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08531C78A84B0056F309 /* Data.Either.swift */; };
+		EC62586B1C955FFF003A1306 /* Data.Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08541C78A84B0056F309 /* Data.Function.swift */; };
+		EC62586C1C955FFF003A1306 /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08551C78A84B0056F309 /* Data.Functor.swift */; };
+		EC62586D1C955FFF003A1306 /* Data.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08561C78A84B0056F309 /* Data.List.swift */; };
+		EC62586E1C955FFF003A1306 /* Data.Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08571C78A84B0056F309 /* Data.Maybe.swift */; };
+		EC62586F1C955FFF003A1306 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08581C78A84B0056F309 /* Data.Ord.swift */; };
+		EC6258701C955FFF003A1306 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08591C78A84B0056F309 /* Data.Tuple.swift */; };
+		EC6258841C95600B003A1306 /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084D1C78A84B0056F309 /* Control.Applicative.swift */; };
+		EC6258851C95600C003A1306 /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084D1C78A84B0056F309 /* Control.Applicative.swift */; };
+		EC6258861C95600D003A1306 /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084D1C78A84B0056F309 /* Control.Applicative.swift */; };
+		EC6258871C956012003A1306 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08521C78A84B0056F309 /* Data.Char.swift */; };
+		EC6258881C956012003A1306 /* Data.Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08531C78A84B0056F309 /* Data.Either.swift */; };
+		EC6258891C956012003A1306 /* Data.Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08541C78A84B0056F309 /* Data.Function.swift */; };
+		EC62588A1C956012003A1306 /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08551C78A84B0056F309 /* Data.Functor.swift */; };
+		EC62588B1C956012003A1306 /* Data.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08561C78A84B0056F309 /* Data.List.swift */; };
+		EC62588C1C956012003A1306 /* Data.Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08571C78A84B0056F309 /* Data.Maybe.swift */; };
+		EC62588D1C956012003A1306 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08581C78A84B0056F309 /* Data.Ord.swift */; };
+		EC62588E1C956012003A1306 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08591C78A84B0056F309 /* Data.Tuple.swift */; };
+		EC62588F1C956012003A1306 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08521C78A84B0056F309 /* Data.Char.swift */; };
+		EC6258901C956012003A1306 /* Data.Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08531C78A84B0056F309 /* Data.Either.swift */; };
+		EC6258911C956012003A1306 /* Data.Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08541C78A84B0056F309 /* Data.Function.swift */; };
+		EC6258921C956012003A1306 /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08551C78A84B0056F309 /* Data.Functor.swift */; };
+		EC6258931C956012003A1306 /* Data.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08561C78A84B0056F309 /* Data.List.swift */; };
+		EC6258941C956012003A1306 /* Data.Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08571C78A84B0056F309 /* Data.Maybe.swift */; };
+		EC6258951C956012003A1306 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08581C78A84B0056F309 /* Data.Ord.swift */; };
+		EC6258961C956013003A1306 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08591C78A84B0056F309 /* Data.Tuple.swift */; };
+		EC6258971C956018003A1306 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB085B1C78A84B0056F309 /* GHC.Num.swift */; };
+		EC6258981C956019003A1306 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB085B1C78A84B0056F309 /* GHC.Num.swift */; };
+		EC6258991C95601A003A1306 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB085B1C78A84B0056F309 /* GHC.Num.swift */; };
 		EC7F1F621BF5319800D424EC /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7F1F581BF5319800D424EC /* HaskellSwift.framework */; };
 		EC9359231C87302D00A9307C /* Prelude.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9359221C87302D00A9307C /* Prelude.swift */; };
 		EC9359241C87302D00A9307C /* Prelude.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9359221C87302D00A9307C /* Prelude.swift */; };
@@ -96,6 +126,10 @@
 		ECF948EB1BF61B410039C177 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECF948C81BF619000039C177 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF948ED1BF61B510039C177 /* SwiftCheck.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECF948D71BF619190039C177 /* SwiftCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF948EF1BF61B710039C177 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECF948A91BF618DD0039C177 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECFED64D1C9804C60058E9F9 /* Data.Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFED64C1C9804C60058E9F9 /* Data.Traversable.swift */; };
+		ECFED64E1C9804C60058E9F9 /* Data.Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFED64C1C9804C60058E9F9 /* Data.Traversable.swift */; };
+		ECFED64F1C9804C60058E9F9 /* Data.Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFED64C1C9804C60058E9F9 /* Data.Traversable.swift */; };
+		ECFED6501C9804C60058E9F9 /* Data.Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFED64C1C9804C60058E9F9 /* Data.Traversable.swift */; };
 		ECFF2D4C1C88E77900D8ABD3 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084E1C78A84B0056F309 /* Control.Monad.swift */; };
 		ECFF2D4D1C88E77B00D8ABD3 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084E1C78A84B0056F309 /* Control.Monad.swift */; };
 		ECFF2D4E1C88E77D00D8ABD3 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084E1C78A84B0056F309 /* Control.Monad.swift */; };
@@ -360,6 +394,7 @@
 		ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.TupleSpec.swift; sourceTree = "<group>"; };
 		ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HaskellSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFBE9161BF217D300D23E20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECFED64C1C9804C60058E9F9 /* Data.Traversable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Traversable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -487,6 +522,7 @@
 				ECAB08571C78A84B0056F309 /* Data.Maybe.swift */,
 				ECAB08581C78A84B0056F309 /* Data.Ord.swift */,
 				ECAB08591C78A84B0056F309 /* Data.Tuple.swift */,
+				ECFED64C1C9804C60058E9F9 /* Data.Traversable.swift */,
 			);
 			name = Data;
 			path = HaskellSwift/Data;
@@ -813,7 +849,7 @@
 				};
 			};
 			buildConfigurationList = ECF75E7E1B7E1B420047B0F7 /* Build configuration list for PBXProject "HaskellSwift" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1063,8 +1099,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC6258971C956018003A1306 /* GHC.Num.swift in Sources */,
 				ECFF2D4C1C88E77900D8ABD3 /* Control.Monad.swift in Sources */,
+				EC62586E1C955FFF003A1306 /* Data.Maybe.swift in Sources */,
+				EC62586F1C955FFF003A1306 /* Data.Ord.swift in Sources */,
+				EC6258701C955FFF003A1306 /* Data.Tuple.swift in Sources */,
+				EC62586A1C955FFF003A1306 /* Data.Either.swift in Sources */,
+				EC62586C1C955FFF003A1306 /* Data.Functor.swift in Sources */,
+				EC6258691C955FFF003A1306 /* Data.Char.swift in Sources */,
+				EC62586D1C955FFF003A1306 /* Data.List.swift in Sources */,
+				EC62586B1C955FFF003A1306 /* Data.Function.swift in Sources */,
+				EC6258841C95600B003A1306 /* Control.Applicative.swift in Sources */,
 				EC9359241C87302D00A9307C /* Prelude.swift in Sources */,
+				ECFED64E1C9804C60058E9F9 /* Data.Traversable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1091,8 +1138,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC6258991C95601A003A1306 /* GHC.Num.swift in Sources */,
+				EC6258901C956012003A1306 /* Data.Either.swift in Sources */,
+				EC62588F1C956012003A1306 /* Data.Char.swift in Sources */,
+				EC6258941C956012003A1306 /* Data.Maybe.swift in Sources */,
+				EC6258861C95600D003A1306 /* Control.Applicative.swift in Sources */,
+				EC6258951C956012003A1306 /* Data.Ord.swift in Sources */,
 				ECFF2D4E1C88E77D00D8ABD3 /* Control.Monad.swift in Sources */,
+				EC6258961C956013003A1306 /* Data.Tuple.swift in Sources */,
+				EC6258911C956012003A1306 /* Data.Function.swift in Sources */,
+				EC6258921C956012003A1306 /* Data.Functor.swift in Sources */,
+				EC6258931C956012003A1306 /* Data.List.swift in Sources */,
 				EC9359261C87302D00A9307C /* Prelude.swift in Sources */,
+				ECFED6501C9804C60058E9F9 /* Data.Traversable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1100,8 +1158,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC6258981C956019003A1306 /* GHC.Num.swift in Sources */,
+				EC6258881C956012003A1306 /* Data.Either.swift in Sources */,
+				EC6258871C956012003A1306 /* Data.Char.swift in Sources */,
+				EC62588C1C956012003A1306 /* Data.Maybe.swift in Sources */,
+				EC6258851C95600C003A1306 /* Control.Applicative.swift in Sources */,
+				EC62588D1C956012003A1306 /* Data.Ord.swift in Sources */,
 				ECFF2D4D1C88E77B00D8ABD3 /* Control.Monad.swift in Sources */,
+				EC62588E1C956012003A1306 /* Data.Tuple.swift in Sources */,
+				EC6258891C956012003A1306 /* Data.Function.swift in Sources */,
+				EC62588A1C956012003A1306 /* Data.Functor.swift in Sources */,
+				EC62588B1C956012003A1306 /* Data.List.swift in Sources */,
 				EC9359251C87302D00A9307C /* Prelude.swift in Sources */,
+				ECFED64F1C9804C60058E9F9 /* Data.Traversable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1140,6 +1209,7 @@
 				EC9359231C87302D00A9307C /* Prelude.swift in Sources */,
 				ECAB08661C78A84B0056F309 /* Data.Ord.swift in Sources */,
 				ECAB08681C78A84B0056F309 /* GHC.Num.swift in Sources */,
+				ECFED64D1C9804C60058E9F9 /* Data.Traversable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
