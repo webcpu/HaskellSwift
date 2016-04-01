@@ -9,8 +9,10 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>HaskellSwift-OSXTests.xcscheme_^#shared#^_</key>
+		<key>HaskellSwift-OSXTests.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
@@ -19,28 +21,38 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>HaskellSwift-iOSTests.xcscheme_^#shared#^_</key>
+		<key>HaskellSwift-iOSTests.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
 		<key>HaskellSwift-tvOS.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>HaskellSwift-tvOSTests.xcscheme_^#shared#^_</key>
+		<key>HaskellSwift-tvOSTests.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>HaskellSwift-watchOS.xcscheme_^#shared#^_</key>
+		<key>HaskellSwift-watchOS.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>HaskellSwiftTests.xcscheme_^#shared#^_</key>
+		<key>HaskellSwiftTests.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
