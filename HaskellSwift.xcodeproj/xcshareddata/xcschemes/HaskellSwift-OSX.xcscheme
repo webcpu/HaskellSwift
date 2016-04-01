@@ -20,20 +20,6 @@
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EC24C2021BF21A06000CB663"
-               BuildableName = "HaskellSwift-OSXTests.xctest"
-               BlueprintName = "HaskellSwift-OSXTests"
-               ReferencedContainer = "container:HaskellSwift.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EC24C2021BF21A06000CB663"
-               BuildableName = "HaskellSwift-OSXTests.xctest"
-               BlueprintName = "HaskellSwift-OSXTests"
-               ReferencedContainer = "container:HaskellSwift.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EC24C2021BF21A06000CB663"
-            BuildableName = "HaskellSwift-OSXTests.xctest"
-            BlueprintName = "HaskellSwift-OSXTests"
-            ReferencedContainer = "container:HaskellSwift.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -78,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EC24C2021BF21A06000CB663"
-            BuildableName = "HaskellSwift-OSXTests.xctest"
-            BlueprintName = "HaskellSwift-OSXTests"
+            BlueprintIdentifier = "ECFBE9111BF217D300D23E20"
+            BuildableName = "HaskellSwift.framework"
+            BlueprintName = "HaskellSwift-OSX"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -96,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EC24C2021BF21A06000CB663"
-            BuildableName = "HaskellSwift-OSXTests.xctest"
-            BlueprintName = "HaskellSwift-OSXTests"
+            BlueprintIdentifier = "ECFBE9111BF217D300D23E20"
+            BuildableName = "HaskellSwift.framework"
+            BlueprintName = "HaskellSwift-OSX"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
