@@ -728,27 +728,7 @@ public func unfoldr<A,B>(f: B -> (A, B)?) -> (B -> [A]) {
 //MARK: - Sublists
 //MARK: Extracting sublists
 //MARK: take :: Int -> [a] -> [a]
-public func take<T>(len: Int, _ xs: [T]) -> [T] {
-    assert(len >= 0 , "Illegal Length")
-    var list = [T]()
-    if len == 0 {
-        return list
-    }
-    
-    if len >= xs.count {
-        return xs
-    }
-    
-    for i in 0..<len {
-        list.append(xs[i])
-    }
-    
-    return list
-}
 
-public func take<T>(len: Int) -> ([T] -> [T]) {
-    return curry(take, len)
-}
 
 //MARK: - Special folds
 //MARK: concat :: Foldable t => t [a] -> [a]
@@ -878,10 +858,6 @@ public func all(process: Character->Bool, _ xs: String) -> Bool {
 }
 
 //MARK: sum :: (Foldable t, Num a) => t a -> a
-public func sum<A: IntegerType>(xs: [A]) -> A {
-    return reduce(+, 0, xs)
-}
-
 public func sum(xs: [CGFloat])-> CGFloat {
     return reduce(+, 0, xs)
 }
@@ -891,6 +867,42 @@ public func sum(xs: [Double])-> Double {
 }
 
 public func sum(xs: [Float])-> Float {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Int]) -> Int {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Int16]) -> Int16 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Int32]) -> Int32 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Int64]) -> Int64 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [Int8]) -> Int8 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [UInt16]) -> UInt16 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [UInt32]) -> UInt32 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [UInt64]) -> UInt64 {
+    return reduce(+, 0, xs)
+}
+
+public func sum(xs: [UInt8]) -> UInt8 {
     return reduce(+, 0, xs)
 }
 
@@ -926,7 +938,39 @@ public func product(xs: [Float])-> Float {
     return reduce(*, 1, xs)
 }
 
-public func product<A: IntegerType>(xs: [A])-> A {
+public func product(xs: [Int]) -> Int {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Int16]) -> Int16 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Int32]) -> Int32 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Int64]) -> Int64 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [Int8]) -> Int8 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [UInt16]) -> UInt16 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [UInt32]) -> UInt32 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [UInt64]) -> UInt64 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [UInt8]) -> UInt8 {
     return reduce(*, 1, xs)
 }
 
@@ -959,6 +1003,28 @@ public func minimum<T: Comparable>(xs: [T])-> T {
 //MARK: - Sublists
 //MARK: Extracting sublists
 //MARK: take :: Int -> [a] -> [a]
+public func take<T>(len: Int, _ xs: [T]) -> [T] {
+    assert(len >= 0 , "Illegal Length")
+    var list = [T]()
+    if len == 0 {
+        return list
+    }
+
+    if len >= xs.count {
+        return xs
+    }
+
+    for i in 0..<len {
+        list.append(xs[i])
+    }
+
+    return list
+}
+
+public func take<T>(len: Int) -> ([T] -> [T]) {
+    return curry(take, len)
+}
+
 public func take(len: Int, _ xs: String)->String {
     var list = String()
     assert(len >= 0, "Illegal Length")
@@ -1193,6 +1259,7 @@ public func isSuffixOf(xs1: String, _ xs2: String) -> Bool {
     return drop(xs2.characters.count - xs1.characters.count, xs2) == xs1
 }
 
+//FIXME: Performance is bad
 //MARK: isInfixOf :: Eq a => [a] -> [a] -> Bool
 public func isInfixOf<U: Equatable>(xs1: [U], _ xs2: [U]) -> Bool {
     if xs1.count > xs2.count {
@@ -1210,18 +1277,7 @@ public func isInfixOf<U: Equatable>(xs1: [U], _ xs2: [U]) -> Bool {
 }
 
 public func isInfixOf(xs1: String, _ xs2: String) -> Bool {
-    if xs1.characters.count > xs2.characters.count {
-        return false
-    }
-    
-    for i in 0...xs2.characters.count - xs1.characters.count {
-        let xs = drop(i, xs2)
-        if isPrefixOf(xs1, xs) {
-            return true
-        }
-    }
-    
-    return false
+    return isJust(xs2.rangeOfString(xs1))
 }
 
 //MARK: isSubsequenceOf :: Eq a => [a] -> [a] -> Bool
