@@ -187,6 +187,30 @@ public func map<T, U>(transform: T->U) -> ([T] -> [U]) {
     return curry(map, transform)
 }
 
+public func map<T: CollectionType, U>(@noescape transform: (T.Generator.Element) -> U, _ xs: T) -> [U] {
+    var ys = [U]()
+    for x in xs {
+        ys.append(transform(x))
+    }
+    return ys
+}
+
+//public func map<T: CollectionType>(@noescape transform: (T.Generator.Element) -> Character, _ xs: T) -> String {
+//    var ys = String()
+//    for x in xs {
+//        ys = ys + String(transform(x))
+//    }
+//    return ys
+//}
+
+public func map<T: CollectionType, U>(@noescape transform: (T.Generator.Element) -> U) -> (T -> [U]) {
+    return curry(map, transform)
+}
+
+//public func map<T: CollectionType>(@noescape transform: (T.Generator.Element) -> Character) -> (T -> String) {
+//    return curry(map, transform)
+//}
+
 //MARK: reverse :: [a] -> [a]
 public func reverse<T>(xs: [T]) -> [T] {
     return [T](xs.reverse())
@@ -890,6 +914,10 @@ public func sum(xs: [Int8]) -> Int8 {
     return reduce(+, 0, xs)
 }
 
+public func sum(xs: [UInt]) -> UInt {
+    return reduce(+, 0, xs)
+}
+
 public func sum(xs: [UInt16]) -> UInt16 {
     return reduce(+, 0, xs)
 }
@@ -955,6 +983,10 @@ public func product(xs: [Int64]) -> Int64 {
 }
 
 public func product(xs: [Int8]) -> Int8 {
+    return reduce(*, 1, xs)
+}
+
+public func product(xs: [UInt]) -> UInt {
     return reduce(*, 1, xs)
 }
 

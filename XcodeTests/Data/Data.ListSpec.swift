@@ -1377,19 +1377,22 @@ class DataList5Spec: QuickSpec {
             it("Int Array") {
                 let ints            = [1, 1, 2, 3, 3, 5, 5]
                 let result          = inits(ints)
-                expect(result).to(equal([[],[1],[1,1],[1,1,2],[1,1,2,3],[1,1,2,3,3],[1,1,2,3,3,5],[1,1,2,3,3,5,5]]))
+                let expectedResult  = [[],[1],[1,1],[1,1,2],[1,1,2,3],[1,1,2,3,3],[1,1,2,3,3,5],[1,1,2,3,3,5,5]]
+                expect(result).to(equal(expectedResult))
             }
             
             it("String Array") {
                 let list    = ["Apple", "Pie", "Pie"]
                 let result  = inits(list)
-                expect(result).to(equal([[],["Apple"],["Apple","Pie"],["Apple","Pie","Pie"]]))
+                let expectedResult = [[],["Apple"],["Apple","Pie"],["Apple","Pie","Pie"]]
+                expect(result).to(equal(expectedResult))
             }
             
             it("String") {
                 let list = "Hello World"
                 let result = inits(list)
-                expect(result).to(equal(["","H","He","Hel","Hell","Hello","Hello ","Hello W","Hello Wo","Hello Wor","Hello Worl","Hello World"]))
+                let expectedResult = ["","H","He","Hel","Hell","Hello","Hello ","Hello W","Hello Wo","Hello Wor","Hello Worl","Hello World"]
+                expect(result).to(equal(expectedResult))
             }
         }
         
@@ -1397,7 +1400,8 @@ class DataList5Spec: QuickSpec {
             it("Int Array") {
                 let ints            = [1, 1, 2, 3, 3, 5, 5]
                 let result          = tails(ints)
-                expect(result).to(equal([[1,1,2,3,3,5,5],[1,2,3,3,5,5],[2,3,3,5,5],[3,3,5,5],[3,5,5],[5,5],[5],[]]))
+                let expectedResult  = [[1,1,2,3,3,5,5],[1,2,3,3,5,5],[2,3,3,5,5],[3,3,5,5],[3,5,5],[5,5],[5],[]]
+                expect(result).to(equal(expectedResult))
             }
             
             it("String Array") {
@@ -2426,7 +2430,8 @@ class DataList7Spec: QuickSpec {
                 let r0              = groupBy({(x, y) in x == y}, ints)
                 expect(r0).to(equal([[1,1],[2],[3,3],[5,5]]))
                 let r1              = groupBy({(x,y) in x < y}, ints)
-                expect(r1).to(equal([[1],[1,2,3,3,5,5]]))
+                let _r1             = [[1],[1,2,3,3,5,5]]
+                expect(r1).to(equal(_r1))
             }
             
             it("String Array") {
@@ -2434,15 +2439,18 @@ class DataList7Spec: QuickSpec {
                 let r0      = groupBy( {(x, y) in x == y}, list)
                 expect(r0).to(equal([["Apple"], ["Pie", "Pie"]]))
                 let r1      = groupBy({(x,y) in x > y}, list)
-                expect(r1).to(equal([["Apple"],["Pie"],["Pie"]]))
+                let _r1     = [["Apple"],["Pie"],["Pie"]]
+                expect(r1).to(equal(_r1))
             }
             
             it("String") {
                 let list    = "Hello World"
                 let r0      = groupBy({(x, y) in x == y}, list)
-                expect(r0).to(equal(["H","e","ll","o"," ","W","o","r","l","d"]))
+                let _r0     = ["H","e","ll","o"," ","W","o","r","l","d"]
+                expect(r0).to(equal(_r0))
                 let r1      = groupBy({(x, y) in x < y}, list)
-                expect(r1).to(equal(["Hello"," World"]))
+                let _r1     = ["Hello"," World"]
+                expect(r1).to(equal(_r1))
             }
         }
         

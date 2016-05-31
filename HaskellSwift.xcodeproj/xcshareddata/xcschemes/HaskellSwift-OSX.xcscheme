@@ -28,7 +28,82 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EC24C2021BF21A06000CB663"
+               BuildableName = "HaskellSwift-OSXTests.xctest"
+               BlueprintName = "HaskellSwift-OSXTests"
+               ReferencedContainer = "container:HaskellSwift.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "ControlMonadSpec">
+               </Test>
+               <Test
+                  Identifier = "DataCharSpec">
+               </Test>
+               <Test
+                  Identifier = "DataFunctorSpec">
+               </Test>
+               <Test
+                  Identifier = "DataList0Spec">
+               </Test>
+               <Test
+                  Identifier = "DataList1Spec">
+               </Test>
+               <Test
+                  Identifier = "DataList2Spec">
+               </Test>
+               <Test
+                  Identifier = "DataList3Spec">
+               </Test>
+               <Test
+                  Identifier = "DataList4Spec">
+               </Test>
+               <Test
+                  Identifier = "DataList5Spec">
+               </Test>
+               <Test
+                  Identifier = "DataList6Spec">
+               </Test>
+               <Test
+                  Identifier = "DataList7Spec">
+               </Test>
+               <Test
+                  Identifier = "DataListBasic0QuickCheck">
+               </Test>
+               <Test
+                  Identifier = "DataListBasic1QuickCheck">
+               </Test>
+               <Test
+                  Identifier = "DataMaybeSpec">
+               </Test>
+               <Test
+                  Identifier = "DataOrdSpec">
+               </Test>
+               <Test
+                  Identifier = "DataTupleSpec">
+               </Test>
+               <Test
+                  Identifier = "NumSpec">
+               </Test>
+               <Test
+                  Identifier = "PreludeSpec">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "ECFBE9111BF217D300D23E20"
+            BuildableName = "HaskellSwift.framework"
+            BlueprintName = "HaskellSwift-OSX"
+            ReferencedContainer = "container:HaskellSwift.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

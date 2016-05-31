@@ -1,5 +1,5 @@
 #github "typelift/Swiftz" >= 0.2.4
 #github "DaveWoodCom/XCGLogger" == 2.1.1
-#github "Quick/Quick" "master"
-#github "Quick/Nimble" "master"
-#github "typelift/SwiftCheck" "master"
+github "Quick/Quick" "master"
+github "Quick/Nimble" "master"
+github "typelift/SwiftCheck" "master"

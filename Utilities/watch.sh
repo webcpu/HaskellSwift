@@ -30,7 +30,7 @@ do
   then
     echo "$event"
     echo "Building"
-    cd ${dir}; ./Utilities/build.sh
+    cd ${dir}; ./Utilities/xbuild.sh
   fi
 done
 
