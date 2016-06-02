@@ -1921,6 +1921,12 @@ public func splitWith(check: Character->Bool, _ s: String)->[String] {
     return xs
 }
 
+public func splitWith(check: Character->Bool) -> (String) -> [String] {
+    return { (s: String) -> [String] in
+        return splitWith(check, s)
+    }
+}
+
 //MARK: words :: String -> [String]
 public func words(s: String)->[String] {
     let isWhiteSpace    = { (c: Character) in c == " " || c == "\n" || c == "\t" }
@@ -2035,6 +2041,10 @@ public func nubBy<A: Equatable>(f: (A,A)->Bool, _ xs: [A]) -> [A] {
     return results
 }
 
+public func nubBy<A: Equatable>(f: (A,A)->Bool) -> ([A]) -> [A] {
+    return { (xs: [A]) -> [A] in return nubBy(f, xs) }
+}
+
 public func nubBy<A: Equatable>(f: (A?,A?)->Bool, _ xs: [A?]) -> [A?] {
     var results  = [A?]()
     for x in xs {
@@ -2055,6 +2065,12 @@ public func nubBy(f: (Character, Character)->Bool, _ xs: String) -> String {
     }
     
     return results
+}
+
+public func nubBy(f: (Character, Character)->Bool) -> (String) -> String {
+    return { (xs: String) -> String in
+        return nubBy(f, xs)
+    }
 }
 
 //MARK: deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]

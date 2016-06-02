@@ -92,3 +92,80 @@ public func even<A: IntegerType>(x: A) -> Bool {
 public func odd<A: IntegerType>(x: A) -> Bool {
     return !even(x)
 }
+
+//MARK: - Files
+//MARK: -File
+public func fileExists(path: String) -> Bool {
+    return NSFileManager.defaultManager().fileExistsAtPath(path)
+}
+
+//readFile :: FilePath -> IO String
+public func readFile(path: String) -> String {
+    let url = NSURL(fileURLWithPath: path)
+    do {
+        let text = try NSString(contentsOfURL: url, encoding: NSUTF8StringEncoding)
+        return text as String
+    }
+    catch let error as NSError {
+        print(error.localizedDescription)
+        return ""
+    }
+}
+
+//writeFile :: FilePath -> String -> IO ()
+public func writeFile(path: String, _ text: String) -> Bool {
+    let block = { try text.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding) }
+    return processFile(block)
+}
+
+public func removeFile(path: String) -> Bool {
+    let block = { try NSFileManager.defaultManager().removeItemAtPath(path) }
+    return processFile(block)
+}
+
+public func copyFile(src: String, _ dst: String) -> Bool {
+    let block = { try NSFileManager.defaultManager().copyItemAtPath(src, toPath: dst) }
+    return processFile(block)
+}
+
+public func readDir(path: String) -> [String] {
+    do {
+        let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(path)
+        return directoryContents
+    } catch let error as NSError {
+        print(error.localizedDescription)
+        return []
+    }
+}
+
+func processFile(process: () throws -> ()) -> Bool {
+    do {
+        try process()
+        return true
+    } catch let error as NSError {
+        print("\(error)")
+        return false
+    }
+}
+
+//permission: 0o755
+public func getFilePermission(path: String) -> UInt32? {
+    do {
+        let attributes = try NSFileManager().attributesOfItemAtPath(path)
+        if let permission = attributes["NSFilePosixPermissions"] as! NSNumber? {
+            return permission.unsignedIntValue
+        } else {
+            return nil
+        }
+    }
+    catch let error {
+        print(error)
+        return nil
+    }
+}
+
+public func setFilePermission(path: String, _ permission: Int16) -> Bool {
+    let block = { try NSFileManager.defaultManager().setAttributes([NSFilePosixPermissions : NSNumber(short: permission)], ofItemAtPath: path) }
+    return processFile(block)
+}
+

@@ -252,7 +252,7 @@ public func splitDirectories(filePath: String) -> [String] {
     let xs      = splitWith(isPathSeparator, filePath)
     let rootDir = head(xs) == "" ? "/" : head(xs)
     let rest    = tail(xs)
-    return [rootDir] + rest 
+    return [rootDir] + rest
 }
 
 //MARK: - Trailing slash functions
@@ -270,13 +270,56 @@ public func addTrailingPathSeparator(filePath: String) -> String {
 public func dropTrailingPathSeparator(filePath: String) -> String {
     if filePath == "" || filePath == "/" {
         return filePath
-    }
+    } 
 
     return hasTrailingPathSeparator(filePath) ? initx(filePath) : filePath
 }
 
 //File name manipulations
-//normalise :: FilePath -> FilePath
-public func normalise(filePath: String) -> String {
-   return filePath
+//normalisePath :: FilePath -> FilePath
+public func normalisePath(filePath: String) -> String {
+    let path0 = trimWhitespaces(filePath)
+    if path0 == "" || path0 == "." {
+        return "."
+    }
+    let path1 = removeDotDirectory(path0)
+    let path2 = normalisePathSeparator(path1)
+    if path2 == "" {
+        return isAbsolutePath(path0) ? "/" : "./"
+    } else {
+        return path2 == "." ? "./" : path2
+    }
 }
+
+func trimWhitespaces(xs: String) -> String {
+    let whitespaceCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+    return xs.stringByTrimmingCharactersInSet(whitespaceCharacterSet)
+}
+
+func removeDotDirectory(filePath: String) -> String {
+    return filePath.stringByReplacingOccurrencesOfString("/./", withString: "")
+}
+
+func normalisePathSeparator(filePath: String) -> String {
+    let removeExtraPathSeparator: String -> [String] = map({$0 == "." ? "" : $0}) .. concat .. map(nub) .. group .. splitWith(isPathSeparator)
+    let normalise = concat .. intersperse("/") .. removeExtraPathSeparator
+    return normalise(filePath)
+}
+
+//MARK: File name manipulations
+//equalFilePath :: FilePath -> FilePath -> Bool
+//Check if file system is case-insensitive
+
+//isRelativePath :: FilePath -> Bool
+public func isRelativePath(filePath: String) -> Bool {
+    return not(isAbsolutePath(filePath))
+}
+
+//isAbsolutePath :: FilePath -> Bool
+public func isAbsolutePath(filePath: String) -> Bool {
+    let path = trimWhitespaces(filePath)
+    return path == "" ? false : head(path) == "/"
+}
+
+//isValid :: FilePath -> Boo
+//makeValid :: FilePath -> FilePath

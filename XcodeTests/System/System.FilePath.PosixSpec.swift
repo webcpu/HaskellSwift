@@ -195,5 +195,35 @@ class SystemFilePathPosixSpec: QuickSpec {
                 XCTAssertEqual(dropTrailingPathSeparator("/"), "/")
             }
         }
+
+        describe("Trailing slash functions") {
+            it("normalisePath") {
+                XCTAssertEqual(normalisePath("/file/\\test////"), "/file/\\test/")
+                XCTAssertEqual(normalisePath(""), ".")
+                XCTAssertEqual(normalisePath("."), ".")
+                XCTAssertEqual(normalisePath("./"), "./")
+                XCTAssertEqual(normalisePath("./."), "./")
+                XCTAssertEqual(normalisePath("/./"), "/")
+                XCTAssertEqual(normalisePath("/"), "/")
+                XCTAssertEqual(normalisePath("bob/fred/."), "bob/fred/")
+                XCTAssertEqual(normalisePath("//home"), "/home")
+            }
+        }
+
+        describe("File name manipulations") {
+            it("isRelativePath") {
+                XCTAssertTrue(isRelativePath("test/path"))
+                XCTAssertTrue(isRelativePath("test"))
+                XCTAssertFalse(isRelativePath("/"))
+                XCTAssertFalse(isRelativePath("/test"))
+            }
+
+            it("isAbsolutePath") {
+                XCTAssertFalse(isAbsolutePath("test/path"))
+                XCTAssertFalse(isAbsolutePath("test"))
+                XCTAssertTrue(isAbsolutePath("/"))
+                XCTAssertTrue(isAbsolutePath("/test"))
+            }
+        }
     }
 }

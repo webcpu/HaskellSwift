@@ -306,5 +306,68 @@ class PreludeSpec: QuickSpec {
                 expect(odd(1)).to(equal(true))
             }
         }
+        
+        describe("Files") {
+            it("fileExists") {
+                expect(fileExists("/etc/hosts")).to(equal(true))
+                expect(fileExists("/etc/")).to(equal(true))
+                expect(fileExists("/not_existed_dir/")).to(equal(false))
+                expect(fileExists("/not_existed_dir/file")).to(equal(false))
+            }
+            
+            it("readFile") {
+                let content = readFile("/etc/paths")
+                expect(length(content) > 0).to(equal(true))
+            }
+            
+            it("writeFile") {
+                let path     = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                let content0 = readFile("/etc/paths")
+                writeFile(path, content0)
+                expect(fileExists(path)).to(equal(true))
+                let content1 = readFile(path)
+                expect(content0).to(equal(content1))
+                removeFile(path)
+            }
+            
+            it("removeFile") {
+                let path     = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                writeFile(path, "test")
+                expect(fileExists(path)).to(equal(true))
+                removeFile(path)
+                expect(fileExists(path)).to(equal(false))
+            }
+            
+            it("copyFile") {
+                let src = "/etc/paths"
+                let dst = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                copyFile(src, dst)
+                expect(readFile(src)).to(equal(readFile(dst)))
+                expect(fileExists(dst)).to(equal(true))
+                removeFile(dst)
+            }
+            
+            it("readDir") {
+                let r = filter({$0 == "var"}, readDir("/"))
+                expect(r).to(equal(["var"]))
+            }
+            
+            it("getFilePermission") {
+                let r0 = getFilePermission("/etc/paths")
+                expect(r0!).to(equal(420))
+                let r1 = getFilePermission("/etc/paths_not_exists")
+                expect(r1).to(beNil())
+            }
+            
+            it("setFilePermission") {
+                let path = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                writeFile(path, "test")
+                let r0 = setFilePermission(path, 0o777)
+                expect(r0).to(equal(true))
+                let r1 = getFilePermission(path)
+                expect(r1!).to(equal(0o777))
+                removeFile(path)
+            }
+        }
     }
 }

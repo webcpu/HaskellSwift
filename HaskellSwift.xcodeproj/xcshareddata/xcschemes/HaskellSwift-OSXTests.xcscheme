@@ -95,9 +95,6 @@
                <Test
                   Identifier = "NumSpec">
                </Test>
-               <Test
-                  Identifier = "PreludeSpec">
-               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>
