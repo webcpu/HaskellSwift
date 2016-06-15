@@ -10,20 +10,20 @@ import Foundation
 import SwiftCheck
 
 protocol QualifierProtocol {
-    func arrayQualifier<A : Equatable>(xs : [A]) -> Property
-    func stringQualifier(xs : String) -> Property
+    func arrayQualifier<A : Equatable>(_ xs : [A]) -> Property
+    func stringQualifier(_ xs : String) -> Property
     func generate()
 }
 
 extension QualifierProtocol {
-    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
+    func arrayQualifier<A : Equatable>(_ xs : [A]) -> Property {
         print("Protocol extension call")
         return xs.count >= 0 ==> {
             return false
         }
     }
     
-    func stringQualifier(xs : String) -> Property {
+    func stringQualifier(_ xs : String) -> Property {
         return xs.characters.count >= 0 ==> {
             return false
         }

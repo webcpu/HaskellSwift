@@ -25,7 +25,7 @@ class DataListBasic0QuickCheck: QuickSpec {
         
         describe("++") {
             it("QuickCheck") {
-                func isEqual<A : Equatable>(xs0 : ArrayOf<A>, _ xs1: ArrayOf<A>) -> Bool {
+                func isEqual<A : Equatable>(_ xs0 : ArrayOf<A>, _ xs1: ArrayOf<A>) -> Bool {
                     return (xs0.getArray + xs1.getArray) == (xs0.getArray ++ xs1.getArray)
                 }
                 
@@ -50,13 +50,13 @@ class DataListBasic0QuickCheck: QuickSpec {
         describe("head") {
             it("QuickCheck") {
                 struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
+                    func arrayQualifier<A : Equatable>(_ xs : [A]) -> Property {
                         return xs.count > 0 ==> {
                             return head(xs) == (reverse(xs).last)!
                         }
                     }
                     
-                    func stringQualifier(xs: String) -> Property {
+                    func stringQualifier(_ xs: String) -> Property {
                         return xs.characters.count > 0 ==> {
                             return head(xs) == xs[xs.startIndex]
                         }
@@ -70,13 +70,13 @@ class DataListBasic0QuickCheck: QuickSpec {
         describe("last") {
             it("QuickCheck") {
                 struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
+                    func arrayQualifier<A : Equatable>(_ xs : [A]) -> Property {
                         return xs.count > 0 ==> {
                             return last(xs) == head(reverse(xs))
                         }
                     }
                     
-                    func stringQualifier(xs: String) -> Property {
+                    func stringQualifier(_ xs: String) -> Property {
                         return xs.characters.count > 0 ==> {
                             return last(xs) == xs[xs.endIndex.predecessor()]
                         }
@@ -90,13 +90,13 @@ class DataListBasic0QuickCheck: QuickSpec {
         describe("tail") {
             it("QuickCheck") {
                 struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
+                    func arrayQualifier<A : Equatable>(_ xs : [A]) -> Property {
                         return xs.count > 0 ==> {
                             return tail(xs) == drop(1, xs)
                         }
                     }
                     
-                    func stringQualifier(xs: String) -> Property {
+                    func stringQualifier(_ xs: String) -> Property {
                         return xs.characters.count > 0 ==> {
                             return tail(xs) == drop(1, xs)
                         }
@@ -110,13 +110,13 @@ class DataListBasic0QuickCheck: QuickSpec {
         describe("initx") {
             it("QuickCheck") {
                 struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
+                    func arrayQualifier<A : Equatable>(_ xs : [A]) -> Property {
                         return xs.count > 0 ==> {
                             return initx(xs) == take(xs.count - 1, xs)
                         }
                     }
                     
-                    func stringQualifier(xs: String) -> Property {
+                    func stringQualifier(_ xs: String) -> Property {
                         return xs.characters.count > 0 ==> {
                             return initx(xs) == take(length(xs)-1, xs)
                         }
@@ -134,14 +134,14 @@ class DataListBasic1QuickCheck: QuickSpec {
         describe("uncons") {
             it("QuickCheck") {
                 struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
+                    func arrayQualifier<A : Equatable>(_ xs : [A]) -> Property {
                         return xs.count > 0 ==> {
                             let t = uncons(xs)
                             return ([t!.0] + t!.1) == xs
                         }
                     }
                     
-                    func stringQualifier(xs: String) -> Property {
+                    func stringQualifier(_ xs: String) -> Property {
                         return xs.characters.count > 0 ==> {
                             let t = uncons(xs)
                             return (String(t!.0) + t!.1) == xs
@@ -156,13 +156,13 @@ class DataListBasic1QuickCheck: QuickSpec {
         describe("null") {
             it("QuickCheck") {
                 struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
+                    func arrayQualifier<A : Equatable>(_ xs : [A]) -> Property {
                         return xs.count >= 0 ==> {
                             return null(xs) == (length(xs) == 0)
                         }
                     }
                     
-                    func stringQualifier(xs: String) -> Property {
+                    func stringQualifier(_ xs: String) -> Property {
                         return xs.characters.count >= 0 ==> {
                             return null(xs) == (length(xs) == 0)
                         }
@@ -176,13 +176,13 @@ class DataListBasic1QuickCheck: QuickSpec {
         describe("length") {
             it("QuickCheck") {
                 struct PropertyGenerator: QualifierProtocol {
-                    func arrayQualifier<A : Equatable>(xs : [A]) -> Property {
+                    func arrayQualifier<A : Equatable>(_ xs : [A]) -> Property {
                         return xs.count >= 0 ==> {
                             return length(xs) == xs.count
                         }
                     }
                     
-                    func stringQualifier(xs: String) -> Property {
+                    func stringQualifier(_ xs: String) -> Property {
                         return xs.characters.count >= 0 ==> {
                             return length(xs) == xs.characters.count
                         }

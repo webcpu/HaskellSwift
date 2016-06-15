@@ -336,7 +336,7 @@ class PreludeSpec: QuickSpec {
                 }
 
                 it("non existing file") {
-                    let path     = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                    let path     = NSTemporaryDirectory() + UUID().uuidString + ".txt"
                     let content  = readFile(path)
                     expect(content).to(beNil())
                 }
@@ -345,7 +345,7 @@ class PreludeSpec: QuickSpec {
             //MARK: writeFile
             it("writeFile") {
                 //permission granted
-                let path     = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                let path     = NSTemporaryDirectory() + UUID().uuidString + ".txt"
                 let content0 = readFile("/etc/paths")
                 writeFile(path, content0!)
                 expect(fileExists(path)).to(beTrue())
@@ -364,7 +364,7 @@ class PreludeSpec: QuickSpec {
             describe("appendFile") {
                 it("append existing file") {
                     //permission granted
-                    let path     = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                    let path     = NSTemporaryDirectory() + UUID().uuidString + ".txt"
                     let content0 = readFile("/etc/paths")
                     let newData  = "appended content"
                     writeFile(path, content0!)
@@ -388,7 +388,7 @@ class PreludeSpec: QuickSpec {
                 }
 
                 it("append non existing file") {
-                    let path     = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                    let path     = NSTemporaryDirectory() + UUID().uuidString + ".txt"
                     let content0 = "appended content"
                     appendFile(path, content0)
                     expect(fileExists(path)).to(beTrue())
@@ -401,7 +401,7 @@ class PreludeSpec: QuickSpec {
             //MARK: removeFile
             describe("removeFile") {
                 it("remove existing file") {
-                    let path     = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                    let path     = NSTemporaryDirectory() + UUID().uuidString + ".txt"
                     writeFile(path, "test")
                     expect(fileExists(path)).to(beTrue())
                     removeFile(path)
@@ -409,7 +409,7 @@ class PreludeSpec: QuickSpec {
                 }
 
                 it("remove non existing file") {
-                    let path     = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                    let path     = NSTemporaryDirectory() + UUID().uuidString + ".txt"
                     expect(fileExists(path)).to(beFalse())
                     let r = removeFile(path)
                     expect(r).to(beFalse())
@@ -420,7 +420,7 @@ class PreludeSpec: QuickSpec {
             describe("copyFile") {
                 it("copy existing file") {
                     let src = "/etc/paths"
-                    let dst = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                    let dst = NSTemporaryDirectory() + UUID().uuidString + ".txt"
                     let r   = copyFile(src, dst)
                     expect(r).to(beTrue())
                     expect(readFile(src)).to(equal(readFile(dst)))
@@ -429,8 +429,8 @@ class PreludeSpec: QuickSpec {
                 }
 
                 it("copy non existing file") {
-                    let src = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
-                    let dst = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                    let src = NSTemporaryDirectory() + UUID().uuidString + ".txt"
+                    let dst = NSTemporaryDirectory() + UUID().uuidString + ".txt"
                     let r   = copyFile(src, dst)
                     expect(r).to(beFalse())
                     expect(readFile(src)).to(beNil())
@@ -463,7 +463,7 @@ class PreludeSpec: QuickSpec {
 
             //MARK: setFilePermission
             it("setFilePermission") {
-                let path = NSTemporaryDirectory() + NSUUID().UUIDString + ".txt"
+                let path = NSTemporaryDirectory() + UUID().uuidString + ".txt"
                 writeFile(path, "test")
                 let r0 = setFilePermission(path, 0o777)
                 expect(!r0).to(beTrue())

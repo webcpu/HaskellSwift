@@ -14,11 +14,11 @@ import Nimble
 
 class ControlMonadSpec: QuickSpec {
     override func spec() {
-        let square: Int -> [Int]           = { (x: Int) -> [Int] in
+        let square: (Int) -> [Int]           = { (x: Int) -> [Int] in
             return [x*x]
         }
         
-        let isEven: Int -> [Bool]           = { (x: Int) -> [Bool] in
+        let isEven: (Int) -> [Bool]           = { (x: Int) -> [Bool] in
             let r = x % 2 == 0
             return [r]
         }

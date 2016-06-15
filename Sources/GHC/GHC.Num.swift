@@ -9,7 +9,7 @@
 import Foundation
 
 //MARK: negate :: a -> a
-public func negate<A: SignedNumberType>(x: A) -> A {
+public func negate<A: SignedNumber>(_ x: A) -> A {
     return -x
 }
 
@@ -17,7 +17,7 @@ public func negate<A: SignedNumberType>(x: A) -> A {
 //It's a standard function and it's implemented already.
 
 //MARK: signum :: a -> a
-public func signum<A: SignedNumberType>(x: A) -> A {
+public func signum<A: SignedNumber>(_ x: A) -> A {
     if x > 0 {
         return 1
     } else if x < 0 {

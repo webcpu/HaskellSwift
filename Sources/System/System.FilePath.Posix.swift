@@ -13,7 +13,7 @@ public func pathSeparator() -> Character {
     return "/"
 }
 
-public func isPathSeparator(x: Character) -> Bool {
+public func isPathSeparator(_ x: Character) -> Bool {
     return x == "/"
 }
 
@@ -21,7 +21,7 @@ public func searchPathSeparator() -> Character {
     return ":"
 }
 
-public func isSearchPathSeparator(x: Character) -> Bool {
+public func isSearchPathSeparator(_ x: Character) -> Bool {
     return x == ":"
 }
 
@@ -29,24 +29,24 @@ public func extSeparator() -> Character {
     return "."
 }
 
-public func isExtSeparator(x: Character) -> Bool {
+public func isExtSeparator(_ x: Character) -> Bool {
     return x == "."
 }
 
 //MARK: - $PATH methods
-public func splitSearchPath(filePath: String) -> [String] {
+public func splitSearchPath(_ filePath: String) -> [String] {
     let xs = splitWith(isSearchPathSeparator, filePath)
     return map({$0 == "" ? "." : $0}, xs)
 }
 
 public func getSearchPath() -> [String] {
-    let path = NSProcessInfo.processInfo().environment["PATH"]
+    let path = ProcessInfo.processInfo().environment["PATH"]
     return isJust(path) ? splitSearchPath(path!) : []
 }
 
 //MARK: - Extension functions
 //splitExtension :: FilePath -> (String, String)
-public func splitExtension(filePath: String) -> (String, String) {
+public func splitExtension(_ filePath: String) -> (String, String) {
     let dir  = dropWhileEnd((not .. isPathSeparator), filePath)
     let lastPathComponent = drop(length(dir), filePath)
     let name = dropWhileEnd((not .. isExtSeparator), lastPathComponent)
@@ -56,23 +56,23 @@ public func splitExtension(filePath: String) -> (String, String) {
 }
 
 //takeExtension :: FilePath -> String
-public func takeExtension(filePath: String) -> String {
+public func takeExtension(_ filePath: String) -> String {
     return snd(splitExtension(filePath))
 }
 
 //replaceExtension :: FilePath -> String -> FilePath
-public func replaceExtension(filePath: String, _ newExt: String) -> String {
+public func replaceExtension(_ filePath: String, _ newExt: String) -> String {
     let (path, _) = splitExtension(filePath)
     return addExtension(path, newExt)
 }
 
 //dropExtension :: FilePath -> String
-public func dropExtension(filePath: String) -> String {
+public func dropExtension(_ filePath: String) -> String {
     return fst(splitExtension(filePath))
 }
 
 //addExtension :: FilePath -> String -> FilePath
-public func addExtension(filePath: String, _ ext: String) -> String {
+public func addExtension(_ filePath: String, _ ext: String) -> String {
     if ext == "" {
         return filePath
     }
@@ -81,7 +81,7 @@ public func addExtension(filePath: String, _ ext: String) -> String {
 }
 
 //hasExtension :: FilePath -> Bool
-public func hasExtension(filePath: String) -> Bool {
+public func hasExtension(_ filePath: String) -> Bool {
     return takeExtension(filePath) != ""
 }
 
@@ -97,7 +97,7 @@ public func hasExtension(filePath: String) -> Bool {
 //                      return drop(len, xs)
 // }
 
-public func dropWhileEnd(check: Character -> Bool, _ xs: String) -> String {
+public func dropWhileEnd(_ check: (Character) -> Bool, _ xs: String) -> String {
     guard length(xs) > 0 else {
         return ""
     }
@@ -105,10 +105,10 @@ public func dropWhileEnd(check: Character -> Bool, _ xs: String) -> String {
     return take(len, xs)
 }
 
-private func lengthOfWhileEndForString(check: Character -> Bool, _ xs: String) -> Int {
+private func lengthOfWhileEndForString(_ check: (Character) -> Bool, _ xs: String) -> Int {
     var len = length(xs)
     for i in 1...xs.characters.count {
-        let index = xs.endIndex.advancedBy(-i)
+        let index = xs.characters.index(xs.endIndex, offsetBy: -i)
         let c     = xs[index]
 
         guard check(c) else {
@@ -121,7 +121,7 @@ private func lengthOfWhileEndForString(check: Character -> Bool, _ xs: String) -
 }
 
 //splitExtensions :: FilePath -> (FilePath, String)
-public func splitExtensions(filePath: String) -> (String, String) {
+public func splitExtensions(_ filePath: String) -> (String, String) {
     let dir  = dropWhileEnd((not .. isPathSeparator), filePath)
     let lastPathComponent = drop(length(dir), filePath)
     let name = takeWhile((not .. isExtSeparator), lastPathComponent)
@@ -130,20 +130,20 @@ public func splitExtensions(filePath: String) -> (String, String) {
     return (file, ext)
 }
 
-public func dropExtensions(filePath: String) -> (String) {
+public func dropExtensions(_ filePath: String) -> (String) {
     return fst(splitExtensions(filePath))
 }
 
-public func takeExtensions(filePath: String) -> (String) {
+public func takeExtensions(_ filePath: String) -> (String) {
     return snd(splitExtensions(filePath))
 }
 
-public func replaceExtensions(filePath: String, _ newExt: String) -> String {
+public func replaceExtensions(_ filePath: String, _ newExt: String) -> String {
     let (path, _) = splitExtensions(filePath)
     return addExtension(path, newExt)
 }
 
-public func stripExtensions(ext: String, _ filePath: String) -> String? {
+public func stripExtensions(_ ext: String, _ filePath: String) -> String? {
     guard length(ext) > 0 else {
         return filePath
     }
@@ -154,42 +154,42 @@ public func stripExtensions(ext: String, _ filePath: String) -> String? {
 
 //MARK: Filename/directory functions
 //splitFileName :: FilePath -> (String, String)
-public func splitFileName(filePath: String) -> (String, String) {
+public func splitFileName(_ filePath: String) -> (String, String) {
     let dir  = dropWhileEnd((not .. isPathSeparator), filePath)
     let file = drop(length(dir), filePath)
     return (dir, file)
 }
 
 //takeFileName :: FilePath -> FilePath
-public func takeFileName(filePath: String) -> String {
+public func takeFileName(_ filePath: String) -> String {
     return snd(splitFileName(filePath))
 }
 
 //replaceFileName :: FilePath -> String -> FilePath
-public func replaceFileName(filePath: String, _ newName: String) -> String {
+public func replaceFileName(_ filePath: String, _ newName: String) -> String {
     let dir = dropFileName(filePath)
     return dir + newName
 }
 
 //dropFileName :: FilePath -> FilePath
 //Drop the filename. Unlike takeDirectory, this function will leave a trailing path separator on the directory.
-public func dropFileName(filePath: String) -> String {
+public func dropFileName(_ filePath: String) -> String {
     return fst(splitFileName(filePath))
 }
 
 //takeBaseName :: FilePath -> String
-public func takeBaseName(filePath: String) -> String {
+public func takeBaseName(_ filePath: String) -> String {
     return dropExtension(takeFileName(filePath))
 }
 
 //replaceBaseName :: FilePath -> String -> FilePath
-public func replaceBaseName(filePath: String, _ baseName: String) -> String {
+public func replaceBaseName(_ filePath: String, _ baseName: String) -> String {
     let (dir, name) = splitFileName(filePath)
     return dir + baseName + takeExtension(name)
 }
 
 //takeDirectory :: FilePath -> FilePath
-public func takeDirectory(filePath: String) -> String {
+public func takeDirectory(_ filePath: String) -> String {
     let dir = dropFileName(filePath)
     if dir == "" {
         return "."
@@ -202,7 +202,7 @@ public func takeDirectory(filePath: String) -> String {
 }
 
 //replaceDirectory :: FilePath -> String -> FilePath
-public func replaceDirectory(filePath: String, _ newDirectory: String) -> String {
+public func replaceDirectory(_ filePath: String, _ newDirectory: String) -> String {
     let file = takeFileName(filePath)
     if newDirectory == "" {
         return file
@@ -228,7 +228,7 @@ public func </> (path0: String, path1: String) -> String {
 }
 
 //splitPath :: FilePath -> [FilePath]
-public func splitPath(filePath: String) -> [String] {
+public func splitPath(_ filePath: String) -> [String] {
     if filePath == "" {
         return []
     }
@@ -239,13 +239,13 @@ public func splitPath(filePath: String) -> [String] {
 }
 
 //joinPath :: [FilePath] -> FilePath
-public func joinPath(filePaths: [String]) -> String {
+public func joinPath(_ filePaths: [String]) -> String {
     return concat(filePaths)
 }
 
 //splitDirectories :: FilePath -> [FilePath]
 //Just as splitPath, but don't add the trailing slashes to each element.
-public func splitDirectories(filePath: String) -> [String] {
+public func splitDirectories(_ filePath: String) -> [String] {
     if filePath == "" {
         return []
     }
@@ -257,17 +257,17 @@ public func splitDirectories(filePath: String) -> [String] {
 
 //MARK: - Trailing slash functions
 //hasTrailingPathSeparator :: FilePath -> Bool
-public func hasTrailingPathSeparator(filePath: String) -> Bool {
+public func hasTrailingPathSeparator(_ filePath: String) -> Bool {
     return filePath == "" ? false : isPathSeparator(last(filePath))
 }
 
 //addTrailingPathSeparator :: FilePath -> FilePath
-public func addTrailingPathSeparator(filePath: String) -> String {
+public func addTrailingPathSeparator(_ filePath: String) -> String {
     return hasTrailingPathSeparator(filePath) ? filePath : filePath + "/"
 }
 
 //dropTrailingPathSeparator :: FilePath -> FilePath
-public func dropTrailingPathSeparator(filePath: String) -> String {
+public func dropTrailingPathSeparator(_ filePath: String) -> String {
     if filePath == "" || filePath == "/" {
         return filePath
     } 
@@ -277,7 +277,7 @@ public func dropTrailingPathSeparator(filePath: String) -> String {
 
 //File name manipulations
 //normalisePath :: FilePath -> FilePath
-public func normalisePath(filePath: String) -> String {
+public func normalisePath(_ filePath: String) -> String {
     let path0 = trimWhitespaces(filePath)
     if path0 == "" || path0 == "." {
         return "."
@@ -291,17 +291,17 @@ public func normalisePath(filePath: String) -> String {
     }
 }
 
-func trimWhitespaces(xs: String) -> String {
-    let whitespaceCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-    return xs.stringByTrimmingCharactersInSet(whitespaceCharacterSet)
+func trimWhitespaces(_ xs: String) -> String {
+    let whitespaceCharacterSet = CharacterSet.whitespacesAndNewlines
+    return xs.trimmingCharacters(in: whitespaceCharacterSet)
 }
 
-func removeDotDirectory(filePath: String) -> String {
-    return filePath.stringByReplacingOccurrencesOfString("/./", withString: "")
+func removeDotDirectory(_ filePath: String) -> String {
+    return filePath.replacingOccurrences(of: "/./", with: "")
 }
 
-func normalisePathSeparator(filePath: String) -> String {
-    let removeExtraPathSeparator: String -> [String] = map({$0 == "." ? "" : $0}) .. concat .. map(nub) .. group .. splitWith(isPathSeparator)
+func normalisePathSeparator(_ filePath: String) -> String {
+    let removeExtraPathSeparator: (String) -> [String] = map({$0 == "." ? "" : $0}) .. concat .. map(nub) .. group .. splitWith(isPathSeparator)
     let normalise = concat .. intersperse("/") .. removeExtraPathSeparator
     return normalise(filePath)
 }
@@ -311,12 +311,12 @@ func normalisePathSeparator(filePath: String) -> String {
 //Check if file system is case-insensitive
 
 //isRelativePath :: FilePath -> Bool
-public func isRelativePath(filePath: String) -> Bool {
+public func isRelativePath(_ filePath: String) -> Bool {
     return not(isAbsolutePath(filePath))
 }
 
 //isAbsolutePath :: FilePath -> Bool
-public func isAbsolutePath(filePath: String) -> Bool {
+public func isAbsolutePath(_ filePath: String) -> Bool {
     let path = trimWhitespaces(filePath)
     return path == "" ? false : head(path) == "/"
 }

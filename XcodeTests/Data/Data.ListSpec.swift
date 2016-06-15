@@ -17,13 +17,13 @@ class DataList0Spec: QuickSpec {
         
         describe("..") {
             it ("A->B->C|Int Array") {
-                let process : [Int] -> Int = last .. reverse
+                let process : ([Int]) -> Int = last .. reverse
                 let ints            = [1,2,3,4,5]
                 expect(process(ints)).to(equal(1))
             }
             
             it("A->B->C|String Array") {
-                let process : [String]->String = last .. initx .. reverse
+                let process : ([String])->String = last .. initx .. reverse
                 let words           = ["Very", "Good", "Person"]
                 let result          = process(words)
                 expect(result).to(equal("Good"))
@@ -36,38 +36,38 @@ class DataList0Spec: QuickSpec {
             }
             
             it("A->B->C?") {
-                let f0 : Int -> Int = { x in x + 1 }
-                let f1 : Int -> Int? = { x in x % 2 == 0 ? .Some(x + 1) : nil }
+                let f0 : (Int) -> Int = { x in x + 1 }
+                let f1 : (Int) -> Int? = { x in x % 2 == 0 ? .some(x + 1) : nil }
                 let fs               = f1 .. f0
                 expect(fs(0)).to(beNil())
                 expect(fs(1)).to(equal(.Some(3)))
             }
             
             it("A->B?->C") {
-                let f0 : Int -> Int? = { x in .Some(x) }
-                let f1 : Int? -> Int = { x in x! + 1 }
+                let f0 : (Int) -> Int? = { x in .some(x) }
+                let f1 : (Int?) -> Int = { x in x! + 1 }
                 let fs               = f1 .. f0
                 expect(fs(1)).to(equal(2))
             }
             
             it("A->B?->C?") {
-                let f0 : Int -> Int? = { x in .Some(x+1) }
-                let f1 : Int? -> Int? = { x in .Some(x! + 1) }
+                let f0 : (Int) -> Int? = { x in .some(x+1) }
+                let f1 : (Int?) -> Int? = { x in .some(x! + 1) }
                 let fs               = f1 .. f0
                 expect(fs(1)).to(equal(3))
             }
             
             it("A?->B->C") {
-                let f0 : Int? -> Int = { x in x ?? -1 }
-                let f1 : Int -> Int  = { x in x + 1 }
+                let f0 : (Int?) -> Int = { x in x ?? -1 }
+                let f1 : (Int) -> Int  = { x in x + 1 }
                 let fs               = f1 .. f0
                 expect(fs(1)).to(equal(2))
                 expect(fs(nil)).to(equal(0))
             }
             
             it("A?->B->C?") {
-                let f0 : Int? -> Int = { x in x ?? -1 }
-                let f1 : Int -> Int? = { x in .Some(x + 1) }
+                let f0 : (Int?) -> Int = { x in x ?? -1 }
+                let f1 : (Int) -> Int? = { x in .some(x + 1) }
                 let fs               = f1 .. f0
                 expect(fs(1)).to(equal(2))
                 expect(fs(nil)).to(equal(.Some(0)))
@@ -269,7 +269,7 @@ class DataList1Spec: QuickSpec {
             it("String Array") {
                 let uppercaseFiles  = ["README.MD", "HASKELL.SWIFT", "HASKELLTESTS.SWIFT", "HASKELLSWIFT.SWIFT"]
                 
-                let toUppercase     = { (x: String) in x.uppercaseString }
+                let toUppercase     = { (x: String) in x.uppercased() }
                 let toUppercases    = { xs in map(toUppercase, xs) }
                 let uppercases      = toUppercases(files)
                 expect(uppercases).to(equal(uppercaseFiles))
@@ -594,7 +594,7 @@ class DataList3Spec: QuickSpec {
             
             it("String Arrays") {
                 let strings = ["Hello", "World"]
-                let f       = { (s: String) in  [s.uppercaseString, "1"] }
+                let f       = { (s: String) in  [s.uppercased(), "1"] }
                 let r0      = concatMap(f, strings)
                 expect(r0).to(equal(["HELLO", "1", "WORLD", "1"]))
                 
@@ -1597,7 +1597,7 @@ class DataList6Spec: QuickSpec {
             }
             
             it("String Array") {
-                let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
+                let isSwift         = { (x : String) in x.lowercased().hasSuffix("swift") }
                 let swiftFilter     = { xs in find(isSwift, xs) }
                 let swiftFile       = swiftFilter(files)
                 expect(swiftFile).to(equal("Haskell.swift"))
@@ -1620,7 +1620,7 @@ class DataList6Spec: QuickSpec {
             }
             
             it("String Array") {
-                let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
+                let isSwift         = { (x : String) in x.lowercased().hasSuffix("swift") }
                 let swiftFilter     = { xs in filter(isSwift, xs) }
                 let swiftFiles      = swiftFilter(files)
                 expect(swiftFiles).to(equal(["Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]))
@@ -1644,7 +1644,7 @@ class DataList6Spec: QuickSpec {
             }
             
             it("String Array") {
-                let isSwift             = { (x : String) in x.lowercaseString.hasSuffix("swift") }
+                let isSwift             = { (x : String) in x.lowercased().hasSuffix("swift") }
                 let (r0, r1)            = partition(isSwift, files)
                 expect(r0).to(equal(["Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]))
                 expect(r1).to(equal(["README.md"]))
@@ -1712,7 +1712,7 @@ class DataList6Spec: QuickSpec {
             }
             
             it("String Array") {
-                let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
+                let isSwift         = { (x : String) in x.lowercased().hasSuffix("swift") }
                 let swiftFile       = findIndex(isSwift, files)
                 expect(swiftFile).to(equal(1))
             }
@@ -1733,7 +1733,7 @@ class DataList6Spec: QuickSpec {
             }
             
             it("String Array") {
-                let isSwift         = { (x : String) in x.lowercaseString.hasSuffix("swift") }
+                let isSwift         = { (x : String) in x.lowercased().hasSuffix("swift") }
                 let swiftFile       = findIndices(isSwift, files)
                 expect(swiftFile).to(equal([1, 2, 3]))
             }
@@ -2319,8 +2319,8 @@ class DataList7Spec: QuickSpec {
             
             it("String") {
                 let f       = { (x: Character, y: Character) -> Bool in
-                    let x1 = String(x).uppercaseString
-                    let y1 = String(y).uppercaseString
+                    let x1 = String(x).uppercased()
+                    let y1 = String(y).uppercased()
                     return x1 == y1
                 }
                 let r1      = nubBy(f, "Create , cuT")

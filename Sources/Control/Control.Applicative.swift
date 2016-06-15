@@ -11,8 +11,8 @@ import Foundation
 //MARK: - Applicative []
 //MARK: <*>
 infix operator <*> { associativity right precedence 100}
-public func <*> <A,B>(fs: [A->B], xs: [A])->[B] {
-    let transform   = {(f: A->B)->[B] in
+public func <*> <A,B>(fs: [(A)->B], xs: [A])->[B] {
+    let transform   = {(f: (A)->B)->[B] in
         return map(f, xs)
     }
     let xss         = map(transform, fs)
@@ -30,7 +30,7 @@ public func <*<A, B>(xs: [A], ys: [B]) -> [A]{
 }
 
 //MARK: - Applicative Maybe
-public func <*> <A,B>(f: (A->B)?, a: A?)->B? {
+public func <*> <A,B>(f: ((A)->B)?, a: A?)->B? {
     let b: B? = f!(fromJust(a))
     return b
 }
@@ -58,11 +58,11 @@ public func <*<A, B>(x: A?, y: B?) -> A?{
 //}
 
 //MARK: liftA []
-func liftA<A, B>(f: A->B, _ xs: [A]) -> [B] {
+func liftA<A, B>(_ f: (A)->B, _ xs: [A]) -> [B] {
     return map(f, xs)
 }
 
-func liftA2<A, B, C>(f: (A, B)->C, _ xs: [A], _ ys: [B]) -> [C] {
+func liftA2<A, B, C>(_ f: (A, B)->C, _ xs: [A], _ ys: [B]) -> [C] {
     typealias T = (A, B)
     let xys = zip(xs, ys)
     let transform = { (t: T) -> C in
