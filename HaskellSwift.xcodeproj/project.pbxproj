@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		EC076BA91D01630400588DA8 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC52ABFC1D0161D200246E68 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC076BAA1D01630400588DA8 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC52ABFD1D0161D200246E68 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC24C2081BF21A06000CB663 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; };
 		EC24C20E1BF21A31000CB663 /* Data.ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */; };
 		EC24C20F1BF21A31000CB663 /* Data.List.Basic.QuickCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0807301BEFF0C4003DA6CC /* Data.List.Basic.QuickCheck.swift */; };
@@ -35,9 +37,9 @@
 		EC24C2181BF21A31000CB663 /* Control.MonadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */; };
 		EC24C21A1BF21A31000CB663 /* QualifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */; };
 		EC3AAAF01C07058200F89619 /* HaskellSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC7F1F581BF5319800D424EC /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EC3AAB021C0706E500F89619 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3AAAFC1C07069300F89619 /* Nimble.framework */; };
-		EC3AAB031C0706E500F89619 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3AAAFD1C07069300F89619 /* Quick.framework */; };
 		EC3AAB041C0706E500F89619 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3AAAFE1C07069300F89619 /* SwiftCheck.framework */; };
+		EC52ABFE1D0161D200246E68 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC52ABFC1D0161D200246E68 /* Nimble.framework */; };
+		EC52ABFF1D0161D200246E68 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC52ABFD1D0161D200246E68 /* Quick.framework */; };
 		EC53E1C21C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
 		EC53E1C31C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
 		EC53E1C41C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
@@ -183,6 +185,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				EC076BA91D01630400588DA8 /* Nimble.framework in Copy Files */,
+				EC076BAA1D01630400588DA8 /* Quick.framework in Copy Files */,
 				ECDB4F981BF21D0A00A7AA28 /* HaskellSwift.framework in Copy Files */,
 			);
 			name = "Copy Files";
@@ -211,9 +215,9 @@
 		EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.OrdSpec.swift; sourceTree = "<group>"; };
 		EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualifierProtocol.swift; sourceTree = "<group>"; };
 		EC24C2031BF21A06000CB663 /* HaskellSwift-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HaskellSwift-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC3AAAFC1C07069300F89619 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphonesimulator/Nimble.framework"; sourceTree = "<group>"; };
-		EC3AAAFD1C07069300F89619 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphonesimulator/Quick.framework"; sourceTree = "<group>"; };
 		EC3AAAFE1C07069300F89619 /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphonesimulator/SwiftCheck.framework"; sourceTree = "<group>"; };
+		EC52ABFC1D0161D200246E68 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
+		EC52ABFD1D0161D200246E68 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
 		EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreludeSpec.swift; sourceTree = "<group>"; };
 		EC5C52A91CF8BCBE001635D3 /* System.FilePath.Posix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.FilePath.Posix.swift; sourceTree = "<group>"; };
 		EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.MonadSpec.swift; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC52ABFE1D0161D200246E68 /* Nimble.framework in Frameworks */,
+				EC52ABFF1D0161D200246E68 /* Quick.framework in Frameworks */,
 				EC24C2081BF21A06000CB663 /* HaskellSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,8 +277,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC3AAB021C0706E500F89619 /* Nimble.framework in Frameworks */,
-				EC3AAB031C0706E500F89619 /* Quick.framework in Frameworks */,
 				EC3AAB041C0706E500F89619 /* SwiftCheck.framework in Frameworks */,
 				EC7F1F621BF5319800D424EC /* HaskellSwift.framework in Frameworks */,
 			);
@@ -456,8 +460,8 @@
 		ECF75EB31B7E1DA60047B0F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EC3AAAFC1C07069300F89619 /* Nimble.framework */,
-				EC3AAAFD1C07069300F89619 /* Quick.framework */,
+				EC52ABFC1D0161D200246E68 /* Nimble.framework */,
+				EC52ABFD1D0161D200246E68 /* Quick.framework */,
 				EC3AAAFE1C07069300F89619 /* SwiftCheck.framework */,
 			);
 			path = Frameworks;
@@ -1301,6 +1305,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Quick/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Quick/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Support/Info.plist;
@@ -1331,6 +1336,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Quick/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Quick/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Support/Info.plist;

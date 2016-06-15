@@ -100,7 +100,7 @@ public func fileExists(path: String) -> Bool {
 }
 
 //readFile :: FilePath -> IO String
-public func readFile(path: String) -> String {
+public func readFile(path: String) -> String? {
     let url = NSURL(fileURLWithPath: path)
     do {
         let text = try NSString(contentsOfURL: url, encoding: NSUTF8StringEncoding)
@@ -108,7 +108,7 @@ public func readFile(path: String) -> String {
     }
     catch let error as NSError {
         print(error.localizedDescription)
-        return ""
+        return nil
     }
 }
 
@@ -116,6 +116,17 @@ public func readFile(path: String) -> String {
 public func writeFile(path: String, _ text: String) -> Bool {
     let block = { try text.writeToFile(path, atomically: true, encoding: NSUTF8StringEncoding) }
     return processFile(block)
+}
+
+//appendFile :: FilePath -> String -> IO ()
+public func appendFile(path: String, _ text: String) -> Bool {
+    guard fileExists(path) else {
+        return writeFile(path, text)
+    }
+    guard let content = readFile(path) else {
+        return false
+    }
+    return writeFile(path, content+text)
 }
 
 public func removeFile(path: String) -> Bool {

@@ -850,6 +850,16 @@ public func any<A>(process: A->Bool, _ xs: [A]) -> Bool {
     return false
 }
 
+public func any<A>(process:(A->Bool)->Bool, _ xs: [A->Bool]) -> Bool {
+    for x in xs {
+        let isMatched = process(x)
+        if isMatched {
+            return true
+        }
+    }
+    return false
+}
+
 public func any(process: Character->Bool, _ xs: String) -> Bool {
     for x in xs.characters {
         let isMatched = process(x)
