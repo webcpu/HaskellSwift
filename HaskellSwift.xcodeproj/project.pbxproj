@@ -535,6 +535,7 @@
 				EC7F1F541BF5319800D424EC /* Frameworks */,
 				EC7F1F551BF5319800D424EC /* Headers */,
 				EC7F1F561BF5319800D424EC /* Resources */,
+				ECC349A21D1B02160089FA90 /* Copy Framework */,
 			);
 			buildRules = (
 			);
@@ -769,6 +770,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "rm -rf ~/Dropbox/OSX/Swifti/Support/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/Swifti/Support/\nrm -rf ~/Dropbox/OSX/List/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/List/";
+		};
+		ECC349A21D1B02160089FA90 /* Copy Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm -rf ~/Dropbox/Workspace/browser/browser/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/Workspace/browser/browser/";
 		};
 /* End PBXShellScriptBuildPhase section */
 

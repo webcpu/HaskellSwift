@@ -1214,9 +1214,17 @@ public func breakx<U>(_ check: (U) -> Bool, _ xs: [U]) -> ([U], [U]) {
     return (take(len, xs), drop(len, xs))
 }
 
+public func breakx<U>(_ check: (U) -> Bool) -> ([U]) -> ([U], [U]) {
+    return { xs in breakx(check, xs) }
+}
+
 public func breakx(_ check: (Character) -> Bool, _ xs: String) -> (String, String) {
     let len = lengthOfWhileForString({(x: Character) in !check(x)}, xs)
     return (take(len, xs), drop(len, xs))
+}
+
+public func breakx(_ check: (Character) -> Bool) -> (String) -> (String, String) {
+    return curry(breakx, check)
 }
 
 //MARK: stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
@@ -2186,6 +2194,10 @@ public func groupBy(_ f: (Character, Character)->Bool, _ xs: String) -> [String]
 //MARK: sortBy :: (a -> a -> Ordering) -> [a] -> [a]
 public func sortBy<A: Comparable>(_ f : (A, A)->Bool, _ xs: [A]) -> [A] {
     return xs.sorted(isOrderedBefore: f)
+}
+
+public func sortBy<A: Comparable>(_ f : (A, A)->Bool) -> ([A]) -> [A] {
+    return curry(sortBy, f)
 }
 
 //MARK: insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
