@@ -15,8 +15,8 @@ class NumSpec: QuickSpec {
     override func spec() {
         describe("negate") {
             it("CGFloat") {
-                expect(negate(CGFloat(1))).to(beCloseTo(CGFloat(-1)))
-                expect(negate(CGFloat(-1))).to(beCloseTo(CGFloat(1)))
+                expect(negate(CGFloat(1))).to(equal(CGFloat(-1)))
+                expect(negate(CGFloat(-1))).to(equal(CGFloat(1)))
             }
             
             it("Double") {
@@ -57,8 +57,8 @@ class NumSpec: QuickSpec {
         
         describe("abs") {
             it("CGFloat") {
-                expect(abs(CGFloat(-1))).to(beCloseTo(CGFloat(1)))
-                expect(abs(CGFloat(1))).to(beCloseTo(CGFloat(1)))
+                expect(abs(CGFloat(-1))) == CGFloat(1)
+                expect(abs(CGFloat(1))) == CGFloat(1)
             }
         }
     }

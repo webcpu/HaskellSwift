@@ -40,9 +40,9 @@ public func pred(_ x: Bool) -> Bool {
 }
 
 //MARK: enumFromTo
-//public func enumFromTo(_ from: Integer, _ to: Integer) -> Array<Integer> {
-//    return Array<Integer>(from...to)
-//}
+public func enumFromTo(_ from: Int, _ to: Int) -> Array<Int> {
+    return Array<Int>(from...to)
+}
 
 public func enumFromTo(_ from: Character, _ to: Character) -> String {
     guard

@@ -78,7 +78,7 @@ class DataListBasic0QuickCheck: QuickSpec {
                     
                     func stringQualifier(_ xs: String) -> Property {
                         return xs.characters.count > 0 ==> {
-                            return last(xs) == xs[xs.endIndex.predecessor()]
+                            return last(xs) == xs[xs.characters.index(before: xs.endIndex)]
                         }
                     }
                 }

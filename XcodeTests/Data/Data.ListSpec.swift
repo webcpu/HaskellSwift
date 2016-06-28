@@ -40,7 +40,7 @@ class DataList0Spec: QuickSpec {
                 let f1 : (Int) -> Int? = { x in x % 2 == 0 ? .some(x + 1) : nil }
                 let fs               = f1 .. f0
                 expect(fs(0)).to(beNil())
-                expect(fs(1)).to(equal(.Some(3)))
+                expect(fs(1)).to(equal(.some(3)))
             }
             
             it("A->B?->C") {
@@ -70,7 +70,7 @@ class DataList0Spec: QuickSpec {
                 let f1 : (Int) -> Int? = { x in .some(x + 1) }
                 let fs               = f1 .. f0
                 expect(fs(1)).to(equal(2))
-                expect(fs(nil)).to(equal(.Some(0)))
+                expect(fs(nil)).to(equal(.some(0)))
             }
             
 //            it("A?->B?->C?") {
@@ -290,15 +290,14 @@ class DataList1Spec: QuickSpec {
             }
             
             it("String - String") {
-                let toUppercase     = { (x: Character) in  String(x).capitalizedString.characters.first! }
-                let toUppercases    = { xs in map(toUppercase, xs) }
+                let toUppercases    = { xs in map(toUpper, xs) }
                 let uppercaseString = toUppercases("haskell")
                 expect(uppercaseString).to(equal("HASKELL"))
             }
             
             it("String - UInt32 Array") {
                 let toUppercase     = { (x: Character) -> UInt32 in
-                    let scalars = String(x).capitalizedString.unicodeScalars
+                    let scalars = String(toUpper(x)).unicodeScalars
                     return scalars[scalars.startIndex].value
                 }
                 let toUppercases    = { (xs : String) -> [UInt32] in map(toUppercase, xs) }
@@ -678,7 +677,7 @@ class DataList3Spec: QuickSpec {
             it("CGFloat Array") {
                 let list : [CGFloat] = [1.0, 2.0, 3.0]
                 let result = sum(list)
-                expect(result).to(beCloseTo(6.0))
+                expect(result) == 6.0
                 expect(sum([CGFloat]())).to(equal(0.0))
             }
             
@@ -771,8 +770,8 @@ class DataList3Spec: QuickSpec {
             it("CGFloat Array") {
                 let list : [CGFloat] = [1.0, 2.0, 3.0]
                 let result = product(list)
-                expect(result).to(beCloseTo(6.0))
-                expect(product([CGFloat]())).to(equal(1.0))
+                expect(result) == 6.0
+                expect(product([CGFloat]())) == 1.0
             }
             
             it("Double Array") {
@@ -864,13 +863,13 @@ class DataList3Spec: QuickSpec {
             it("CGFloat Array") {
                 let list : [CGFloat] = [1.0, 2.0, 3.0]
                 let result           = maximum(list)
-                expect(result).to(beCloseTo(3.0))
+                expect(result) == 3.0
             }
             
             it("Double Array") {
                 let list : [Double] = [1.1, 2.2, 3.3]
                 let result          = maximum(list)
-                expect(result).to(beCloseTo(3.3))
+                expect(result) == 3.3
             }
             
             it("Float Array") {
@@ -944,7 +943,7 @@ class DataList3Spec: QuickSpec {
             it("CGFloat Array") {
                 let list : [CGFloat] = [4.4, 2.2, 3.3]
                 let result           = minimum(list)
-                expect(result).to(beCloseTo(2.2))
+                expect(result) == 2.2
             }
             
             it("Double Array") {
@@ -2485,28 +2484,30 @@ class DataList7Spec: QuickSpec {
         describe("maximumBy") {
             it("Int Array") {
                 let list    = [1, 1, 2, 18, 4, 24, 6, 9]
-                expect(maximumBy({x, y in x < y ? Ordering.LT : Ordering.GT }, list)).to(equal(24))
-                expect(maximumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list)).to(equal(24))
+                let r0 = maximumBy({(x: Int, y: Int) in x < y ? Ordering.lt : Ordering.gt }, list)
+                expect(r0) == 24
+                let r1 = maximumBy({x, y in x > y ? Ordering.gt : Ordering.lt }, list)
+                expect(r1) == 24
             }
             
             it("String Array") {
                 let list    = ["Create", "Set", "Any", "Set", "Any"]
-                expect(maximumBy({x, y in x < y ? Ordering.LT : Ordering.GT }, list)).to(equal("Set"))
-                expect(maximumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list)).to(equal("Set"))
+                expect(maximumBy({(x: String, y: String) in x < y ? Ordering.lt : Ordering.gt }, list)).to(equal("Set"))
+                expect(maximumBy({x, y in x > y ? Ordering.gt : Ordering.lt }, list)).to(equal("Set"))
             }
         }
         
         describe("minimumBy") {
             it("Int Array") {
                 let list    = [1, 1, 2, 18, 4, 24, 6, 9]
-                expect(minimumBy({x, y in x < y ? Ordering.LT : Ordering.GT }, list)).to(equal(1))
-                expect(minimumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list)).to(equal(1))
+                expect(minimumBy({x, y in x < y ? Ordering.lt : Ordering.gt }, list)).to(equal(1))
+                expect(minimumBy({x, y in x > y ? Ordering.gt : Ordering.lt }, list)).to(equal(1))
             }
             
             it("String Array") {
                 let list    = ["Create", "Set", "Any", "Set", "Any"]
-                expect(minimumBy({x, y in x < y ? Ordering.LT : Ordering.GT }, list)).to(equal("Any"))
-                expect(minimumBy({x, y in x > y ? Ordering.GT : Ordering.LT }, list)).to(equal("Any"))
+                expect(minimumBy({x, y in x < y ? Ordering.lt : Ordering.gt }, list)).to(equal("Any"))
+                expect(minimumBy({x, y in x > y ? Ordering.gt : Ordering.lt }, list)).to(equal("Any"))
             }
         }
         

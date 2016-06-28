@@ -37,65 +37,6 @@
                BlueprintName = "HaskellSwift-OSXTests"
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "ControlMonadSpec">
-               </Test>
-               <Test
-                  Identifier = "DataCharSpec">
-               </Test>
-               <Test
-                  Identifier = "DataFunctorSpec">
-               </Test>
-               <Test
-                  Identifier = "DataList0Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList1Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList2Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList3Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList4Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList5Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList6Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList7Spec">
-               </Test>
-               <Test
-                  Identifier = "DataListBasic0QuickCheck">
-               </Test>
-               <Test
-                  Identifier = "DataListBasic1QuickCheck">
-               </Test>
-               <Test
-                  Identifier = "DataListListTransformation0QuickCheck">
-               </Test>
-               <Test
-                  Identifier = "DataListListTransformation1QuickCheck">
-               </Test>
-               <Test
-                  Identifier = "DataMaybeSpec">
-               </Test>
-               <Test
-                  Identifier = "DataOrdSpec">
-               </Test>
-               <Test
-                  Identifier = "DataTupleSpec">
-               </Test>
-               <Test
-                  Identifier = "NumSpec">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <AdditionalOptions>

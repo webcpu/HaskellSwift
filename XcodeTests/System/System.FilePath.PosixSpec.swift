@@ -87,10 +87,10 @@ class SystemFilePathPosixSpec: QuickSpec {
             }
 
             it("stripExtensions") {
-                XCTAssertEqual(stripExtensions("hs.o", "foo.x.hs.o") , Optional<String>.Some("foo.x"))
+                XCTAssertEqual(stripExtensions("hs.o", "foo.x.hs.o") , Optional<String>.some("foo.x"))
                 XCTAssertEqual(stripExtensions("hi.o", "foo.x.hs.o") , nil)
-                XCTAssertEqual(stripExtensions(".c.d", "a.b.c.d") , Optional<String>.Some("a.b"))
-                XCTAssertEqual(stripExtensions(".c.d", "a.b..c.d") , Optional<String>.Some("a.b."))
+                XCTAssertEqual(stripExtensions(".c.d", "a.b.c.d") , Optional<String>.some("a.b"))
+                XCTAssertEqual(stripExtensions(".c.d", "a.b..c.d") , Optional<String>.some("a.b."))
                 XCTAssertEqual(stripExtensions("baz", "foo.bar") , nil)
                 XCTAssertEqual(stripExtensions("bar", "foobar") , nil)
                 XCTAssertEqual(stripExtensions("", "foobar.txt") , "foobar.txt")

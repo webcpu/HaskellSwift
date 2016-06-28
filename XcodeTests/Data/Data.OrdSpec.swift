@@ -15,8 +15,8 @@ class DataOrdSpec: QuickSpec {
     override func spec() {
         describe("negate") {
             it("CGFloat") {
-                expect(negate(CGFloat(1))).to(beCloseTo(CGFloat(-1)))
-                expect(negate(CGFloat(-1))).to(beCloseTo(CGFloat(1)))
+                expect(negate(CGFloat(1))) == -1
+                expect(negate(CGFloat(-1))) == 1
             }
         }
     }

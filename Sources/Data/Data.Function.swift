@@ -34,12 +34,12 @@ func <<< <A, B>(f: (A)->B, g: A) -> B {
 }
 
 //MARK: function composition
-infix operator • { associativity right precedence 100}
+infix operator • { associativity right precedence 170}
 func •<A,B,C>(f2: (B)->C, f1: (A)->B) -> ((A)->C) {
     return { (x: A) in f2(f1(x)) }
 }
 
-infix operator .. { associativity right precedence 100}
+infix operator .. { associativity right precedence 170}
 //A->B->C
 public func ..<A,B,C>(f2: (B)->C, f1: (A)->B) -> ((A)->C) {
     return { (x: A) in f2(f1(x)) }
