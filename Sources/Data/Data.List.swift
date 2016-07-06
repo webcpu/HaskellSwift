@@ -1307,7 +1307,7 @@ public func isSuffixOf(_ xs1: String, _ xs2: String) -> Bool {
         return false
     }
     
-    return drop(xs2.characters.count - xs1.characters.count, xs2) == xs1
+    return xs2.hasSuffix(xs1)//drop(xs2.characters.count - xs1.characters.count, xs2) == xs1
 }
 
 //FIXME: Performance is bad
@@ -1442,13 +1442,30 @@ public func partition<U>(_ check: (U) -> Bool, _ xs: [U]) -> ([U], [U]) {
     return result
 }
 
+public func partition<U>(_ check: (U) -> Bool) -> (xs: [U]) -> ([U], [U]) {
+    return { xs in partition(check, xs) }
+}
+
 public func partition(_ check: (Character) -> Bool, _ xs: String) -> (String, String) {
     let result = (filter(check, xs), filter( { x in not(check(x)) }, xs))
     return result
 }
 
+public func partition(_ check: (Character) -> Bool)  -> (xs: String) -> (String, String) {
+    return { xs in partition(check, xs) }
+}
+
 //MARK: Indexing lists
 //MARK: (!!) :: [a] -> Int -> a 
+infix operator !! { associativity right precedence 100 }
+public func !!(xs: String, i: Int) -> Character {
+    let index = xs.index(xs.startIndex, offsetBy: i)
+    return xs[index]
+}
+
+public func !!<U>(xs: [U], i: Int) -> U {
+    return xs[i]
+}
 
 //MARK: elemIndex :: Eq a => a -> [a] -> Maybe Int
 public func elemIndex<U: Equatable>(_ value: U, _ xs: [U]) -> Int? {

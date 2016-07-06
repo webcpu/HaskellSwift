@@ -22,6 +22,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		EC0333C21D25645100FC88B8 /* Network.HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C11D25645100FC88B8 /* Network.HTTP.swift */; };
+		EC0333C31D25645100FC88B8 /* Network.HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C11D25645100FC88B8 /* Network.HTTP.swift */; };
+		EC0333C41D25645100FC88B8 /* Network.HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C11D25645100FC88B8 /* Network.HTTP.swift */; };
+		EC0333C51D25645100FC88B8 /* Network.HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C11D25645100FC88B8 /* Network.HTTP.swift */; };
+		EC0333C91D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C81D25664F00FC88B8 /* Network.HTTPSpec.swift */; };
+		EC0333CA1D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C81D25664F00FC88B8 /* Network.HTTPSpec.swift */; };
+		EC0333CB1D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C81D25664F00FC88B8 /* Network.HTTPSpec.swift */; };
 		EC076BA91D01630400588DA8 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC52ABFC1D0161D200246E68 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC076BAA1D01630400588DA8 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC52ABFD1D0161D200246E68 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC24C2081BF21A06000CB663 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; };
@@ -216,6 +223,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EC0333C11D25645100FC88B8 /* Network.HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.HTTP.swift; sourceTree = "<group>"; };
+		EC0333C81D25664F00FC88B8 /* Network.HTTPSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.HTTPSpec.swift; sourceTree = "<group>"; };
 		EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.CharSpec.swift; sourceTree = "<group>"; };
 		EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = /Users/liang/Dropbox/Workspace/HaskellSwift/Frameworks/SwiftCheck.framework; sourceTree = "<absolute>"; };
 		EC07BEAA1BE75265003E0EE8 /* PlaySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySpec.swift; sourceTree = "<group>"; };
@@ -326,6 +335,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC0333C01D25642000FC88B8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EC0333C11D25645100FC88B8 /* Network.HTTP.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		EC0333C61D25648900FC88B8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Network;
+			path = XcodeTests/Network;
+			sourceTree = SOURCE_ROOT;
+		};
+		EC0333C71D25649D00FC88B8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EC0333C81D25664F00FC88B8 /* Network.HTTPSpec.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		EC0807321BEFF289003DA6CC /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +444,7 @@
 		ECBBFC141CFC2BDD00C10B0D /* System */ = {
 			isa = PBXGroup;
 			children = (
+				EC0333C61D25648900FC88B8 /* Network */,
 				ECBBFC2A1CFC2BFB00C10B0D /* System.FilePath.PosixSpec.swift */,
 				EC3F56441D2267F900441811 /* System.DirectorySpec.swift */,
 			);
@@ -446,6 +480,7 @@
 		ECF75E851B7E1B420047B0F7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EC0333C01D25642000FC88B8 /* Network */,
 				ECAB084C1C78A84B0056F309 /* Control */,
 				ECAB08511C78A84B0056F309 /* Data */,
 				ECAB085A1C78A84B0056F309 /* GHC */,
@@ -458,6 +493,7 @@
 		ECF75E971B7E1B420047B0F7 /* XcodeTests */ = {
 			isa = PBXGroup;
 			children = (
+				EC0333C71D25649D00FC88B8 /* Network */,
 				EC0807321BEFF289003DA6CC /* Data */,
 				EC93597A1C876CDB00A9307C /* Language */,
 				ECBBFC141CFC2BDD00C10B0D /* System */,
@@ -812,6 +848,7 @@
 				EC3F564F1D2277D400441811 /* System.DirectorySpec.swift in Sources */,
 				ECBBFC2C1CFC2C5900C10B0D /* System.FilePath.PosixSpec.swift in Sources */,
 				EC24C2111BF21A31000CB663 /* Data.CharSpec.swift in Sources */,
+				EC0333C91D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */,
 				EC24C2121BF21A31000CB663 /* Data.TupleSpec.swift in Sources */,
 				EC53E1C21C8770DE00A38310 /* PreludeSpec.swift in Sources */,
 				EC24C2131BF21A31000CB663 /* Data.FunctorSpec.swift in Sources */,
@@ -841,6 +878,7 @@
 				EC9359241C87302D00A9307C /* Prelude.swift in Sources */,
 				ECFED64E1C9804C60058E9F9 /* Data.Traversable.swift in Sources */,
 				EC779B641CF89FD4008C1347 /* Control.Parallel.Strategies.swift in Sources */,
+				EC0333C31D25645100FC88B8 /* Network.HTTP.swift in Sources */,
 				EC3F56421D2267C800441811 /* System.Directory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -854,6 +892,7 @@
 				EC3F56501D2277D600441811 /* System.DirectorySpec.swift in Sources */,
 				ECBBFC2D1CFC2C5A00C10B0D /* System.FilePath.PosixSpec.swift in Sources */,
 				ECF946291BF5EEF60039C177 /* QualifierProtocol.swift in Sources */,
+				EC0333CA1D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */,
 				ECF946101BF5EEE70039C177 /* Data.MaybeSpec.swift in Sources */,
 				EC53E1C31C8770DE00A38310 /* PreludeSpec.swift in Sources */,
 				ECF9460A1BF5EEE70039C177 /* Data.ListSpec.swift in Sources */,
@@ -883,6 +922,7 @@
 				EC6258931C956012003A1306 /* Data.List.swift in Sources */,
 				EC9359261C87302D00A9307C /* Prelude.swift in Sources */,
 				ECFED6501C9804C60058E9F9 /* Data.Traversable.swift in Sources */,
+				EC0333C51D25645100FC88B8 /* Network.HTTP.swift in Sources */,
 				EC779B661CF89FD4008C1347 /* Control.Parallel.Strategies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -904,6 +944,7 @@
 				EC9359251C87302D00A9307C /* Prelude.swift in Sources */,
 				ECFED64F1C9804C60058E9F9 /* Data.Traversable.swift in Sources */,
 				EC779B651CF89FD4008C1347 /* Control.Parallel.Strategies.swift in Sources */,
+				EC0333C41D25645100FC88B8 /* Network.HTTP.swift in Sources */,
 				EC3F56431D2267C800441811 /* System.Directory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -917,6 +958,7 @@
 				EC3F56511D2277D800441811 /* System.DirectorySpec.swift in Sources */,
 				ECBBFC2E1CFC2C5C00C10B0D /* System.FilePath.PosixSpec.swift in Sources */,
 				ECF946251BF5EEF50039C177 /* QualifierProtocol.swift in Sources */,
+				EC0333CB1D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */,
 				ECF946181BF5EEE90039C177 /* Data.MaybeSpec.swift in Sources */,
 				EC53E1C41C8770DE00A38310 /* PreludeSpec.swift in Sources */,
 				ECF946121BF5EEE90039C177 /* Data.ListSpec.swift in Sources */,
@@ -938,6 +980,7 @@
 				ECAB08621C78A84B0056F309 /* Data.Function.swift in Sources */,
 				ECAB08671C78A84B0056F309 /* Data.Tuple.swift in Sources */,
 				EC3F56411D2267C800441811 /* System.Directory.swift in Sources */,
+				EC0333C21D25645100FC88B8 /* Network.HTTP.swift in Sources */,
 				ECAB085D1C78A84B0056F309 /* Control.Monad.swift in Sources */,
 				ECAB08601C78A84B0056F309 /* Data.Char.swift in Sources */,
 				ECAB085C1C78A84B0056F309 /* Control.Applicative.swift in Sources */,

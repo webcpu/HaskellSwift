@@ -96,7 +96,7 @@ public func odd<A: Integer>(_ x: A) -> Bool {
 //MARK: - Files
 //MARK: -File
 public func fileExists(_ path: String) -> Bool {
-    return FileManager.default().fileExists(atPath: path)
+    return FileManager.default.fileExists(atPath: path)
 }
 
 //readFile :: FilePath -> IO String
@@ -130,18 +130,18 @@ public func appendFile(_ path: String, _ text: String) -> Bool {
 }
 
 public func removeFile(_ path: String) -> Bool {
-    let block = { try FileManager.default().removeItem(atPath: path) }
+    let block = { try FileManager.default.removeItem(atPath: path) }
     return processFile(block)
 }
 
 public func copyFile(_ src: String, _ dst: String) -> Bool {
-    let block = { try FileManager.default().copyItem(atPath: src, toPath: dst) }
+    let block = { try FileManager.default.copyItem(atPath: src, toPath: dst) }
     return processFile(block)
 }
 
 public func readDir(_ path: String) -> [String] {
     do {
-        let directoryContents = try FileManager.default().contentsOfDirectory(atPath: path)
+        let directoryContents = try FileManager.default.contentsOfDirectory(atPath: path)
         return directoryContents
     } catch let error as NSError {
         print(error.localizedDescription)
@@ -163,7 +163,7 @@ func processFile(_ process: () throws -> ()) -> Bool {
 public func getFilePermission(_ path: String) -> UInt32? {
     do {
         let attributes = try FileManager().attributesOfItem(atPath: path)
-        if let permission = attributes["NSFilePosixPermissions"] as! NSNumber? {
+        if let permission = attributes["NSFilePosixPermissions" as FileAttributeKey] as! NSNumber? {
             return permission.uint32Value
         } else {
             return nil
@@ -176,7 +176,8 @@ public func getFilePermission(_ path: String) -> UInt32? {
 }
 
 public func setFilePermission(_ path: String, _ permission: Int16) -> Bool {
-    let block = { try FileManager.default().setAttributes([FileAttributeKey.posixPermissions.rawValue : NSNumber(value: permission)], ofItemAtPath: path) }
+    let block = { try FileManager.default.setAttributes([FileAttributeKey(rawValue: FileAttributeKey.posixPermissions.rawValue)
+        : NSNumber(value: permission)], ofItemAtPath: path) }
     return processFile(block)
 }
 

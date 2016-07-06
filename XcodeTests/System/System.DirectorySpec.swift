@@ -13,10 +13,24 @@ import Nimble
 
 class SystemDirectorySpec: QuickSpec {
     override func spec() {
-        describe("Actions on directories") {
-            it("createDirectory") {
-                XCTAssertEqual(splitSearchPath("File1:File2:File3") , ["File1","File2","File3"])
-                XCTAssertEqual(splitSearchPath("File1::File2:File3") , ["File1", ".", "File2","File3"])
+        //"Actions on directories"
+        describe("createDirectory") {
+            let create = { (dir: String) in
+                expect(fileExists(dir)) == false
+                let success   = createDirectory(dir)
+                expect(success) == true
+                expect(fileExists(dir)) == true
+                _ = removeFile(dir)
+            }
+
+            it("withoutIntermediateDirectories") {
+                let dir = NSTemporaryDirectory() + "/strange"
+                create(dir)
+            }
+            
+            it("withIntermediateDirectories") {
+                let dir = NSTemporaryDirectory() + "/not/exist"
+                create(dir)
             }
         }
     }

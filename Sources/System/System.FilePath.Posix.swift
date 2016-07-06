@@ -40,7 +40,7 @@ public func splitSearchPath(_ filePath: String) -> [String] {
 }
 
 public func getSearchPath() -> [String] {
-    let path = ProcessInfo.processInfo().environment["PATH"]
+    let path = ProcessInfo.processInfo.environment["PATH"]
     return isJust(path) ? splitSearchPath(path!) : []
 }
 
@@ -270,7 +270,7 @@ public func addTrailingPathSeparator(_ filePath: String) -> String {
 public func dropTrailingPathSeparator(_ filePath: String) -> String {
     if filePath == "" || filePath == "/" {
         return filePath
-    } 
+    }
 
     return hasTrailingPathSeparator(filePath) ? initx(filePath) : filePath
 }

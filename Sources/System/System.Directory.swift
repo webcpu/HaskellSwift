@@ -11,7 +11,7 @@ import Foundation
 //MARK: - Actions on directories
 //createDirectory :: FilePath -> IO ()
 public func createDirectory(_ path: String) -> Bool {
-    let block = { try FileManager.default().createDirectory(atPath: path, withIntermediateDirectories: true) }
+    let block = { try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true) }
     return process(block)
 }
 

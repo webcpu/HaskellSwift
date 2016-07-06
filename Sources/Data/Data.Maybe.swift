@@ -42,6 +42,10 @@ public func fromMaybe<A>(_ b: A, _ a: A?) -> A {
     return a ?? b
 }
 
+public func fromMaybe<A>(_ b: A) -> (A?) -> A {
+    return { a in fromMaybe(b, a) }
+}
+
 //MARK: listToMaybe :: [a] -> Maybe a
 public func listToMaybe<A>(_ xs: [A]) -> A? {
     guard length(xs) > 0 else {
