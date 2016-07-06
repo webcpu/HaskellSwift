@@ -31,7 +31,6 @@
 		EC0333CB1D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C81D25664F00FC88B8 /* Network.HTTPSpec.swift */; };
 		EC076BA91D01630400588DA8 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC52ABFC1D0161D200246E68 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC076BAA1D01630400588DA8 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC52ABFD1D0161D200246E68 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EC24C2081BF21A06000CB663 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; };
 		EC24C20E1BF21A31000CB663 /* Data.ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */; };
 		EC24C20F1BF21A31000CB663 /* Data.List.Basic.QuickCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0807301BEFF0C4003DA6CC /* Data.List.Basic.QuickCheck.swift */; };
 		EC24C2111BF21A31000CB663 /* Data.CharSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */; };
@@ -105,6 +104,7 @@
 		ECAB08661C78A84B0056F309 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08581C78A84B0056F309 /* Data.Ord.swift */; };
 		ECAB08671C78A84B0056F309 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08591C78A84B0056F309 /* Data.Tuple.swift */; };
 		ECAB08681C78A84B0056F309 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB085B1C78A84B0056F309 /* GHC.Num.swift */; };
+		ECADC2901D2D0C95006BA5F9 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; };
 		ECBBFC2C1CFC2C5900C10B0D /* System.FilePath.PosixSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBFC2A1CFC2BFB00C10B0D /* System.FilePath.PosixSpec.swift */; };
 		ECBBFC2D1CFC2C5A00C10B0D /* System.FilePath.PosixSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBFC2A1CFC2BFB00C10B0D /* System.FilePath.PosixSpec.swift */; };
 		ECBBFC2E1CFC2C5C00C10B0D /* System.FilePath.PosixSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBFC2A1CFC2BFB00C10B0D /* System.FilePath.PosixSpec.swift */; };
@@ -284,7 +284,7 @@
 				EC3F564B1D226F9600441811 /* SwiftCheck.framework in Frameworks */,
 				EC52ABFE1D0161D200246E68 /* Nimble.framework in Frameworks */,
 				EC52ABFF1D0161D200246E68 /* Quick.framework in Frameworks */,
-				EC24C2081BF21A06000CB663 /* HaskellSwift.framework in Frameworks */,
+				ECADC2901D2D0C95006BA5F9 /* HaskellSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,7 +820,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -rf ~/Dropbox/OSX/Swifti/Support/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/Swifti/Support/\nrm -rf ~/Dropbox/OSX/List/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/List/";
+			shellScript = "rm -rf ~/Dropbox/OSX/Swifti/Support/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/Swifti/Support/\nrm -rf ~/Dropbox/OSX/List/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/List/\nrm -rf ~/Desktop/Frameworks/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Desktop/Frameworks/";
 		};
 		ECC349A21D1B02160089FA90 /* Copy Framework */ = {
 			isa = PBXShellScriptBuildPhase;

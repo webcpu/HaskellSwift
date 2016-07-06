@@ -1656,7 +1656,28 @@ class DataList6Spec: QuickSpec {
                 expect(r1).to(equal("ABCD"))
             }
         }
-        
+
+        //!!
+//        describe("subscript") {
+//            it("Int Array") {
+//                let list: [Int] = [1, 2, 3, 4, 5]
+//                let r = (list !! 0)
+//                expect(r).to(equal(1))
+//            }
+//
+//            it("String Array") {
+//                let list = ["Haskell.swift", "HaskellTests.swift", "HaskellSwift.swift"]
+//                let r = (list !! 0)
+//                expect(r) == "Haskell.swift"
+//            }
+//
+//            it("String") {
+//                let list = "Hello"
+//                let r = list !! 0
+//                expect(r) == "H"
+//            }
+//        }
+
         describe("elemIndex") {
             it("Int Array") {
                 let list             = [1, 2, 3, 4, 5]

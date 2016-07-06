@@ -211,6 +211,60 @@ public func map<T: Collection, U>( _ transform: @noescape(T.Iterator.Element) ->
 //    return curry(map, transform)
 //}
 
+//MARK: flatmap :: (a -> [b]) -> [a] -> [b]
+public func flatmap(_ transform: (Character)->String, _ xs: String) -> String {
+    return concat(map(transform, xs))
+}
+
+public func flatmap<U>(_ transform: (Character)-> [U], _ xs: String) -> [U] {
+    return concat(map(transform, xs))
+}
+
+public func flatmap<T, U>(_ transform: (T)->[U], _ xs: [T]) -> [U] {
+    return concat(map(transform, xs))
+}
+
+public func flatmap(_ transform: (String)->String, _ xs: [String]) -> String {
+    return concat(map(transform, xs))
+}
+
+public func flatmap(_ transform: (Character)->String) -> ((String) -> String) {
+    return curry(flatmap, transform)
+}
+
+public func flatmap<U>(_ transform: (Character)-> [U]) -> ((String) -> [U]) {
+    return curry(flatmap, transform)
+}
+
+public func flatmap<T, U>(_ transform: (T)->[U]) -> (([T]) -> [U]) {
+    return curry(flatmap, transform)
+}
+
+public func flatmap(_ transform: (String)->String) -> (([String]) -> String) {
+    return curry(flatmap, transform)
+}
+
+public func flatmap<T: Collection, U>( _ transform: @noescape(T.Iterator.Element) -> [U], _ xs: T) -> [U] {
+    return concat(map(transform, xs))
+}
+
+//public func map<T: CollectionType>(@noescape transform: (T.Generator.Element) -> Character, _ xs: T) -> String {
+//    var ys = String()
+//    for x in xs {
+//        ys = ys + String(transform(x))
+//    }
+//    return ys
+//}
+
+public func flatmap<T: Collection, U>( _ transform: @noescape(T.Iterator.Element) -> [U]) -> ((T) -> [U]) {
+    return curry(flatmap, transform)
+}
+
+//public func map<T: CollectionType>(@noescape transform: (T.Generator.Element) -> Character) -> (T -> String) {
+//    return curry(map, transform)
+//}
+
+
 //MARK: reverse :: [a] -> [a]
 public func reverse<T>(_ xs: [T]) -> [T] {
     return [T](xs.reversed())
