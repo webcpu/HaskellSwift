@@ -62,7 +62,7 @@ func liftA<A, B>(_ f: (A)->B, _ xs: [A]) -> [B] {
     return map(f, xs)
 }
 
-func liftA2<A, B, C>(_ f: (A, B)->C, _ xs: [A], _ ys: [B]) -> [C] {
+func liftA2<A, B, C>(_ f: @escaping (A, B)->C, _ xs: [A], _ ys: [B]) -> [C] {
     typealias T = (A, B)
     let xys = zip(xs, ys)
     let transform = { (t: T) -> C in

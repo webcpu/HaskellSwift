@@ -28,12 +28,12 @@ class NetworkHTTPSpec: QuickSpec {
         describe("getURL") {
             it("http") {
                 let urlString = "http://www.google.com"
-                expect(getURL(urlString)) == NSURL(string: urlString)
+                expect(getURL(urlString)) == URL(string: urlString)
             }
 
             it("https") {
                 let urlString = "http://www.google.com"
-                expect(getURL(urlString)) == NSURL(string: urlString)
+                expect(getURL(urlString)) == URL(string: urlString) as URL?
             }
 
             it("illegal protocol") {

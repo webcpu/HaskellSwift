@@ -10,22 +10,25 @@ import Foundation
 
 //MARK: fmap
 //fmap :: (a -> b) -> f a -> f b
-public func fmap<A,B,C>(_ f1: (B)->C, _ f2: (A)->B)->((A)->C) {
+public func fmap<A,B,C>(_ f1: @escaping (B)->C, _ f2: @escaping (A)->B)->((A)->C) {
     return {(a: A) in f1(f2(a))}
 }
 
 //MARK: <^> or <$>
 //infix of symnonym for fmap, <$> is illeagal in swift, that's why I have to use <^> instead of <$>
-infix operator <^> { associativity right precedence 100}
-public func <^> <A,B,C>(f1: (B)->C, f2: (A)->B)->((A)->C) {
+precedencegroup FunctionPrecedence {
+    associativity: right
+}
+infix operator <^> : FunctionPrecedence
+public func <^> <A,B,C>(f1: @escaping (B)->C, f2: @escaping (A)->B)->((A)->C) {
     return {(a: A) in f1(f2(a))}
 }
 
 //MARK: <| or <$
 //Replace all locations in the input with the same value.
 //<$ is illeagal in swift, that's why I have to use <| instead of <$
-infix operator <| { associativity right precedence 100}
-func <| <A,B>(a: A, f: ((A)->B)) -> ((A)->B) {
+infix operator <| : FunctionPrecedence
+func <| <A,B>(a: A, f: @escaping ((A)->B)) -> ((A)->B) {
     return { _ in f(a) }
 }
 
@@ -41,7 +44,7 @@ func <| <A,B,C>(a: A, t: (B, C)) -> (B,A) {
 //Flipped version <|
 //$> is illeagal in swift, that's why I have to use |> instead of $>
 infix operator |> { associativity right precedence 100}
-func |> <A,B>(f: ((A)->B), a: A) -> ((A)->B) {
+func |> <A,B>(f: @escaping ((A)->B), a: A) -> ((A)->B) {
     return { _ in f(a) }
 }
 

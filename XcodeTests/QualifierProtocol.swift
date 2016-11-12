@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftCheck
+//import SwiftCheck
 
 protocol QualifierProtocol {
     func arrayQualifier<A : Equatable>(_ xs : [A]) -> Property

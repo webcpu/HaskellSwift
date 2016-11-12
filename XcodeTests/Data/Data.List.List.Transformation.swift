@@ -8,7 +8,7 @@
 
 import Quick
 import Nimble
-import SwiftCheck
+//import SwiftCheck
 @testable import HaskellSwift
 
 class DataListListTransformation0QuickCheck: QuickSpec {

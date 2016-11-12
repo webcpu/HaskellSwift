@@ -19,16 +19,16 @@ public func snd<A,B>(_ t: (A,B)) -> B {
 }
 
 //MARK: curry :: ((a, b) -> c) -> a -> b -> c
-public func curry<A,B,C>(_ f: (A, B)->C)->((A)->(B)->C) {
+public func curry<A,B,C>(_ f: @escaping (A, B)->C)->((A)->(B)->C) {
     return { (a: A)->((B)->C) in { (b: B) -> C in f(a, b)} }
 }
 
-public func curry<A,B,C>(_ f: (A, B)->C, _ a: A)-> ((B)->C) {
+public func curry<A,B,C>(_ f: @escaping (A, B)->C, _ a: A)-> ((B)->C) {
     return {b in f(a, b) }
 }
 
 //MARK: uncurry :: (a -> b -> c) -> (a, b) -> c
-public func uncurry<A, B, C>(_ f: (A)->(B)->C) -> (A,B)->C {
+public func uncurry<A, B, C>(_ f: @escaping (A)->(B)->C) -> (A,B)->C {
     return { (a: A, b: B)->C in  f(a)(b) }
 }
 

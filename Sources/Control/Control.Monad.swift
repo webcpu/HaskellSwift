@@ -9,14 +9,17 @@
 import Foundation
 
 //MARK: - (>>=) :: Monad m => a -> (a -> m b) -> m b
-infix operator >>>= {associativity left precedence 100}
+precedencegroup LeftFunctionPrecedence {
+    associativity: left
+}
+infix operator >>>= : LeftFunctionPrecedence
 //Array
 public func >>>=<A, B>(xs: [A], f: (A) -> [B]) -> [B] {
-    return xs.map(f).reduce([], combine: +)
+    return xs.map(f).reduce([], +)
 }
 
 //It's a sort of workaround
-public func >>>=<A, B, C>(f: (A)->[B], g: (B)->[C]) -> ((A)->[C]) {
+public func >>>=<A, B, C>(f: @escaping (A)->[B], g: @escaping (B)->[C]) -> ((A)->[C]) {
     return { (a : A) -> [C] in
         return concat(map(g, f(a)))
     }
@@ -27,30 +30,30 @@ public func >>>=<A, B>(x: A?, f: (A) -> B?) -> B? {
     return x == nil ? nil : f(x!)
 }
 
-public func >>>=<A, B, C>(f: (A)->B?, g: (B)->C?) -> ((A)->C?) {
+public func >>>=<A, B, C>(f: @escaping (A)->B?, g: @escaping (B)->C?) -> ((A)->C?) {
     return { (a : A) -> C? in
         return f(a) >>>= g
     }
 }
 
 //MARK: - (>=>) :: Monad m => (a -> m b) -> (b -> m c) -> a -> m c
-infix operator >=> {associativity left precedence 100}
+infix operator >=> : LeftFunctionPrecedence
 //Array
-public func >=><A, B, C>(f: (A)->[B], g: (B)->[C]) -> ((A)->[C]) {
+public func >=><A, B, C>(f: @escaping (A)->[B], g: @escaping (B)->[C]) -> ((A)->[C]) {
     return { (a : A) -> [C] in
         return concat(map(g, f(a)))
     }
 }
 
 //Maybe
-public func >=><A, B, C>(f: (A)->B?, g: (B)->C?) -> ((A)->C?) {
+public func >=><A, B, C>(f: @escaping (A)->B?, g: @escaping (B)->C?) -> ((A)->C?) {
     return { (a : A) -> C? in
         return f(a) >>>= g
     }
 }
 
 //MARK: - (>>>):: Monad m => m a -> m a -> m a
-infix operator >>> {associativity left precedence 100}
+infix operator >>> : LeftFunctionPrecedence
 public func >>><A, B>(xs: [A], ys: [B]) -> [B] {
     return xs.isEmpty ? [] : ys
 }
@@ -60,13 +63,13 @@ public func >>><A, B>(x: A?, y: B?) -> B? {
 }
 
 //MARK: - (=<<) :: Monad m => (a -> m b) -> m a -> m b
-infix operator =<<< {associativity right precedence 120}
+infix operator =<<< : LeftFunctionPrecedence
 //Array
 public func =<<<<A, B>(f: (A) -> [B], xs: [A]) -> [B] {
-    return xs.map(f).reduce([], combine: +)
+    return xs.map(f).reduce([], +)
 }
 
-public func =<<<<A, B, C>(f: (B)->[C], g: (A) -> [B]) -> ((A)->[C]) {
+public func =<<<<A, B, C>(f: @escaping (B)->[C], g: @escaping (A) -> [B]) -> ((A)->[C]) {
     return { (a: A) -> [C] in
         return concat(map(f, g(a)))
     }
@@ -77,30 +80,30 @@ public func =<<<<A, B>(f: (A) -> B?, a: A?) -> B? {
     return a == nil ? nil : f(a!)
 }
 
-public func =<<<<A, B, C>(f: (B)->C?, g: (A)->B?) -> ((A)->C?) {
+public func =<<<<A, B, C>(f: @escaping (B)->C?, g: @escaping (A)->B?) -> ((A)->C?) {
     return { (a : A) -> C? in
         return g(a) >>>= f
     }
 }
 
 //MARK: - (<=<) :: Monad m => (b -> m c) -> (a -> m b) -> a -> m c
-infix operator <=< {associativity right precedence 100}
+infix operator <=< : FunctionPrecedence
 //Array
-public func <=<<A, B, C>(f: (B)->[C], g: (A) -> [B]) -> ((A)->[C]) {
+public func <=<<A, B, C>(f: @escaping (B)->[C], g: @escaping (A) -> [B]) -> ((A)->[C]) {
     return { (a: A) -> [C] in
         return concat(map(f, g(a)))
     }
 }
 
 //Maybe
-public func <=<<A, B, C>(f: (B)->C?, g: (A)->B?) -> ((A)->C?) {
+public func <=<<A, B, C>(f: @escaping (B)->C?, g: @escaping (A)->B?) -> ((A)->C?) {
     return { (a : A) -> C? in
         return g(a) >>>= f
     }
 }
 
 //MARK: - (<<<)Monad m => m a -> m a -> m a
-infix operator <<< {associativity right precedence 90}
+infix operator <<< : FunctionPrecedence
 public func <<<<A>(ys: [A], xs: [A]) -> [A] {
     return xs.count > 0 ? xs : ys
 }
@@ -114,7 +117,7 @@ public func pure<A>(_ x: A) -> A? {
     return Optional<A>.some(x)
 }
 
-public func <<<<A, B>(ys: [B], f: (A) -> [B]) -> ((A)->[B]) {
+public func <<<<A, B>(ys: [B], f: @escaping (A) -> [B]) -> ((A)->[B]) {
     return { (x: A) in
         let xs = f(x)
         return xs.isEmpty ? [] : ys

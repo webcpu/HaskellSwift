@@ -8,7 +8,7 @@
 
 import Quick
 import Nimble
-import SwiftCheck
+//import SwiftCheck
 @testable import HaskellSwift
 
 class DataList0Spec: QuickSpec {
@@ -306,10 +306,17 @@ class DataList1Spec: QuickSpec {
             }
             
             it("String - Bool Array") {
-                let isUppercase = { (x: Character) -> Bool in return ("A"..."Z").contains(x) }
+                let isUppercase     = { (x: Character) -> Bool in return ("A"..."Z").contains(x) }
                 let checkUppercases = { (xs: String) -> [Bool] in map(isUppercase, xs) }
-                let uppercases = checkUppercases("Haskell")
-                expect(uppercases).to(equal([true, false, false, false, false, false, false]))
+                let uppercases      = checkUppercases("Haskell")
+                let expectedResults = [true, false, false, false, false, false, false]
+                expect(uppercases).to(equal(expectedResults))
+            }
+
+            it("Collection") {
+                let ds = ["firstname" : "tom", "lastname" : "sawyer", "age" : 10]
+                let r0 = map(fst, ds)
+                expect(r0) == ["firstname", "lastname", "age"]
             }
         }
         

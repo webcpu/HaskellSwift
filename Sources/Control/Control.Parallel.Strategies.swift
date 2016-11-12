@@ -8,11 +8,10 @@
 
 import Foundation
 
-public func parMap<T,U>(_ transform: (T)->U, _ xs: [T]) -> [U] {
+public func parMap<T,U>(_ transform: @escaping (T)->U, _ xs: [T]) -> [U] {
     let len     = length(xs)
     var results = [U?](repeating: nil, count: len)
     let process = { (i: Int) -> Void in results[i] = transform(xs[i]) }
-    _   = DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes(rawValue: UInt64(0)))
     DispatchQueue.concurrentPerform(iterations: len, execute: process)
     return map(fromJust, results)
 }

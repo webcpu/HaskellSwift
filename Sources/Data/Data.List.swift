@@ -24,7 +24,7 @@ public func not(_ value: Bool) -> Bool {
 
 //MARK: - Basic functions
 //MARK: (++) :: [a] -> [a] -> [a]
-infix operator ++ {}
+infix operator ++
 func ++<A>(left: [A], right: [A]) -> [A] {
     return left + right
 }
@@ -187,7 +187,7 @@ public func map<T, U>(_ transform: (T)->U) -> (([T]) -> [U]) {
     return curry(map, transform)
 }
 
-public func map<T: Collection, U>( _ transform: @noescape(T.Iterator.Element) -> U, _ xs: T) -> [U] {
+public func map<T: Collection, U>( _ transform: (T.Iterator.Element) -> U, _ xs: T) -> [U] {
     var ys = [U]()
     for x in xs {
         ys.append(transform(x))
@@ -203,7 +203,7 @@ public func map<T: Collection, U>( _ transform: @noescape(T.Iterator.Element) ->
 //    return ys
 //}
 
-public func map<T: Collection, U>( _ transform: @noescape(T.Iterator.Element) -> U) -> ((T) -> [U]) {
+public func map<T: Collection, U>( _ transform: (T.Iterator.Element) -> U) -> ((T) -> [U]) {
     return curry(map, transform)
 }
 
@@ -244,7 +244,7 @@ public func flatmap(_ transform: (String)->String) -> (([String]) -> String) {
     return curry(flatmap, transform)
 }
 
-public func flatmap<T: Collection, U>( _ transform: @noescape(T.Iterator.Element) -> [U], _ xs: T) -> [U] {
+public func flatmap<T: Collection, U>( _ transform: (T.Iterator.Element) -> [U], _ xs: T) -> [U] {
     return concat(map(transform, xs))
 }
 
@@ -256,7 +256,7 @@ public func flatmap<T: Collection, U>( _ transform: @noescape(T.Iterator.Element
 //    return ys
 //}
 
-public func flatmap<T: Collection, U>( _ transform: @noescape(T.Iterator.Element) -> [U]) -> ((T) -> [U]) {
+public func flatmap<T: Collection, U>( _ transform: (T.Iterator.Element) -> [U]) -> ((T) -> [U]) {
     return curry(flatmap, transform)
 }
 
@@ -416,7 +416,7 @@ public func permutations<B>(_ xs: [B]) -> [[B]] {
         let r0 = permutations(t)
         //return r0 >>= f
         let f =  { ys in between(h, ys) }
-        return r0.map(f).reduce([], combine: +)
+        return r0.map(f).reduce([], +)
     } else {
         return [[]]
     }
@@ -427,7 +427,7 @@ public func permutations(_ xs: String) -> [String] {
         let r0 = permutations(t)
         let f  = { (ys: String) -> [String] in between(h, ys) }
         //return r0 >>=
-        return r0.map(f).reduce([], combine: +)
+        return r0.map(f).reduce([], +)
     } else {
         return [""]
     }
@@ -462,25 +462,25 @@ public func foldl(_ process: (String, Character)->String, _ initialValue: String
     return reduce(process, initialValue, xs)
 }
 
-public func foldl<A,B>(_ process: (A, B)->A, _ initialValue: A) -> (([B]) -> A) {
+public func foldl<A,B>(_ process: @escaping (A, B)->A, _ initialValue: A) -> (([B]) -> A) {
     return { (xs: [B]) -> A in
         foldl(process, initialValue, xs)
     }
 }
 
-public func foldl<A,B>(_ process: (A, B)->A) -> ((A) -> ([B]) -> A) {
+public func foldl<A,B>(_ process: @escaping (A, B)->A) -> ((A) -> ([B]) -> A) {
     return { (initialValue: A) -> (([B]) -> A) in
         foldl(process, initialValue)
     }
 }
 
-public func foldl(_ process: (String, Character)->String, _ initialValue: String) ->((String) -> String) {
+public func foldl(_ process: @escaping (String, Character)->String, _ initialValue: String) ->((String) -> String) {
     return {(xs: String) -> String in
         foldl(process, initialValue, xs)
     }
 }
 
-public func foldl(_ process: (String, Character)->String) -> ((String) -> (String) -> String) {
+public func foldl(_ process: @escaping (String, Character)->String) -> ((String) -> (String) -> String) {
     return  {(initialValue: String) -> ((String) -> String) in
         foldl(process, initialValue)
     }
@@ -520,25 +520,25 @@ public func reduce(_ combine: (String, Character)->String, _ initial: String, _ 
     return result
 }
 
-public func reduce<A, B> (_ combine: (A, B)->A, _ initial: A) -> (([B]) -> A) {
+public func reduce<A, B> (_ combine: @escaping (A, B)->A, _ initial: A) -> (([B]) -> A) {
     return { (xs: [B]) -> A in
         return reduce(combine, initial, xs)
     }
 }
 
-public func reduce<A, B> (_ combine: (A, B) -> A) -> ((A) -> ([B]) -> A) {
+public func reduce<A, B> (_ combine: @escaping (A, B) -> A) -> ((A) -> ([B]) -> A) {
     return { (initial: A) -> (([B]) -> A) in
         return reduce(combine, initial)
     }
 }
 
-public func reduce(_ combine: (String, Character)->String, _ initial: String) -> ((String) -> String) {
+public func reduce(_ combine: @escaping (String, Character)->String, _ initial: String) -> ((String) -> String) {
     return { (xs: String) -> String in
         return reduce(combine, initial, xs)
     }
 }
 
-public func reduce(_ combine: (String, Character)-> String) -> (String) -> (String) -> String {
+public func reduce(_ combine: @escaping (String, Character)-> String) -> (String) -> (String) -> String {
     return { (initial: String) -> ((String) -> String) in
         return reduce(combine, initial)
     }
@@ -633,25 +633,25 @@ public func scanl(_ combine: (String, Character)->String, _ initialValue: String
     return ys
 }
 
-public func scanl<A,B>(_ combine: (A, B)->A, _ initialValue: A) -> (([B]) -> [A]) {
+public func scanl<A,B>(_ combine: @escaping (A, B)->A, _ initialValue: A) -> (([B]) -> [A]) {
     return { (xs: [B]) -> [A] in
         return scanl(combine, initialValue, xs)
     }
 }
 
-public func scanl<A,B>(_ combine: (A, B)->A) -> ((A) -> (([B]) -> [A])) {
+public func scanl<A,B>(_ combine: @escaping (A, B)->A) -> ((A) -> (([B]) -> [A])) {
     return { (initialValue: A) -> (([B]) -> [A]) in
         return scanl(combine, initialValue)
     }
 }
 
-public func scanl(_ combine: (String, Character)->String, _ initialValue: String) -> ((String) -> [String]) {
+public func scanl(_ combine: @escaping (String, Character)->String, _ initialValue: String) -> ((String) -> [String]) {
     return { (xs: String) -> [String] in
         return scanl(combine, initialValue, xs)
     }
 }
 
-public func scanl(_ combine: (String, Character)->String) -> ((String) -> ((String) -> [String])) {
+public func scanl(_ combine: @escaping (String, Character)->String) -> ((String) -> ((String) -> [String])) {
     return { (initialValue: String) -> ((String) -> [String]) in
         return scanl(combine, initialValue)
     }
@@ -709,25 +709,25 @@ public func scanr(_ combine: (Character, String)->String, _ initialValue: String
     return ys
 }
 
-public func scanr<A,B>(_ combine: (A, B)->B, _ initialValue: B) -> (([A]) -> [B]){
+public func scanr<A,B>(_ combine: @escaping (A, B)->B, _ initialValue: B) -> (([A]) -> [B]){
     return { (xs: [A]) -> [B] in
         return scanr(combine, initialValue, xs)
     }
 }
 
-public func scanr<A,B>(_ combine: (A, B)->B) -> ((B) -> (([A]) -> [B])) {
+public func scanr<A,B>(_ combine: @escaping (A, B)->B) -> ((B) -> (([A]) -> [B])) {
     return { (initialValue: B) -> (([A]) -> [B]) in
         return scanr(combine, initialValue)
     }
 }
 
-public func scanr(_ combine: (Character, String)->String, _ initialValue: String) -> ((String) -> [String]) {
+public func scanr(_ combine: @escaping (Character, String)->String, _ initialValue: String) -> ((String) -> [String]) {
     return { (xs: String) -> [String] in
         return scanr(combine, initialValue, xs)
     }
 }
 
-public func scanr(_ combine: (Character, String)->String) -> ((String) -> ((String) -> [String])) {
+public func scanr(_ combine: @escaping (Character, String)->String) -> ((String) -> ((String) -> [String])) {
     return { (initialValue: String) -> ((String) -> [String]) in
         return scanr(combine, initialValue)
     }
@@ -778,7 +778,7 @@ public func replicate<A>(_ len: Int) -> ((A) -> [A]) {
 }
 
 public func replicate(_ len: Int, _ value: Character) -> String {
-    return String(repeating: value, count: len)
+    return String(repeating: String(value), count: len)
 }
 
 //MARK: cycle :: [a] -> [a]
@@ -1000,8 +1000,8 @@ public func sum(_ xs: [UInt8]) -> UInt8 {
 }
 
 public protocol Arithmetic {
-    func +(lhs: Self, rhs: Self) -> Self
-    func *(lhs: Self, rhs: Self) -> Self
+    static func +(lhs: Self, rhs: Self) -> Self
+    static func *(lhs: Self, rhs: Self) -> Self
 }
 
 extension CGFloat: Arithmetic {}
@@ -1268,7 +1268,7 @@ public func breakx<U>(_ check: (U) -> Bool, _ xs: [U]) -> ([U], [U]) {
     return (take(len, xs), drop(len, xs))
 }
 
-public func breakx<U>(_ check: (U) -> Bool) -> ([U]) -> ([U], [U]) {
+public func breakx<U>(_ check: @escaping (U) -> Bool) -> ([U]) -> ([U], [U]) {
     return { xs in breakx(check, xs) }
 }
 
@@ -1496,7 +1496,7 @@ public func partition<U>(_ check: (U) -> Bool, _ xs: [U]) -> ([U], [U]) {
     return result
 }
 
-public func partition<U>(_ check: (U) -> Bool) -> (xs: [U]) -> ([U], [U]) {
+public func partition<U>(_ check: @escaping (U) -> Bool) -> (_ xs: [U]) -> ([U], [U]) {
     return { xs in partition(check, xs) }
 }
 
@@ -1505,7 +1505,7 @@ public func partition(_ check: (Character) -> Bool, _ xs: String) -> (String, St
     return result
 }
 
-public func partition(_ check: (Character) -> Bool)  -> (xs: String) -> (String, String) {
+public func partition(_ check: @escaping (Character) -> Bool)  -> (_ xs: String) -> (String, String) {
     return { xs in partition(check, xs) }
 }
 
@@ -2011,7 +2011,7 @@ public func splitWith(_ check: (Character)->Bool, _ s: String)->[String] {
     return xs
 }
 
-public func splitWith(_ check: (Character)->Bool) -> (String) -> [String] {
+public func splitWith(_ check: @escaping (Character)->Bool) -> (String) -> [String] {
     return { (s: String) -> [String] in
         return splitWith(check, s)
     }
@@ -2101,7 +2101,7 @@ public func sort<A: Comparable>(_ xs: [A]) -> [A] {
 }
 //MARK: sortOn :: Ord b => (a -> b) -> [a] -> [a]
 public func sortOn<A: Comparable>(_ f: (A,A)->Bool, _ xs: [A]) -> [A] {
-    return xs.sorted(isOrderedBefore: f)
+    return xs.sorted(by: f)
 }
 
 //MARK: insert :: Ord a => a -> [a] -> [a]
@@ -2131,7 +2131,7 @@ public func nubBy<A: Equatable>(_ f: (A,A)->Bool, _ xs: [A]) -> [A] {
     return results
 }
 
-public func nubBy<A: Equatable>(_ f: (A,A)->Bool) -> ([A]) -> [A] {
+public func nubBy<A: Equatable>(_ f: @escaping (A,A)->Bool) -> ([A]) -> [A] {
     return { (xs: [A]) -> [A] in return nubBy(f, xs) }
 }
 
@@ -2157,7 +2157,7 @@ public func nubBy(_ f: (Character, Character)->Bool, _ xs: String) -> String {
     return results
 }
 
-public func nubBy(_ f: (Character, Character)->Bool) -> (String) -> String {
+public func nubBy(_ f: @escaping (Character, Character)->Bool) -> (String) -> String {
     return { (xs: String) -> String in
         return nubBy(f, xs)
     }
@@ -2264,7 +2264,7 @@ public func groupBy(_ f: (Character, Character)->Bool, _ xs: String) -> [String]
 
 //MARK: sortBy :: (a -> a -> Ordering) -> [a] -> [a]
 public func sortBy<A: Comparable>(_ f : (A, A)->Bool, _ xs: [A]) -> [A] {
-    return xs.sorted(isOrderedBefore: f)
+    return xs.sorted(by: f)
 }
 
 public func sortBy<A: Comparable>(_ f : (A, A)->Bool) -> ([A]) -> [A] {

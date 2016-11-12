@@ -83,7 +83,7 @@ public func isLetter(_ c: Character) -> Bool {
 
 //MARK: isPunctuation :: Char -> Bool
 public func isPunctuation(_ c: Character) -> Bool {
-    let charSet = CharacterSet.punctuation
+    let charSet = CharacterSet.punctuationCharacters
     return isCharacter(c, charSet)
 }
 
@@ -162,7 +162,7 @@ public func ord(_ c: Character) -> Int {
 
 //MARK: chr :: Int -> Char
 public func chr(_ i: Int) -> Character {
-    return Character(UnicodeScalar(i))
+    return Character(UnicodeScalar(i)!)
 }
 
 //MARK: showLitChar :: Char -> ShowS
@@ -212,5 +212,5 @@ func charsetWithScalars(_ xs: [Int]) -> String {
 }
 
 func charactersWithScalars(_ xs: [Int]) -> [Character] {
-    return map({ x in Character(UnicodeScalar(x))}, xs)
+    return map({ x in Character(UnicodeScalar(x)!)}, xs)
 }

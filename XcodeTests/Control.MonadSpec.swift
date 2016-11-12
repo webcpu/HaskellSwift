@@ -97,10 +97,10 @@ class ControlMonadSpec: QuickSpec {
                 expect(r2).to(equal(ys))
                 
                 let trueOrEmpty = { (x: Bool) -> [Bool] in return x ? [x] : [] }
-                let r3          = [false] <<< trueOrEmpty =<<< isEven =<<< square =<<< xs
+                let r3          = trueOrEmpty =<<< isEven =<<< square =<<< xs
                 expect(r3).to(equal([true]))
 
-                let r4          = [false] <<< trueOrEmpty =<<< isEven =<<< square =<<< zs
+                let r4          = trueOrEmpty =<<< isEven =<<< square =<<< zs
                 expect(r4).to(equal([false]))
             }
             
@@ -119,11 +119,11 @@ class ControlMonadSpec: QuickSpec {
                 let r2          = len =<<< name =<<< a
                 expect(r2).to(equal(c))
 
-                let r3          = "even" <<< len =<<< name =<<< 3
-                expect(r3).to(beNil())
-
-                let r4          = "even" <<< len =<<< name =<<< 2
-                expect(r4).to(equal("even"))
+//                let r3          = "even" <<< len =<<< name =<<< 3
+//                expect(r3).to(beNil())
+//
+//                let r4          = "even" <<< len =<<< name =<<< 2
+//                expect(r4).to(equal("even"))
             }
         }
 

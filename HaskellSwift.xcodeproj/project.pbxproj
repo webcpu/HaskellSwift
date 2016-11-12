@@ -31,8 +31,6 @@
 		EC0333CB1D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C81D25664F00FC88B8 /* Network.HTTPSpec.swift */; };
 		EC076BA91D01630400588DA8 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC52ABFC1D0161D200246E68 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC076BAA1D01630400588DA8 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC52ABFD1D0161D200246E68 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EC24C20E1BF21A31000CB663 /* Data.ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */; };
-		EC24C20F1BF21A31000CB663 /* Data.List.Basic.QuickCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0807301BEFF0C4003DA6CC /* Data.List.Basic.QuickCheck.swift */; };
 		EC24C2111BF21A31000CB663 /* Data.CharSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */; };
 		EC24C2121BF21A31000CB663 /* Data.TupleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */; };
 		EC24C2131BF21A31000CB663 /* Data.FunctorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */; };
@@ -41,7 +39,6 @@
 		EC24C2161BF21A31000CB663 /* GHC.NumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */; };
 		EC24C2171BF21A31000CB663 /* Control.ApplicativeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */; };
 		EC24C2181BF21A31000CB663 /* Control.MonadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */; };
-		EC24C21A1BF21A31000CB663 /* QualifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */; };
 		EC3AAAF01C07058200F89619 /* HaskellSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC7F1F581BF5319800D424EC /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC3F56411D2267C800441811 /* System.Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F56401D2267C800441811 /* System.Directory.swift */; };
 		EC3F56421D2267C800441811 /* System.Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F56401D2267C800441811 /* System.Directory.swift */; };
@@ -57,7 +54,6 @@
 		EC53E1C21C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
 		EC53E1C31C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
 		EC53E1C41C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
-		EC5C52AA1CF8BCBE001635D3 /* System.FilePath.Posix.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5C52A91CF8BCBE001635D3 /* System.FilePath.Posix.swift */; };
 		EC6258691C955FFF003A1306 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08521C78A84B0056F309 /* Data.Char.swift */; };
 		EC62586B1C955FFF003A1306 /* Data.Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08541C78A84B0056F309 /* Data.Function.swift */; };
 		EC62586C1C955FFF003A1306 /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08551C78A84B0056F309 /* Data.Functor.swift */; };
@@ -105,20 +101,13 @@
 		ECAB08671C78A84B0056F309 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB08591C78A84B0056F309 /* Data.Tuple.swift */; };
 		ECAB08681C78A84B0056F309 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB085B1C78A84B0056F309 /* GHC.Num.swift */; };
 		ECADC2901D2D0C95006BA5F9 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; };
-		ECBBFC2C1CFC2C5900C10B0D /* System.FilePath.PosixSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBFC2A1CFC2BFB00C10B0D /* System.FilePath.PosixSpec.swift */; };
-		ECBBFC2D1CFC2C5A00C10B0D /* System.FilePath.PosixSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBFC2A1CFC2BFB00C10B0D /* System.FilePath.PosixSpec.swift */; };
-		ECBBFC2E1CFC2C5C00C10B0D /* System.FilePath.PosixSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBFC2A1CFC2BFB00C10B0D /* System.FilePath.PosixSpec.swift */; };
 		ECDB4F981BF21D0A00A7AA28 /* HaskellSwift.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF945EA1BF5E5570039C177 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF945E01BF5E5560039C177 /* HaskellSwift.framework */; };
-		ECF9460A1BF5EEE70039C177 /* Data.ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */; };
-		ECF9460B1BF5EEE70039C177 /* Data.List.Basic.QuickCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0807301BEFF0C4003DA6CC /* Data.List.Basic.QuickCheck.swift */; };
 		ECF9460D1BF5EEE70039C177 /* Data.CharSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */; };
 		ECF9460E1BF5EEE70039C177 /* Data.TupleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */; };
 		ECF9460F1BF5EEE70039C177 /* Data.FunctorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */; };
 		ECF946101BF5EEE70039C177 /* Data.MaybeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E2771B94851D00E5AC1F /* Data.MaybeSpec.swift */; };
 		ECF946111BF5EEE70039C177 /* Data.OrdSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */; };
-		ECF946121BF5EEE90039C177 /* Data.ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */; };
-		ECF946131BF5EEE90039C177 /* Data.List.Basic.QuickCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0807301BEFF0C4003DA6CC /* Data.List.Basic.QuickCheck.swift */; };
 		ECF946151BF5EEE90039C177 /* Data.CharSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */; };
 		ECF946161BF5EEE90039C177 /* Data.TupleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */; };
 		ECF946171BF5EEE90039C177 /* Data.FunctorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA70031B93319E00DCEA5C /* Data.FunctorSpec.swift */; };
@@ -127,11 +116,9 @@
 		ECF946221BF5EEF50039C177 /* GHC.NumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */; };
 		ECF946231BF5EEF50039C177 /* Control.ApplicativeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */; };
 		ECF946241BF5EEF50039C177 /* Control.MonadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */; };
-		ECF946251BF5EEF50039C177 /* QualifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */; };
 		ECF946261BF5EEF60039C177 /* GHC.NumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */; };
 		ECF946271BF5EEF60039C177 /* Control.ApplicativeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */; };
 		ECF946281BF5EEF60039C177 /* Control.MonadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */; };
-		ECF946291BF5EEF60039C177 /* QualifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */; };
 		ECF9462E1BF5EFF10039C177 /* SwiftCheck.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF9462F1BF5EFF10039C177 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF946301BF5EFF10039C177 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -143,6 +130,7 @@
 		ECFF2D4C1C88E77900D8ABD3 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084E1C78A84B0056F309 /* Control.Monad.swift */; };
 		ECFF2D4D1C88E77B00D8ABD3 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084E1C78A84B0056F309 /* Control.Monad.swift */; };
 		ECFF2D4E1C88E77D00D8ABD3 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB084E1C78A84B0056F309 /* Control.Monad.swift */; };
+		ECFF79B21DD5DC7F0022347C /* System.FilePath.Posix.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5C52A91CF8BCBE001635D3 /* System.FilePath.Posix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -709,6 +697,7 @@
 					};
 					EC7F1F571BF5319800D424EC = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 					EC7F1F601BF5319800D424EC = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -820,7 +809,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -rf ~/Dropbox/OSX/Swifti/Support/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/Swifti/Support/\nrm -rf ~/Dropbox/OSX/List/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/List/\nrm -rf ~/Desktop/Frameworks/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Desktop/Frameworks/";
+			shellScript = "rm -rf ~/Dropbox/OSX/Swifti/Frameworks/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/Swifti/Frameworks/\nrm -rf ~/Dropbox/OSX/List/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/List/\nrm -rf ~/Desktop/Frameworks/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Desktop/Frameworks/";
 		};
 		ECC349A21D1B02160089FA90 /* Copy Framework */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -834,7 +823,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -rf ~/Dropbox/Workspace/browser/browser/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/Workspace/browser/browser/";
+			shellScript = "rm -rf ~/Dropbox/Workspace/browser/browser/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/Workspace/browser/browser/";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -843,10 +832,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC24C20E1BF21A31000CB663 /* Data.ListSpec.swift in Sources */,
-				EC24C20F1BF21A31000CB663 /* Data.List.Basic.QuickCheck.swift in Sources */,
 				EC3F564F1D2277D400441811 /* System.DirectorySpec.swift in Sources */,
-				ECBBFC2C1CFC2C5900C10B0D /* System.FilePath.PosixSpec.swift in Sources */,
 				EC24C2111BF21A31000CB663 /* Data.CharSpec.swift in Sources */,
 				EC0333C91D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */,
 				EC24C2121BF21A31000CB663 /* Data.TupleSpec.swift in Sources */,
@@ -857,7 +843,6 @@
 				EC24C2161BF21A31000CB663 /* GHC.NumSpec.swift in Sources */,
 				EC24C2171BF21A31000CB663 /* Control.ApplicativeSpec.swift in Sources */,
 				EC24C2181BF21A31000CB663 /* Control.MonadSpec.swift in Sources */,
-				EC24C21A1BF21A31000CB663 /* QualifierProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,15 +872,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF9460B1BF5EEE70039C177 /* Data.List.Basic.QuickCheck.swift in Sources */,
 				ECF946281BF5EEF60039C177 /* Control.MonadSpec.swift in Sources */,
 				EC3F56501D2277D600441811 /* System.DirectorySpec.swift in Sources */,
-				ECBBFC2D1CFC2C5A00C10B0D /* System.FilePath.PosixSpec.swift in Sources */,
-				ECF946291BF5EEF60039C177 /* QualifierProtocol.swift in Sources */,
 				EC0333CA1D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */,
 				ECF946101BF5EEE70039C177 /* Data.MaybeSpec.swift in Sources */,
 				EC53E1C31C8770DE00A38310 /* PreludeSpec.swift in Sources */,
-				ECF9460A1BF5EEE70039C177 /* Data.ListSpec.swift in Sources */,
 				ECF9460E1BF5EEE70039C177 /* Data.TupleSpec.swift in Sources */,
 				ECF946111BF5EEE70039C177 /* Data.OrdSpec.swift in Sources */,
 				ECF946271BF5EEF60039C177 /* Control.ApplicativeSpec.swift in Sources */,
@@ -953,15 +934,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF946131BF5EEE90039C177 /* Data.List.Basic.QuickCheck.swift in Sources */,
 				ECF946241BF5EEF50039C177 /* Control.MonadSpec.swift in Sources */,
 				EC3F56511D2277D800441811 /* System.DirectorySpec.swift in Sources */,
-				ECBBFC2E1CFC2C5C00C10B0D /* System.FilePath.PosixSpec.swift in Sources */,
-				ECF946251BF5EEF50039C177 /* QualifierProtocol.swift in Sources */,
 				EC0333CB1D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */,
 				ECF946181BF5EEE90039C177 /* Data.MaybeSpec.swift in Sources */,
 				EC53E1C41C8770DE00A38310 /* PreludeSpec.swift in Sources */,
-				ECF946121BF5EEE90039C177 /* Data.ListSpec.swift in Sources */,
 				ECF946161BF5EEE90039C177 /* Data.TupleSpec.swift in Sources */,
 				ECF946191BF5EEE90039C177 /* Data.OrdSpec.swift in Sources */,
 				ECF946231BF5EEF50039C177 /* Control.ApplicativeSpec.swift in Sources */,
@@ -982,6 +959,7 @@
 				EC3F56411D2267C800441811 /* System.Directory.swift in Sources */,
 				EC0333C21D25645100FC88B8 /* Network.HTTP.swift in Sources */,
 				ECAB085D1C78A84B0056F309 /* Control.Monad.swift in Sources */,
+				ECFF79B21DD5DC7F0022347C /* System.FilePath.Posix.swift in Sources */,
 				ECAB08601C78A84B0056F309 /* Data.Char.swift in Sources */,
 				ECAB085C1C78A84B0056F309 /* Control.Applicative.swift in Sources */,
 				ECAB08631C78A84B0056F309 /* Data.Functor.swift in Sources */,
@@ -990,7 +968,6 @@
 				ECAB08681C78A84B0056F309 /* GHC.Num.swift in Sources */,
 				ECFED64D1C9804C60058E9F9 /* Data.Traversable.swift in Sources */,
 				EC779B631CF89FD4008C1347 /* Control.Parallel.Strategies.swift in Sources */,
-				EC5C52AA1CF8BCBE001635D3 /* System.FilePath.Posix.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1099,6 +1076,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1124,6 +1102,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

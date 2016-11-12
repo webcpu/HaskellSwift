@@ -27,7 +27,7 @@ extension URLSession {
         var result: Response!
         let semaphore = DispatchSemaphore(value: 0)
         dataTask(with: url) {
-            result = Response(data: $0, response: $1, error: $2)
+            result = Response(data: $0, response: $1, error: $2 as NSError?)
             semaphore.signal()
             }.resume()
 

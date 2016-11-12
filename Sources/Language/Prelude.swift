@@ -16,7 +16,7 @@ public func succ<A: Integer>(_ x: A) -> A {
 public func succ(_ x: Character) -> Character {
     let value = String(x).utf16.first
     assert(value != nil, "Unexpected Character: \(x)")
-    return Character(UnicodeScalar(value! + 1))
+    return Character(UnicodeScalar(value! + 1)!)
 }
 
 public func succ(_ x: Bool) -> Bool {
@@ -32,7 +32,7 @@ public func pred(_ x: Character) -> Character {
     let value = String(x).utf16.first
     assert(value != nil, "Unexpected Character: \(x)")
     let newValue = value! == 0 ?  0 : value! - 1
-    return Character(UnicodeScalar(newValue))
+    return Character(UnicodeScalar(newValue)!)
 }
 
 public func pred(_ x: Bool) -> Bool {
@@ -47,10 +47,10 @@ public func enumFromTo(_ from: Int, _ to: Int) -> Array<Int> {
 public func enumFromTo(_ from: Character, _ to: Character) -> String {
     guard
         let from    = String(from).utf16.first,
-        let to      = String(to).utf16.first where to >= from else {
+        let to      = String(to).utf16.first , to >= from else {
             return ""
     }
-    let us = Array<UInt16>(from...to).map { Character(UnicodeScalar($0)) }
+    let us = Array<UInt16>(from...to).map { Character(UnicodeScalar($0)!) }
     return String(us)
 }
 
@@ -163,7 +163,7 @@ func processFile(_ process: () throws -> ()) -> Bool {
 public func getFilePermission(_ path: String) -> UInt32? {
     do {
         let attributes = try FileManager().attributesOfItem(atPath: path)
-        if let permission = attributes["NSFilePosixPermissions" as FileAttributeKey] as! NSNumber? {
+        if let permission = attributes[FileAttributeKey("NSFilePosixPermissions")] as! NSNumber? {
             return permission.uint32Value
         } else {
             return nil
