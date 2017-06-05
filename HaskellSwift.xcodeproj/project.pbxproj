@@ -102,6 +102,7 @@
 		ECAB08681C78A84B0056F309 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAB085B1C78A84B0056F309 /* GHC.Num.swift */; };
 		ECADC2901D2D0C95006BA5F9 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; };
 		ECDB4F981BF21D0A00A7AA28 /* HaskellSwift.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECE14B711EE5F35600543B56 /* Control.Parallel.StrategiesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE14B6F1EE5EE5E00543B56 /* Control.Parallel.StrategiesSpec.swift */; };
 		ECF945EA1BF5E5570039C177 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF945E01BF5E5560039C177 /* HaskellSwift.framework */; };
 		ECF9460D1BF5EEE70039C177 /* Data.CharSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05C20A1B90E83200D93E51 /* Data.CharSpec.swift */; };
 		ECF9460E1BF5EEE70039C177 /* Data.TupleSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */; };
@@ -247,6 +248,7 @@
 		ECAB08591C78A84B0056F309 /* Data.Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Tuple.swift; sourceTree = "<group>"; };
 		ECAB085B1C78A84B0056F309 /* GHC.Num.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHC.Num.swift; sourceTree = "<group>"; };
 		ECBBFC2A1CFC2BFB00C10B0D /* System.FilePath.PosixSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.FilePath.PosixSpec.swift; sourceTree = "<group>"; };
+		ECE14B6F1EE5EE5E00543B56 /* Control.Parallel.StrategiesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Parallel.StrategiesSpec.swift; sourceTree = "<group>"; };
 		ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.ListSpec.swift; sourceTree = "<group>"; };
 		ECF75E9A1B7E1B420047B0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = /Users/liang/Dropbox/Workspace/HaskellSwift/Frameworks/Nimble.framework; sourceTree = "<absolute>"; };
@@ -487,6 +489,7 @@
 				ECBBFC141CFC2BDD00C10B0D /* System */,
 				EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */,
 				EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */,
+				ECE14B6F1EE5EE5E00543B56 /* Control.Parallel.StrategiesSpec.swift */,
 				ECF7E27B1B949B1C00E5AC1F /* GHC.NumSpec.swift */,
 				ECF75E9A1B7E1B420047B0F7 /* Info.plist */,
 				EC07BEAA1BE75265003E0EE8 /* PlaySpec.swift */,
@@ -685,7 +688,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Liang;
 				TargetAttributes = {
 					EC24C2021BF21A06000CB663 = {
@@ -707,6 +710,7 @@
 					};
 					ECF945DF1BF5E5560039C177 = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0810;
 					};
 					ECF945E81BF5E5570039C177 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -715,7 +719,7 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = NA5BE2D52P;
 						DevelopmentTeamName = "Liang Yuan";
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -809,7 +813,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -rf ~/Dropbox/OSX/Swifti/Frameworks/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/Swifti/Frameworks/\nrm -rf ~/Dropbox/OSX/List/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/List/\nrm -rf ~/Desktop/Frameworks/HaskellSwift.framework\ncp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Desktop/Frameworks/";
+			shellScript = "#rm -rf ~/Dropbox/OSX/Swifti/Frameworks/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/Swifti/Frameworks/\n#rm -rf ~/Dropbox/OSX/List/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/List/\n#rm -rf ~/Desktop/Frameworks/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Desktop/Frameworks/";
 		};
 		ECC349A21D1B02160089FA90 /* Copy Framework */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -832,6 +836,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECE14B711EE5F35600543B56 /* Control.Parallel.StrategiesSpec.swift in Sources */,
 				EC3F564F1D2277D400441811 /* System.DirectorySpec.swift in Sources */,
 				EC24C2111BF21A31000CB663 /* Data.CharSpec.swift in Sources */,
 				EC0333C91D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */,
@@ -1061,7 +1066,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1087,7 +1092,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1153,8 +1158,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -1197,8 +1204,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -1217,6 +1226,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -1238,10 +1248,11 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -1263,11 +1274,12 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -1276,6 +1288,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1290,8 +1303,9 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VALID_ARCHS = "arm64 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1303,6 +1317,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1316,8 +1331,9 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "arm64 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1365,7 +1381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1395,7 +1411,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

@@ -1,0 +1,22 @@
+{
+  "CFBundleName" : "HaskellSwift",
+  "CFBundleIdentifier" : "com.haskellswift.HaskellSwift",
+  "CFBundleInfoDictionaryVersion" : "6.0",
+  "DTCompiler" : "com.apple.compilers.llvm.clang.1_0",
+  "CFBundleVersion" : "1",
+  "DTPlatformBuild" : "8C38",
+  "CFBundleExecutable" : "HaskellSwift",
+  "DTPlatformVersion" : "GM",
+  "DTXcodeBuild" : "8C38",
+  "DTXcode" : "0820",
+  "CFBundleSupportedPlatforms" : [
+    "MacOSX"
+  ],
+  "CFBundleSignature" : "????",
+  "CFBundlePackageType" : "APPL",
+  "BuildMachineOSBuild" : "16B2555",
+  "DTSDKBuild" : "16C58",
+  "CFBundleDevelopmentRegion" : "en",
+  "DTSDKName" : "macosx10.12",
+  "CFBundleShortVersionString" : "1.0"
+}

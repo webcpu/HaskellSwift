@@ -26,7 +26,7 @@ public func not(_ value: Bool) -> Bool {
 //MARK: (++) :: [a] -> [a] -> [a]
 infix operator ++
 func ++<A>(left: [A], right: [A]) -> [A] {
-    return left + right
+    return left + right 
 }
 
 func ++(left: String, right: String) -> String {
