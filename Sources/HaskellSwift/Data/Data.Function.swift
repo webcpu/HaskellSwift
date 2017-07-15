@@ -1,3 +1,7 @@
+precedencegroup FunctionPrecedence {
+    associativity: right
+}
+
 //MARK: id
 public func id<A>(_ a: A)->A {
     return a

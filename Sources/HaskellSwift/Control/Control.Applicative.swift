@@ -10,7 +10,12 @@ import Foundation
 
 //MARK: - Applicative []
 //MARK: <*>
-infix operator <*> { associativity right precedence 100}
+precedencegroup FunctionPrecedence {
+    associativity: right
+}
+
+//infix operator <*> { associativity right precedence 100}
+infix operator <*> : FunctionPrecedence
 public func <*> <A,B>(fs: [(A)->B], xs: [A])->[B] {
     let transform   = {(f: (A)->B)->[B] in
         return map(f, xs)
@@ -19,12 +24,12 @@ public func <*> <A,B>(fs: [(A)->B], xs: [A])->[B] {
     return xss.flatMap { $0 }
 }
 
-infix operator *> { associativity right precedence 100}
+infix operator *> : FunctionPrecedence
 public func *><A, B>(xs: [A], ys: [B]) -> [B]{
     return ys
 }
 
-infix operator <* { associativity right precedence 100}
+infix operator <* : FunctionPrecedence
 public func <*<A, B>(xs: [A], ys: [B]) -> [A]{
     return xs
 }

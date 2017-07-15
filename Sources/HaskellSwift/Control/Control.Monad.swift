@@ -12,6 +12,11 @@ import Foundation
 precedencegroup LeftFunctionPrecedence {
     associativity: left
 }
+
+precedencegroup FunctionPrecedence {
+    associativity: right
+}
+
 infix operator >>>= : LeftFunctionPrecedence
 //Array
 public func >>>=<A, B>(xs: [A], f: (A) -> [B]) -> [B] {
@@ -34,6 +39,17 @@ public func >>>=<A, B, C>(f: @escaping (A)->B?, g: @escaping (B)->C?) -> ((A)->C
     return { (a : A) -> C? in
         return f(a) >>>= g
     }
+}
+
+//Either
+public func >>>=<A, B, E>(_ x: Either<E, A>, _ f: (A) -> Either<E, B>) -> Either<E, B> {
+    return isLeft(x) ? Left(fromLeft(x)) : f(fromRight(x))
+}
+
+public func >>>= <A, B, C, E>( f: @escaping (A) -> Either<E, B>,
+                  g: @escaping (B) -> Either<E, C>)
+    -> (Either<E, A>) -> Either<E, C> {
+        return { x in (x >>>= f) >>>= g }
 }
 
 //MARK: - (>=>) :: Monad m => (a -> m b) -> (b -> m c) -> a -> m c

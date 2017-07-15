@@ -77,6 +77,40 @@ class ControlMonadSpec: QuickSpec {
                 let r4          = 2 >>>= name >>>= len >>> "even"
                 expect(r4).to(equal("even"))
             }
+            
+            it("Either") {
+                let a1 : Either<String, Int> = Right(1)
+            
+                let f = { (x: Int) -> Either<String, Int> in Right(x+1) }
+
+                let c1 : Either<String, Int> = Right(2)
+                
+                let r1          = a1 >>>= f
+                expect(fromRight(r1)).to(equal(fromRight(c1)))
+                
+                let a2 : Either<String, Int> = Left("error1")
+                let c2          = a2
+                let r2          = a2 >>>= f
+                expect(fromRight(r2)).to(equal(fromRight(c2)))
+                
+                let r3          = a1 >>>= f >>>= f
+                let c3 : Either<String, Int> = Right(3)
+                expect(fromRight(r3)).to(equal(fromRight(c3)))
+                
+                let r4          = a2 >>>= f >>>= f
+                let c4          = a2
+                expect(fromLeft(r4)).to(equal(fromLeft(c4)))
+                
+                let g = { (x: Int) -> Either<String, Int> in Left("error: g") }
+                
+                let r5          = a1 >>>= f >>>= g
+                let c5 : Either<String, Int> = Left("error: g")
+                expect(fromLeft(r5)).to(equal(fromLeft(c5)))
+                
+                let r6          = a2 >>>= f >>>= g
+                let c6          = a2
+                expect(fromLeft(r6)).to(equal(fromLeft(c6)))
+            }
         }
         
         describe("=<<< and <=<, <<<") {

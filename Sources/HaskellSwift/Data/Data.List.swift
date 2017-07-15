@@ -1511,7 +1511,10 @@ public func partition(_ check: @escaping (Character) -> Bool)  -> (_ xs: String)
 
 //MARK: Indexing lists
 //MARK: (!!) :: [a] -> Int -> a 
-infix operator !! { associativity right precedence 100 }
+precedencegroup FunctionPrecedence {
+    associativity: right
+}
+infix operator !! : FunctionPrecedence
 public func !!(xs: String, i: Int) -> Character {
     let index = xs.index(xs.startIndex, offsetBy: i)
     return xs[index]

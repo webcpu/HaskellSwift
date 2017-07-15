@@ -43,7 +43,7 @@ func <| <A,B,C>(a: A, t: (B, C)) -> (B,A) {
 //MARK: |> or $>
 //Flipped version <|
 //$> is illeagal in swift, that's why I have to use |> instead of $>
-infix operator |> { associativity right precedence 100}
+infix operator |> : FunctionPrecedence
 func |> <A,B>(f: @escaping ((A)->B), a: A) -> ((A)->B) {
     return { _ in f(a) }
 }

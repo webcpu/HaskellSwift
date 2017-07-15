@@ -8,6 +8,10 @@
 
 import Foundation
 
+precedencegroup FunctionPrecedence {
+    associativity: right
+}
+
 //MARK: - Separator predicates
 public func pathSeparator() -> Character {
     return "/"
@@ -212,7 +216,7 @@ public func replaceDirectory(_ filePath: String, _ newDirectory: String) -> Stri
     return dir + file
 }
 
-infix operator </> { associativity right precedence 100}
+infix operator </> : FunctionPrecedence
 public func </> (path0: String, path1: String) -> String {
     if path0 == "" {
         return path1
