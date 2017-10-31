@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 47;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -116,6 +116,25 @@
 		EC53E1C41C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
 		EC7F1F621BF5319800D424EC /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7F1F581BF5319800D424EC /* HaskellSwift.framework */; };
 		ECADC2901D2D0C95006BA5F9 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; };
+		ECCB039D1FA717BD00822788 /* HaskellSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = ECCB039C1FA717BD00822788 /* HaskellSwift.h */; };
+		ECCB039F1FA717BD00822788 /* HaskellSwift.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCB039E1FA717BD00822788 /* HaskellSwift.m */; };
+		ECCB03A31FA7185000822788 /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CDC1F18B0F000C6DFCA /* Control.Applicative.swift */; };
+		ECCB03A41FA7185000822788 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CDD1F18B0F000C6DFCA /* Control.Monad.swift */; };
+		ECCB03A51FA7185000822788 /* Control.Parallel.Strategies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CDE1F18B0F000C6DFCA /* Control.Parallel.Strategies.swift */; };
+		ECCB03A61FA7185000822788 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE01F18B0F000C6DFCA /* Data.Char.swift */; };
+		ECCB03A71FA7185000822788 /* Data.Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE11F18B0F000C6DFCA /* Data.Either.swift */; };
+		ECCB03A81FA7185000822788 /* Data.Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE21F18B0F000C6DFCA /* Data.Function.swift */; };
+		ECCB03A91FA7185000822788 /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE31F18B0F000C6DFCA /* Data.Functor.swift */; };
+		ECCB03AA1FA7185000822788 /* Data.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE41F18B0F000C6DFCA /* Data.List.swift */; };
+		ECCB03AB1FA7185000822788 /* Data.Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE51F18B0F000C6DFCA /* Data.Maybe.swift */; };
+		ECCB03AC1FA7185000822788 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE61F18B0F000C6DFCA /* Data.Ord.swift */; };
+		ECCB03AD1FA7185000822788 /* Data.Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE71F18B0F000C6DFCA /* Data.Traversable.swift */; };
+		ECCB03AE1FA7185000822788 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE81F18B0F000C6DFCA /* Data.Tuple.swift */; };
+		ECCB03AF1FA7185000822788 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CEA1F18B0F000C6DFCA /* GHC.Num.swift */; };
+		ECCB03B01FA7185000822788 /* Prelude.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CEC1F18B0F000C6DFCA /* Prelude.swift */; };
+		ECCB03B11FA7185000822788 /* Network.HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CEE1F18B0F000C6DFCA /* Network.HTTP.swift */; };
+		ECCB03B21FA7185000822788 /* System.Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CF01F18B0F000C6DFCA /* System.Directory.swift */; };
+		ECCB03B31FA7185000822788 /* System.FilePath.Posix.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CF11F18B0F000C6DFCA /* System.FilePath.Posix.swift */; };
 		ECDB4F981BF21D0A00A7AA28 /* HaskellSwift.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECE14B711EE5F35600543B56 /* Control.Parallel.StrategiesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE14B6F1EE5EE5E00543B56 /* Control.Parallel.StrategiesSpec.swift */; };
 		ECF945EA1BF5E5570039C177 /* HaskellSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF945E01BF5E5560039C177 /* HaskellSwift.framework */; };
@@ -256,6 +275,9 @@
 		EC7F1F581BF5319800D424EC /* HaskellSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HaskellSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7F1F611BF5319800D424EC /* HaskellSwift-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HaskellSwift-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECBBFC2A1CFC2BFB00C10B0D /* System.FilePath.PosixSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.FilePath.PosixSpec.swift; sourceTree = "<group>"; };
+		ECCB039A1FA717BD00822788 /* libHaskellSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHaskellSwift.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECCB039C1FA717BD00822788 /* HaskellSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HaskellSwift.h; sourceTree = "<group>"; };
+		ECCB039E1FA717BD00822788 /* HaskellSwift.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HaskellSwift.m; sourceTree = "<group>"; };
 		ECE14B6F1EE5EE5E00543B56 /* Control.Parallel.StrategiesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Parallel.StrategiesSpec.swift; sourceTree = "<group>"; };
 		ECF75E981B7E1B420047B0F7 /* Data.ListSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.ListSpec.swift; sourceTree = "<group>"; };
 		ECF75E9A1B7E1B420047B0F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -297,6 +319,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC7F1F621BF5319800D424EC /* HaskellSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECCB03971FA717BD00822788 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,15 +498,36 @@
 			path = System;
 			sourceTree = "<group>";
 		};
+		ECCB03951FA7146F00822788 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				EC07BEA71BE75061003E0EE8 /* SwiftCheck.framework */,
+				ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */,
+				ECF75EB51B7E1DA60047B0F7 /* Quick.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		ECCB039B1FA717BD00822788 /* StaticLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				ECCB039C1FA717BD00822788 /* HaskellSwift.h */,
+				ECCB039E1FA717BD00822788 /* HaskellSwift.m */,
+			);
+			path = StaticLibrary;
+			sourceTree = "<group>";
+		};
 		ECF75E7A1B7E1B420047B0F7 = {
 			isa = PBXGroup;
 			children = (
 				EC1E8CD91F18B0F000C6DFCA /* Sources */,
 				ECFC6C981C13501300C277AE /* Documentation */,
+				ECCB039B1FA717BD00822788 /* StaticLibrary */,
 				ECF75EB31B7E1DA60047B0F7 /* Frameworks */,
 				EC72BA301B97933E00192C2B /* Support */,
 				ECF75E971B7E1B420047B0F7 /* XcodeTests */,
 				ECF75E841B7E1B420047B0F7 /* Products */,
+				ECCB03951FA7146F00822788 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -491,6 +541,7 @@
 				ECF945D31BF5E5240039C177 /* HaskellSwift.framework */,
 				ECF945E01BF5E5560039C177 /* HaskellSwift.framework */,
 				ECF945E91BF5E5570039C177 /* HaskellSwift-tvOSTests.xctest */,
+				ECCB039A1FA717BD00822788 /* libHaskellSwift.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -538,6 +589,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECCB03981FA717BD00822788 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECCB039D1FA717BD00822788 /* HaskellSwift.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +680,23 @@
 			productName = "HaskellSwift-iOSTests";
 			productReference = EC7F1F611BF5319800D424EC /* HaskellSwift-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ECCB03991FA717BD00822788 /* HaskellSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECCB03A21FA717BD00822788 /* Build configuration list for PBXNativeTarget "HaskellSwift" */;
+			buildPhases = (
+				ECCB03961FA717BD00822788 /* Sources */,
+				ECCB03971FA717BD00822788 /* Frameworks */,
+				ECCB03981FA717BD00822788 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HaskellSwift;
+			productName = HaskellSwift;
+			productReference = ECCB039A1FA717BD00822788 /* libHaskellSwift.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		ECF945D21BF5E5240039C177 /* HaskellSwift-watchOS */ = {
 			isa = PBXNativeTarget;
@@ -721,6 +797,10 @@
 					EC7F1F601BF5319800D424EC = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
+					ECCB03991FA717BD00822788 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
 					ECF945D21BF5E5240039C177 = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
@@ -740,7 +820,7 @@
 				};
 			};
 			buildConfigurationList = ECF75E7E1B7E1B420047B0F7 /* Build configuration list for PBXProject "HaskellSwift" */;
-			compatibilityVersion = "Xcode 6.3";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -760,6 +840,7 @@
 				ECF945E81BF5E5570039C177 /* HaskellSwift-tvOSTests */,
 				ECF945D21BF5E5240039C177 /* HaskellSwift-watchOS */,
 				EC3AAAD41C06FE5A00F89619 /* HaskellSwiftTests */,
+				ECCB03991FA717BD00822788 /* HaskellSwift */,
 			);
 		};
 /* End PBXProject section */
@@ -921,6 +1002,31 @@
 				ECF946261BF5EEF60039C177 /* GHC.NumSpec.swift in Sources */,
 				ECF9460D1BF5EEE70039C177 /* Data.CharSpec.swift in Sources */,
 				ECF9460F1BF5EEE70039C177 /* Data.FunctorSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECCB03961FA717BD00822788 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECCB03A31FA7185000822788 /* Control.Applicative.swift in Sources */,
+				ECCB03A41FA7185000822788 /* Control.Monad.swift in Sources */,
+				ECCB03A51FA7185000822788 /* Control.Parallel.Strategies.swift in Sources */,
+				ECCB03A61FA7185000822788 /* Data.Char.swift in Sources */,
+				ECCB03A71FA7185000822788 /* Data.Either.swift in Sources */,
+				ECCB03A81FA7185000822788 /* Data.Function.swift in Sources */,
+				ECCB03A91FA7185000822788 /* Data.Functor.swift in Sources */,
+				ECCB03AA1FA7185000822788 /* Data.List.swift in Sources */,
+				ECCB03AB1FA7185000822788 /* Data.Maybe.swift in Sources */,
+				ECCB03AC1FA7185000822788 /* Data.Ord.swift in Sources */,
+				ECCB03AD1FA7185000822788 /* Data.Traversable.swift in Sources */,
+				ECCB03AE1FA7185000822788 /* Data.Tuple.swift in Sources */,
+				ECCB03AF1FA7185000822788 /* GHC.Num.swift in Sources */,
+				ECCB03B01FA7185000822788 /* Prelude.swift in Sources */,
+				ECCB03B11FA7185000822788 /* Network.HTTP.swift in Sources */,
+				ECCB03B21FA7185000822788 /* System.Directory.swift in Sources */,
+				ECCB03B31FA7185000822788 /* System.FilePath.Posix.swift in Sources */,
+				ECCB039F1FA717BD00822788 /* HaskellSwift.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1180,6 +1286,56 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ECCB03A01FA717BD00822788 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NA5BE2D52P;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		ECCB03A11FA717BD00822788 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NA5BE2D52P;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1514,6 +1670,15 @@
 			buildConfigurations = (
 				EC7F1F6B1BF5319800D424EC /* Debug */,
 				EC7F1F6C1BF5319800D424EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECCB03A21FA717BD00822788 /* Build configuration list for PBXNativeTarget "HaskellSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECCB03A01FA717BD00822788 /* Debug */,
+				ECCB03A11FA717BD00822788 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
