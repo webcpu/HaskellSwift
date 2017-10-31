@@ -146,7 +146,7 @@ public func length(_ xs: String) -> Int {
 
 //MARK: - List transformations
 //MARK: map :: (a -> b) -> [a] -> [b]
-public func map(_ transform: (Character)->Character, _ xs: String) -> String {
+public func map(_ transform: (Character) -> Character, _ xs: String) -> String {
     var results = String()
     for i in 0..<xs.characters.count {
         let c = xs[xs.characters.index(xs.startIndex, offsetBy: i)]
@@ -156,7 +156,7 @@ public func map(_ transform: (Character)->Character, _ xs: String) -> String {
     return results
 }
 
-public func map<U>(_ transform: (Character)-> U, _ xs: String) -> [U] {
+public func map<U>(_ transform: (Character) -> U, _ xs: String) -> [U] {
     var results = [U]()
     for i in 0..<xs.characters.count {
         let c = xs[xs.characters.index(xs.startIndex, offsetBy: i)]
@@ -166,7 +166,7 @@ public func map<U>(_ transform: (Character)-> U, _ xs: String) -> [U] {
     return results
 }
 
-public func map<T, U>(_ transform: (T)->U, _ xs: [T]) -> [U] {
+public func map<T, U>(_ transform: (T) -> U, _ xs: [T]) -> [U] {
     var results = [U]()
     for x in xs {
         results.append(transform(x))
@@ -183,7 +183,7 @@ public func map<U>(_ transform: (Character)-> U) -> ((String) -> [U]) {
     return curry(map, transform)
 }
 
-public func map<T, U>(_ transform: (T)->U) -> (([T]) -> [U]) {
+public func map<T, U>(_ transform: (T) -> U) -> (([T]) -> [U]) {
     return curry(map, transform)
 }
 
@@ -1437,7 +1437,7 @@ public func notElem(_ x: Character, _ xs: String)->Bool {
 }
 
 //MARK: lookup :: Eq a => a -> [(a, b)] -> Maybe b
-public func lookup<A: Equatable, B: Equatable>(_ key: A, _ dictionary: [A:B]) -> B? {
+public func lookup<A, B: Equatable>(_ key: A, _ dictionary: [A:B]) -> B? {
     return dictionary[key]
 }
 
@@ -2085,6 +2085,11 @@ public func delete(_ value: String, _ xs: String) -> String {
 //MARK: union :: Eq a => [a] -> [a] -> [a]
 public func union<A: Equatable>(_ xs1: [A], _ xs2: [A]) -> [A] {
     return nub(xs1 + xs2)
+}
+
+//To improve performance
+public func union<A: Hashable>(_ xs1: [A], _ xs2: [A]) -> [A] {
+    return Array(Set<A>(xs1).union(xs2))
 }
 
 //MARK: intersect :: Eq a => [a] -> [a] -> [a]
