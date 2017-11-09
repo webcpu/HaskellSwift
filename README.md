@@ -3,18 +3,17 @@ A functional library for Swift programmers.
 
 It contains a collection of useful functional libraries.
 ### Data
-Data.Char
-Data.List
-Data.Maybe
-Data.Either
-Data.Tuple
-Data.Function
+Data.Char, Data.List, Data.Maybe, Data.Either, Data.Tuple, Data.Function
 
 ### GHC
 Data.Num
 
 ### Language
 Prelude
+
+# Prerequisites
+macOS 10.13
+Xcode 9+
 
 # Examples
 ## Data.List
@@ -77,3 +76,18 @@ let xs: [Int?] = [1, nil, 3]
 catMaybes(xs)
 ```
 `[1,3]`
+
+### How does it help?
+There are 3 solutions to the same problem. A, B, C
+<img width="892" alt="screenshot 2016-03-15 12 02 15" src="https://user-images.githubusercontent.com/4646838/32611428-f51b9eaa-c565-11e7-96ea-8a365e92946a.png">
+ 
+A doesn't use HaskellSwift, B and C use HaskellSwift.
+A is imperative, B and C are declarative.
+
+If you want to know more about it, please check the test cases in the Xcode Project or use Hoogle.
+
+https://www.haskell.org/hoogle/?hoogle=map
+
+In addition, there is a public project which is written in HaskellSwift.
+
+https://github.com/unchartedworks/autobuild
