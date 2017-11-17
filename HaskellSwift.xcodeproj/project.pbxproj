@@ -651,7 +651,6 @@
 				EC7F1F541BF5319800D424EC /* Frameworks */,
 				EC7F1F551BF5319800D424EC /* Headers */,
 				EC7F1F561BF5319800D424EC /* Resources */,
-				ECC349A21D1B02160089FA90 /* Copy Framework */,
 			);
 			buildRules = (
 			);
@@ -926,20 +925,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#rm -rf ~/Dropbox/OSX/Swifti/Frameworks/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/Swifti/Frameworks/\n#rm -rf ~/Dropbox/OSX/List/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/List/\n#rm -rf ~/Desktop/Frameworks/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Desktop/Frameworks/";
-		};
-		ECC349A21D1B02160089FA90 /* Copy Framework */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Framework";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "rm -rf ~/Dropbox/Workspace/browser/browser/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/Workspace/browser/browser/";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1218,7 +1203,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
 				PRODUCT_NAME = HaskellSwift;
@@ -1244,7 +1229,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
 				PRODUCT_NAME = HaskellSwift;
