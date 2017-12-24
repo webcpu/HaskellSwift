@@ -28,7 +28,7 @@ class ControlMonadSpec: QuickSpec {
         }
         
         let len = { (x: String) -> Int? in
-            return x.characters.count
+            return x.count
         }
         
         describe(">>>= and >=> , >>>") {

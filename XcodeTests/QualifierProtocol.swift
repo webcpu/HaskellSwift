@@ -24,7 +24,7 @@ extension QualifierProtocol {
     }
     
     func stringQualifier(_ xs : String) -> Property {
-        return xs.characters.count >= 0 ==> {
+        return xs.count >= 0 ==> {
             return false
         }
     }

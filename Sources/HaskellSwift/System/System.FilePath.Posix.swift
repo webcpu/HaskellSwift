@@ -111,8 +111,8 @@ public func dropWhileEnd(_ check: (Character) -> Bool, _ xs: String) -> String {
 
 private func lengthOfWhileEndForString(_ check: (Character) -> Bool, _ xs: String) -> Int {
     var len = length(xs)
-    for i in 1...xs.characters.count {
-        let index = xs.characters.index(xs.endIndex, offsetBy: -i)
+    for i in 1...xs.count {
+        let index = xs.index(xs.endIndex, offsetBy: -i)
         let c     = xs[index]
 
         guard check(c) else {

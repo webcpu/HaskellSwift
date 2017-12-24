@@ -53,7 +53,7 @@ public func last<T>(_ xs: [T]) ->T {
 
 public func last(_ xs: String) -> Character {
     assert(xs.isEmpty != true, "Empty List")
-    let c =  xs[xs.characters.index(before: xs.endIndex)]
+    let c =  xs[xs.index(before: xs.endIndex)]
     return c
 }
 
@@ -74,13 +74,13 @@ public func tail<T>(_ xs: [T])->[T] {
 
 public func tail(_ xs: String)->String {
     var list = String()
-    assert(xs.characters.count > 0, "Empty List")
-    if xs.characters.count == 1 {
+    assert(xs.count > 0, "Empty List")
+    if xs.count == 1 {
         return list
     }
     
-    for i in 1..<(xs.characters.count) {
-        let c = xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in 1..<(xs.count) {
+        let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         list.append(c)
     }
     
@@ -104,13 +104,13 @@ public func initx<T>(_ xs: [T])->[T] {
 
 public func initx(_ xs: String)->String {
     var list = String()
-    assert(xs.characters.count > 0, "Empty List")
-    if xs.characters.count == 1 {
+    assert(xs.count > 0, "Empty List")
+    if xs.count == 1 {
         return list
     }
     
-    for i in 0..<(xs.characters.count - 1) {
-        let c = xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in 0..<(xs.count - 1) {
+        let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         list.append(c)
     }
     
@@ -132,7 +132,7 @@ public func null<T>(_ xs: [T]) -> Bool {
 }
 
 public func null(_ xs: String) -> Bool {
-    return xs.characters.isEmpty
+    return xs.isEmpty
 }
 
 //MARK: length :: Foldable t => t a -> Int
@@ -141,15 +141,15 @@ public func length<T>(_ xs: [T]) -> Int {
 }
 
 public func length(_ xs: String) -> Int {
-    return xs.characters.count
+    return xs.count
 }
 
 //MARK: - List transformations
 //MARK: map :: (a -> b) -> [a] -> [b]
 public func map(_ transform: (Character) -> Character, _ xs: String) -> String {
     var results = String()
-    for i in 0..<xs.characters.count {
-        let c = xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in 0..<xs.count {
+        let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         results.append(transform(c))
     }
     
@@ -158,8 +158,8 @@ public func map(_ transform: (Character) -> Character, _ xs: String) -> String {
 
 public func map<U>(_ transform: (Character) -> U, _ xs: String) -> [U] {
     var results = [U]()
-    for i in 0..<xs.characters.count {
-        let c = xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in 0..<xs.count {
+        let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         results.append(transform(c))
     }
     
@@ -271,7 +271,7 @@ public func reverse<T>(_ xs: [T]) -> [T] {
 }
 
 public func reverse(_ xs: String) -> String {
-    return String(xs.characters.reversed())
+    return String(xs.reversed())
 }
 
 //MARK: intersperse :: a -> [a] -> [a]
@@ -284,7 +284,7 @@ public func intersperse<T>(_ separator: T, _ xs: [T]) -> [T] {
 }
 
 public func intersperse(_ separator: Character, _ xs: String) -> String {
-    if xs.characters.count <= 1 {
+    if xs.count <= 1 {
         return xs
     }
     let combine = { (a: String, b: Character) -> String in a + String(separator) + String(b) }
@@ -347,7 +347,7 @@ public func transpose(_ xss: [String]) -> [String] {
         var bs = String()
         for r in 0..<length(xss) {
             if c < length(xss[r]) {
-                let x = xss[r][xss[r].characters.index(xss[r].startIndex, offsetBy: c)]
+                let x = xss[r][xss[r].index(xss[r].startIndex, offsetBy: c)]
                 bs.append(x)
             }
         }
@@ -493,7 +493,7 @@ public func foldl1<A>(_ process: (A, A)->A, _ xs: [A]) -> A {
 }
 
 public func foldl1(_ process: (String, Character)->String, _ xs: String) -> String {
-    assert(xs.characters.count > 0, "Empty List")
+    assert(xs.count > 0, "Empty List")
     return foldl(process, String(xs[xs.startIndex]), drop(1, xs))
 }
 
@@ -513,7 +513,7 @@ public func reduce<A, B> (_ combine: (A, B)->A, _ initial: A, _ xs: [B]) -> A {
 
 public func reduce(_ combine: (String, Character)->String, _ initial: String, _ xs: String) -> String {
     var result = initial
-    for x in xs.characters {
+    for x in xs {
         result = combine(result, x)
     }
     
@@ -556,7 +556,7 @@ public func foldr<A,B>(_ process: (A, B)->B, _ initialValue: B, _ xs: [A]) -> B 
 
 public func foldr(_ process: (Character, String)->String, _ initialValue: String, _ xs: String) -> String {
     var result = initialValue
-    for x in xs.characters.reversed() {
+    for x in xs.reversed() {
         result = process(x, result)
     }
     
@@ -594,8 +594,8 @@ public func foldr1<A>(_ process: (A, A)->A, _ xs: [A]) -> A {
 }
 
 public func foldr1(_ process: (Character, String)->String, _ xs: String) -> String {
-    assert(xs.characters.count > 0, "Empty List")
-    return foldr(process, String(xs[xs.characters.index(before: xs.endIndex)]), take(xs.characters.count - 1, xs))
+    assert(xs.count > 0, "Empty List")
+    return foldr(process, String(xs[xs.index(before: xs.endIndex)]), take(xs.count - 1, xs))
 }
 
 public func foldr1<A>(_ process: (A, A)->A) -> (([A]) -> A) {
@@ -625,7 +625,7 @@ public func scanl(_ combine: (String, Character)->String, _ initialValue: String
     assert(!xs.isEmpty, "Empty List")
     var ys      = [String]()
     var value   = initialValue
-    for x in xs.characters {
+    for x in xs {
         value  = combine(value, x)
         ys.append(value)
     }
@@ -668,8 +668,8 @@ public func scanl1<A>(_ combine: (A, A)->A, _ xs: [A]) -> [A] {
 }
 
 public func scanl1(_ combine: (String, Character)->String, _ xs: String) -> [String] {
-    assert(xs.characters.count > 0, "Empty List")
-    if xs.characters.count == 1 {
+    assert(xs.count > 0, "Empty List")
+    if xs.count == 1 {
         return [xs]
     }
     let result = scanl(combine, String(xs[xs.startIndex]), drop(1, xs))
@@ -701,7 +701,7 @@ public func scanr(_ combine: (Character, String)->String, _ initialValue: String
     assert(!xs.isEmpty, "Empty List")
     var ys      = [String]()
     var value   = initialValue
-    for x in xs.characters.reversed() {
+    for x in xs.reversed() {
         value  = combine(x, value)
         ys.append(value)
     }
@@ -744,11 +744,11 @@ public func scanr1<A>(_ combine: (A, A)->A, _ xs: [A]) -> [A] {
 }
 
 public func scanr1(_ combine: (Character, String)->String, _ xs: String) -> [String] {
-    assert(xs.characters.count > 0, "Empty List")
-    if xs.characters.count == 1 {
+    assert(xs.count > 0, "Empty List")
+    if xs.count == 1 {
         return [xs]
     }
-    let ys = scanr(combine, String(last(xs)), take(xs.characters.count - 1, xs))
+    let ys = scanr(combine, String(last(xs)), take(xs.count - 1, xs))
     return [String(last(xs))] + ys
 }
 
@@ -916,7 +916,7 @@ public func any<A>(_ process:((A)->Bool)->Bool, _ xs: [(A)->Bool]) -> Bool {
 }
 
 public func any(_ process: (Character)->Bool, _ xs: String) -> Bool {
-    for x in xs.characters {
+    for x in xs {
         let isMatched = process(x)
         if isMatched {
             return true
@@ -937,7 +937,7 @@ public func all<A>(_ process: (A)->Bool, _ xs: [A]) -> Bool {
 }
 
 public func all(_ process: (Character)->Bool, _ xs: String) -> Bool {
-    for x in xs.characters {
+    for x in xs {
         let isMatched = process(x)
         if !isMatched {
             return false
@@ -1129,12 +1129,12 @@ public func take(_ len: Int, _ xs: String)->String {
         return list
     }
     
-    if len >= xs.characters.count {
+    if len >= xs.count {
         return xs
     }
     
     for i in 0..<len {
-        let c = xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+        let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         list.append(c)
     }
     
@@ -1167,12 +1167,12 @@ public func drop(_ len: Int, _ xs: String)->String {
         return xs
     }
     
-    if len >= xs.characters.count {
+    if len >= xs.count {
         return list
     }
     
-    for i in len..<(xs.characters.count) {
-        let c = xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in len..<(xs.count) {
+        let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         list.append(c)
     }
     
@@ -1224,8 +1224,8 @@ public func takeWhile(_ check: (Character) -> Bool, _ xs: String) -> String {
 
 func lengthOfWhileForString(_ check: (Character) -> Bool, _ xs: String) -> Int {
     var len = 0
-    for i in 0..<xs.characters.count {
-        let c = xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in 0..<xs.count {
+        let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         guard check(c) else {
             break
         }
@@ -1311,7 +1311,7 @@ public func inits<U>(_ xs: [U]) -> [[U]] {
 
 public func inits(_ xs: String) -> [String] {
     var result = [String]()
-    for i in 0...xs.characters.count {
+    for i in 0...xs.count {
         result.append(take(i, xs))
     }
     
@@ -1330,7 +1330,7 @@ public func tails<U>(_ xs: [U]) -> [[U]] {
 
 public func tails(_ xs: String) -> [String] {
     var result = [String]()
-    for i in 0...xs.characters.count {
+    for i in 0...xs.count {
         result.append(drop(i, xs))
     }
     
@@ -1344,7 +1344,7 @@ public func isPrefixOf<U: Equatable>(_ xs1: [U], _ xs2: [U]) -> Bool {
 }
 
 public func isPrefixOf(_ xs1: String, _ xs2: String) -> Bool {
-    return take(xs1.characters.count, xs2) == xs1
+    return take(xs1.count, xs2) == xs1
 }
 
 //MARK: isSuffixOf :: Eq a => [a] -> [a] -> Bool
@@ -1357,11 +1357,11 @@ public func isSuffixOf<U: Equatable>(_ xs1: [U], _ xs2: [U]) -> Bool {
 }
 
 public func isSuffixOf(_ xs1: String, _ xs2: String) -> Bool {
-    if xs1.characters.count > xs2.characters.count {
+    if xs1.count > xs2.count {
         return false
     }
     
-    return xs2.hasSuffix(xs1)//drop(xs2.characters.count - xs1.characters.count, xs2) == xs1
+    return xs2.hasSuffix(xs1)//drop(xs2.count - xs1.count, xs2) == xs1
 }
 
 //FIXME: Performance is bad
@@ -1418,7 +1418,7 @@ public func elem<A: Equatable>(_ value: [A], _ xs: [[A]])->Bool {
 }
 
 public func elem(_ c: Character , _ xs: String)->Bool {
-    for x in xs.characters {
+    for x in xs {
         if x == c {
             return true
         }
@@ -1454,7 +1454,7 @@ public func find<U>(_ check: (U) -> Bool, _ xs: [U]) -> U? {
 }
 
 public func find(_ check: (Character) -> Bool, _ xs: String) -> Character? {
-    for x in xs.characters {
+    for x in xs {
         if check(x) {
             return x
         }
@@ -1481,7 +1481,7 @@ public func filter<U>(_ check: (U) -> Bool) -> (([U]) -> [U]) {
 
 public func filter(_ check: (Character) -> Bool, _ xs: String) -> String {
     var results = String()
-    for x in xs.characters {
+    for x in xs {
         if check(x) {
             results.append(x)
         }
@@ -1536,8 +1536,8 @@ public func elemIndex<U: Equatable>(_ value: U, _ xs: [U]) -> Int? {
 }
 
 public func elemIndex(_ value: Character, _ xs: String) -> Int? {
-    for i in 0..<xs.characters.count {
-        let c =  xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in 0..<xs.count {
+        let c =  xs[xs.index(xs.startIndex, offsetBy: i)]
         if value == c {
             return i
         }
@@ -1560,8 +1560,8 @@ public func elemIndices<U: Equatable>(_ value: U, _ xs: [U]) -> [Int] {
 
 public func elemIndices(_ value: Character, _ xs: String) -> [Int] {
     var result = [Int]()
-    for i in 0..<xs.characters.count {
-        let c =  xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in 0..<xs.count {
+        let c =  xs[xs.index(xs.startIndex, offsetBy: i)]
         if value == c {
             result.append(i)
         }
@@ -1582,8 +1582,8 @@ public func findIndex<U>(_ check: (U) -> Bool, _ xs: [U]) -> Int? {
 }
 
 public func findIndex(_ check: (Character) -> Bool, _ xs: String) -> Int? {
-    for i in 0..<xs.characters.count {
-        let c =  xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in 0..<xs.count {
+        let c =  xs[xs.index(xs.startIndex, offsetBy: i)]
         if check(c) {
             return i
         }
@@ -1605,8 +1605,8 @@ public func findIndices<U: Equatable>(_ check: (U) -> Bool, _ xs: [U]) -> [Int] 
 
 public func findIndices(_ check: (Character) -> Bool, _ xs: String) -> [Int] {
     var result = [Int]()
-    for i in 0..<xs.characters.count {
-        let c =  xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in 0..<xs.count {
+        let c =  xs[xs.index(xs.startIndex, offsetBy: i)]
         if check(c) {
             result.append(i)
         }
@@ -1998,7 +1998,7 @@ public func splitWith(_ check: (Character)->Bool, _ s: String)->[String] {
     var xs      = [String]()
     var i       = 0
     var list    = s
-    for c in s.characters {
+    for c in s {
         if check(c) {
             xs.append(take(i, list))
             list = drop(i + 1, list)
@@ -2024,7 +2024,7 @@ public func splitWith(_ check: @escaping (Character)->Bool) -> (String) -> [Stri
 public func words(_ s: String)->[String] {
     let isWhiteSpace    = { (c: Character) in c == " " || c == "\n" || c == "\t" }
     let xs              = splitWith(isWhiteSpace, s)
-    let result          = filter({ x in x.characters.count > 0} , xs)
+    let result          = filter({ x in x.count > 0} , xs)
     return result
 }
 
@@ -2075,8 +2075,8 @@ public func delete(_ value: Character, _ xs: String) -> String {
 }
 
 public func delete(_ value: String, _ xs: String) -> String {
-    assert(value.characters.count == 1)
-    let c       = value[value.characters.startIndex]
+    assert(value.count == 1)
+    let c       = value[value.startIndex]
     let idx     = elemIndex(c, xs)
     return idx == nil ? xs : take(idx!, xs) + drop(idx! + 1, xs)
 }
@@ -2156,7 +2156,7 @@ public func nubBy<A: Equatable>(_ f: (A?,A?)->Bool, _ xs: [A?]) -> [A?] {
 
 public func nubBy(_ f: (Character, Character)->Bool, _ xs: String) -> String {
     var results  = String()
-    for x in xs.characters {
+    for x in xs {
         if find( { y in f(x, y) }, results) == nil {
             results.append(x)
         }
@@ -2192,8 +2192,8 @@ public func deleteBy(_ f: (Character,Character)->Bool, _ y: Character, _ xs: Str
 }
 
 func indexElemBy(_ f: (Character, Character)->Bool, _ y: Character, _ xs: String) -> Int? {
-    for i in 0..<xs.characters.count {
-        let c = xs[xs.characters.index(xs.startIndex, offsetBy: i)]
+    for i in 0..<xs.count {
+        let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         if f(y, c) {
             return i
         }
@@ -2213,8 +2213,8 @@ public func deleteFirstsBy<A: Equatable>(_ f: (A,A)->Bool, _ xs1: [A], _ xs2: [A
 
 public func deleteFirstsBy(_ f: (Character, Character)->Bool, _ xs1: String, _ xs2: String) -> String {
     var result  = xs1
-    for i in 0..<xs2.characters.count {
-        let c   = xs2[xs2.characters.index(xs2.startIndex, offsetBy: i)]
+    for i in 0..<xs2.count {
+        let c   = xs2[xs2.index(xs2.startIndex, offsetBy: i)]
         result  = deleteBy(f, c, result)
     }
     return result
@@ -2260,11 +2260,11 @@ public func groupBy<A: Equatable>(_ f : (A, A)->Bool, _ xs: [A]) -> [[A]] {
 public func groupBy(_ f: (Character, Character)->Bool, _ xs: String) -> [String] {
     var result          = [String]()
     var list            = xs
-    while (list.characters.count > 0) {
+    while (list.count > 0) {
         let y           = head(list)
         let ys          = takeWhile( { x in f(y, x)}, drop(1, list))
-        list            = drop(ys.characters.count > 0 ? ys.characters.count + 1 : 1 , list)
-        result.append(ys.characters.count > 0 ? String(y) + ys : String(y))
+        list            = drop(ys.count > 0 ? ys.count + 1 : 1 , list)
+        result.append(ys.count > 0 ? String(y) + ys : String(y))
     }
     
     return result
@@ -2327,7 +2327,7 @@ public func genericLength<A>(_ xs: [A])->Int {
 }
 
 public func genericLength(_ xs: String)->Int {
-    return xs.characters.count
+    return xs.count
 }
 
 //MARK: genericTake :: Integral i => i -> [a] -> [a]

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0920"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -29,66 +29,6 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EC24C2021BF21A06000CB663"
-               BuildableName = "HaskellSwift-macOSTests.xctest"
-               BlueprintName = "HaskellSwift-macOSTests"
-               ReferencedContainer = "container:HaskellSwift.xcodeproj">
-            </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "DataCharSpec">
-               </Test>
-               <Test
-                  Identifier = "DataFunctorSpec">
-               </Test>
-               <Test
-                  Identifier = "DataList0Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList1Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList2Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList3Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList4Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList5Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList6Spec">
-               </Test>
-               <Test
-                  Identifier = "DataList7Spec">
-               </Test>
-               <Test
-                  Identifier = "DataListBasic0QuickCheck">
-               </Test>
-               <Test
-                  Identifier = "DataListBasic1QuickCheck">
-               </Test>
-               <Test
-                  Identifier = "DataMaybeSpec">
-               </Test>
-               <Test
-                  Identifier = "DataOrdSpec">
-               </Test>
-               <Test
-                  Identifier = "DataTupleSpec">
-               </Test>
-               <Test
-                  Identifier = "NumSpec">
-               </Test>
-            </SkippedTests>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

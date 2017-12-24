@@ -49,7 +49,7 @@ class DataListListTransformation0QuickCheck: QuickSpec {
                     }
                     
                     func stringQualifier(xs: String) -> Property {
-                        return xs.characters.count >= 0 ==> {
+                        return xs.count >= 0 ==> {
                             return reverse(reverse(xs)) == xs
                         }
                     }
@@ -173,7 +173,7 @@ class DataListListTransformation1QuickCheck: QuickSpec {
                 }
                 
                 property("String") <- forAll { (transform : ArrowOf<String, ArrowOf<Character, String>>, initialValue : String, xs : String) in
-                    return xs.characters.count > 0 ==> {
+                    return xs.count > 0 ==> {
                         let _transform = { (a : String, b : Character) -> String in ((transform.getArrow)(a).getArrow)(b) }
                         return foldl(_transform, initialValue, xs) == foldl(_transform)(initialValue)(xs)
                     }
@@ -230,7 +230,7 @@ class DataListListTransformation1QuickCheck: QuickSpec {
                 }
                 
                 property("String") <- forAll { (transform : ArrowOf<String, ArrowOf<Character, String>>, initialValue : String, xs : String) in
-                    return xs.characters.count > 0 ==> {
+                    return xs.count > 0 ==> {
                         let _transform = { (a : String, b : Character) -> String in ((transform.getArrow)(a).getArrow)(b) }
                         return reduce(_transform, initialValue, xs) == reduce(_transform)(initialValue)(xs)
                     }
@@ -262,7 +262,7 @@ class DataListListTransformation1QuickCheck: QuickSpec {
                 }
                 
                 property("String") <- forAll { (transform : ArrowOf<Character, ArrowOf<String, String>>, initialValue : String, xs : String) in
-                    return xs.characters.count > 0 ==> {
+                    return xs.count > 0 ==> {
                         let _transform = { (a : Character, b : String) -> String in ((transform.getArrow)(a).getArrow)(b) }
                         return foldr(_transform, initialValue, xs) == foldr(_transform)(initialValue)(xs)
                     }

@@ -276,17 +276,17 @@ class DataList1Spec: QuickSpec {
             }
             
             it("Int Array 1") {
-                let countLength     = { (x: String) in x.characters.count }
+                let countLength     = { (x: String) in x.count }
                 let countLengths     = { xs in map(countLength, xs) }
                 let lengths         = countLengths(files)
-                expect(lengths).to(equal(files.map({ (x: String) in x.characters.count })))
+                expect(lengths).to(equal(files.map({ (x: String) in x.count })))
             }
             
             it("Int Array 2") {
-                let countLength     = { (x: String) in x.characters.count }
+                let countLength     = { (x: String) in x.count }
                 let countLengths     = { xs in map(countLength, xs) }
                 let lengths         = countLengths(files)
-                expect(lengths).to(equal(files.map({ (x: String) in x.characters.count })))
+                expect(lengths).to(equal(files.map({ (x: String) in x.count })))
             }
             
             it("String - String") {

@@ -57,7 +57,7 @@ class DataListBasic0QuickCheck: QuickSpec {
                     }
                     
                     func stringQualifier(_ xs: String) -> Property {
-                        return xs.characters.count > 0 ==> {
+                        return xs.count > 0 ==> {
                             return head(xs) == xs[xs.startIndex]
                         }
                     }
@@ -77,8 +77,8 @@ class DataListBasic0QuickCheck: QuickSpec {
                     }
                     
                     func stringQualifier(_ xs: String) -> Property {
-                        return xs.characters.count > 0 ==> {
-                            return last(xs) == xs[xs.characters.index(before: xs.endIndex)]
+                        return xs.count > 0 ==> {
+                            return last(xs) == xs[xs.index(before: xs.endIndex)]
                         }
                     }
                 }
@@ -97,7 +97,7 @@ class DataListBasic0QuickCheck: QuickSpec {
                     }
                     
                     func stringQualifier(_ xs: String) -> Property {
-                        return xs.characters.count > 0 ==> {
+                        return xs.count > 0 ==> {
                             return tail(xs) == drop(1, xs)
                         }
                     }
@@ -117,7 +117,7 @@ class DataListBasic0QuickCheck: QuickSpec {
                     }
                     
                     func stringQualifier(_ xs: String) -> Property {
-                        return xs.characters.count > 0 ==> {
+                        return xs.count > 0 ==> {
                             return initx(xs) == take(length(xs)-1, xs)
                         }
                     }
@@ -142,7 +142,7 @@ class DataListBasic1QuickCheck: QuickSpec {
                     }
                     
                     func stringQualifier(_ xs: String) -> Property {
-                        return xs.characters.count > 0 ==> {
+                        return xs.count > 0 ==> {
                             let t = uncons(xs)
                             return (String(t!.0) + t!.1) == xs
                         }
@@ -163,7 +163,7 @@ class DataListBasic1QuickCheck: QuickSpec {
                     }
                     
                     func stringQualifier(_ xs: String) -> Property {
-                        return xs.characters.count >= 0 ==> {
+                        return xs.count >= 0 ==> {
                             return null(xs) == (length(xs) == 0)
                         }
                     }
@@ -183,8 +183,8 @@ class DataListBasic1QuickCheck: QuickSpec {
                     }
                     
                     func stringQualifier(_ xs: String) -> Property {
-                        return xs.characters.count >= 0 ==> {
-                            return length(xs) == xs.characters.count
+                        return xs.count >= 0 ==> {
+                            return length(xs) == xs.count
                         }
                     }
                 }

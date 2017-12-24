@@ -25,8 +25,8 @@ class PlaySpec: QuickSpec {
                 }
                 
                 func stringQualifier(xs: String) -> Property {
-                    return xs.characters.count >= 0 ==> {
-                        return length(xs) == xs.characters.count
+                    return xs.count >= 0 ==> {
+                        return length(xs) == xs.count
                     }
                 }
             }
