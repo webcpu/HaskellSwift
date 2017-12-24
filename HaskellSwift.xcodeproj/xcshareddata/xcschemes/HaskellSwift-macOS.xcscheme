@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ECFBE9111BF217D300D23E20"
                BuildableName = "HaskellSwift.framework"
-               BlueprintName = "HaskellSwift-OSX"
+               BlueprintName = "HaskellSwift-macOS"
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,8 +34,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EC24C2021BF21A06000CB663"
-               BuildableName = "HaskellSwift-OSXTests.xctest"
-               BlueprintName = "HaskellSwift-OSXTests"
+               BuildableName = "HaskellSwift-macOSTests.xctest"
+               BlueprintName = "HaskellSwift-macOSTests"
                ReferencedContainer = "container:HaskellSwift.xcodeproj">
             </BuildableReference>
             <SkippedTests>
@@ -95,7 +95,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ECFBE9111BF217D300D23E20"
             BuildableName = "HaskellSwift.framework"
-            BlueprintName = "HaskellSwift-OSX"
+            BlueprintName = "HaskellSwift-macOS"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -118,7 +118,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ECFBE9111BF217D300D23E20"
             BuildableName = "HaskellSwift.framework"
-            BlueprintName = "HaskellSwift-OSX"
+            BlueprintName = "HaskellSwift-macOS"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -136,7 +136,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ECFBE9111BF217D300D23E20"
             BuildableName = "HaskellSwift.framework"
-            BlueprintName = "HaskellSwift-OSX"
+            BlueprintName = "HaskellSwift-macOS"
             ReferencedContainer = "container:HaskellSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -262,7 +262,7 @@
 		EC1E8CEE1F18B0F000C6DFCA /* Network.HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.HTTP.swift; sourceTree = "<group>"; };
 		EC1E8CF01F18B0F000C6DFCA /* System.Directory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.Directory.swift; sourceTree = "<group>"; };
 		EC1E8CF11F18B0F000C6DFCA /* System.FilePath.Posix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.FilePath.Posix.swift; sourceTree = "<group>"; };
-		EC24C2031BF21A06000CB663 /* HaskellSwift-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HaskellSwift-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC24C2031BF21A06000CB663 /* HaskellSwift-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HaskellSwift-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC3F56441D2267F900441811 /* System.DirectorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.DirectorySpec.swift; sourceTree = "<group>"; };
 		EC3F564A1D226F9600441811 /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftCheck.framework; sourceTree = "<group>"; };
 		EC3F564C1D226FC000441811 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -535,7 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */,
-				EC24C2031BF21A06000CB663 /* HaskellSwift-OSXTests.xctest */,
+				EC24C2031BF21A06000CB663 /* HaskellSwift-macOSTests.xctest */,
 				EC7F1F581BF5319800D424EC /* HaskellSwift.framework */,
 				EC7F1F611BF5319800D424EC /* HaskellSwift-iOSTests.xctest */,
 				ECF945D31BF5E5240039C177 /* HaskellSwift.framework */,
@@ -624,9 +624,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		EC24C2021BF21A06000CB663 /* HaskellSwift-OSXTests */ = {
+		EC24C2021BF21A06000CB663 /* HaskellSwift-macOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EC24C20B1BF21A06000CB663 /* Build configuration list for PBXNativeTarget "HaskellSwift-OSXTests" */;
+			buildConfigurationList = EC24C20B1BF21A06000CB663 /* Build configuration list for PBXNativeTarget "HaskellSwift-macOSTests" */;
 			buildPhases = (
 				EC24C1FF1BF21A06000CB663 /* Sources */,
 				EC24C2001BF21A06000CB663 /* Frameworks */,
@@ -638,9 +638,9 @@
 			dependencies = (
 				EC24C20A1BF21A06000CB663 /* PBXTargetDependency */,
 			);
-			name = "HaskellSwift-OSXTests";
+			name = "HaskellSwift-macOSTests";
 			productName = "HaskellSwift-OSXTests";
-			productReference = EC24C2031BF21A06000CB663 /* HaskellSwift-OSXTests.xctest */;
+			productReference = EC24C2031BF21A06000CB663 /* HaskellSwift-macOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		EC7F1F571BF5319800D424EC /* HaskellSwift-iOS */ = {
@@ -752,9 +752,9 @@
 			productReference = ECF945E91BF5E5570039C177 /* HaskellSwift-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		ECFBE9111BF217D300D23E20 /* HaskellSwift-OSX */ = {
+		ECFBE9111BF217D300D23E20 /* HaskellSwift-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ECFBE9171BF217D300D23E20 /* Build configuration list for PBXNativeTarget "HaskellSwift-OSX" */;
+			buildConfigurationList = ECFBE9171BF217D300D23E20 /* Build configuration list for PBXNativeTarget "HaskellSwift-macOS" */;
 			buildPhases = (
 				ECFBE90D1BF217D300D23E20 /* Sources */,
 				ECFBE90E1BF217D300D23E20 /* Frameworks */,
@@ -767,7 +767,7 @@
 			);
 			dependencies = (
 			);
-			name = "HaskellSwift-OSX";
+			name = "HaskellSwift-macOS";
 			productName = HaskellSwift;
 			productReference = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */;
 			productType = "com.apple.product-type.framework";
@@ -831,8 +831,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ECFBE9111BF217D300D23E20 /* HaskellSwift-OSX */,
-				EC24C2021BF21A06000CB663 /* HaskellSwift-OSXTests */,
+				ECFBE9111BF217D300D23E20 /* HaskellSwift-macOS */,
+				EC24C2021BF21A06000CB663 /* HaskellSwift-macOSTests */,
 				EC7F1F571BF5319800D424EC /* HaskellSwift-iOS */,
 				EC7F1F601BF5319800D424EC /* HaskellSwift-iOSTests */,
 				ECF945DF1BF5E5560039C177 /* HaskellSwift-tvOS */,
@@ -1110,12 +1110,12 @@
 /* Begin PBXTargetDependency section */
 		EC24C20A1BF21A06000CB663 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ECFBE9111BF217D300D23E20 /* HaskellSwift-OSX */;
+			target = ECFBE9111BF217D300D23E20 /* HaskellSwift-macOS */;
 			targetProxy = EC24C2091BF21A06000CB663 /* PBXContainerItemProxy */;
 		};
 		EC3AAAEC1C06FE7400F89619 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EC24C2021BF21A06000CB663 /* HaskellSwift-OSXTests */;
+			target = EC24C2021BF21A06000CB663 /* HaskellSwift-macOSTests */;
 			targetProxy = EC3AAAEB1C06FE7400F89619 /* PBXContainerItemProxy */;
 		};
 		EC3AAAEE1C06FE7400F89619 /* PBXTargetDependency */ = {
@@ -1623,7 +1623,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EC24C20B1BF21A06000CB663 /* Build configuration list for PBXNativeTarget "HaskellSwift-OSXTests" */ = {
+		EC24C20B1BF21A06000CB663 /* Build configuration list for PBXNativeTarget "HaskellSwift-macOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EC24C20C1BF21A06000CB663 /* Debug */,
@@ -1704,7 +1704,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ECFBE9171BF217D300D23E20 /* Build configuration list for PBXNativeTarget "HaskellSwift-OSX" */ = {
+		ECFBE9171BF217D300D23E20 /* Build configuration list for PBXNativeTarget "HaskellSwift-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ECFBE9181BF217D300D23E20 /* Debug */,
