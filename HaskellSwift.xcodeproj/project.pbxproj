@@ -759,9 +759,8 @@
 				ECFBE90D1BF217D300D23E20 /* Sources */,
 				ECFBE90E1BF217D300D23E20 /* Frameworks */,
 				ECFBE90F1BF217D300D23E20 /* Headers */,
-				ECFBE9101BF217D300D23E20 /* Resources */,
-				EC779B7C1CF8A03C008C1347 /* Copy Framework */,
 				EC203D1D1F17F26900C9BA03 /* ShellScript */,
+				ECFBE9101BF217D300D23E20 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -911,20 +910,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"$BUILT_PRODUCTS_DIR\"\n\nstatic_wrapper_name=\"Static/$WRAPPER_NAME\"\nrm -rf \"$static_wrapper_name\"\nditto \"$WRAPPER_NAME\" \"$static_wrapper_name\"\n\narchs=( $ARCHS ) lfls=()\nfor v in \"${archs[@]/#/LINK_FILE_LIST_${CURRENT_VARIANT}_}\"; do\nlfls+=( -filelist \"${!v}\" )\ndone\n\nlibtool -static -syslibroot \"$SDKROOT\" -L. \"${lfls[@]}\" -o \"Static/$EXECUTABLE_PATH\"";
-		};
-		EC779B7C1CF8A03C008C1347 /* Copy Framework */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Framework";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#rm -rf ~/Dropbox/OSX/Swifti/Frameworks/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/Swifti/Frameworks/\n#rm -rf ~/Dropbox/OSX/List/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Dropbox/OSX/List/\n#rm -rf ~/Desktop/Frameworks/HaskellSwift.framework\n#cp -pR ~/Library/Developer/Xcode/DerivedData/Build/Products/Debug/HaskellSwift.framework ~/Desktop/Frameworks/";
 		};
 /* End PBXShellScriptBuildPhase section */
 

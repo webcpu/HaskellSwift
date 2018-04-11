@@ -26,7 +26,7 @@ public func not(_ value: Bool) -> Bool {
 //MARK: (++) :: [a] -> [a] -> [a]
 infix operator ++
 func ++<A>(left: [A], right: [A]) -> [A] {
-    return left + right 
+    return left + right
 }
 
 func ++(left: String, right: String) -> String {
@@ -64,11 +64,11 @@ public func tail<T>(_ xs: [T])->[T] {
     if xs.count == 1 {
         return list
     }
-    
+
     for i in 1..<(xs.count) {
         list.append(xs[i])
     }
-    
+
     return list
 }
 
@@ -78,12 +78,12 @@ public func tail(_ xs: String)->String {
     if xs.count == 1 {
         return list
     }
-    
+
     for i in 1..<(xs.count) {
         let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         list.append(c)
     }
-    
+
     return list
 }
 
@@ -94,11 +94,11 @@ public func initx<T>(_ xs: [T])->[T] {
     if xs.count == 1 {
         return list
     }
-    
+
     for i in 0..<(xs.count - 1) {
         list.append(xs[i])
     }
-    
+
     return list
 }
 
@@ -108,12 +108,12 @@ public func initx(_ xs: String)->String {
     if xs.count == 1 {
         return list
     }
-    
+
     for i in 0..<(xs.count - 1) {
         let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         list.append(c)
     }
-    
+
     return list
 }
 
@@ -152,7 +152,7 @@ public func map(_ transform: (Character) -> Character, _ xs: String) -> String {
         let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         results.append(transform(c))
     }
-    
+
     return results
 }
 
@@ -162,7 +162,7 @@ public func map<U>(_ transform: (Character) -> U, _ xs: String) -> [U] {
         let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         results.append(transform(c))
     }
-    
+
     return results
 }
 
@@ -171,7 +171,7 @@ public func map<T, U>(_ transform: (T) -> U, _ xs: [T]) -> [U] {
     for x in xs {
         results.append(transform(x))
     }
-    
+
     return results
 }
 
@@ -312,14 +312,14 @@ public func intercalate(_ xs: String, _ xss: [String]) -> String {
 //r * c -> c * r
 public func transpose<B>(_ xss: [[B]]) -> [[B]] {
     var bss = [[B]]()
-    
+
     let cols = maximumBy({ (x , y) -> Ordering in
         if x > y {
             return Ordering.gt
         } else {
             return Ordering.lt
         }}, map({ x in length(x)}, xss))
-    
+
     for c in  0..<cols {
         var bs = [B]()
         for r in 0..<length(xss) {
@@ -329,20 +329,20 @@ public func transpose<B>(_ xss: [[B]]) -> [[B]] {
         }
         bss.append(bs)
     }
-    
+
     return bss
 }
 
 public func transpose(_ xss: [String]) -> [String] {
     var bss = [String]()
-    
+
     let cols = maximumBy({ (x , y) -> Ordering in
         if x > y {
             return Ordering.gt
         } else {
             return Ordering.lt
         }}, map({ x in length(x)}, xss))
-    
+
     for c in  0..<cols {
         var bs = String()
         for r in 0..<length(xss) {
@@ -353,7 +353,7 @@ public func transpose(_ xss: [String]) -> [String] {
         }
         bss.append(bs)
     }
-    
+
     return bss
 }
 
@@ -362,7 +362,7 @@ public func subsequences<B>(_ xs: [B]) -> [[B]] {
     if xs.isEmpty {
         return emptySubSequence()
     }
-    
+
     return emptySubSequence() + nonEmptySubsequences(xs)
 }
 
@@ -376,11 +376,11 @@ func nonEmptySubsequences<B>(_ xs: [B]) -> [[B]] {
     if xs.isEmpty {
         return [[B]]()
     }
-    
+
     let r0 = [head(xs)]
     let f  = { (ys: [B], r: [[B]]) -> [[B]] in [ys] + [[head(xs)] + ys] + r }
     let r1 = foldr(f, [[B]](), nonEmptySubsequences(tail(xs)))
-    
+
     return [r0] + r1
 }
 
@@ -388,7 +388,7 @@ public func subsequences(_ xs: String) -> [String] {
     if xs.isEmpty {
         return emptySubSequence()
     }
-    
+
     return emptySubSequence() + nonEmptySubsequences(xs)
 }
 
@@ -402,11 +402,11 @@ func nonEmptySubsequences(_ xs: String) -> [String] {
     if xs.isEmpty {
         return [String]()
     }
-    
+
     let r0 = String(head(xs))
     let f  = { (ys: String, r: [String]) -> [String] in [ys] + [String(head(xs)) + ys] + r }
     let r1 = foldr(f, [String](), nonEmptySubsequences(tail(xs)))
-    
+
     return [r0] + r1
 }
 
@@ -507,7 +507,7 @@ public func reduce<A, B> (_ combine: (A, B)->A, _ initial: A, _ xs: [B]) -> A {
     for x in xs {
         result = combine(result, x)
     }
-    
+
     return result
 }
 
@@ -516,7 +516,7 @@ public func reduce(_ combine: (String, Character)->String, _ initial: String, _ 
     for x in xs {
         result = combine(result, x)
     }
-    
+
     return result
 }
 
@@ -550,7 +550,7 @@ public func foldr<A,B>(_ process: (A, B)->B, _ initialValue: B, _ xs: [A]) -> B 
     for x in xs.reversed() {
         result = process(x, result)
     }
-    
+
     return result
 }
 
@@ -559,7 +559,7 @@ public func foldr(_ process: (Character, String)->String, _ initialValue: String
     for x in xs.reversed() {
         result = process(x, result)
     }
-    
+
     return result
 }
 
@@ -617,7 +617,7 @@ public func scanl<A,B>(_ combine: (A, B)->A, _ initialValue: A, _ xs: [B]) -> [A
         value  = combine(value, x)
         ys.append(value)
     }
-    
+
     return ys
 }
 
@@ -629,7 +629,7 @@ public func scanl(_ combine: (String, Character)->String, _ initialValue: String
         value  = combine(value, x)
         ys.append(value)
     }
-    
+
     return ys
 }
 
@@ -693,7 +693,7 @@ public func scanr<A,B>(_ combine: (A, B)->B, _ initialValue: B, _ xs: [A]) -> [B
         value  = combine(x, value)
         ys.append(value)
     }
-    
+
     return ys
 }
 
@@ -705,7 +705,7 @@ public func scanr(_ combine: (Character, String)->String, _ initialValue: String
         value  = combine(x, value)
         ys.append(value)
     }
-    
+
     return ys
 }
 
@@ -796,7 +796,7 @@ public func unfoldr<A,B>(_ f: (B) -> (A, B)?, _ seed: B) -> [A] {
         xs.append(r!.0)
         b       = r!.1
     } while (true)
-    
+
     return xs
 }
 
@@ -817,10 +817,10 @@ public func concat<A> (_ xss: [[A]]) -> [A] {
     if xss.isEmpty {
         return xs
     }
-    
+
     let process = { (a : [A], b: [A]) in a + b }
     xs          = foldl(process, xs, xss)
-    
+
     return xs
 }
 
@@ -829,10 +829,10 @@ public func concat (_ xss: [String]) -> String {
     if xss.isEmpty {
         return xs
     }
-    
+
     let process = { (a : String, b: String) in a + b }
     xs          = foldl(process, xs, xss)
-    
+
     return xs
 }
 
@@ -841,36 +841,36 @@ public func concat (_ xss: [Character]) -> String {
     if xss.isEmpty {
         return xs
     }
-    
+
     let process = { (a : String, b: Character) in a + String(b) }
     xs          = foldl(process, xs, xss)
-    
+
     return xs
 }
 //MARK: concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
 public func concatMap<A, B> (_ process: (A)->[B], _ xs: [A]) -> [B] {
     // assert(xs.count >= 0 , "Illegal Length")
-    
+
     var xss          = [[B]]()
     for x in xs {
         xss.append(process(x))
     }
-    
+
     let results      = concat(xss)
-    
+
     return results
 }
 
 public func concatMap(_ process: (Character)->String, _ xs: [Character]) -> String {
     // assert(xs.count >= 0 , "Illegal Length")
-    
+
     var xss          = [String]()
     for x in xs {
         xss.append(process(x))
     }
-    
+
     let results      = concat(xss)
-    
+
     return results
 }
 
@@ -1075,7 +1075,7 @@ public func product(_ xs: [UInt8]) -> UInt8 {
 public func maximum<T: Comparable>(_ xs: [T])-> T {
     assert(xs.count > 0, "Empty List")
     var m = xs[0]
-    
+
     for x in xs {
         if x > m {
             m = x
@@ -1088,7 +1088,7 @@ public func maximum<T: Comparable>(_ xs: [T])-> T {
 public func minimum<T: Comparable>(_ xs: [T])-> T {
     assert(xs.count > 0, "Empty List")
     var m = xs[0]
-    
+
     for x in xs {
         if x < m {
             m = x
@@ -1128,16 +1128,16 @@ public func take(_ len: Int, _ xs: String)->String {
     if len == 0 {
         return list
     }
-    
+
     if len >= xs.count {
         return xs
     }
-    
+
     for i in 0..<len {
         let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         list.append(c)
     }
-    
+
     return list
 }
 
@@ -1148,15 +1148,15 @@ public func drop<T>(_ len: Int, _ xs: [T]) -> [T] {
     if len == 0 {
         return xs
     }
-    
+
     if len >= xs.count {
         return list
     }
-    
+
     for i in len..<xs.count {
         list.append(xs[i])
     }
-    
+
     return list
 }
 
@@ -1166,35 +1166,35 @@ public func drop(_ len: Int, _ xs: String)->String {
     if len == 0 {
         return xs
     }
-    
+
     if len >= xs.count {
         return list
     }
-    
+
     for i in len..<(xs.count) {
         let c = xs[xs.index(xs.startIndex, offsetBy: i)]
         list.append(c)
     }
-    
+
     return list
 }
 
 //MARK: splitAt :: Int -> [a] -> ([a], [a])
 public func splitAt<T>(_ len: Int, _ xs: [T]) -> ([T], [T]) {
     assert(len >= 0, "Illegal Length")
-    
+
     let list1 = take(len, xs)
     let list2 = drop(len, xs)
-    
+
     return (list1, list2)
 }
 
 public func splitAt(_ len: Int, _ xs: String)->(String, String) {
     assert(len >= 0, "Illegal Length")
-    
+
     let list1 = take(len, xs)
     let list2 = drop(len, xs)
-    
+
     return (list1, list2)
 }
 
@@ -1213,7 +1213,7 @@ func lengthOfWhile<U>(_ check: (U) -> Bool, _ xs: [U]) -> Int {
         }
         len = i + 1
     }
-    
+
     return len
 }
 
@@ -1305,7 +1305,7 @@ public func inits<U>(_ xs: [U]) -> [[U]] {
     for i in 0...xs.count {
         result.append(take(i, xs))
     }
-    
+
     return result
 }
 
@@ -1314,7 +1314,7 @@ public func inits(_ xs: String) -> [String] {
     for i in 0...xs.count {
         result.append(take(i, xs))
     }
-    
+
     return result
 }
 
@@ -1324,7 +1324,7 @@ public func tails<U>(_ xs: [U]) -> [[U]] {
     for i in 0...xs.count {
         result.append(drop(i, xs))
     }
-    
+
     return result
 }
 
@@ -1333,7 +1333,7 @@ public func tails(_ xs: String) -> [String] {
     for i in 0...xs.count {
         result.append(drop(i, xs))
     }
-    
+
     return result
 }
 
@@ -1352,7 +1352,7 @@ public func isSuffixOf<U: Equatable>(_ xs1: [U], _ xs2: [U]) -> Bool {
     if xs1.count > xs2.count {
         return false
     }
-    
+
     return drop(xs2.count - xs1.count, xs2) == xs1
 }
 
@@ -1360,7 +1360,7 @@ public func isSuffixOf(_ xs1: String, _ xs2: String) -> Bool {
     if xs1.count > xs2.count {
         return false
     }
-    
+
     return xs2.hasSuffix(xs1)//drop(xs2.count - xs1.count, xs2) == xs1
 }
 
@@ -1370,14 +1370,14 @@ public func isInfixOf<U: Equatable>(_ xs1: [U], _ xs2: [U]) -> Bool {
     if xs1.count > xs2.count {
         return false
     }
-    
+
     for i in 0...xs2.count - xs1.count {
         let xs = drop(i, xs2)
         if isPrefixOf(xs1, xs) {
             return true
         }
     }
-    
+
     return false
 }
 
@@ -1403,7 +1403,7 @@ public func elem<A: Equatable>(_ value: A, _ xs: [A])->Bool {
             return true
         }
     }
-    
+
     return false
 }
 
@@ -1413,7 +1413,7 @@ public func elem<A: Equatable>(_ value: [A], _ xs: [[A]])->Bool {
             return true
         }
     }
-    
+
     return false
 }
 
@@ -1423,11 +1423,11 @@ public func elem(_ c: Character , _ xs: String)->Bool {
             return true
         }
     }
-    
+
     return false
 }
 
-//MARK: notElem :: (Foldable t, Eq a) => a -> t a -> Bool 
+//MARK: notElem :: (Foldable t, Eq a) => a -> t a -> Bool
 public func notElem<A: Equatable>(_ x: A, _ xs: [A])->Bool {
     return not(elem(x, xs))
 }
@@ -1449,7 +1449,7 @@ public func find<U>(_ check: (U) -> Bool, _ xs: [U]) -> U? {
             return x
         }
     }
-    
+
     return nil
 }
 
@@ -1459,7 +1459,7 @@ public func find(_ check: (Character) -> Bool, _ xs: String) -> Character? {
             return x
         }
     }
-    
+
     return nil
 }
 
@@ -1471,7 +1471,7 @@ public func filter<U>(_ check: (U) -> Bool, _ xs: [U]) -> [U] {
             results.append(x)
         }
     }
-    
+
     return results
 }
 
@@ -1486,7 +1486,7 @@ public func filter(_ check: (Character) -> Bool, _ xs: String) -> String {
             results.append(x)
         }
     }
-    
+
     return results
 }
 
@@ -1510,7 +1510,7 @@ public func partition(_ check: @escaping (Character) -> Bool)  -> (_ xs: String)
 }
 
 //MARK: Indexing lists
-//MARK: (!!) :: [a] -> Int -> a 
+//MARK: (!!) :: [a] -> Int -> a
 precedencegroup FunctionPrecedence {
     associativity: right
 }
@@ -1531,7 +1531,7 @@ public func elemIndex<U: Equatable>(_ value: U, _ xs: [U]) -> Int? {
             return i
         }
     }
-    
+
     return nil
 }
 
@@ -1542,7 +1542,7 @@ public func elemIndex(_ value: Character, _ xs: String) -> Int? {
             return i
         }
     }
-    
+
     return nil
 }
 
@@ -1554,7 +1554,7 @@ public func elemIndices<U: Equatable>(_ value: U, _ xs: [U]) -> [Int] {
             result.append(i)
         }
     }
-    
+
     return result
 }
 
@@ -1566,7 +1566,7 @@ public func elemIndices(_ value: Character, _ xs: String) -> [Int] {
             result.append(i)
         }
     }
-    
+
     return result
 }
 
@@ -1577,7 +1577,7 @@ public func findIndex<U>(_ check: (U) -> Bool, _ xs: [U]) -> Int? {
             return i
         }
     }
-    
+
     return nil
 }
 
@@ -1588,7 +1588,7 @@ public func findIndex(_ check: (Character) -> Bool, _ xs: String) -> Int? {
             return i
         }
     }
-    
+
     return nil
 }
 //MARK: findIndices :: (a -> Bool) -> [a] -> [Int]
@@ -1599,7 +1599,7 @@ public func findIndices<U: Equatable>(_ check: (U) -> Bool, _ xs: [U]) -> [Int] 
             result.append(i)
         }
     }
-    
+
     return result
 }
 
@@ -1611,7 +1611,7 @@ public func findIndices(_ check: (Character) -> Bool, _ xs: String) -> [Int] {
             result.append(i)
         }
     }
-    
+
     return result
 }
 
@@ -1623,7 +1623,7 @@ public func zip<A, B>(_ xs1: [A], _ xs2: [B]) -> [(A, B)] {
     for i in 0..<len {
         result.append((xs1[i], xs2[i]))
     }
-    
+
     return result
 }
 
@@ -1644,14 +1644,14 @@ public func compareTupleArray <A: Equatable, B: Equatable> (_ xs1: [(A, B)], _ x
     guard xs1.count == xs2.count else {
         return false
     }
-    
+
     for i in 0..<xs1.count {
         let result = compareTuples(xs1[i], xs2[i])
         guard result == true else {
             return false
         }
     }
-    
+
     return true
 }
 
@@ -1663,14 +1663,14 @@ public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable> (_ xs1:
     guard xs1.count == xs2.count else {
         return false
     }
-    
+
     for i in 0..<xs1.count {
         let result = compareTuples(xs1[i], xs2[i])
         guard result == true else {
             return false
         }
     }
-    
+
     return true
 }
 
@@ -1681,7 +1681,7 @@ public func zip3<A, B, C>(_ xs1: [A], _ xs2: [B], _ xs3: [C]) -> [(A, B, C)] {
     for i in 0..<len {
         result.append((xs1[i], xs2[i], xs3[i]))
     }
-    
+
     return result
 }
 
@@ -1692,7 +1692,7 @@ public func zip4<A, B, C, D>(_ xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D]) -> 
     for i in 0..<len {
         result.append((xs1[i], xs2[i], xs3[i], xs4[i]))
     }
-    
+
     return result
 }
 
@@ -1704,14 +1704,14 @@ public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable, D: Equa
     guard xs1.count == xs2.count else {
         return false
     }
-    
+
     for i in 0..<xs1.count {
         let result = compareTuples(xs1[i], xs2[i])
         guard result == true else {
             return false
         }
     }
-    
+
     return true
 }
 
@@ -1722,7 +1722,7 @@ public func zip5<A, B, C, D, E>(_ xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D], 
     for i in 0..<len {
         result.append((xs1[i], xs2[i], xs3[i], xs4[i], xs5[i]))
     }
-    
+
     return result
 }
 
@@ -1734,14 +1734,14 @@ public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable, D: Equa
     guard xs1.count == xs2.count else {
         return false
     }
-    
+
     for i in 0..<xs1.count {
         let result = compareTuples(xs1[i], xs2[i])
         guard result == true else {
             return false
         }
     }
-    
+
     return true
 }
 
@@ -1752,7 +1752,7 @@ public func zip6<A, B, C, D, E, F>(_ xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4: [D
     for i in 0..<len {
         result.append((xs1[i], xs2[i], xs3[i], xs4[i], xs5[i], xs6[i]))
     }
-    
+
     return result
 }
 
@@ -1764,14 +1764,14 @@ public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable, D: Equa
     guard xs1.count == xs2.count else {
         return false
     }
-    
+
     for i in 0..<xs1.count {
         let result = compareTuples(xs1[i], xs2[i])
         guard result == true else {
             return false
         }
     }
-    
+
     return true
 }
 //MARK: zip7 :: [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g] -> [(a, b, c, d, e, f, g)]
@@ -1781,7 +1781,7 @@ public func zip7<A, B, C, D, E, F, G>(_ xs1: [A], _ xs2: [B], _ xs3: [C], _ xs4:
     for i in 0..<len {
         result.append((xs1[i], xs2[i], xs3[i], xs4[i], xs5[i], xs6[i], xs7[i]))
     }
-    
+
     return result
 }
 
@@ -1793,14 +1793,14 @@ public func compareTupleArray <A: Equatable, B: Equatable, C: Equatable, D: Equa
     guard xs1.count == xs2.count else {
         return false
     }
-    
+
     for i in 0..<xs1.count {
         let result = compareTuples(xs1[i], xs2[i])
         guard result == true else {
             return false
         }
     }
-    
+
     return true
 }
 
@@ -1812,7 +1812,7 @@ public func zipWith<A, B, U>(_ process: (A, B)->U, _ xs1: [A], _ xs2: [B]) -> [U
         let c = process(xs1[i], xs2[i])
         results.append(c)
     }
-    
+
     return results
 }
 
@@ -1824,7 +1824,7 @@ public func zipWith3<A, B, C, U>(_ process: (A, B, C)->U, _ xs1: [A], _ xs2: [B]
         let c = process(xs1[i], xs2[i], xs3[i])
         results.append(c)
     }
-    
+
     return results
 }
 
@@ -1836,7 +1836,7 @@ public func zipWith4<A, B, C, D, U>(_ process: (A, B, C, D)->U, _ xs1: [A], _ xs
         let u = process(xs1[i], xs2[i], xs3[i], xs4[i])
         results.append(u)
     }
-    
+
     return results
 }
 
@@ -1848,7 +1848,7 @@ public func zipWith5<A, B, C, D, E, U>(_ process: (A, B, C, D, E)->U, _ xs1: [A]
         let u = process(xs1[i], xs2[i], xs3[i], xs4[i], xs5[i])
         results.append(u)
     }
-    
+
     return results
 }
 
@@ -1860,7 +1860,7 @@ public func zipWith6<A, B, C, D, E, F, U>(_ process: (A, B, C, D, E, F)->U, _ xs
         let u = process(xs1[i], xs2[i], xs3[i], xs4[i], xs5[i], xs6[i])
         results.append(u)
     }
-    
+
     return results
 }
 
@@ -1872,7 +1872,7 @@ public func zipWith7<A, B, C, D, E, F, G, U>(_ process: (A, B, C, D, E, F, G)->U
         let u = process(xs1[i], xs2[i], xs3[i], xs4[i], xs5[i], xs6[i], xs7[i])
         results.append(u)
     }
-    
+
     return results
 }
 //MARK: unzip :: [(a, b)] -> ([a], [b])
@@ -1883,7 +1883,7 @@ public func unzip<A, B>(_ xs: [(A, B)]) -> ([A],[B])  {
         r0.append(x.0)
         r1.append(x.1)
     }
-    
+
     return (r0, r1)
 }
 
@@ -1892,13 +1892,13 @@ public func unzip3<A, B, C>(_ xs: [(A, B, C)]) -> ([A],[B],[C])  {
     var r0 = [A]()
     var r1 = [B]()
     var r2 = [C]()
-    
+
     for x in xs {
         r0.append(x.0)
         r1.append(x.1)
         r2.append(x.2)
     }
-    
+
     return (r0, r1, r2)
 }
 
@@ -1908,14 +1908,14 @@ public func unzip4<A, B, C, D>(_ xs: [(A, B, C, D)]) -> ([A],[B],[C],[D])  {
     var r1 = [B]()
     var r2 = [C]()
     var r3 = [D]()
-    
+
     for x in xs {
         r0.append(x.0)
         r1.append(x.1)
         r2.append(x.2)
         r3.append(x.3)
     }
-    
+
     return (r0, r1, r2, r3)
 }
 
@@ -1926,7 +1926,7 @@ public func unzip5<A, B, C, D, E>(_ xs: [(A, B, C, D, E)]) -> ([A],[B],[C],[D],[
     var r2 = [C]()
     var r3 = [D]()
     var r4 = [E]()
-    
+
     for x in xs {
         r0.append(x.0)
         r1.append(x.1)
@@ -1934,7 +1934,7 @@ public func unzip5<A, B, C, D, E>(_ xs: [(A, B, C, D, E)]) -> ([A],[B],[C],[D],[
         r3.append(x.3)
         r4.append(x.4)
     }
-    
+
     return (r0, r1, r2, r3, r4)
 }
 
@@ -1946,7 +1946,7 @@ public func unzip6<A, B, C, D, E, F>(_ xs: [(A, B, C, D, E, F)]) -> ([A],[B],[C]
     var r3 = [D]()
     var r4 = [E]()
     var r5 = [F]()
-    
+
     for x in xs {
         r0.append(x.0)
         r1.append(x.1)
@@ -1955,7 +1955,7 @@ public func unzip6<A, B, C, D, E, F>(_ xs: [(A, B, C, D, E, F)]) -> ([A],[B],[C]
         r4.append(x.4)
         r5.append(x.5)
     }
-    
+
     return (r0, r1, r2, r3, r4, r5)
 }
 
@@ -1968,7 +1968,7 @@ public func unzip7<A, B, C, D, E, F, G>(_ xs: [(A, B, C, D, E, F, G)]) -> ([A],[
     var r4 = [E]()
     var r5 = [F]()
     var r6 = [G]()
-    
+
     for x in xs {
         r0.append(x.0)
         r1.append(x.1)
@@ -1978,7 +1978,7 @@ public func unzip7<A, B, C, D, E, F, G>(_ xs: [(A, B, C, D, E, F, G)]) -> ([A],[
         r5.append(x.5)
         r6.append(x.6)
     }
-    
+
     return (r0, r1, r2, r3, r4, r5, r6)
 }
 
@@ -2010,7 +2010,7 @@ public func splitWith(_ check: (Character)->Bool, _ s: String)->[String] {
     if i != 0 {
         xs.append(list)
     }
-    
+
     return xs
 }
 
@@ -2135,7 +2135,7 @@ public func nubBy<A: Equatable>(_ f: (A,A)->Bool, _ xs: [A]) -> [A] {
             results.append(x)
         }
     }
-    
+
     return results
 }
 
@@ -2150,7 +2150,7 @@ public func nubBy<A: Equatable>(_ f: (A?,A?)->Bool, _ xs: [A?]) -> [A?] {
             results.append(x)
         }
     }
-    
+
     return results
 }
 
@@ -2161,7 +2161,7 @@ public func nubBy(_ f: (Character, Character)->Bool, _ xs: String) -> String {
             results.append(x)
         }
     }
-    
+
     return results
 }
 
@@ -2207,7 +2207,7 @@ public func deleteFirstsBy<A: Equatable>(_ f: (A,A)->Bool, _ xs1: [A], _ xs2: [A
     for x in xs2 {
         result = deleteBy(f, x, result)
     }
-    
+
     return result
 }
 
@@ -2243,7 +2243,7 @@ public func groupBy<A: Equatable>(_ f : (A, A)->Bool, _ xs: [A]) -> [[A]] {
     if xs.count <= 1 {
         return [xs]
     }
-    
+
     var result          = [[A]]()
     var list            = xs
     while (list.count > 0) {
@@ -2253,7 +2253,7 @@ public func groupBy<A: Equatable>(_ f : (A, A)->Bool, _ xs: [A]) -> [[A]] {
         result.append(ys.count > 0 ? [y] + ys : [y])
         //print("y = \(y), items = \(ys), list = \(list)")
     }
-    
+
     return result
 }
 
@@ -2266,7 +2266,7 @@ public func groupBy(_ f: (Character, Character)->Bool, _ xs: String) -> [String]
         list            = drop(ys.count > 0 ? ys.count + 1 : 1 , list)
         result.append(ys.count > 0 ? String(y) + ys : String(y))
     }
-    
+
     return result
 }
 
