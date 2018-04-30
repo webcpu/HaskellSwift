@@ -167,12 +167,7 @@ public func map<U>(_ transform: (Character) -> U, _ xs: String) -> [U] {
 }
 
 public func map<T, U>(_ transform: (T) -> U, _ xs: [T]) -> [U] {
-    var results = [U]()
-    for x in xs {
-        results.append(transform(x))
-    }
-
-    return results
+    return xs.reduce([U](), {$0 + [transform($1)]})
 }
 
 public func map(_ transform: (Character)->Character) -> ((String) -> String) {
@@ -849,16 +844,7 @@ public func concat (_ xss: [Character]) -> String {
 }
 //MARK: concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
 public func concatMap<A, B> (_ process: (A)->[B], _ xs: [A]) -> [B] {
-    // assert(xs.count >= 0 , "Illegal Length")
-
-    var xss          = [[B]]()
-    for x in xs {
-        xss.append(process(x))
-    }
-
-    let results      = concat(xss)
-
-    return results
+    return xs.reduce([B](), {$0 + process($1)})
 }
 
 public func concatMap(_ process: (Character)->String, _ xs: [Character]) -> String {
