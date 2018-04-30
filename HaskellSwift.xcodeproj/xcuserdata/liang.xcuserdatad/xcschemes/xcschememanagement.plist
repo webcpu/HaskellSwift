@@ -42,13 +42,6 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>HaskellSwift-watchOS.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
 		<key>HaskellSwiftTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>

@@ -305,7 +305,8 @@ func removeDotDirectory(_ filePath: String) -> String {
 }
 
 func normalisePathSeparator(_ filePath: String) -> String {
-    let removeExtraPathSeparator: (String) -> [String] = map({$0 == "." ? "" : $0}) .. concat .. map(nub) .. group .. splitWith(isPathSeparator)
+    let removeDot: (String) -> String = {$0 == "." ? "" : $0}
+    let removeExtraPathSeparator: (String) -> [String] = map(removeDot) .. concat .. map(nub) .. group .. splitWith(isPathSeparator)
     let normalise = concat .. intersperse("/") .. removeExtraPathSeparator
     return normalise(filePath)
 }

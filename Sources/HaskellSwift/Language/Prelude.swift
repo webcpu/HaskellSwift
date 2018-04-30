@@ -9,7 +9,7 @@
 import Foundation
 
 //MARK: succ
-public func succ<A: Integer>(_ x: A) -> A {
+public func succ<A: BinaryInteger>(_ x: A) -> A {
     return x + 1
 }
 
@@ -24,7 +24,7 @@ public func succ(_ x: Bool) -> Bool {
 }
 
 //MARK: pred
-public func pred<A: Integer>(_ x: A) -> A {
+public func pred<A: BinaryInteger>(_ x: A) -> A {
     return x - 1
 }
 
@@ -66,17 +66,17 @@ public func until<B>(_ condition: (B) -> Bool, _ process: (B) -> B,  _ initialVa
 //MARK: - Integer
 //MARK: div
 //m (dividend) n (divisor)
-public func div<A: Integer>(_ m: A, _ n: A) -> A {
+public func div<A: BinaryInteger>(_ m: A, _ n: A) -> A {
     return m / n
 }
 
 //MARK: mod
-public func mod<A: Integer>(_ m: A, _ n: A) -> A {
+public func mod<A: BinaryInteger>(_ m: A, _ n: A) -> A {
     return m % n
 }
 
 //MARK: divMod
-public func divMod<A: Integer>(_ m: A, _ n: A) -> (A, A) {
+public func divMod<A: BinaryInteger>(_ m: A, _ n: A) -> (A, A) {
     let quotient  = m / n
     let remainder = m % n
     return (quotient, remainder)
@@ -84,12 +84,12 @@ public func divMod<A: Integer>(_ m: A, _ n: A) -> (A, A) {
 
 //MARK: - Numberic
 //MARK: even
-public func even<A: Integer>(_ x: A) -> Bool {
+public func even<A: BinaryInteger>(_ x: A) -> Bool {
     return x % 2 == 0
 }
 
 //MARK: odd
-public func odd<A: Integer>(_ x: A) -> Bool {
+public func odd<A: BinaryInteger>(_ x: A) -> Bool {
     return !even(x)
 }
 

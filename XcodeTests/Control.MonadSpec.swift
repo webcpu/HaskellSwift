@@ -91,7 +91,7 @@ class ControlMonadSpec: QuickSpec {
                 let a2 : Either<String, Int> = Left("error1")
                 let c2          = a2
                 let r2          = a2 >>>= f
-                expect(fromRight(r2)).to(equal(fromRight(c2)))
+                expect(fromLeft(r2)).to(equal(fromLeft(c2)))
                 
                 let r3          = a1 >>>= f >>>= f
                 let c3 : Either<String, Int> = Right(3)
@@ -135,7 +135,7 @@ class ControlMonadSpec: QuickSpec {
                 expect(r3).to(equal([true]))
 
                 let r4          = trueOrEmpty =<<< isEven =<<< square =<<< zs
-                expect(r4).to(equal([false]))
+                expect(r4).to(equal([]))
             }
             
             it("Maybe") {

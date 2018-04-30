@@ -25,8 +25,12 @@
 		EC0333C91D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C81D25664F00FC88B8 /* Network.HTTPSpec.swift */; };
 		EC0333CA1D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C81D25664F00FC88B8 /* Network.HTTPSpec.swift */; };
 		EC0333CB1D25664F00FC88B8 /* Network.HTTPSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0333C81D25664F00FC88B8 /* Network.HTTPSpec.swift */; };
-		EC076BA91D01630400588DA8 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC52ABFC1D0161D200246E68 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EC076BAA1D01630400588DA8 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC52ABFD1D0161D200246E68 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC1D60552096EF5F00CAD8E6 /* SwiftCheck.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC1D60522096EF5E00CAD8E6 /* SwiftCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC1D60562096EF5F00CAD8E6 /* Nimble.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC1D60532096EF5E00CAD8E6 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC1D60572096EF5F00CAD8E6 /* Quick.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = EC1D60542096EF5E00CAD8E6 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC1D60592096EFBA00CAD8E6 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D60532096EF5E00CAD8E6 /* Nimble.framework */; };
+		EC1D605A2096EFBA00CAD8E6 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D60542096EF5E00CAD8E6 /* Quick.framework */; };
+		EC1D605B2096EFBA00CAD8E6 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1D60522096EF5E00CAD8E6 /* SwiftCheck.framework */; };
 		EC1E8CF21F18B0F000C6DFCA /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CDC1F18B0F000C6DFCA /* Control.Applicative.swift */; };
 		EC1E8CF31F18B0F000C6DFCA /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CDC1F18B0F000C6DFCA /* Control.Applicative.swift */; };
 		EC1E8CF41F18B0F000C6DFCA /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CDC1F18B0F000C6DFCA /* Control.Applicative.swift */; };
@@ -104,13 +108,9 @@
 		EC24C2171BF21A31000CB663 /* Control.ApplicativeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */; };
 		EC24C2181BF21A31000CB663 /* Control.MonadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */; };
 		EC3AAAF01C07058200F89619 /* HaskellSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC7F1F581BF5319800D424EC /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EC3F564B1D226F9600441811 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3F564A1D226F9600441811 /* SwiftCheck.framework */; };
-		EC3F564E1D22779100441811 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3F564C1D226FC000441811 /* XCTest.framework */; };
 		EC3F564F1D2277D400441811 /* System.DirectorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F56441D2267F900441811 /* System.DirectorySpec.swift */; };
 		EC3F56501D2277D600441811 /* System.DirectorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F56441D2267F900441811 /* System.DirectorySpec.swift */; };
 		EC3F56511D2277D800441811 /* System.DirectorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F56441D2267F900441811 /* System.DirectorySpec.swift */; };
-		EC52ABFE1D0161D200246E68 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC52ABFC1D0161D200246E68 /* Nimble.framework */; };
-		EC52ABFF1D0161D200246E68 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC52ABFD1D0161D200246E68 /* Quick.framework */; };
 		EC53E1C21C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
 		EC53E1C31C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
 		EC53E1C41C8770DE00A38310 /* PreludeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */; };
@@ -215,8 +215,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EC076BA91D01630400588DA8 /* Nimble.framework in Copy Files */,
-				EC076BAA1D01630400588DA8 /* Quick.framework in Copy Files */,
+				EC1D60552096EF5F00CAD8E6 /* SwiftCheck.framework in Copy Files */,
+				EC1D60562096EF5F00CAD8E6 /* Nimble.framework in Copy Files */,
+				EC1D60572096EF5F00CAD8E6 /* Quick.framework in Copy Files */,
 				ECDB4F981BF21D0A00A7AA28 /* HaskellSwift.framework in Copy Files */,
 			);
 			name = "Copy Files";
@@ -245,6 +246,9 @@
 		EC0807301BEFF0C4003DA6CC /* Data.List.Basic.QuickCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.List.Basic.QuickCheck.swift; sourceTree = "<group>"; };
 		EC0F91031B959CFF00A79D74 /* Data.OrdSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.OrdSpec.swift; sourceTree = "<group>"; };
 		EC17FE9C1BEE952E00633AFC /* QualifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualifierProtocol.swift; sourceTree = "<group>"; };
+		EC1D60522096EF5E00CAD8E6 /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftCheck.framework; sourceTree = "<group>"; };
+		EC1D60532096EF5E00CAD8E6 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
+		EC1D60542096EF5E00CAD8E6 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
 		EC1E8CDC1F18B0F000C6DFCA /* Control.Applicative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Applicative.swift; sourceTree = "<group>"; };
 		EC1E8CDD1F18B0F000C6DFCA /* Control.Monad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Monad.swift; sourceTree = "<group>"; };
 		EC1E8CDE1F18B0F000C6DFCA /* Control.Parallel.Strategies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.Parallel.Strategies.swift; sourceTree = "<group>"; };
@@ -264,10 +268,6 @@
 		EC1E8CF11F18B0F000C6DFCA /* System.FilePath.Posix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.FilePath.Posix.swift; sourceTree = "<group>"; };
 		EC24C2031BF21A06000CB663 /* HaskellSwift-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HaskellSwift-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC3F56441D2267F900441811 /* System.DirectorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.DirectorySpec.swift; sourceTree = "<group>"; };
-		EC3F564A1D226F9600441811 /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftCheck.framework; sourceTree = "<group>"; };
-		EC3F564C1D226FC000441811 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EC52ABFC1D0161D200246E68 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
-		EC52ABFD1D0161D200246E68 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
 		EC53E1C11C8770DE00A38310 /* PreludeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreludeSpec.swift; sourceTree = "<group>"; };
 		EC6634971BB48E2B0086B71B /* Control.MonadSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.MonadSpec.swift; sourceTree = "<group>"; };
 		EC72BA2D1B97712000192C2B /* Control.ApplicativeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.ApplicativeSpec.swift; sourceTree = "<group>"; };
@@ -299,11 +299,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC3F564E1D22779100441811 /* XCTest.framework in Frameworks */,
-				EC3F564B1D226F9600441811 /* SwiftCheck.framework in Frameworks */,
-				EC52ABFE1D0161D200246E68 /* Nimble.framework in Frameworks */,
-				EC52ABFF1D0161D200246E68 /* Quick.framework in Frameworks */,
 				ECADC2901D2D0C95006BA5F9 /* HaskellSwift.framework in Frameworks */,
+				EC1D60592096EFBA00CAD8E6 /* Nimble.framework in Frameworks */,
+				EC1D605A2096EFBA00CAD8E6 /* Quick.framework in Frameworks */,
+				EC1D605B2096EFBA00CAD8E6 /* SwiftCheck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +389,16 @@
 				ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		EC1D60582096EF9B00CAD8E6 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				EC1D60532096EF5E00CAD8E6 /* Nimble.framework */,
+				EC1D60542096EF5E00CAD8E6 /* Quick.framework */,
+				EC1D60522096EF5E00CAD8E6 /* SwiftCheck.framework */,
+			);
+			path = macOS;
 			sourceTree = "<group>";
 		};
 		EC1E8CD91F18B0F000C6DFCA /* Sources */ = {
@@ -567,10 +576,7 @@
 		ECF75EB31B7E1DA60047B0F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EC3F564C1D226FC000441811 /* XCTest.framework */,
-				EC3F564A1D226F9600441811 /* SwiftCheck.framework */,
-				EC52ABFC1D0161D200246E68 /* Nimble.framework */,
-				EC52ABFD1D0161D200246E68 /* Quick.framework */,
+				EC1D60582096EF9B00CAD8E6 /* macOS */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -778,7 +784,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Liang;
 				TargetAttributes = {
 					EC24C2021BF21A06000CB663 = {
@@ -797,6 +803,7 @@
 					};
 					ECCB03991FA717BD00822788 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 					ECF945D21BF5E5240039C177 = {
@@ -1130,13 +1137,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/build/mac",
+					"$(PROJECT_DIR)/Frameworks/macOS",
 				);
 				INFOPLIST_FILE = XcodeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1149,6 +1158,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/build/mac",
+					"$(PROJECT_DIR)/Frameworks/macOS",
 				);
 				INFOPLIST_FILE = XcodeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -1156,7 +1167,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1280,7 +1291,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1305,7 +1317,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1317,14 +1330,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1363,14 +1384,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1416,7 +1445,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -1443,7 +1472,7 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -1568,7 +1597,7 @@
 				PRODUCT_NAME = HaskellSwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1599,7 +1628,7 @@
 				PRODUCT_NAME = HaskellSwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
