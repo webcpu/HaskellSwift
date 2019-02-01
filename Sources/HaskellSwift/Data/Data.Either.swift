@@ -36,26 +36,26 @@ public func isRight<A,B>(_ a: Either<A,B>) -> Bool {
     return !isLeft(a)
 }
 
+extension String: Error {}
+
 //MARK: fromLeft :: Either a b -> a
-public func fromLeft<A,B>(_ a: Either<A,B>) -> A! {
+public func fromLeft<A,B>(_ a: Either<A,B>) throws -> A {
     switch a {
     case .Left(let left):
         return left
     case .Right(_):
-        assert(false)
+        throw "\(a) is not a Left"
     }
-    return nil
 }
 
 //MARK: fromRight :: Either a b -> b
-public func fromRight<A,B>(_ a: Either<A,B>) -> B! {
+public func fromRight<A,B>(_ a: Either<A,B>) throws -> B {
     switch a {
     case .Left(_):
-        assert(false)
+        throw "\(a) is not a Left"
     case .Right(let right):
         return right
     }
-    return nil
 }
 
 //MARK: either :: (a -> c) -> (b -> c) -> Either a b -> c
@@ -73,7 +73,11 @@ func lefts<A, B>(_ es: [Either<A, B>]) -> [A] {
     let xs = es.filter( { (e: Either<A, B>) -> Bool in
         return isLeft(e)
     })
-    return xs.map(fromLeft)
+    do {
+        return try xs.map(fromLeft)
+    } catch {
+        return [A]()
+    }
 }
 
 //MARK: rights:: [Either a b] -> [b]
@@ -81,7 +85,11 @@ func rights<A, B>(_ es: [Either<A, B>]) -> [B] {
     let xs = es.filter( { (e: Either<A, B>) -> Bool in
         return isRight(e)
     })
-    return xs.map(fromRight)
+    do {
+        return try xs.map(fromRight)
+    } catch {
+        return [B]()
+    }
 }
 
 //MARK: partitionEithers :: [Either a b] -> ([a], [b])

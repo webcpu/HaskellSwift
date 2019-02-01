@@ -17,7 +17,7 @@ precedencegroup FunctionPrecedence {
 //infix operator <*> { associativity right precedence 100}
 infix operator <*> : FunctionPrecedence
 public func <*> <A,B>(fs: [(A)->B], xs: [A])->[B] {
-    let transform   = {(f: (A)->B)->[B] in
+    let transform   = {(f: @escaping (A)->B)->[B] in
         return map(f, xs)
     }
     let xss         = map(transform, fs)
@@ -63,7 +63,7 @@ public func <*<A, B>(x: A?, y: B?) -> A?{
 //}
 
 //MARK: liftA []
-func liftA<A, B>(_ f: (A)->B, _ xs: [A]) -> [B] {
+func liftA<A, B>(_ f: @escaping (A)->B, _ xs: [A]) -> [B] {
     return map(f, xs)
 }
 

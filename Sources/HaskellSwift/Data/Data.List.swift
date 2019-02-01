@@ -146,7 +146,7 @@ public func length(_ xs: String) -> Int {
 
 //MARK: - List transformations
 //MARK: map :: (a -> b) -> [a] -> [b]
-public func map(_ transform: (Character) -> Character, _ xs: String) -> String {
+public func map(_ transform: @escaping (Character) -> Character, _ xs: String) -> String {
     var results = String()
     for i in 0..<xs.count {
         let c = xs[xs.index(xs.startIndex, offsetBy: i)]
@@ -156,7 +156,7 @@ public func map(_ transform: (Character) -> Character, _ xs: String) -> String {
     return results
 }
 
-public func map<U>(_ transform: (Character) -> U, _ xs: String) -> [U] {
+public func map<U>(_ transform: @escaping (Character) -> U, _ xs: String) -> [U] {
     var results = [U]()
     for i in 0..<xs.count {
         let c = xs[xs.index(xs.startIndex, offsetBy: i)]
@@ -166,23 +166,23 @@ public func map<U>(_ transform: (Character) -> U, _ xs: String) -> [U] {
     return results
 }
 
-public func map<T, U>(_ transform: (T) -> U, _ xs: [T]) -> [U] {
+public func map<T, U>(_ transform: @escaping (T) -> U, _ xs: [T]) -> [U] {
     return xs.reduce([U](), {$0 + [transform($1)]})
 }
 
-public func map(_ transform: (Character)->Character) -> ((String) -> String) {
+public func map(_ transform: @escaping (Character)->Character) -> ((String) -> String) {
     return curry(map, transform)
 }
 
-public func map<U>(_ transform: (Character)-> U) -> ((String) -> [U]) {
+public func map<U>(_ transform: @escaping (Character)-> U) -> ((String) -> [U]) {
     return curry(map, transform)
 }
 
-public func map<T, U>(_ transform: (T) -> U) -> (([T]) -> [U]) {
+public func map<T, U>(_ transform: @escaping (T) -> U) -> (([T]) -> [U]) {
     return curry(map, transform)
 }
 
-public func map<T: Collection, U>( _ transform: (T.Iterator.Element) -> U, _ xs: T) -> [U] {
+public func map<T: Collection, U>( _ transform: @escaping (T.Iterator.Element) -> U, _ xs: T) -> [U] {
     var ys = [U]()
     for x in xs {
         ys.append(transform(x))
@@ -198,7 +198,7 @@ public func map<T: Collection, U>( _ transform: (T.Iterator.Element) -> U, _ xs:
 //    return ys
 //}
 
-public func map<T: Collection, U>( _ transform: (T.Iterator.Element) -> U) -> ((T) -> [U]) {
+public func map<T: Collection, U>( _ transform: @escaping (T.Iterator.Element) -> U) -> ((T) -> [U]) {
     return curry(map, transform)
 }
 
@@ -207,39 +207,39 @@ public func map<T: Collection, U>( _ transform: (T.Iterator.Element) -> U) -> ((
 //}
 
 //MARK: flatmap :: (a -> [b]) -> [a] -> [b]
-public func flatmap(_ transform: (Character)->String, _ xs: String) -> String {
+public func flatmap(_ transform: @escaping (Character)->String, _ xs: String) -> String {
     return concat(map(transform, xs))
 }
 
-public func flatmap<U>(_ transform: (Character)-> [U], _ xs: String) -> [U] {
+public func flatmap<U>(_ transform: @escaping (Character)-> [U], _ xs: String) -> [U] {
     return concat(map(transform, xs))
 }
 
-public func flatmap<T, U>(_ transform: (T)->[U], _ xs: [T]) -> [U] {
+public func flatmap<T, U>(_ transform: @escaping (T)->[U], _ xs: [T]) -> [U] {
     return concat(map(transform, xs))
 }
 
-public func flatmap(_ transform: (String)->String, _ xs: [String]) -> String {
+public func flatmap(_ transform: @escaping (String)->String, _ xs: [String]) -> String {
     return concat(map(transform, xs))
 }
 
-public func flatmap(_ transform: (Character)->String) -> ((String) -> String) {
+public func flatmap(_ transform: @escaping (Character)->String) -> ((String) -> String) {
     return curry(flatmap, transform)
 }
 
-public func flatmap<U>(_ transform: (Character)-> [U]) -> ((String) -> [U]) {
+public func flatmap<U>(_ transform: @escaping (Character)-> [U]) -> ((String) -> [U]) {
     return curry(flatmap, transform)
 }
 
-public func flatmap<T, U>(_ transform: (T)->[U]) -> (([T]) -> [U]) {
+public func flatmap<T, U>(_ transform: @escaping (T)->[U]) -> (([T]) -> [U]) {
     return curry(flatmap, transform)
 }
 
-public func flatmap(_ transform: (String)->String) -> (([String]) -> String) {
+public func flatmap(_ transform: @escaping (String)->String) -> (([String]) -> String) {
     return curry(flatmap, transform)
 }
 
-public func flatmap<T: Collection, U>( _ transform: (T.Iterator.Element) -> [U], _ xs: T) -> [U] {
+public func flatmap<T: Collection, U>( _ transform: @escaping (T.Iterator.Element) -> [U], _ xs: T) -> [U] {
     return concat(map(transform, xs))
 }
 
@@ -251,7 +251,7 @@ public func flatmap<T: Collection, U>( _ transform: (T.Iterator.Element) -> [U],
 //    return ys
 //}
 
-public func flatmap<T: Collection, U>( _ transform: (T.Iterator.Element) -> [U]) -> ((T) -> [U]) {
+public func flatmap<T: Collection, U>( _ transform: @escaping (T.Iterator.Element) -> [U]) -> ((T) -> [U]) {
     return curry(flatmap, transform)
 }
 
@@ -492,7 +492,7 @@ public func foldl1(_ process: (String, Character)->String, _ xs: String) -> Stri
     return foldl(process, String(xs[xs.startIndex]), drop(1, xs))
 }
 
-public func foldl1<A>(_ process: (A, A)->A) -> (([A]) -> A) {
+public func foldl1<A>(_ process: @escaping (A, A)->A) -> (([A]) -> A) {
     return curry(foldl1, process)
 }
 
@@ -593,11 +593,11 @@ public func foldr1(_ process: (Character, String)->String, _ xs: String) -> Stri
     return foldr(process, String(xs[xs.index(before: xs.endIndex)]), take(xs.count - 1, xs))
 }
 
-public func foldr1<A>(_ process: (A, A)->A) -> (([A]) -> A) {
+public func foldr1<A>(_ process: @escaping (A, A)->A) -> (([A]) -> A) {
     return curry(foldr1, process)
 }
 
-public func foldr1(_ process: (Character, String)->String) -> ((String) -> String) {
+public func foldr1(_ process: @escaping (Character, String)->String) -> ((String) -> String) {
     return curry(foldr1, process)
 }
 
@@ -671,11 +671,11 @@ public func scanl1(_ combine: (String, Character)->String, _ xs: String) -> [Str
     return [String(xs[xs.startIndex])] + result
 }
 
-public func scanl1<A>(_ combine: (A, A)->A) -> (([A]) -> [A]) {
+public func scanl1<A>(_ combine: @escaping (A, A)->A) -> (([A]) -> [A]) {
     return curry(scanl1, combine)
 }
 
-public func scanl1(_ combine: (String, Character)->String) -> ((String) -> [String]) {
+public func scanl1(_ combine: @escaping (String, Character)->String) -> ((String) -> [String]) {
     return curry(scanl1, combine)
 }
 
@@ -747,11 +747,11 @@ public func scanr1(_ combine: (Character, String)->String, _ xs: String) -> [Str
     return [String(last(xs))] + ys
 }
 
-public func scanr1<A>(_ combine: (A, A)->A) -> (([A]) -> [A]) {
+public func scanr1<A>(_ combine: @escaping (A, A)->A) -> (([A]) -> [A]) {
     return curry(scanr1, combine)
 }
 
-public func scanr1(_ combine: (Character, String)->String) -> ((String) -> [String]) {
+public func scanr1(_ combine: @escaping (Character, String)->String) -> ((String) -> [String]) {
     return curry(scanr1, combine)
 }
 
@@ -795,7 +795,7 @@ public func unfoldr<A,B>(_ f: (B) -> (A, B)?, _ seed: B) -> [A] {
     return xs
 }
 
-public func unfoldr<A,B>(_ f: (B) -> (A, B)?) -> ((B) -> [A]) {
+public func unfoldr<A,B>(_ f: @escaping (B) -> (A, B)?) -> ((B) -> [A]) {
     return curry(unfoldr,f)
 }
 
@@ -1263,7 +1263,7 @@ public func breakx(_ check: (Character) -> Bool, _ xs: String) -> (String, Strin
     return (take(len, xs), drop(len, xs))
 }
 
-public func breakx(_ check: (Character) -> Bool) -> (String) -> (String, String) {
+public func breakx(_ check: @escaping (Character) -> Bool) -> (String) -> (String, String) {
     return curry(breakx, check)
 }
 
@@ -1461,7 +1461,7 @@ public func filter<U>(_ check: (U) -> Bool, _ xs: [U]) -> [U] {
     return results
 }
 
-public func filter<U>(_ check: (U) -> Bool) -> (([U]) -> [U]) {
+public func filter<U>(_ check: @escaping (U) -> Bool) -> (([U]) -> [U]) {
     return curry(filter, check)
 }
 
@@ -2261,7 +2261,7 @@ public func sortBy<A: Comparable>(_ f : (A, A)->Bool, _ xs: [A]) -> [A] {
     return xs.sorted(by: f)
 }
 
-public func sortBy<A: Comparable>(_ f : (A, A)->Bool) -> ([A]) -> [A] {
+public func sortBy<A: Comparable>(_ f : @escaping (A, A)->Bool) -> ([A]) -> [A] {
     return curry(sortBy, f)
 }
 

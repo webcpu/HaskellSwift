@@ -43,7 +43,7 @@ public func >>>=<A, B, C>(f: @escaping (A)->B?, g: @escaping (B)->C?) -> ((A)->C
 
 //Either
 public func >>>=<A, B, E>(_ x: Either<E, A>, _ f: (A) -> Either<E, B>) -> Either<E, B> {
-    return isLeft(x) ? Left(fromLeft(x)) : f(fromRight(x))
+    return isLeft(x) ? try! Left(fromLeft(x)) : f(try! fromRight(x))
 }
 
 public func >>>= <A, B, C, E>( f: @escaping (A) -> Either<E, B>,

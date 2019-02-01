@@ -68,6 +68,6 @@ public func catMaybes<A>(_ xs: [A?]) -> [A] {
 }
 
 //MARK: mapMaybe :: (a -> Maybe b) -> [a] -> [b]
-public func mapMaybe<A, B>(_ f:((A)->B?), _ xs: [A]) -> [B] {
+public func mapMaybe<A, B>(_ f:@escaping ((A)->B?), _ xs: [A]) -> [B] {
     return catMaybes(map(f, xs))
 }
