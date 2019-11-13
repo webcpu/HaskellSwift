@@ -1,7 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:../Sources"
+      name = "Sources">
+      <Group
+         location = "group:HaskellSwift"
+         name = "HaskellSwift">
+         <Group
+            location = "group:Network"
+            name = "Network">
+            <FileRef
+               location = "group:Network.HTTP.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Language"
+            name = "Language">
+            <FileRef
+               location = "group:Prelude.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:System"
+            name = "System">
+            <FileRef
+               location = "group:System.Directory.swift">
+            </FileRef>
+            <FileRef
+               location = "group:System.FilePath.Posix.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:GHC"
+            name = "GHC">
+            <FileRef
+               location = "group:GHC.Num.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Data"
+            name = "Data">
+            <FileRef
+               location = "group:Data.Maybe.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Data.Tuple.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Data.Function.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Data.Functor.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Data.List.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Data.Ord.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Data.Traversable.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Data.Either.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Data.Char.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Control"
+            name = "Control">
+            <FileRef
+               location = "group:Control.Monad.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Control.Applicative.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Control.Parallel.Strategies.swift">
+            </FileRef>
+         </Group>
+      </Group>
+   </Group>
    <FileRef
-      location = "self:HaskellSwift.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
