@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -158,6 +158,26 @@
 		ECF9462F1BF5EFF10039C177 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB41B7E1DA60047B0F7 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF946301BF5EFF10039C177 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF75EB51B7E1DA60047B0F7 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECF946311BF5EFFD0039C177 /* HaskellSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECF945E01BF5E5560039C177 /* HaskellSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECFCFB9D2370902200D46EA9 /* HaskellSwift_macOSCatalyst.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECFCFB942370902200D46EA9 /* HaskellSwift_macOSCatalyst.framework */; };
+		ECFCFBA22370902200D46EA9 /* HaskellSwift_macOSCatalystTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFCFBA12370902200D46EA9 /* HaskellSwift_macOSCatalystTests.swift */; };
+		ECFCFBA42370902200D46EA9 /* HaskellSwift_macOSCatalyst.h in Headers */ = {isa = PBXBuildFile; fileRef = ECFCFB962370902200D46EA9 /* HaskellSwift_macOSCatalyst.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ECFCFBAB2370907F00D46EA9 /* Control.Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CDC1F18B0F000C6DFCA /* Control.Applicative.swift */; };
+		ECFCFBAC2370907F00D46EA9 /* Control.Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CDD1F18B0F000C6DFCA /* Control.Monad.swift */; };
+		ECFCFBAD2370907F00D46EA9 /* Control.Parallel.Strategies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CDE1F18B0F000C6DFCA /* Control.Parallel.Strategies.swift */; };
+		ECFCFBAE2370907F00D46EA9 /* Data.Char.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE01F18B0F000C6DFCA /* Data.Char.swift */; };
+		ECFCFBAF2370907F00D46EA9 /* Data.Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE11F18B0F000C6DFCA /* Data.Either.swift */; };
+		ECFCFBB02370907F00D46EA9 /* Data.Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE21F18B0F000C6DFCA /* Data.Function.swift */; };
+		ECFCFBB12370907F00D46EA9 /* Data.Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE31F18B0F000C6DFCA /* Data.Functor.swift */; };
+		ECFCFBB22370907F00D46EA9 /* Data.List.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE41F18B0F000C6DFCA /* Data.List.swift */; };
+		ECFCFBB32370908000D46EA9 /* Data.Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE51F18B0F000C6DFCA /* Data.Maybe.swift */; };
+		ECFCFBB42370908000D46EA9 /* Data.Ord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE61F18B0F000C6DFCA /* Data.Ord.swift */; };
+		ECFCFBB52370908000D46EA9 /* Data.Traversable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE71F18B0F000C6DFCA /* Data.Traversable.swift */; };
+		ECFCFBB62370908000D46EA9 /* Data.Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CE81F18B0F000C6DFCA /* Data.Tuple.swift */; };
+		ECFCFBB72370908000D46EA9 /* GHC.Num.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CEA1F18B0F000C6DFCA /* GHC.Num.swift */; };
+		ECFCFBB82370908000D46EA9 /* Prelude.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CEC1F18B0F000C6DFCA /* Prelude.swift */; };
+		ECFCFBB92370908000D46EA9 /* Network.HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CEE1F18B0F000C6DFCA /* Network.HTTP.swift */; };
+		ECFCFBBA2370908000D46EA9 /* System.Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CF01F18B0F000C6DFCA /* System.Directory.swift */; };
+		ECFCFBBB2370908000D46EA9 /* System.FilePath.Posix.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E8CF11F18B0F000C6DFCA /* System.FilePath.Posix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +215,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = ECF945DF1BF5E5560039C177;
 			remoteInfo = "HaskellSwift-tvOS";
+		};
+		ECFCFB9E2370902200D46EA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECF75E7B1B7E1B420047B0F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECFCFB932370902200D46EA9;
+			remoteInfo = "HaskellSwift-macOSCatalyst";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -292,6 +319,12 @@
 		ECFAB3481B92096300017F83 /* Data.TupleSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.TupleSpec.swift; sourceTree = "<group>"; };
 		ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HaskellSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFBE9161BF217D300D23E20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECFCFB942370902200D46EA9 /* HaskellSwift_macOSCatalyst.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HaskellSwift_macOSCatalyst.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECFCFB962370902200D46EA9 /* HaskellSwift_macOSCatalyst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HaskellSwift_macOSCatalyst.h; sourceTree = "<group>"; };
+		ECFCFB972370902200D46EA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECFCFB9C2370902200D46EA9 /* HaskellSwift-macOSCatalystTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HaskellSwift-macOSCatalystTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECFCFBA12370902200D46EA9 /* HaskellSwift_macOSCatalystTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaskellSwift_macOSCatalystTests.swift; sourceTree = "<group>"; };
+		ECFCFBA32370902200D46EA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +387,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECFCFB912370902200D46EA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECFCFB992370902200D46EA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECFCFB9D2370902200D46EA9 /* HaskellSwift_macOSCatalyst.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +580,8 @@
 				EC1E8CD91F18B0F000C6DFCA /* Sources */,
 				ECFC6C981C13501300C277AE /* Documentation */,
 				ECCB039B1FA717BD00822788 /* StaticLibrary */,
+				ECFCFB952370902200D46EA9 /* HaskellSwift-macOSCatalyst */,
+				ECFCFBA02370902200D46EA9 /* HaskellSwift-macOSCatalystTests */,
 				ECF75EB31B7E1DA60047B0F7 /* Frameworks */,
 				EC72BA301B97933E00192C2B /* Support */,
 				ECF75E971B7E1B420047B0F7 /* XcodeTests */,
@@ -551,6 +601,8 @@
 				ECF945E01BF5E5560039C177 /* HaskellSwift.framework */,
 				ECF945E91BF5E5570039C177 /* HaskellSwift-tvOSTests.xctest */,
 				ECCB039A1FA717BD00822788 /* libHaskellSwift.a */,
+				ECFCFB942370902200D46EA9 /* HaskellSwift_macOSCatalyst.framework */,
+				ECFCFB9C2370902200D46EA9 /* HaskellSwift-macOSCatalystTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -586,6 +638,24 @@
 			children = (
 			);
 			path = Documentation;
+			sourceTree = "<group>";
+		};
+		ECFCFB952370902200D46EA9 /* HaskellSwift-macOSCatalyst */ = {
+			isa = PBXGroup;
+			children = (
+				ECFCFB962370902200D46EA9 /* HaskellSwift_macOSCatalyst.h */,
+				ECFCFB972370902200D46EA9 /* Info.plist */,
+			);
+			path = "HaskellSwift-macOSCatalyst";
+			sourceTree = "<group>";
+		};
+		ECFCFBA02370902200D46EA9 /* HaskellSwift-macOSCatalystTests */ = {
+			isa = PBXGroup;
+			children = (
+				ECFCFBA12370902200D46EA9 /* HaskellSwift_macOSCatalystTests.swift */,
+				ECFCFBA32370902200D46EA9 /* Info.plist */,
+			);
+			path = "HaskellSwift-macOSCatalystTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -624,6 +694,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECFCFB8F2370902200D46EA9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECFCFBA42370902200D46EA9 /* HaskellSwift_macOSCatalyst.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,7 +843,6 @@
 				ECFBE90D1BF217D300D23E20 /* Sources */,
 				ECFBE90E1BF217D300D23E20 /* Frameworks */,
 				ECFBE90F1BF217D300D23E20 /* Headers */,
-				EC203D1D1F17F26900C9BA03 /* ShellScript */,
 				ECFBE9101BF217D300D23E20 /* Resources */,
 			);
 			buildRules = (
@@ -777,13 +854,49 @@
 			productReference = ECFBE9121BF217D300D23E20 /* HaskellSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		ECFCFB932370902200D46EA9 /* HaskellSwift-macOSCatalyst */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECFCFBA52370902200D46EA9 /* Build configuration list for PBXNativeTarget "HaskellSwift-macOSCatalyst" */;
+			buildPhases = (
+				ECFCFB8F2370902200D46EA9 /* Headers */,
+				ECFCFB902370902200D46EA9 /* Sources */,
+				ECFCFB912370902200D46EA9 /* Frameworks */,
+				ECFCFB922370902200D46EA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HaskellSwift-macOSCatalyst";
+			productName = "HaskellSwift-macOSCatalyst";
+			productReference = ECFCFB942370902200D46EA9 /* HaskellSwift_macOSCatalyst.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		ECFCFB9B2370902200D46EA9 /* HaskellSwift-macOSCatalystTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECFCFBA82370902200D46EA9 /* Build configuration list for PBXNativeTarget "HaskellSwift-macOSCatalystTests" */;
+			buildPhases = (
+				ECFCFB982370902200D46EA9 /* Sources */,
+				ECFCFB992370902200D46EA9 /* Frameworks */,
+				ECFCFB9A2370902200D46EA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ECFCFB9F2370902200D46EA9 /* PBXTargetDependency */,
+			);
+			name = "HaskellSwift-macOSCatalystTests";
+			productName = "HaskellSwift-macOSCatalystTests";
+			productReference = ECFCFB9C2370902200D46EA9 /* HaskellSwift-macOSCatalystTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		ECF75E7B1B7E1B420047B0F7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Liang;
 				TargetAttributes = {
@@ -822,10 +935,16 @@
 						DevelopmentTeamName = "Liang Yuan";
 						LastSwiftMigration = 0820;
 					};
+					ECFCFB932370902200D46EA9 = {
+						CreatedOnToolsVersion = 11.2;
+					};
+					ECFCFB9B2370902200D46EA9 = {
+						CreatedOnToolsVersion = 11.2;
+					};
 				};
 			};
 			buildConfigurationList = ECF75E7E1B7E1B420047B0F7 /* Build configuration list for PBXProject "HaskellSwift" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -847,6 +966,8 @@
 				ECF945D21BF5E5240039C177 /* HaskellSwift-watchOS */,
 				EC3AAAD41C06FE5A00F89619 /* HaskellSwiftTests */,
 				ECCB03991FA717BD00822788 /* HaskellSwift */,
+				ECFCFB932370902200D46EA9 /* HaskellSwift-macOSCatalyst */,
+				ECFCFB9B2370902200D46EA9 /* HaskellSwift-macOSCatalystTests */,
 			);
 		};
 /* End PBXProject section */
@@ -901,25 +1022,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		EC203D1D1F17F26900C9BA03 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
+		ECFCFB922370902200D46EA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"$(LD_DEPENDENCY_INFO_FILE)",
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(EXECUTABLE_PATH)",
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECFCFB9A2370902200D46EA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd \"$BUILT_PRODUCTS_DIR\"\n\nstatic_wrapper_name=\"Static/$WRAPPER_NAME\"\nrm -rf \"$static_wrapper_name\"\nditto \"$WRAPPER_NAME\" \"$static_wrapper_name\"\n\narchs=( $ARCHS ) lfls=()\nfor v in \"${archs[@]/#/LINK_FILE_LIST_${CURRENT_VARIANT}_}\"; do\nlfls+=( -filelist \"${!v}\" )\ndone\n\nlibtool -static -syslibroot \"$SDKROOT\" -L. \"${lfls[@]}\" -o \"Static/$EXECUTABLE_PATH\"";
 		};
-/* End PBXShellScriptBuildPhase section */
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EC24C1FF1BF21A06000CB663 /* Sources */ = {
@@ -1098,6 +1215,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECFCFB902370902200D46EA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECFCFBAB2370907F00D46EA9 /* Control.Applicative.swift in Sources */,
+				ECFCFBAC2370907F00D46EA9 /* Control.Monad.swift in Sources */,
+				ECFCFBAD2370907F00D46EA9 /* Control.Parallel.Strategies.swift in Sources */,
+				ECFCFBAE2370907F00D46EA9 /* Data.Char.swift in Sources */,
+				ECFCFBAF2370907F00D46EA9 /* Data.Either.swift in Sources */,
+				ECFCFBB02370907F00D46EA9 /* Data.Function.swift in Sources */,
+				ECFCFBB12370907F00D46EA9 /* Data.Functor.swift in Sources */,
+				ECFCFBB22370907F00D46EA9 /* Data.List.swift in Sources */,
+				ECFCFBB32370908000D46EA9 /* Data.Maybe.swift in Sources */,
+				ECFCFBB42370908000D46EA9 /* Data.Ord.swift in Sources */,
+				ECFCFBB52370908000D46EA9 /* Data.Traversable.swift in Sources */,
+				ECFCFBB62370908000D46EA9 /* Data.Tuple.swift in Sources */,
+				ECFCFBB72370908000D46EA9 /* GHC.Num.swift in Sources */,
+				ECFCFBB82370908000D46EA9 /* Prelude.swift in Sources */,
+				ECFCFBB92370908000D46EA9 /* Network.HTTP.swift in Sources */,
+				ECFCFBBA2370908000D46EA9 /* System.Directory.swift in Sources */,
+				ECFCFBBB2370908000D46EA9 /* System.FilePath.Posix.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECFCFB982370902200D46EA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECFCFBA22370902200D46EA9 /* HaskellSwift_macOSCatalystTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1126,6 +1275,11 @@
 			target = ECF945DF1BF5E5560039C177 /* HaskellSwift-tvOS */;
 			targetProxy = ECF945EB1BF5E5570039C177 /* PBXContainerItemProxy */;
 		};
+		ECFCFB9F2370902200D46EA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECFCFB932370902200D46EA9 /* HaskellSwift-macOSCatalyst */;
+			targetProxy = ECFCFB9E2370902200D46EA9 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -1142,7 +1296,11 @@
 					"$(PROJECT_DIR)/Frameworks/macOS",
 				);
 				INFOPLIST_FILE = XcodeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1163,11 +1321,16 @@
 					"$(PROJECT_DIR)/Frameworks/macOS",
 				);
 				INFOPLIST_FILE = XcodeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1191,6 +1354,7 @@
 		EC7F1F691BF5319800D424EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1201,8 +1365,12 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
 				PRODUCT_NAME = HaskellSwift;
@@ -1219,6 +1387,7 @@
 		EC7F1F6A1BF5319800D424EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1229,14 +1398,19 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
 				PRODUCT_NAME = HaskellSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1252,7 +1426,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = XcodeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1267,11 +1445,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = XcodeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1426,7 +1609,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -1434,6 +1618,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1442,7 +1627,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
 				PRODUCT_NAME = HaskellSwift;
 				SDKROOT = watchos;
@@ -1460,6 +1649,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1468,12 +1658,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
 				PRODUCT_NAME = HaskellSwift;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
@@ -1486,6 +1681,7 @@
 		ECF945F21BF5E5570039C177 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1496,7 +1692,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
@@ -1516,6 +1716,7 @@
 		ECF945F31BF5E5570039C177 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1526,13 +1727,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
 				PRODUCT_NAME = HaskellSwift;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
@@ -1552,7 +1758,11 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = XcodeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -1570,11 +1780,16 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = XcodeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.haskellswift.HaskellSwift-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
@@ -1584,6 +1799,7 @@
 		ECFBE9181BF217D300D23E20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1599,14 +1815,20 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
 				PRODUCT_NAME = HaskellSwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				VALID_ARCHS = x86_64;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1615,6 +1837,7 @@
 		ECFBE9191BF217D300D23E20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1630,16 +1853,159 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haskellswift.HaskellSwift;
 				PRODUCT_NAME = HaskellSwift;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALID_ARCHS = x86_64;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ECFCFBA62370902200D46EA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NA5BE2D52P;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "HaskellSwift-macOSCatalyst/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.unchartedworks.HaskellSwift-macOSCatalyst";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		ECFCFBA72370902200D46EA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NA5BE2D52P;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "HaskellSwift-macOSCatalyst/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.unchartedworks.HaskellSwift-macOSCatalyst";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ECFCFBA92370902200D46EA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NA5BE2D52P;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "HaskellSwift-macOSCatalystTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.unchartedworks.HaskellSwift-macOSCatalystTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		ECFCFBAA2370902200D46EA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NA5BE2D52P;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "HaskellSwift-macOSCatalystTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.unchartedworks.HaskellSwift-macOSCatalystTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1732,6 +2098,24 @@
 			buildConfigurations = (
 				ECFBE9181BF217D300D23E20 /* Debug */,
 				ECFBE9191BF217D300D23E20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECFCFBA52370902200D46EA9 /* Build configuration list for PBXNativeTarget "HaskellSwift-macOSCatalyst" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECFCFBA62370902200D46EA9 /* Debug */,
+				ECFCFBA72370902200D46EA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECFCFBA82370902200D46EA9 /* Build configuration list for PBXNativeTarget "HaskellSwift-macOSCatalystTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECFCFBA92370902200D46EA9 /* Debug */,
+				ECFCFBAA2370902200D46EA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
